@@ -4,22 +4,16 @@
 
 ### A Self-Study Course on Political Islam
 
-https://youtu.be/1Nth4Qx3Hss
-https://youtu.be/Q7EDxg5dGc0
-https://youtu.be/h_SJoh__itY
-https://youtu.be/N290qs5oR5o
-https://youtu.be/qbAWHkU66hY
-https://youtu.be/1Nth4Qx3Hss
-https://youtu.be/RvMMS6iSCSs
-https://youtu.be/mkXHnc_w54U
-https://youtu.be/1D2FoVIpVl4
-https://youtu.be/NlxQSoo7cSA
-https://youtu.be/xO1iD54T5RQ
-https://youtu.be/1Nth4Qx3Hss
-https://youtu.be/h_SJoh__itY
-https://youtu.be/N290qs5oR5o
-https://youtu.be/Q7EDxg5dGc0
-https://youtu.be/Q7EDxg5dGc0
+https://youtu.be/1Nth4Qx3Hss  
+https://youtu.be/Q7EDxg5dGc0  
+https://youtu.be/h_SJoh__itY  
+https://youtu.be/N290qs5oR5o  
+https://youtu.be/qbAWHkU66hY  
+https://youtu.be/RvMMS6iSCSs  
+https://youtu.be/mkXHnc_w54U  
+https://youtu.be/1D2FoVIpVl4  
+https://youtu.be/NlxQSoo7cSA  
+https://youtu.be/xO1iD54T5RQ  
 
 ### Level 1
 
