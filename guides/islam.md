@@ -133,6 +133,11 @@ https://www.amazon.co.uk/Sword-Scimitar-Fourteen-Centuries-between/dp/0306825554
 
 https://www.amazon.co.uk/Politically-Incorrect-Guide-Crusades-Guides/dp/0895260131
 
+### Relação Cristianismo e Islão
+
+João Damasceno
+https://www.youtube.com/watch?v=FBAJoXfXZl8&list=PLYZXIqV4094wmi_ClS6bqwPhBSeALlXaD&index=9
+
 ### Relação Ocidente e Islão: Atual
 
 ### On Islam: A Chronological Record 2002-2018
