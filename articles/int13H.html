@@ -12,7 +12,8 @@
     var x = document.currentScript.previousElementSibling;
     monacoElements.push({
         value: "I2luY2x1ZGUgPGdvMzIuaD4NCiNpbmNsdWRlIDxzeXMvZmFycHRyLmg+DQoNCnZvaWQgcHV0cGl4ZWxfMTNoKGludCB4LCBpbnQgeSwgaW50IGNvbG9yKQ0Kew0KICAgIF9mYXJwb2tlYihfZG9zX2RzLCAweEEwMDAwK3kqMzIwK3gsIGNvbG9yKTsNCn0=",
-	    el: x,
+        el: x,
+        adjustHeight: true
     });
 </script>
 <div class="link" style="border: solid 1px">
@@ -35,21 +36,19 @@
 <script>
     var x = document.currentScript.previousElementSibling;
     monacoElements.push({
-        value: "PCFET0NUWVBFIGh0bWw+DQo8aHRtbD4NCjxib2R5Pg0KICAgIDxjYW52YXMgaWQ9InNjcmVlbiIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIyNDAiPjwvY2FudmFzPg0KICAgIDxzY3JpcHQ+DQogICAgICAgIHZhciBjYW52YXMgPSBkb2N1bWVudC5nZXRFbGVtZW50c0J5SWQoInNjcmVlbiIpOw0KICAgICAgICB2YXIgZ2wgPSBjYW52YXMuZ2V0Q29udGV4dCgid2ViZ2wiKTsNCiAgICA8L3NjcmlwdD4NCjwvYm9keT4NCjwvaHRtbD4=",
-	    el: x,
+        value: "PCFET0NUWVBFIGh0bWw+DQo8aHRtbD4NCjxib2R5Pg0KICAgIDxjYW52YXMgaWQ9InNjcmVlbiIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIyNDAiPjwvY2FudmFzPg0KICAgIDxzY3JpcHQ+DQogICAgICAgIGZ1bmN0aW9uIGdldEdMKCkgew0KICAgICAgICAgICAgdmFyIGNhbnZhcyA9IGRvY3VtZW50LmdldEVsZW1lbnRzQnlJZCgic2NyZWVuIik7DQogICAgICAgICAgICByZXR1cm4gW2NhbnZhcy5nZXRDb250ZXh0KCJ3ZWJnbCIpLCBjYW52YXMud2lkdGgsIGNhbnZhcy5oZWlnaHRdOw0KICAgICAgICB9DQogICAgPC9zY3JpcHQ+DQo8L2JvZHk+DQo8L2h0bWw+",
+        el: x,
+        adjustHeight: true
     });
 </script>
 <p class="paragraph">What we need to do now is not very intuitive. WebGL/OpenGL is aimed to drawing geometric figures, specially in 3D. What we want is a contiguous memory address to write our pixels. The easist way to achieve this in WebGL is:</p>
 <ol cl="ol">
     <li>Draw a rectangle that fills 100% of the screen;</li>
     <li>Apply a texture that is exactly the same size as the screen to this rectangle;</li>
-    <li>Get the address of this texture;</li>
-    <li>Write what we want to draw in this address;</li>
     <li>Update the texture;</li>
-    <li>Update the screen;</li>
 </ol>
 <p class="paragraph">Steps 1,2,3 are setup and done only once in the initialization. Steps 5, 6 are generic. And step 4 is our code. What we will do is pass the texture address to a function that will ignore everything and just write to this memory.</p>
-<h2 class="header">Step 1 - Rectangle</h2>
+<h2 class="header">Step 1 - Draw Rectangle</h2>
 <p class="paragraph">WebGL/OpenGL aim is much complex cases than drawing rects. So it looks like a lot of work to draw a simple rectangle. But remember that we need to send everything to the video card, and then ask the WebGL/OpenGL/Video Card to draw what we created. So that is what we need to do:</p>
 <ol cl="ol">
     <li>specify each vertice in a rectangle (there are four of them);</li>
@@ -69,12 +68,70 @@
 <script>
     var x = document.currentScript.previousElementSibling;
     monacoElements.push({
-        value: "ZnVuY3Rpb24gY3JlYXRlUmVjdGFuZ2xlKCl7DQogICAgLy8gVmVydGljZXMNCiAgICB2YXIgcG9zaXRpb25zID0gbmV3IEZsb2F0MzJBcnJheShbDQogICAgICAgIC0xLjAsIC0xLjAsDQogICAgICAgICsxLjAsIC0xLjAsDQogICAgICAgICsxLjAsICsxLjAsDQogICAgICAgIC0xLjAsICsxLjAsDQogICAgXSk7DQogICAgdmFyIHZlcnRpY2VzQnVmZmVyID0gZ2wuY3JlYXRlQnVmZmVyKCk7DQogICAgZ2wuYmluZEJ1ZmZlcihnbC5BUlJBWV9CVUZGRVIsIHZlcnRpY2VzQnVmZmVyKTsNCiAgICBnbC5idWZmZXJEYXRhKGdsLkFSUkFZX0JVRkZFUiwgcG9zaXRpb25zLCBnbC5TVEFUSUNfRFJBVyk7DQoNCiAgICAvLyBUcmlhbmdsZXMNCiAgICB2YXIgaW5kaWNlcyA9IG5ldyBVaW50MTZBcnJheShbMCwgMSwgMiwgMCwgMiwgM10pOw0KICAgIHZhciBpbmRpY2VzQnVmZmVyID0gZ2wuY3JlYXRlQnVmZmVyKCk7DQogICAgZ2wuYmluZEJ1ZmZlcihnbC5FTEVNRU5UX0FSUkFZX0JVRkZFUiwgaW5kaWNlc0J1ZmZlcik7DQogICAgZ2wuYnVmZmVyRGF0YShnbC5FTEVNRU5UX0FSUkFZX0JVRkZFUiwgaW5kaWNlcywgZ2wuU1RBVElDX0RSQVcpOw0KICAgIHJldHVybiBbdmVydGljZXNCdWZmZXIsIGluZGljZXNCdWZmZXJdOw0KfQ0KDQpmdW5jdGlvbiBkcmF3KHZlcnRpY2llc0J1ZmZlciwgaW5kaWNlc0J1ZmZlcikgeyAgICANCiAgICBnbC5iaW5kQnVmZmVyKGdsLkFSUkFZX0JVRkZFUiwgdmVydGljaWVzQnVmZmVyKTsNCiAgICBnbC52ZXJ0ZXhBdHRyaWJQb2ludGVyKGFfY29vcmRzLCAyLCBnbC5GTE9BVCwgZmFsc2UsIDAsIDApOw0KICAgIGdsLmVuYWJsZVZlcnRleEF0dHJpYkFycmF5KGFfY29vcmRzKTsNCg0KICAgIGdsLmJpbmRCdWZmZXIoZ2wuRUxFTUVOVF9BUlJBWV9CVUZGRVIsIGluZGljZXNCdWZmZXIpOw0KICAgIGdsLmRyYXdFbGVtZW50cyhnbC5UUklBTkdMRVMsIDYsIGdsLlVOU0lHTkVEX1NIT1JULCAwKTsNCn0=",
-	    el: x,
+        value: "ZnVuY3Rpb24gY3JlYXRlUmVjdGFuZ2xlKCl7DQogICAgLy8gVmVydGljZXMNCiAgICB2YXIgcG9zaXRpb25zID0gbmV3IEZsb2F0MzJBcnJheShbDQogICAgICAgIC0xLjAsIC0xLjAsDQogICAgICAgICsxLjAsIC0xLjAsDQogICAgICAgICsxLjAsICsxLjAsDQogICAgICAgIC0xLjAsICsxLjAsDQogICAgXSk7DQogICAgdmFyIHZlcnRpY2VzQnVmZmVyID0gZ2wuY3JlYXRlQnVmZmVyKCk7DQogICAgZ2wuYmluZEJ1ZmZlcihnbC5BUlJBWV9CVUZGRVIsIHZlcnRpY2VzQnVmZmVyKTsNCiAgICBnbC5idWZmZXJEYXRhKGdsLkFSUkFZX0JVRkZFUiwgcG9zaXRpb25zLCBnbC5TVEFUSUNfRFJBVyk7DQoNCiAgICAvLyBUcmlhbmdsZXMNCiAgICB2YXIgaW5kaWNlcyA9IG5ldyBVaW50MTZBcnJheShbMCwgMSwgMiwgMCwgMiwgM10pOw0KICAgIHZhciBpbmRpY2VzQnVmZmVyID0gZ2wuY3JlYXRlQnVmZmVyKCk7DQogICAgZ2wuYmluZEJ1ZmZlcihnbC5FTEVNRU5UX0FSUkFZX0JVRkZFUiwgaW5kaWNlc0J1ZmZlcik7DQogICAgZ2wuYnVmZmVyRGF0YShnbC5FTEVNRU5UX0FSUkFZX0JVRkZFUiwgaW5kaWNlcywgZ2wuU1RBVElDX0RSQVcpOw0KICAgIHJldHVybiBbdmVydGljZXNCdWZmZXIsIGluZGljZXNCdWZmZXJdOw0KfQ0KDQpmdW5jdGlvbiBkcmF3KHZlcnRpY2llc0J1ZmZlciwgaW5kaWNlc0J1ZmZlciwgYV9jb29yZHMpIHsgICAgDQogICAgZ2wuYmluZEJ1ZmZlcihnbC5BUlJBWV9CVUZGRVIsIHZlcnRpY2llc0J1ZmZlcik7DQoNCiAgIA0KDQogICAgZ2wuYmluZEJ1ZmZlcihnbC5FTEVNRU5UX0FSUkFZX0JVRkZFUiwgaW5kaWNlc0J1ZmZlcik7DQogICAgZ2wuZHJhd0VsZW1lbnRzKGdsLlRSSUFOR0xFUywgNiwgZ2wuVU5TSUdORURfU0hPUlQsIDApOw0KfQ==",
+        el: x,
+        adjustHeight: true
     });
 </script>
 <p class="paragraph">The draw code contains some mysterious variables, that we have not seen yet, but the general "geist" of the code is obvious. Activate the vertex buffer, the index buffer and them webGL to use them. This will give us a rectangle filling the entire screen.</p>
-<h2 class="header">Step 1 - Apply Texture</h2>
+<p class="paragraph">Before we can actually see the rectangle on the screen we still need to finish the WebGL configuration. We are still missing one very important step. Configuring the "shaders". Shaders are as simple as they are powerfull. You can imagine that shaders are scripts that compiles to function that will be ran for each vertex and each "pixel".</p>
+<p class="paragraph">The actual pipeline inside the video card is insanely complex. But we can simplify here as:</p>
+    <div>
+        <script>
+            var files = [
+            {name:'int13H.01.html', value:'PCFET0NUWVBFIGh0bWw+DQo8aHRtbD4NCjxib2R5Pg0KICAgIDxjYW52YXMgaWQ9InNjcmVlbiIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIyNDAiPjwvY2FudmFzPiAgIA0KPC9ib2R5Pg0KPC9odG1sPg=='}, {name:'int13H.01.js', value:'ZnVuY3Rpb24gZ2V0R0woKSB7DQogICAgdmFyIGNhbnZhcyA9IGRvY3VtZW50LmdldEVsZW1lbnRzQnlJZCgic2NyZWVuIik7DQogICAgcmV0dXJuIFtjYW52YXMuZ2V0Q29udGV4dCgid2ViZ2wiKSwgY2FudmFzLndpZHRoLCBjYW52YXMuaGVpZ2h0XTsNCn0NCg0KZnVuY3Rpb24gY3JlYXRlUmVjdGFuZ2xlKCl7DQogICAgLy8gVmVydGljZXMNCiAgICB2YXIgcG9zaXRpb25zID0gbmV3IEZsb2F0MzJBcnJheShbDQogICAgICAgIC0xLjAsIC0xLjAsDQogICAgICAgICsxLjAsIC0xLjAsDQogICAgICAgICsxLjAsICsxLjAsDQogICAgICAgIC0xLjAsICsxLjAsDQogICAgXSk7DQogICAgdmFyIHZlcnRpY2VzQnVmZmVyID0gZ2wuY3JlYXRlQnVmZmVyKCk7DQogICAgZ2wuYmluZEJ1ZmZlcihnbC5BUlJBWV9CVUZGRVIsIHZlcnRpY2VzQnVmZmVyKTsNCiAgICBnbC5idWZmZXJEYXRhKGdsLkFSUkFZX0JVRkZFUiwgcG9zaXRpb25zLCBnbC5TVEFUSUNfRFJBVyk7DQoNCiAgICAvLyBUcmlhbmdsZXMNCiAgICB2YXIgaW5kaWNlcyA9IG5ldyBVaW50MTZBcnJheShbMCwgMSwgMiwgMCwgMiwgM10pOw0KICAgIHZhciBpbmRpY2VzQnVmZmVyID0gZ2wuY3JlYXRlQnVmZmVyKCk7DQogICAgZ2wuYmluZEJ1ZmZlcihnbC5FTEVNRU5UX0FSUkFZX0JVRkZFUiwgaW5kaWNlc0J1ZmZlcik7DQogICAgZ2wuYnVmZmVyRGF0YShnbC5FTEVNRU5UX0FSUkFZX0JVRkZFUiwgaW5kaWNlcywgZ2wuU1RBVElDX0RSQVcpOw0KICAgIHJldHVybiBbdmVydGljZXNCdWZmZXIsIGluZGljZXNCdWZmZXJdOw0KfQ0KDQpmdW5jdGlvbiBjcmVhdGVTaGFkZXJzKGdsLCB2bmFtZSwgZm5hbWUpIHsNCiAgICB2YXIgdnNoYWRlciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJ2c2hhZGVyIikuaW5uZXJUZXh0Ow0KICAgIHZhciB2c3NoYWRlciA9IGdsLmNyZWF0ZVNoYWRlcihnbC5WRVJURVhfU0hBREVSKTsNCiAgICBnbC5zaGFkZXJTb3VyY2UodnNzaGFkZXIsIHZzaGFkZXIpOw0KICAgIGdsLmNvbXBpbGVTaGFkZXIodnNzaGFkZXIpOw0KICAgIGlmICghZ2wuZ2V0U2hhZGVyUGFyYW1ldGVyKHZzc2hhZGVyLCBnbC5DT01QSUxFX1NUQVRVUykpIHsNCiAgICAgICAgY29uc29sZS5sb2coZ2wuZ2V0U2hhZGVySW5mb0xvZyh2c3NoYWRlcikpOw0KICAgIH0NCg0KICAgIHZhciBmc2hhZGVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImZzaGFkZXIiKS5pbm5lclRleHQ7DQogICAgdmFyIGZzc2hhZGVyID0gZ2wuY3JlYXRlU2hhZGVyKGdsLkZSQUdNRU5UX1NIQURFUik7DQogICAgZ2wuc2hhZGVyU291cmNlKGZzc2hhZGVyLCBmc2hhZGVyKTsNCiAgICBnbC5jb21waWxlU2hhZGVyKGZzc2hhZGVyKTsNCiAgICBpZiAoIWdsLmdldFNoYWRlclBhcmFtZXRlcihmc3NoYWRlciwgZ2wuQ09NUElMRV9TVEFUVVMpKSB7DQogICAgICAgIGNvbnNvbGUubG9nKGdsLmdldFNoYWRlckluZm9Mb2coZnNzaGFkZXIpKTsNCiAgICB9DQoNCiAgICB2YXIgc2hhZGVyUHJvZ3JhbSA9IGdsLmNyZWF0ZVByb2dyYW0oKTsNCiAgICBnbC5hdHRhY2hTaGFkZXIoc2hhZGVyUHJvZ3JhbSwgdnNzaGFkZXIpOw0KICAgIGdsLmF0dGFjaFNoYWRlcihzaGFkZXJQcm9ncmFtLCBmc3NoYWRlcik7DQogICAgZ2wubGlua1Byb2dyYW0oc2hhZGVyUHJvZ3JhbSk7DQogICAgDQogICAgdmFyIGFfY29vcmRzID0gZ2wuZ2V0QXR0cmliTG9jYXRpb24oc2hhZGVyUHJvZ3JhbSwgJ2FfY29vcmRzJyk7DQoNCiAgICByZXR1cm4gW3ZzaGFkZXIsIGZzaGFkZXIsIGFfY29vcmRzXTsNCn0NCg0KZnVuY3Rpb24gZHJhdyhnbCwgdmVydGljaWVzQnVmZmVyLCBpbmRpY2VzQnVmZmVyLCBzaGFkZXJQcm9ncmFtLCBhX2Nvb3Jkcykgew0KICAgIGdsLnVzZVByb2dyYW0oc2hhZGVyUHJvZ3JhbSk7DQoNCiAgICBnbC5iaW5kQnVmZmVyKGdsLkFSUkFZX0JVRkZFUiwgdmVydGljaWVzQnVmZmVyKTsNCiAgICBnbC52ZXJ0ZXhBdHRyaWJQb2ludGVyKGFfY29vcmRzLCAyLCBnbC5GTE9BVCwgZmFsc2UsIDAsIDApOw0KICAgIGdsLmVuYWJsZVZlcnRleEF0dHJpYkFycmF5KGFfY29vcmRzKTsgIA0KDQogICAgZ2wuYmluZEJ1ZmZlcihnbC5FTEVNRU5UX0FSUkFZX0JVRkZFUiwgaW5kaWNlc0J1ZmZlcik7DQogICAgZ2wuZHJhd0VsZW1lbnRzKGdsLlRSSUFOR0xFUywgNiwgZ2wuVU5TSUdORURfU0hPUlQsIDApOw0KfQ=='},
+            ];
+            var events = [];
+            var obj = {
+                name: files[0].name,
+                value: files[0].value,
+                adjustHeight: false,
+                onchange: {
+                    add: function(f) {
+                        events.push(f);
+                    },
+                    call: function(str) {
+                        events.forEach(function(f){
+                            f(str);
+                        });
+                    }
+                }
+            }
+            var editor = null;
+            function switchTo(name) {
+                files.forEach(function(x){
+                    if(x.name === name){
+                        var el = document.getElementById("code")
+                        obj.onchange.call(x);
+                    }
+                });
+            }
+           
+        </script>
+        <div>
+            <button onclick="switchTo('int13H.01.html')">int13H.01.html</button> <button onclick="switchTo('int13H.01.js')">int13H.01.js</button>
+        </div>
+        <div id="code" style="width:600px;height:300px;display:inline-block">
+        </div>
+        <script>
+        obj.el = document.currentScript.previousElementSibling;
+        monacoElements.push(obj);
+        </script>
+        <iframe style="display:inline-block">
+        </iframe>        
+    </div>
+<p class="paragraph">Here we basically fetch the shaders. Here they are embedded inside the HTML, but of course they can be anywhere you want.</p>
+<div class="code" data-language="javascript" style="height:200px">
+</div>
+<script>
+    var x = document.currentScript.previousElementSibling;
+    monacoElements.push({
+        value: "ZnVuY3Rpb24gY3JlYXRlU2hhZGVycyhnbCwgdm5hbWUsIGZuYW1lKSB7DQogICAgdmFyIHZzaGFkZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgidnNoYWRlciIpLmlubmVyVGV4dDsNCiAgICB2YXIgdnNzaGFkZXIgPSBnbC5jcmVhdGVTaGFkZXIoZ2wuVkVSVEVYX1NIQURFUik7DQogICAgZ2wuc2hhZGVyU291cmNlKHZzc2hhZGVyLCB2c2hhZGVyKTsNCiAgICBnbC5jb21waWxlU2hhZGVyKHZzc2hhZGVyKTsNCiAgICBpZiAoIWdsLmdldFNoYWRlclBhcmFtZXRlcih2c3NoYWRlciwgZ2wuQ09NUElMRV9TVEFUVVMpKSB7DQogICAgICAgIGNvbnNvbGUubG9nKGdsLmdldFNoYWRlckluZm9Mb2codnNzaGFkZXIpKTsNCiAgICB9DQoNCiAgICB2YXIgZnNoYWRlciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJmc2hhZGVyIikuaW5uZXJUZXh0Ow0KICAgIHZhciBmc3NoYWRlciA9IGdsLmNyZWF0ZVNoYWRlcihnbC5GUkFHTUVOVF9TSEFERVIpOw0KICAgIGdsLnNoYWRlclNvdXJjZShmc3NoYWRlciwgZnNoYWRlcik7DQogICAgZ2wuY29tcGlsZVNoYWRlcihmc3NoYWRlcik7DQogICAgaWYgKCFnbC5nZXRTaGFkZXJQYXJhbWV0ZXIoZnNzaGFkZXIsIGdsLkNPTVBJTEVfU1RBVFVTKSkgew0KICAgICAgICBjb25zb2xlLmxvZyhnbC5nZXRTaGFkZXJJbmZvTG9nKGZzc2hhZGVyKSk7DQogICAgfQ0KDQogICAgdmFyIHNoYWRlclByb2dyYW0gPSBnbC5jcmVhdGVQcm9ncmFtKCk7DQogICAgZ2wuYXR0YWNoU2hhZGVyKHNoYWRlclByb2dyYW0sIHZzc2hhZGVyKTsNCiAgICBnbC5hdHRhY2hTaGFkZXIoc2hhZGVyUHJvZ3JhbSwgZnNzaGFkZXIpOw0KICAgIGdsLmxpbmtQcm9ncmFtKHNoYWRlclByb2dyYW0pOw0KICAgIA0KICAgIHZhciBhX2Nvb3JkcyA9IGdsLmdldEF0dHJpYkxvY2F0aW9uKHNoYWRlclByb2dyYW0sICdhX2Nvb3JkcycpOw0KDQogICAgcmV0dXJuIFt2c2hhZGVyLCBmc2hhZGVyLCBhX2Nvb3Jkc107DQp9DQoNCmZ1bmN0aW9uIGRyYXcoZ2wsIHZlcnRpY2llc0J1ZmZlciwgaW5kaWNlc0J1ZmZlciwgc2hhZGVyUHJvZ3JhbSwgYV9jb29yZHMpIHsNCiAgICBnbC51c2VQcm9ncmFtKHNoYWRlclByb2dyYW0pOw0KDQogICAgZ2wuYmluZEJ1ZmZlcihnbC5BUlJBWV9CVUZGRVIsIHZlcnRpY2llc0J1ZmZlcik7DQogICAgZ2wudmVydGV4QXR0cmliUG9pbnRlcihhX2Nvb3JkcywgMiwgZ2wuRkxPQVQsIGZhbHNlLCAwLCAwKTsNCiAgICBnbC5lbmFibGVWZXJ0ZXhBdHRyaWJBcnJheShhX2Nvb3Jkcyk7ICANCg0KICAgIGdsLmJpbmRCdWZmZXIoZ2wuRUxFTUVOVF9BUlJBWV9CVUZGRVIsIGluZGljZXNCdWZmZXIpOw0KICAgIGdsLmRyYXdFbGVtZW50cyhnbC5UUklBTkdMRVMsIDYsIGdsLlVOU0lHTkVEX1NIT1JULCAwKTsNCn0=",
+        el: x,
+        adjustHeight: true
+    });
+</script>
+<h2 class="header">Step 2 - Apply Texture</h2>
 <p class="paragraph">So our next step is to apply the texture. To apply a texture you need two things. A texture, a image and associate to each vertex a coordinate in the image. If you say that vertex 0 has texture coordinates (0,0) that means that when drawing that vertex, you draw the first pixel of the image. WebGL will interpolate the value between vertices. So our function now is:</p>
 <p class="paragraph">We will start with the second step. The texture coordinates creation.</p>
 <div class="code" data-language="javascript" style="height:200px">
@@ -82,8 +139,9 @@
 <script>
     var x = document.currentScript.previousElementSibling;
     monacoElements.push({
-        value: "ZnVuY3Rpb24gY3JlYXRlUmVjdGFuZ2xlKCl7DQogICAgLy8gVmVydGljZXMNCiAgICB2YXIgcG9zaXRpb25zID0gbmV3IEZsb2F0MzJBcnJheShbDQogICAgICAgIC0xLjAsIC0xLjAsDQogICAgICAgICsxLjAsIC0xLjAsDQogICAgICAgICsxLjAsICsxLjAsDQogICAgICAgIC0xLjAsICsxLjAsDQogICAgXSk7DQogICAgdmFyIHZlcnRpY2VzQnVmZmVyID0gZ2wuY3JlYXRlQnVmZmVyKCk7DQogICAgZ2wuYmluZEJ1ZmZlcihnbC5BUlJBWV9CVUZGRVIsIHZlcnRpY2VzQnVmZmVyKTsNCiAgICBnbC5idWZmZXJEYXRhKGdsLkFSUkFZX0JVRkZFUiwgcG9zaXRpb25zLCBnbC5TVEFUSUNfRFJBVyk7DQoNCiAgICAvLyBUZXh0dXJlDQogICAgdmFyIHRleENvb3JkcyA9IG5ldyBGbG9hdDMyQXJyYXkoWw0KICAgICAgICArMC4wLCArMC4wLA0KICAgICAgICArMS4wLCArMC4wLA0KICAgICAgICArMS4wLCArMS4wLA0KICAgICAgICArMC4wLCArMS4wLA0KICAgIF0pOw0KICAgIHZhciB0ZXhDb29yZHNCdWZmZXIgPSBnbC5jcmVhdGVCdWZmZXIoKTsNCiAgICBnbC5iaW5kQnVmZmVyKGdsLkFSUkFZX0JVRkZFUiwgdGV4Q29vcmRzQnVmZmVyKTsNCiAgICBnbC5idWZmZXJEYXRhKGdsLkFSUkFZX0JVRkZFUiwgdGV4Q29vcmRzLCBnbC5TVEFUSUNfRFJBVyk7DQoNCiAgICAvLyBUcmlhbmdsZXMNCiAgICB2YXIgaW5kaWNlcyA9IG5ldyBVaW50MTZBcnJheShbMCwgMSwgMiwgMCwgMiwgM10pOw0KICAgIHZhciBpbmRpY2VzQnVmZmVyID0gZ2wuY3JlYXRlQnVmZmVyKCk7DQogICAgZ2wuYmluZEJ1ZmZlcihnbC5FTEVNRU5UX0FSUkFZX0JVRkZFUiwgaW5kaWNlc0J1ZmZlcik7DQogICAgZ2wuYnVmZmVyRGF0YShnbC5FTEVNRU5UX0FSUkFZX0JVRkZFUiwgaW5kaWNlcywgZ2wuU1RBVElDX0RSQVcpOw0KICAgIHJldHVybiBbdmVydGljZXNCdWZmZXIsIHRleENvb3Jkc0J1ZmZlciwgaW5kaWNlc0J1ZmZlcl07DQp9DQoNCmZ1bmN0aW9uIGRyYXcodmVydGljaWVzQnVmZmVyLCB0ZXhDb29yZEJ1ZmZlciwgaW5kaWNlc0J1ZmZlcikgew0KICAgIC8vIGFjdGl2YXRlIHZlcnRpY2VzDQogICAgZ2wuYmluZEJ1ZmZlcihnbC5BUlJBWV9CVUZGRVIsIHZlcnRpY2llc0J1ZmZlcik7DQogICAgZ2wudmVydGV4QXR0cmliUG9pbnRlcihhX2Nvb3JkcywgMiwgZ2wuRkxPQVQsIGZhbHNlLCAwLCAwKTsNCiAgICBnbC5lbmFibGVWZXJ0ZXhBdHRyaWJBcnJheShhX2Nvb3Jkcyk7DQoNCiAgICAvLyBhY3RpdmF0ZSB0ZXh0dXJlDQogICAgZ2wuYmluZEJ1ZmZlcihnbC5BUlJBWV9CVUZGRVIsIHRleENvb3JkQnVmZmVyKTsNCiAgICBnbC52ZXJ0ZXhBdHRyaWJQb2ludGVyKGFfdGV4Y29vcmRzLCAyLCBnbC5GTE9BVCwgZmFsc2UsIDAsIDApOw0KICAgIGdsLmVuYWJsZVZlcnRleEF0dHJpYkFycmF5KGFfdGV4Y29vcmRzKTsNCg0KICAgIC8vIGRyYXcgdHJpYW5nbGVzDQogICAgZ2wuYmluZEJ1ZmZlcihnbC5FTEVNRU5UX0FSUkFZX0JVRkZFUiwgaW5kaWNlc0J1ZmZlcik7DQogICAgZ2wuZHJhd0VsZW1lbnRzKGdsLlRSSUFOR0xFUywgNiwgZ2wuVU5TSUdORURfU0hPUlQsIDApOw0KfQ==",
-	    el: x,
+        value: "ZnVuY3Rpb24gY3JlYXRlUmVjdGFuZ2xlKGdsKXsNCiAgICAvLyBWZXJ0aWNlcw0KICAgIHZhciBwb3NpdGlvbnMgPSBuZXcgRmxvYXQzMkFycmF5KFsNCiAgICAgICAgLTEuMCwgLTEuMCwNCiAgICAgICAgKzEuMCwgLTEuMCwNCiAgICAgICAgKzEuMCwgKzEuMCwNCiAgICAgICAgLTEuMCwgKzEuMCwNCiAgICBdKTsNCiAgICB2YXIgdmVydGljZXNCdWZmZXIgPSBnbC5jcmVhdGVCdWZmZXIoKTsNCiAgICBnbC5iaW5kQnVmZmVyKGdsLkFSUkFZX0JVRkZFUiwgdmVydGljZXNCdWZmZXIpOw0KICAgIGdsLmJ1ZmZlckRhdGEoZ2wuQVJSQVlfQlVGRkVSLCBwb3NpdGlvbnMsIGdsLlNUQVRJQ19EUkFXKTsNCg0KICAgIC8vIFRleHR1cmUNCiAgICB2YXIgdGV4Q29vcmRzID0gbmV3IEZsb2F0MzJBcnJheShbDQogICAgICAgICswLjAsICswLjAsDQogICAgICAgICsxLjAsICswLjAsDQogICAgICAgICsxLjAsICsxLjAsDQogICAgICAgICswLjAsICsxLjAsDQogICAgXSk7DQogICAgdmFyIHRleENvb3Jkc0J1ZmZlciA9IGdsLmNyZWF0ZUJ1ZmZlcigpOw0KICAgIGdsLmJpbmRCdWZmZXIoZ2wuQVJSQVlfQlVGRkVSLCB0ZXhDb29yZHNCdWZmZXIpOw0KICAgIGdsLmJ1ZmZlckRhdGEoZ2wuQVJSQVlfQlVGRkVSLCB0ZXhDb29yZHMsIGdsLlNUQVRJQ19EUkFXKTsNCg0KICAgIC8vIFRyaWFuZ2xlcw0KICAgIHZhciBpbmRpY2VzID0gbmV3IFVpbnQxNkFycmF5KFswLCAxLCAyLCAwLCAyLCAzXSk7DQogICAgdmFyIGluZGljZXNCdWZmZXIgPSBnbC5jcmVhdGVCdWZmZXIoKTsNCiAgICBnbC5iaW5kQnVmZmVyKGdsLkVMRU1FTlRfQVJSQVlfQlVGRkVSLCBpbmRpY2VzQnVmZmVyKTsNCiAgICBnbC5idWZmZXJEYXRhKGdsLkVMRU1FTlRfQVJSQVlfQlVGRkVSLCBpbmRpY2VzLCBnbC5TVEFUSUNfRFJBVyk7DQogICAgcmV0dXJuIFt2ZXJ0aWNlc0J1ZmZlciwgdGV4Q29vcmRzQnVmZmVyLCBpbmRpY2VzQnVmZmVyXTsNCn0NCg0KZnVuY3Rpb24gY3JlYXRlU2hhZGVycyh2bmFtZSwgZm5hbWUpIHsNCiAgICAvLyAuLi4gc2FtZSBhcyBhYm92ZQ0KDQogICAgdmFyIHNoYWRlclByb2dyYW0gPSBnbC5jcmVhdGVQcm9ncmFtKCk7DQogICAgZ2wuYXR0YWNoU2hhZGVyKHNoYWRlclByb2dyYW0sIHZzc2hhZGVyKTsNCiAgICBnbC5hdHRhY2hTaGFkZXIoc2hhZGVyUHJvZ3JhbSwgZnNzaGFkZXIpOw0KICAgIGdsLmxpbmtQcm9ncmFtKHNoYWRlclByb2dyYW0pOw0KDQogICAgdmFyIGFfY29vcmRzID0gZ2wuZ2V0QXR0cmliTG9jYXRpb24oc2hhZGVyUHJvZ3JhbSwgJ2FfY29vcmRzJyk7DQogICAgdmFyIGFfdGV4Y29vcmRzID0gZ2wuZ2V0QXR0cmliTG9jYXRpb24oc2hhZGVyUHJvZ3JhbSwgJ2FfdGV4Y29vcmRzJyk7DQogICAgdmFyIHVfdGV4dHVyZTAgPSBnbC5nZXRVbmlmb3JtTG9jYXRpb24oc2hhZGVyUHJvZ3JhbSwgJ3VfdGV4dHVyZTAnKTsNCg0KICAgIHJldHVybiBbdnNoYWRlciwgZnNoYWRlciwgYV9jb29yZHMsIGFfdGV4Y29vcmRzLCB1X3RleHR1cmUwXTsNCn0NCg0KZnVuY3Rpb24gZHJhdyhnbCwgdmVydGljaWVzQnVmZmVyLCB0ZXhDb29yZEJ1ZmZlciwgaW5kaWNlc0J1ZmZlciwgYV9jb29yZHMsIGFfdGV4Y29vcmRzKSB7DQogICANCiAgICBnbC5jbGVhckNvbG9yKDAuMCwgMC4wLCAwLjAsIDEuMCk7DQogICAgZ2wuY2xlYXIoZ2wuQ09MT1JfQlVGRkVSX0JJVCB8IGdsLkRFUFRIX0JVRkZFUl9CSVQpOw0KDQogICAgZ2wudXNlUHJvZ3JhbShzaGFkZXJQcm9ncmFtKTsNCiAgICBnbC5hY3RpdmVUZXh0dXJlKGdsLlRFWFRVUkUwKTsNCiAgICBnbC5iaW5kVGV4dHVyZShnbC5URVhUVVJFXzJELCB0ZXh0dXJlKTsNCiAgICBnbC51bmlmb3JtMWkodV90ZXh0dXJlMCwgMCk7DQoNCiAgICAvLyBhY3RpdmF0ZSB2ZXJ0aWNlcw0KICAgIGdsLmJpbmRCdWZmZXIoZ2wuQVJSQVlfQlVGRkVSLCB2ZXJ0aWNpZXNCdWZmZXIpOw0KICAgIGdsLnZlcnRleEF0dHJpYlBvaW50ZXIoYV9jb29yZHMsIDIsIGdsLkZMT0FULCBmYWxzZSwgMCwgMCk7DQogICAgZ2wuZW5hYmxlVmVydGV4QXR0cmliQXJyYXkoYV9jb29yZHMpOw0KDQogICAgLy8gYWN0aXZhdGUgdGV4dHVyZQ0KICAgIGdsLmJpbmRCdWZmZXIoZ2wuQVJSQVlfQlVGRkVSLCB0ZXhDb29yZEJ1ZmZlcik7DQogICAgZ2wudmVydGV4QXR0cmliUG9pbnRlcihhX3RleGNvb3JkcywgMiwgZ2wuRkxPQVQsIGZhbHNlLCAwLCAwKTsNCiAgICBnbC5lbmFibGVWZXJ0ZXhBdHRyaWJBcnJheShhX3RleGNvb3Jkcyk7DQoNCiAgICAvLyBkcmF3IHRyaWFuZ2xlcw0KICAgIGdsLmJpbmRCdWZmZXIoZ2wuRUxFTUVOVF9BUlJBWV9CVUZGRVIsIGluZGljZXNCdWZmZXIpOw0KICAgIGdsLmRyYXdFbGVtZW50cyhnbC5UUklBTkdMRVMsIDYsIGdsLlVOU0lHTkVEX1NIT1JULCAwKTsNCn0=",
+        el: x,
+        adjustHeight: true
     });
 </script>
 <p class="paragraph">Now we create the texture. Normally one would read an image file like .bmp, .png etc... We will actually create an empty image. Because we want a way to write pixels and send to the video card. The way to do this is very simple. This function is going to receive the buffer, instead of creating, because we will use an existing buffer later on.</p>
@@ -93,11 +151,78 @@
 <script>
     var x = document.currentScript.previousElementSibling;
     monacoElements.push({
-        value: "ZnVuY3Rpb24gY3JlYXRlRW1wdHlUZXh0dXJlKHdpZHRoLCBoZWlnaHQsIGJ1ZmZlcikgew0KICAgIHZhciBwaXhlbHMgPSBuZXcgVWludDhBcnJheShidWZmZXIpOyAgICAgDQoNCiAgICB2YXIgdGV4dHVyZSA9IGdsLmNyZWF0ZVRleHR1cmUoKTsgICAgICAgIA0KICAgIGdsLmJpbmRUZXh0dXJlKGdsLlRFWFRVUkVfMkQsIHRleHR1cmUpOw0KICAgIGdsLnRleFBhcmFtZXRlcmkoZ2wuVEVYVFVSRV8yRCwgZ2wuVEVYVFVSRV9NSU5fRklMVEVSLCBnbC5ORUFSRVNUKTsNCiAgICBnbC50ZXhQYXJhbWV0ZXJpKGdsLlRFWFRVUkVfMkQsIGdsLlRFWFRVUkVfV1JBUF9TLCBnbC5DTEFNUF9UT19FREdFKTsNCiAgICBnbC50ZXhQYXJhbWV0ZXJpKGdsLlRFWFRVUkVfMkQsIGdsLlRFWFRVUkVfV1JBUF9ULCBnbC5DTEFNUF9UT19FREdFKTsNCiAgICBnbC50ZXhJbWFnZTJEKGdsLlRFWFRVUkVfMkQsIDAsIGdsLlJHQkEsIHdpZHRoLCBoZWlnaHQsIDAsIGdsLlJHQkEsIGdsLlVOU0lHTkVEX0JZVEUsIHBpeGVscyk7DQoNCiAgICByZXR1cm4gW3RleHR1cmUsIHBpeGVsc107DQp9DQoNCmZ1bmN0aW9uIGRyYXcodGV4dHVyZSwgdmVydGljaWVzQnVmZmVyLCB0ZXhDb29yZEJ1ZmZlciwgaW5kaWNlc0J1ZmZlcikgew0KICAgIGdsLmFjdGl2ZVRleHR1cmUoZ2wuVEVYVFVSRTApOw0KICAgIGdsLmJpbmRUZXh0dXJlKGdsLlRFWFRVUkVfMkQsIHRleHR1cmUpOw0KDQogICAgLy8gLi4uIHNhbWUgYXMgYmVmb3JlDQp9",
-	    el: x,
+        value: "ZnVuY3Rpb24gY3JlYXRlRW1wdHlUZXh0dXJlKHdpZHRoLCBoZWlnaHQpIHsNCiAgICB2YXIgYnVmZmVyID0gbmV3IEFycmF5QnVmZmVyKHdpZHRoICogaGVpZ2h0ICogMzIpOw0KICAgIHZhciBwaXhlbHMgPSBuZXcgVWludDhBcnJheShidWZmZXIpOyAgICAgDQoNCiAgICB2YXIgdGV4dHVyZSA9IGdsLmNyZWF0ZVRleHR1cmUoKTsgICAgICAgIA0KICAgIGdsLmJpbmRUZXh0dXJlKGdsLlRFWFRVUkVfMkQsIHRleHR1cmUpOw0KICAgIGdsLnRleFBhcmFtZXRlcmkoZ2wuVEVYVFVSRV8yRCwgZ2wuVEVYVFVSRV9NSU5fRklMVEVSLCBnbC5ORUFSRVNUKTsNCiAgICBnbC50ZXhQYXJhbWV0ZXJpKGdsLlRFWFRVUkVfMkQsIGdsLlRFWFRVUkVfV1JBUF9TLCBnbC5DTEFNUF9UT19FREdFKTsNCiAgICBnbC50ZXhQYXJhbWV0ZXJpKGdsLlRFWFRVUkVfMkQsIGdsLlRFWFRVUkVfV1JBUF9ULCBnbC5DTEFNUF9UT19FREdFKTsNCiAgICBnbC50ZXhJbWFnZTJEKGdsLlRFWFRVUkVfMkQsIDAsIGdsLlJHQkEsIHdpZHRoLCBoZWlnaHQsIDAsIGdsLlJHQkEsIGdsLlVOU0lHTkVEX0JZVEUsIHBpeGVscyk7DQoNCiAgICByZXR1cm4gW3RleHR1cmUsIHBpeGVsc107DQp9DQoNCmZ1bmN0aW9uIHVwZGF0ZVRleHR1cmUodGV4dHVyZSwgd2lkdGgsIGhlaWdodCwgcGl4ZWxzKQ0Kew0KICAgIGdsLmJpbmRUZXh0dXJlKGdsLlRFWFRVUkVfMkQsIHRleHR1cmUpOw0KICAgIGdsLnRleEltYWdlMkQoZ2wuVEVYVFVSRV8yRCwgMCwgZ2wuUkdCQSwgd2lkdGgsIGhlaWdodCwgMCwgZ2wuUkdCQSwgZ2wuVU5TSUdORURfQllURSwgcGl4ZWxzKTsNCn0NCg0KZnVuY3Rpb24gZHJhdyh0ZXh0dXJlLCB2ZXJ0aWNlc0J1ZmZlciwgdGV4Q29vcmRzQnVmZmVyLCBpbmRpY2VzQnVmZmVyKSB7DQogICAgZ2wuYWN0aXZlVGV4dHVyZShnbC5URVhUVVJFMCk7DQogICAgZ2wuYmluZFRleHR1cmUoZ2wuVEVYVFVSRV8yRCwgdGV4dHVyZSk7DQoNCiAgICAvLyAuLi4gc2FtZSBhcyBiZWZvcmUNCn0=",
+        el: x,
+        adjustHeight: true
     });
 </script>
 <p class="paragraph">Now our rectangle has a texture. Given that out texture is empty, our rectangle is also empty. That is ok. because we are about to write something to it.</p>
+<p class="paragraph">//TODO PUT A RUNNING DRAW HERE</p>
+<h2 class="header">Step 3 - Write to the texture</h2>
+<h3 class="header">Step 3.1 - Settting up WASM</h3>
+<p class="paragraph">But before writing into the texture we will setup the WASM environment. Although it is not necessary to run this code as a WASM module, I think is a nice touch. Maybe we can have the same code doing the same thing running on Windows/Linux. It will be a interesting experiment.</p>
+<p class="paragraph">The first thing you need is a very simple .cpp file that will be compiled to WASM. If you don't know how to compile C++ to WASM see here.</p>
+<p class="paragraph">Our c++ code is just a simple function that receives a pointer to the "screen" memory. We know that this memory actually points to the memory that will be send through the video memory bus and be used as the new texture, but we can think as it was the actual screen memory.</p>
+<div class="code" data-language="c++" style="height:200px">
+</div>
+<script>
+    var x = document.currentScript.previousElementSibling;
+    monacoElements.push({
+        value: "I2RlZmluZSBFWFBPUlQgX19hdHRyaWJ1dGVfXygodmlzaWJpbGl0eSgiZGVmYXVsdCIpKSkNCg0KRVhQT1JUIHZvaWQgd3JpdGVTY3JlZW4oaW50IHdpZHRoLCBpbnQgaGVpZ2h0LCB1aW50MzJfdCogcHRyKQ0Kew0KfQ==",
+        el: x,
+        adjustHeight: true
+    });
+</script>
+<p class="paragraph">First thing we need now is fetch and instantiate our WASM module. The only thing that we need from the WASM module is the function pointer to "writeScreen". We will call this function inside a loop and update the screen every frame.</p>
+<div class="code" data-language="javascript" style="height:200px">
+</div>
+<script>
+    var x = document.currentScript.previousElementSibling;
+    monacoElements.push({
+        value: "ZnVuY3Rpb24gZ2V0V0FTTSh1cmwpIHsNCiAgICByZXR1cm4gZmV0Y2godXJsKQ0KICAgICAgICAudGhlbihyZXNwb25zZSA9PiByZXNwb25zZS5hcnJheUJ1ZmZlcigpKQ0KICAgICAgICAudGhlbihieXRlcyA9PiBXZWJBc3NlbWJseS5pbnN0YW50aWF0ZShieXRlcykpDQogICAgICAgIC50aGVuKHdhc20gPT4gew0KICAgICAgICAgICAgc2NyZWVuTWVtb3J5ID0gd2FzbS5pbnN0YW5jZS5leHBvcnRzLm1lbW9yeTsNCiAgICAgICAgICAgIHJldHVybiB3YXNtLmluc3RhbmNlLmV4cG9ydHMud3JpdGVTY3JlZW47DQogICAgICAgIH0pOw0KfQ==",
+        el: x,
+        adjustHeight: true
+    });
+</script>
+<div class="code" data-language="javascript" style="height:200px">
+</div>
+<script>
+    var x = document.currentScript.previousElementSibling;
+    monacoElements.push({
+        value: "ZnVuY3Rpb24gc3RhcnQoKSB7DQogICAgdmFyIHdyaXRlU2NyZWVuID0gbnVsbDsNCiAgICBnZXRXQVNNKCkudGhlbih4ID0+IHdyaXRlU2NyZWVuID0geCk7DQogICAgdmFyIFtnbCwgd2lkdGgsIGhlaWdodF0gPSBnZXRHTCgpOyAgICANCiAgICB2YXIgW3ZlcnRpY2VzQnVmZmVyLCB0ZXhDb29yZHNCdWZmZXIsIGluZGljZXNCdWZmZXJdID0gY3JlYXRlUmVjdGFuZ2xlKGdsKTsNCiAgICB2YXIgW3RleHR1cmUsIHBpeGVsc10gPSBjcmVhdGVFbXB0eVRleHR1cmUod2lkdGgsIGhlaWdodCk7DQoNCiAgICB2YXIgcmVuZGVyID0gZnVuY3Rpb24odGltZXN0YW1wKSB7DQoNCiAgICAgICAgaWYod3JpdGVTY3JlZW4pDQogICAgICAgICAgICB3cml0ZVNjcmVlbih3aWR0aCwgaGVpZ2h0LCBwaXhlbHMpOw0KICAgICAgICB1cGRhdGVUZXh0dXJlKHBpeGVscy5idWZmZXIsIHdpZHRoLCBoZWlnaHQpOw0KICAgICAgICBkcmF3KHRleHR1cmUsIHZlcnRpY2VzQnVmZmVyLCB0ZXhDb29yZHNCdWZmZXIsIGluZGljZXNCdWZmZXIpKQ0KDQogICAgICAgIHJlcXVlc3RBbmltYXRpb25GcmFtZShyZW5kZXIpOw0KICAgIH07DQogICAgcmVxdWVzdEFuaW1hdGlvbkZyYW1lKHJlbmRlcik7DQp9",
+        el: x,
+        adjustHeight: true
+    });
+</script>
+<p class="paragraph">//TODO PUT A RUNNING DRAW HERE</p>
+<h3 class="header">Step 3.2 - Fill the texture with noise</h3>
+<p class="paragraph">Now we are ready to write noise to our texture. We very simple do this in out C++ file as:</p>
+<p class="paragraph">#code c++</p>
+<p class="paragraph">#define EXPORT __attribute__((visibility("default")))</p>
+<p class="paragraph">EXPORT void writeScreen(int width, int height, uint32_t* ptr)</p>
+<p class="paragraph">{</p>
+<p class="paragraph">    for(int x = 0;x < width;++x){</p>
+<p class="paragraph">        for(int y = 0;y < height; ++y){</p>
+<p class="paragraph">            ptr[AT(w,x,y)] = RGBA(</p>
+<p class="paragraph">                rand() % 255, </p>
+<p class="paragraph">                rand() % 255,</p>
+<p class="paragraph">                rand() % 255,</p>
+<p class="paragraph">                255);</p>
+<p class="paragraph">        }</p>
+<p class="paragraph">    }</p>
+<p class="paragraph">}</p>
+<p class="paragraph">#####</p>
+<p class="paragraph">We are not using any framework, not even the standard libraries, so we will need to define "RGBA" and "rand()" ourselves. </p>
+<div class="code" data-language="c++" style="height:200px">
+</div>
+<script>
+    var x = document.currentScript.previousElementSibling;
+    monacoElements.push({
+        value: "I2RlZmluZSBpOCBjaGFyDQojZGVmaW5lIGkxNiBzaG9ydA0KI2RlZmluZSBpMzIgaW50DQojZGVmaW5lIHVpOCB1bnNpZ25lZCBjaGFyDQojZGVmaW5lIHVpMTYgdW5zaWduZWQgc2hvcnQNCiNkZWZpbmUgdWkzMiB1bnNpZ25lZCBpbnQNCg0KI2RlZmluZSBSR0JBKHIsIGcsIGIsIGEpICgoKHVpOCkoYSkpIDw8IDI0IHwgKCh1aTE2KSgodWk4KShiKSkgPDwgMTYpIHwgKCgodWkxNikodWk4KShnKSkgPDwgOCkgfCAoKCh1aTE2KSh1aTgpKHIpKSA8PCAwKSkNCiNkZWZpbmUgQVQodyx4LHkpICh5KncreCkNCg0KbmFtZXNwYWNlIHJhbmRfaW1wbCB7DQogICAgaW50IHNlZWQgPSAxMjM0NTY3ODk7DQogICAgaW50IG0gPSAweDgwMDA7DQogICAgaW50IGEgPSAxMTAzNTE1MjQ1Ow0KICAgIGludCBjID0gMTIzNDU7DQogICAgaW50IHJhbmQoKQ0KICAgIHsNCiAgICAgICAgc2VlZCA9IChhICogc2VlZCArIGMpICUgbTsNCiAgICAgICAgcmV0dXJuIHNlZWQ7DQogICAgfQ0KfQ0KaW50IHJhbmQoKSB7IHJldHVybiByYW5kX2ltcGw6OnJhbmQoKTsgfQ==",
+        el: x,
+        adjustHeight: true
+    });
+</script>
 <script>
   require.config({ paths: { 'vs': 'https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs' }});
   window.MonacoEnvironment = {
@@ -113,21 +238,62 @@
 
   require(["vs/editor/editor.main"], function () {    
     monacoElements.forEach(x => {
+        function getLanguage(name) {
+            if(name) {
+                if(name.indexOf('.html') >= 0) return 'html';
+                if(name.indexOf('.js')  >= 0) return 'javascript';
+            }
+            return '';
+        }
+        
         x.el.innerText = "";
-        var editor = monaco.editor.create(x.el, {
-            automaticLayout:true,
-	        value: window.atob(x.value),
-	        language: x.el.dataset.language,
-            scrollBeyondLastLine: false,
-            minimap: {
-	        	enabled: false
-	        }
-        });
-        x.el.style.height = 0;
-        editor.layout();
-        let height = editor.getScrollHeight();        
-        x.el.style.height = height + 20;
-        editor.layout();
+        var language = getLanguage(x.name);
+        if(x.el.dataset.language) {
+            language = x.el.dataset.language;
+        }        
+        if(x.language) {
+            language = x.language;
+        }
+
+        var value = x.value;
+        var h = {editor: null};
+        function createEditor() {
+            if(h.editor){
+                var model = h.editor.getModel()
+                if(model)
+                    model.dispose();
+                    h.editor.dispose();
+            }
+            h.editor = null;
+            h.editor = monaco.editor.create(x.el, {
+                automaticLayout:true,
+                value: window.atob(value),
+                language: language,
+                scrollBeyondLastLine: false,
+                minimap: {
+                    enabled: false
+                }
+            });
+        }
+        createEditor();
+        function resizeEditor() {
+            if(x.adjustHeight) {
+                x.el.style.height = 0;
+                h.editor.layout();
+                let height = h.editor.getScrollHeight();        
+                x.el.style.height = height + 20;
+                h.editor.layout();
+            }
+        }        
+        resizeEditor();
+        if(x.onchange) {
+            x.onchange.add(function(xx){
+                value = xx.value;
+                language = getLanguage(xx.name);
+                createEditor();
+                resizeEditor();
+            });
+        }
     });
   });
 </script>
