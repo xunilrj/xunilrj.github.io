@@ -16,11 +16,11 @@
         adjustHeight: true
     });
 </script>
-<div class="link" style="border: solid 1px">
-    <h5>Guide: VGA mode 13h graphics</h5>
-    <p>One of the most widely used PC graphics modes, and certainly the easiest to program, is the VGA mode 13h. This is sized 320x200, can display up to 256 colors at any one time, and will work on any VGA compatible graphics card (it isn't supported by the EGA or CGA boards, but very few people are ru...</p>
-    <a href="http://www.delorie.com/djgpp/doc/ug/graphics/vga.html">http://www.delorie.com/djgpp/doc/ug/graphics/vga.html</a>
-</div>
+    <div class="link" style="border: solid 1px">
+        <h5>Guide: VGA mode 13h graphics</h5>    
+        <p>One of the most widely used PC graphics modes, and certainly the easiest to program, is the VGA mode 13h. This is sized 320x200, can display up to 256 colors at any one time, and will work on any VGA compatible graphics card (it isn't supported by the EGA or CGA boards, but very few people are ru...</p>
+        <a href="http://www.delorie.com/djgpp/doc/ug/graphics/vga.html">http://www.delorie.com/djgpp/doc/ug/graphics/vga.html</a>
+    </div>
 <p class="paragraph">This function will write pixel "color" in the "x" and "y" coordinates. The "0xA0000" is the standard address to access the VGA. In this case the function is hardcoded to 320x240. The important part is how to map from (x,y) to a contiguous memory array: using the function (x,y) -> start+(y*width)+x.</p>
 <div class="quoteLink" style="margin-left:100px">
 <p class="paragraph">The video memory of the VGA is mapped to the PC's memory via a window in the range between segments 0xA0000 and 0xBFFFF in the PC's real mode address space (A000:0000 and B000:FFFF in segment:offset notation). Typically, these starting segments are:</p>
