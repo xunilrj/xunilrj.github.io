@@ -154,5 +154,6 @@ https://www.amazon.co.uk/Palestinian-Delusion-Catastrophic-History-Process/dp/16
 
 
 
-
+Ahmadis e Jihad
+https://www.crisismagazine.com/2019/beware-of-muslims-bearing-pamphlets
 
