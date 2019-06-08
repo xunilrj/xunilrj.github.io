@@ -1,0 +1,102 @@
+<script type="text/javascript" src="https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs/loader.js""></script>
+<script>
+    var monacoElements = [];
+</script>
+<h1 class="header">Livros de Direita</h1>
+<h2 class="header">O Livro Negro do Comunismo</h2>
+<p class="paragraph">À luz dos fatos aqui revelados, o Terror Vermelho deve estar presente na consciência dos que ainda creem num futuro para o Comunismo.</p>
+<p class="paragraph">O Livro Negro do Comunismo traz a público o saldo estarrecedor de mais de sete décadas de história de regimes comunistas: massacres em larga escala, deportações de populações inteiras para regiões sem a mínima condição de sobrevivência, expurgos assassinos liquidando o menor esboço de oposição, fome e miséria que dizimaram indistintamente milhões de pessoas, enfim, a aniquilação de homens, mulheres, crianças, soldados, camponeses, religiosos, presos políticos e todos aqueles que, pelas mais diversas razões, se encontraram no caminho de implantação do que, paradoxalmente, nascera como promessa de redenção e esperança. </p>
+<p class="paragraph">Ano: 1997</p>
+<p class="paragraph">Como Stéphane Courtois aponta:</p>
+True
+    <div class="link" style="border: solid 1px">
+        <h5>O livro negro do comunismo - 9788528607321 - Livros na Amazon Brasil</h5>    
+        <div  style='display:inline-block'><img src='https://images-na.ssl-images-amazon.com/images/I/41J81Ys17TL._SX335_BO1,204,203,200_.jpg' width='120' /></div><div style='display:inline-block;width:90%'><p>À luz dos fatos aqui revelados, o Terror Vermelho deve estar presente na consciência dos que ainda creem num futuro para o Comunismo. O Livro Negro do Comunismo traz a público o saldo estarrecedor de mais de sete décadas de história de regimes comunistas: massacres em larga escala, deportações de...</p></div>
+        <a href="https://www.amazon.com.br/Livro-Negro-do-Comunismo/dp/8528607321">https://www.amazon.com.br/Livro-Negro-do-Comunismo/dp/8528607321</a>
+    </div>
+    <div class="link" style="border: solid 1px">
+        <h5>Ã€ luz dos fatos aqui revelados, o Terror... - Livros de Direita | Facebook</h5>    
+        <p></p>
+        <a href="https://www.facebook.com/direitalivros/posts/262004104457925">https://www.facebook.com/direitalivros/posts/262004104457925</a>
+    </div>
+<img src='F:\github\xunilrj.github.io\guides\livrosdedireita\00001.0001.jpg' />
+<img src='F:\github\xunilrj.github.io\guides\livrosdedireita\00001.0002.jpg' />
+<img src='F:\github\xunilrj.github.io\guides\livrosdedireita\00001.0003.jpg' />
+<img src='F:\github\xunilrj.github.io\guides\livrosdedireita\00001.0004.jpg' />
+<img src='F:\github\xunilrj.github.io\guides\livrosdedireita\00001.0005.jpg' />
+<img src='F:\github\xunilrj.github.io\guides\livrosdedireita\00001.0006.jpg' />
+<img src='F:\github\xunilrj.github.io\guides\livrosdedireita\00001.0007.jpg' />
+<script>
+  require.config({ paths: { 'vs': 'https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs' }});
+  window.MonacoEnvironment = {
+    getWorkerUrl: function(workerId, label) {
+      return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+        self.MonacoEnvironment = {
+          baseUrl: 'https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min'
+        };
+        importScripts('https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs/base/worker/workerMain.js');`
+      )}`;
+    }
+  };
+
+  require(["vs/editor/editor.main"], function () {    
+    monacoElements.forEach(x => {
+        function getLanguage(name) {
+            if(name) {
+                if(name.indexOf('.html') >= 0) return 'html';
+                if(name.indexOf('.js')  >= 0) return 'javascript';
+            }
+            return '';
+        }
+        
+        x.el.innerText = "";
+        var language = getLanguage(x.name);
+        if(x.el.dataset.language) {
+            language = x.el.dataset.language;
+        }        
+        if(x.language) {
+            language = x.language;
+        }
+
+        var value = x.value;
+        var h = {editor: null};
+        function createEditor() {
+            if(h.editor){
+                var model = h.editor.getModel()
+                if(model)
+                    model.dispose();
+                    h.editor.dispose();
+            }
+            h.editor = null;
+            h.editor = monaco.editor.create(x.el, {
+                automaticLayout:true,
+                value: window.atob(value),
+                language: language,
+                scrollBeyondLastLine: false,
+                minimap: {
+                    enabled: false
+                }
+            });
+        }
+        createEditor();
+        function resizeEditor() {
+            if(x.adjustHeight) {
+                x.el.style.height = 0;
+                h.editor.layout();
+                let height = h.editor.getScrollHeight();        
+                x.el.style.height = height + 20;
+                h.editor.layout();
+            }
+        }        
+        resizeEditor();
+        if(x.onchange) {
+            x.onchange.add(function(xx){
+                value = xx.value;
+                language = getLanguage(xx.name);
+                createEditor();
+                resizeEditor();
+            });
+        }
+    });
+  });
+</script>
