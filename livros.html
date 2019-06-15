@@ -56,8 +56,24 @@ function embedmp3(element, file, startAt) {
 
     soundFile.play();
 }
+function ScrollTo(book){
+    if(book) {
+        var el = document.querySelectorAll("[id*='" + book + "']");
+        if(el[0]) el[0].scrollIntoView();
+    }
+}
 </script>
-<div>
+<div style="position: fixed; right: 10px; background: white; border: solid 1px; padding: 5px">
+    <span>Search (Title):</span>
+    <input type="text" id="searchInput"></input>
+</div>
+<script>
+    document.getElementById("searchInput")
+        .addEventListener("input", function(e) {
+            ScrollTo(e.target.value);
+        });
+</script>
+<div>    
     <h1>Miséria intelectual sem fim</h1>
     <div>Olavo de Carvalho</div>
     <div>Diário do Comércio, 15 de agosto de 2005</div>
@@ -432,7 +448,7 @@ function embedmp3(element, file, startAt) {
             </div>
             <div style="padding:20px">
         <div><strong>Ver também</strong></div>
-        <ul>         <li> <p>"“A Traição dos Intelectuais”, de Julien Benda, trad. Paulo Neves, São Paulo, Editora Peixoto Neto, 2007. É tradução de “ La Trahison des Clercs”, um clássico de 1927 em que o filósofo judeu, um dos homens mais lúcidos que a França já produziu, denuncia a abdicação geral dos deveres da inteligência por parte de intelectuais ávidos de poder. O editor Peixoto Neto foi meu aluno. Não o vejo há muitos anos, mas não é errado um professor ter orgulho de seus ex-alunos quando estão fazendo um belo trabalho."</p>             <span>Casta de malditos (</span><a href="http://www.olavodecarvalho.org/semana/070430dc.html">http://www.olavodecarvalho.org/semana/070430dc.html</a><span>)</span>         </li>             <li>             <span>Expedições pelo Mundo da Cultura - José Monir Nasser (</span><a href="https://drive.google.com/drive/folders/1dEmYRtXuzHPe7J49uY83LWWPoYXSaaTa">https://drive.google.com/drive/folders/1dEmYRtXuzHPe7J49uY83LWWPoYXSaaTa</a><span>)</span>         </li>         </ul>
+        <ul>         <li> <p>"“A Traição dos Intelectuais”, de Julien Benda, trad. Paulo Neves, São Paulo, Editora Peixoto Neto, 2007. É tradução de “ La Trahison des Clercs”, um clássico de 1927 em que o filósofo judeu, um dos homens mais lúcidos que a França já produziu, denuncia a abdicação geral dos deveres da inteligência por parte de intelectuais ávidos de poder. O editor Peixoto Neto foi meu aluno. Não o vejo há muitos anos, mas não é errado um professor ter orgulho de seus ex-alunos quando estão fazendo um belo trabalho."</p>             <span>Casta de malditos (</span><a href="http://www.olavodecarvalho.org/semana/070430dc.html">http://www.olavodecarvalho.org/semana/070430dc.html</a><span>)</span>         </li>             <li>             <span>Expedições pelo Mundo da Cultura - José Monir Nasser (</span><a href="https://drive.google.com/drive/folders/1dEmYRtXuzHPe7J49uY83LWWPoYXSaaTa">https://drive.google.com/drive/folders/1dEmYRtXuzHPe7J49uY83LWWPoYXSaaTa</a><span>)</span>         </li>             <li>             <span>The treason of the intellectuals & “The Undoing of Thought” (</span><a href="https://www.newcriterion.com/issues/1992/12/the-treason-of-the-intellectuals-ldquothe-undoing-of-thoughtrdquo">https://www.newcriterion.com/issues/1992/12/the-treason-of-the-intellectuals-ldquothe-undoing-of-thoughtrdquo</a><span>)</span>         </li>             <li>             <span>(Excerpt) The Treason of the Intellectuals (</span><a href="http://www.swans.com/library/art9/jbenda01.html">http://www.swans.com/library/art9/jbenda01.html</a><span>)</span>         </li>         </ul>
     </div>
         
     </div>
@@ -1308,7 +1324,18 @@ function embedmp3(element, file, startAt) {
         <div><strong>Ver também</strong></div>
         <ul>         <li>             <span>The Origins of Contemporary France, Complete Table of Contents by Hippolyte Taine (</span><a href="http://www.gutenberg.org/ebooks/23524">http://www.gutenberg.org/ebooks/23524</a><span>)</span>         </li>             <li>             <span>Hippolyte Taine, The Origins of Contemporary France [1893]  (</span><a href="https://oll.libertyfund.org/titles/the-origins-of-contemporary-france">https://oll.libertyfund.org/titles/the-origins-of-contemporary-france</a><span>)</span>         </li>             <li>             <span>The origins of contemporary France - Ancient Régime (</span><a href="https://archive.org/details/cu31924082179700/page/n3">https://archive.org/details/cu31924082179700/page/n3</a><span>)</span>         </li>             <li> <p>"O utopismo abstrato da Revolução Francesa, que num choque de realidade acabou levando a resultados tão paradoxais quanto o terror, a ditadura napoleônica e a restauração monárquica, foi antecedido de pelo menos meio século de linguagem abstratista, forçada, artificial e artificiosa, que sufocava a experiência direta sob toneladas de construções idealísticas sem pé nem cabeça. O processo foi descrito e analisado com muita acuidade por Hyppolite Taine em Les Origines de la France Contemporaine (6 vols, 1888-1894), uma das obras históricas mais notáveis de todos os tempos."</p>             <span>Da fantasia deprimente à realidade temível (</span><a href="http://www.olavodecarvalho.org/semana/060911dc.html">http://www.olavodecarvalho.org/semana/060911dc.html</a><span>)</span>         </li>             <li> <p>"Se você ainda se surpreende ante a pressa indecente com que neste país os empresários se atiram aos braços de um partido que não esconde seu propósito de exterminá-los como classe, é porque está atrasado em pelo menos dois séculos. Fenômenos semelhantes já foram observados e bem explicados desde o tempo da Revolução Francesa, e terminam sempre do mesmo modo: com a extinção da classe.</p><p>Leia o seguinte parágrafo:</p><p>“Enquanto a ordem permanece, a propriedade tem influência superior à daqueles que podem querer violar a paz pública; mas, quando a lei e a ordem estão em grande parte destruídas, os ricos são sempre demasiado inclinados a buscar na submissão, ou na mudança de partido, os meios de proteger-se a si mesmos e às suas fortunas. A propriedade, que nos tempos normais faz corajosos os seus detentores, torna-se, nos tempos de perigo iminente, a causa de sua covardia egoísta.”</p><p>Sir Walter Scott, que a maioria só conhece como romancista mas que foi também excelente historiador, escreveu isso na sua monumental Life of Napoleon Buonaparte, Emperor of the French, with A Preliminary View of the French Revolution (uso a edição americana, Philadelphia, 1827, vol. I, p. 116). É um livro cheio de defeitos, compreensíveis numa primeira tentativa de sintetizar tamanha massa de documentos -- talvez a maior já examinada até então por qualquer historiador -- sobre um passado ainda recente. Mas continua um clássico e, se falha aqui e ali na reconstituição dos acontecimentos (Sainte-Beuve apontou-lhe erros graúdos nas Causeries du Lundi), sua melhor parte reside justamente nas observações de psicologia.</p><p>Observações similares encontram-se em Origines de la France Contemporaine, de Hippolyte Taine, para o meu gosto o melhor livro de História que já se escreveu neste mundo. As idéias revolucionárias não se espalham pelo povo antes de ter ganho a adesão ou pelo menos a cumplicidade da “classe dominante”. Antonio Gramsci deu receitas precisas de como apressar o suicídio coletivo dos ricos. Em nenhum outro lugar foram aplicadas com tanto sucesso como no Brasil."</p>             <span>Duas notas de rodapé (</span><a href="http://www.olavodecarvalho.org/semana/01122003zh.htm">http://www.olavodecarvalho.org/semana/01122003zh.htm</a><span>)</span>         </li>             <li> <p>"Hyppolite Taine conta que, aos 21 anos, vendo-se eleitor, percebeu que nada sabia do que era bom ou mau para a França nem das ideologias em disputa na eleição. Absteve-se de votar e começou a estudar o país. Décadas depois, vieram à luz os cinco volumes das Origines de la France Contemporaine (1875), um monumento da ciência histórica e um dos livros mais esclarecedores de todos os tempos. O jovem Taine não votou, mas o Taine maduro ajudou muitas gerações, na França e fora dela, a votar com mais seriedade e conhecimento de causa, sem deixar-se iludir pelas falsas alternativas da propaganda imediata. Saber primeiro para julgar depois é o dever número um do homem responsável - dever que o voto obrigatório, sob a escusa de ensinar, força a desaprender."</p>             <span>Geração perdida (</span><a href="http://www.olavodecarvalho.org/semana/perdida.htm">http://www.olavodecarvalho.org/semana/perdida.htm</a><span>)</span>         </li>             <li> <p>"As grandes crises e revoluções fazem-se sempre antecipar, na esfera lingüística, por uma simplificação redutiva que rebaixa a comunicação a uma troca de estimulações padronizadas. Hyppolite Taine descreve, nas Origines de la France Contemporaine", a longa degradação que foi tornando a língua francesa do século XVIII um sistema de fórmulas prontas, bom para as generalidades da oratória revolucionária, mas no qual não se podia traduzir Dante nem Shakespeare, criar personagens de carne e osso ou expressar uma única impressão viva. Thomas Mann, Jacob Wassermann e sobretudo Karl Kraus observaram análogo declínio na língua alemã do pré-nazismo.""</p>             <span>Miséria lingüística (</span><a href="http://www.olavodecarvalho.org/semana/mlinguistica.htm">http://www.olavodecarvalho.org/semana/mlinguistica.htm</a><span>)</span>         </li>         </ul>
     </div>
-        
+            <div style="padding:20px">
+        <div><strong>Mais livros</strong></div>         <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="./covers/9781400077229.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="#The Roads to Modernity: The British, French, and American Enlightenments">The Roads to Modernity: The British, French, and American Enlightenments</a></strong></div>
+                <div>Gertrude Himmelfarb</div>                
+            </div>
+        </div>         </div>
     </div>
     <div style="padding: 10px">
         <div>
@@ -1405,7 +1432,18 @@ function embedmp3(element, file, startAt) {
         <div><strong>Ver também</strong></div>
         <ul>         <li> <p>"Uma análise detalhada e fascinante até a última página, Jean Dumont mostra que a Revolução [Francesa] foi fundamentalmente anticristã e totalitária, sendo todas as suas outras características superficias e secundárias."</p>             <span>(Book Review) La Révolution française ou les prodiges du sacrilège by Jean Dumont (</span><a href="http://www.persee.fr/doc/assr_0335-5985_1986_num_61_2_2397_t1_0251_0000_4">http://www.persee.fr/doc/assr_0335-5985_1986_num_61_2_2397_t1_0251_0000_4</a><span>)</span>         </li>             <li> <p>"It will only be when Louis XVI has finally chosen fidelity to Christianity, to the Church, that in 1792 the monarchy will be defeated. Until then, unfaithful, she risked nothing, or only acceptable modalities. (Id. P.247)""</p>             <span>ANTICHRISTIANISM OF THE FRENCH REVOLUTION (</span><a href="http://egliseetverite.canalblog.com/archives/2018/03/10/36214553.html">http://egliseetverite.canalblog.com/archives/2018/03/10/36214553.html</a><span>)</span>         </li>         </ul>
     </div>
-        
+            <div style="padding:20px">
+        <div><strong>Mais livros</strong></div>         <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="./covers/9781400077229.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="#The Roads to Modernity: The British, French, and American Enlightenments">The Roads to Modernity: The British, French, and American Enlightenments</a></strong></div>
+                <div>Gertrude Himmelfarb</div>                
+            </div>
+        </div>         </div>
     </div>
     <div style="padding: 10px">
         <div>
@@ -2362,11 +2400,19 @@ function embedmp3(element, file, startAt) {
     </div>
     <div style="padding: 10px">
         <div>
-            
+            <div style="display:inline-block">
+    <img src="./covers/9781400077229.jpg" width="100px"/>
+</div>
             <div style="display:inline-block;vertical-align:top">
                 <div><strong><a id="The Roads to Modernity: The British, French, and American Enlightenments">The Roads to Modernity: The British, French, and American Enlightenments</a></strong></div>
                 <div><span>Gertrude Himmelfarb</span></div>
-                                
+                <div>
+    <div id="gr_add_to_books">
+        <div class="gr_custom_each_container_">
+            <a target="_blank" style="border:none" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/isbn/9781400077229"><img src="https://www.goodreads.com/images/atmb_add_book-70x25.png" /></a>
+        </div>
+    </div>                    
+</div>                
             </div>
         </div>        
                     <div style="padding:20px">
@@ -2385,8 +2431,40 @@ function embedmp3(element, file, startAt) {
                     </div>
                 </div>
             </div>
-        
-        
+            <div style="padding:20px">
+        <div><strong>Ver também</strong></div>
+        <ul>         <li>             <span>The Roads To Modernity: The British, French, And American Enlightenments (</span><a href="https://archive.org/details/isbn_1400042364_0">https://archive.org/details/isbn_1400042364_0</a><span>)</span>         </li>             <li>             <span>(Summary) The Roads To Modernity: The British, French, And American Enlightenments (</span><a href="http://www.michaelgleghorn.com/documents/theRoadsToModernity.pdf">http://www.michaelgleghorn.com/documents/theRoadsToModernity.pdf</a><span>)</span>         </li>             <li>             <div>
+                <div>
+                    <span>Reflections on Edmund Burke’s “Reflections on the Revolution in France.” (</span><a href="https://www.youtube.com/watch?v=5YfxgmB64CE">https://www.youtube.com/watch?v=5YfxgmB64CE</a><span>)</span>   
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=5YfxgmB64CE','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/5YfxgmB64CE")'>Ver</button>
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>             <li>             <span>(Book Review) The Roads To Modernity: The British, French, And American Enlightenments (</span><a href="https://www.nytimes.com/2004/10/24/books/review/the-roads-to-modernity-freedom-philosophers.html">https://www.nytimes.com/2004/10/24/books/review/the-roads-to-modernity-freedom-philosophers.html</a><span>)</span>         </li>             <li>             <span>(Book Review) The Roads To Modernity: The British, French, And American Enlightenments (</span><a href="https://www.theguardian.com/books/2008/mar/09/politics.society">https://www.theguardian.com/books/2008/mar/09/politics.society</a><span>)</span>         </li>             <li>             <span>(Book Review) The Roads To Modernity: The British, French, And American Enlightenments (</span><a href="https://fee.org/articles/the-roads-to-modernity-the-british-french-and-american-enlightenments/">https://fee.org/articles/the-roads-to-modernity-the-british-french-and-american-enlightenments/</a><span>)</span>         </li>             <li>             <span>(Book Review) The Roads To Modernity: The British, French, And American Enlightenments (</span><a href="http://www.claremont.org/crb/basicpage/sorting-out-the-enlightenments/">http://www.claremont.org/crb/basicpage/sorting-out-the-enlightenments/</a><span>)</span>         </li>             <li>             <span>(Book Review) The Roads To Modernity: The British, French, And American Enlightenments (</span><a href="https://americancreation.blogspot.com/2012/08/review-of-roads-to-modernity-by.html">https://americancreation.blogspot.com/2012/08/review-of-roads-to-modernity-by.html</a><span>)</span>         </li>             <li> <p>"E não me venham com aquela idiotice de que o iluminismo não gerou só ditaduras totalitárias, mas também a democracia americana. De um lado, o iluminismo britânico que influenciou a independência americana nada teve da rebelião voltaireana e enciclopedista contra a religião e as tradições (ver Gertrude Himmelfarb, The Roads to Modernity: The British, French and American Enlightenments, New York, Vintage Books, 2004)."</p>             <span>Psicose iluminista (</span><a href="http://olavodecarvalho.org/psicose-iluminista/">http://olavodecarvalho.org/psicose-iluminista/</a><span>)</span>         </li>             <li> <p>"No livro esplêndido que publicou sob o título “Roads to Modernity: The British, French and American Enlightenments” (New York, Vintage Books, 2005), Gertrude Himmelfarb mostrou que o iluminismo inglês, tão influente sobre a Revolução Americana, não foi um movimento simples e unilinear, mas um conflito insanável entre duas correntes de pensamento, uma nascida com John Locke (1632-1704), Bernard Mandeville (1670-1733) e Jeremy Bentham (1748-1832), a outra com Anthony Ashley Cooper, conde de Shaftesbury (1671-1713), Joseph Butler, bispo de Durham (1692-1752), Francis Hutcheson (1694-1746), Thomas Reid (1710-1796), George Berkeley (1685-1753), Adam Smith (1723-1790) e Edmund Burke (1729-1797). O filósofo David Hume (1711-1776) e o historiador Edward Gibbon (1737-1794) ficaram em cima do muro. A primeira das duas correntes teve repercussão mais espetacular no mundo em geral, mas a segunda foi mais determinante na prática política anglo-americana. A primeira, através do materialismo do século XIX, desembocaria em Ayn Rand; a segunda nos pais intelectuais do atual movimento conservador americano, Russel Kirk e Irving Kristol, este casado com a própria Himmelfarb."</p>             <span>A liberdade como parteira da tirania (</span><a href="http://olavodecarvalho.org/a-liberdade-como-parteira-da-tirania/">http://olavodecarvalho.org/a-liberdade-como-parteira-da-tirania/</a><span>)</span>         </li>         </ul>
+    </div>
+            <div style="padding:20px">
+        <div><strong>Mais livros</strong></div>         <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="./covers/9782917260852.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="#Les origines de la France contemporaine">Les origines de la France contemporaine</a></strong></div>
+                <div>Hippolyte Taine</div>                
+            </div>
+        </div>             <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="./covers/B00GN7IYS4.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="#La Revolution francaise ou Les prodiges du sacrilege">La Revolution francaise ou Les prodiges du sacrilege</a></strong></div>
+                <div>Jean Dumont</div>                
+            </div>
+        </div>         </div>
     </div>
     <div style="padding: 10px">
         <div>
@@ -19937,10 +20015,7 @@ function embedmp3(element, file, startAt) {
     if(window.URLSearchParams) {
         var urlParams = new URLSearchParams(window.location.search);
         var book = urlParams.get('book');
-        if(book) {
-            var el = document.getElementById(book);
-            if(el) el.scrollIntoView();
-        }
+        ScrollTo(book);
     }
 </script>
 </body>
