@@ -1,0 +1,178 @@
+<html>
+<head>
+<style>
+    :root {
+        --color-highlight-strong: red;
+        --color-highlight-weak: lightred;
+        --max-width: 500px;
+    }
+    .blocks {
+        margin-left: calc((100% - var(--max-width)) / 3);        
+        max-width: var(--max-width);
+    }
+    .blocks .header {
+        background: var(--color-highlight-strong);
+        padding: 5px;
+    }
+    .blocks .paragraph {
+        text-align: justify;
+    }
+</style>
+</head>
+<body>
+<div class="blocks">
+<script type="text/javascript" src="https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs/loader.js""></script>
+<script>
+    var monacoElements = [];
+</script>
+<h1 class="header">Drawing Lines</h1>
+<p class="paragraph">In this series you will develop a robust, although simple line drawing routine. We will start with very simple cases and improve our code as we follow.</p>
+<p class="paragraph">If this is your first time using our system, please see here how to use.</p>
+<h1 class="header">Theory</h1>
+<p class="paragraph">In this section we will implement the famous "Bresenham line" algorithm.</p>
+<p class="paragraph">Algorithm for computer control of a digital plotter</p>
+<p class="paragraph">by J. E. Bresenham </p>
+<p class="paragraph"><a href="https://www.cse.iitb.ac.in/~paragc/teaching/2013/cs475/papers/bresenham_line.pdf">https://www.cse.iitb.ac.in/~paragc/teaching/2013/cs475/papers/bresenham_line.pdf</a></p>
+<h2 class="header">Trivial case</h2>
+<p class="paragraph">The simples case is off course the trivial case. If the start and end points of the line are the same, we can plot just the pixel and return.</p>
+<h2 class="header">Horizontal Lines</h2>
+<p class="paragraph">After the trivial case. The simples possible case is the horizontal line. The ones where the start y-coord and the end y-coord are the same. It is very easy to see that all we need is a simple loop.</p>
+<p class="paragraph">You task is to implement the function below and "illuminate" the pixels on the grid below with red. We had draw the theoretical line to help you.</p>
+<p class="paragraph">"f" is the function to draw a pixel, like "f(0,0,'red')"</p>
+<script src="./int13h.js"></script>
+<script src="./allowCode.js"></script>
+<div style="width: calc(var(--max-width) + 400px)">
+    <div style="display:inline-block; width: var(--max-width);vertical-align:top;">
+        <div class="code" data-language="javascript" style="height: 310px">
+        </div>        
+    </div>
+    <div style="display:inline-block; width: 300px;vertical-align:top;">
+        <canvas width="310" height="310">
+        </canvas>
+        <script>
+            var ctx = window.int13h
+                .default(
+                    document.currentScript.previousElementSibling);
+            window.allowCode.default(ctx, "drawLine", 
+                "function drawLine(x0, y0, x1, y1, f) {\n\n}\n",
+                document.currentScript
+                    .parentNode.parentNode.querySelector(".code"),
+                'horizontalLine'
+            );            
+            var line = ctx.addLine([5,15],[25,15],"red");
+            
+            document.currentScript.parentNode
+                .addEventListener('datachanged', function(e) {
+                });
+        </script>
+    </div>
+</div>
+<h2 class="header">Vertical Lines</h2>
+<p class="paragraph">Another easy case is the vertical. That is very similar. Only that in this case, the start x-coord and the end x-coord are the same.</p>
+<p class="paragraph">"f" is the function to draw a pixel, like "f(0,0,'red')"</p>
+<script src="./int13h.js"></script>
+<script src="./allowCode.js"></script>
+<div style="width: calc(var(--max-width) + 400px)">
+    <div style="display:inline-block; width: var(--max-width);vertical-align:top;">
+        <div class="code" data-language="javascript" style="height: 310px">
+        </div>        
+    </div>
+    <div style="display:inline-block; width: 300px;vertical-align:top;">
+        <canvas width="310" height="310">
+        </canvas>
+        <script>
+            var ctx = window.int13h
+                .default(
+                    document.currentScript.previousElementSibling);
+            window.allowCode.default(ctx, "drawLine", 
+                "function drawLine(x0, y0, x1, y1, f) {\n\n}\n",
+                document.currentScript
+                    .parentNode.parentNode.querySelector(".code"),
+                'verticalLine'
+            );            
+            var line = ctx.addLine([15,5],[15,25],"red");
+            
+            document.currentScript.parentNode
+                .addEventListener('datachanged', function(e) {
+                });
+        </script>
+    </div>
+</div>
+<h2 class="header">Diagonal Lines</h2>
+<script>
+  require.config({ paths: { 'vs': 'https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs' }});
+  window.MonacoEnvironment = {
+    getWorkerUrl: function(workerId, label) {
+      return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+        self.MonacoEnvironment = {
+          baseUrl: 'https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min'
+        };
+        importScripts('https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs/base/worker/workerMain.js');`
+      )}`;
+    }
+  };
+
+  require(["vs/editor/editor.main"], function () {    
+    monacoElements.forEach(x => {
+        function getLanguage(name) {
+            if(name) {
+                if(name.indexOf('.html') >= 0) return 'html';
+                if(name.indexOf('.js')  >= 0) return 'javascript';
+            }
+            return '';
+        }
+        
+        x.el.innerText = "";
+        var language = getLanguage(x.name);
+        if(x.el.dataset.language) {
+            language = x.el.dataset.language;
+        }        
+        if(x.language) {
+            language = x.language;
+        }
+
+        var value = x.value;
+        var h = {editor: null};
+        function createEditor() {
+            if(h.editor){
+                var model = h.editor.getModel()
+                if(model)
+                    model.dispose();
+                    h.editor.dispose();
+            }
+            h.editor = null;
+            h.editor = monaco.editor.create(x.el, {
+                automaticLayout: true,
+                value: window.atob(value),
+                language: language,
+                scrollBeyondLastLine: false,
+                minimap: {
+                    enabled: false
+                }
+            });
+        }
+        createEditor();
+        function resizeEditor() {
+            if(x.adjustHeight) {
+                x.el.style.height = 0;
+                h.editor.layout();
+                let height = h.editor.getScrollHeight();        
+                x.el.style.height = height + 20;
+                h.editor.layout();
+            }
+        }        
+        resizeEditor();
+        if(x.onchange) {
+            x.onchange.add(function(xx){
+                value = xx.value;
+                language = getLanguage(xx.name);
+                createEditor();
+                resizeEditor();
+            });
+        }
+    });
+  });
+</script>
+</div>
+</body>
+</html>
