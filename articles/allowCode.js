@@ -14241,6 +14241,12 @@ function instrumentCode(code) {
 }
 
 function _default(obj, name, def, el, ctxName) {
+  if (typeof el === "string") {
+    el = document.getElementById(el);
+  }
+
+  var root = el;
+  el = root.querySelector(".code");
   var editor;
   var code = def || "function ".concat(name, "() {\n}");
   var localStorageName = "allowCode.".concat(name, ".").concat(ctxName, ".code");
@@ -14251,31 +14257,35 @@ function _default(obj, name, def, el, ctxName) {
 
   var historyScope;
   var historyDecorations = [];
-  var historyControlsEl = document.getElementById("historyControls");
-  var drawLineHistory = document.getElementById("drawLineHistory");
+  var historyControlsEl = root.querySelector(".historyControls");
+  var drawLineHistoryEl = root.querySelector(".history"); //console.log(root, historyControlsEl, drawLineHistoryEl);
+
   var fcstyle = "style=\"position: absolute; left: 8px; width: 70px; border: 1px solid orange collapse; text-align: center;margin-top: 20px;\"";
   var ocstyle = "margin-left: 5em; min-width:40px; max-height: 40px; border: 1px solid orange;text-align: center";
 
-  if (drawLineHistory) {
-    drawLineHistory.innerHTML = "<div style=\"margin-left:5em; overflow-x:scroll\">\n        <table style=\"width:100%;min-height:300px;border: 1px solid orange;\">\n        <thead>\n            <tr><td style=\"position: absolute; left: 8px; width: 70px; border: 1px solid orange collapse; text-align: center;\">Name/Time</td></tr>\n        </thead>\n        <tbody>\n        </tbody>\n</table></div>";
+  function startHistoryTable() {
+    if (drawLineHistoryEl) {
+      drawLineHistoryEl.innerHTML = "<div style=\"margin-left:5em; overflow-x:scroll\">\n            <table style=\"width:100%;min-height:300px;border: 1px solid orange;\">\n            <thead>\n                <tr><td style=\"position: absolute; left: 8px; width: 70px; border: 1px solid orange collapse; text-align: center;\">Name/Time</td></tr>\n            </thead>\n            <tbody>\n            </tbody>\n</table></div>";
+    }
   }
 
   function addColumn(name, value, time) {
+    if (!drawLineHistoryEl) return;
     var i = 0;
-    var head = drawLineHistory.querySelector('thead tr');
+    var head = drawLineHistoryEl.querySelector('thead tr');
     var td = document.createElement("td");
     td.style.cssText = ocstyle;
     td.innerText = time;
     head.append(td);
     var found = false;
-    Array.from(drawLineHistory.querySelectorAll('tbody tr')).forEach(function (x) {
+    Array.from(drawLineHistoryEl.querySelectorAll('tbody tr')).forEach(function (x) {
       if (x.firstElementChild.innerText == name) {
         found = true;
       }
     });
 
     if (!found) {
-      var tbody = drawLineHistory.querySelector('tbody');
+      var tbody = drawLineHistoryEl.querySelector('tbody');
       var tr = document.createElement('tr');
       tr.innerHTML = "<td ".concat(fcstyle, ">").concat(name, "</td>");
 
@@ -14286,7 +14296,7 @@ function _default(obj, name, def, el, ctxName) {
       tbody.append(tr);
     }
 
-    Array.from(drawLineHistory.querySelectorAll('tbody tr')).forEach(function (x) {
+    Array.from(drawLineHistoryEl.querySelectorAll('tbody tr')).forEach(function (x) {
       var td = document.createElement("td");
       td.style.cssText = ocstyle;
 
@@ -14300,17 +14310,18 @@ function _default(obj, name, def, el, ctxName) {
       x.append(td);
       ++i;
     });
-    drawLineHistory.firstElementChild.scrollLeft = drawLineHistory.firstElementChild.scrollWidth;
+    drawLineHistoryEl.firstElementChild.scrollLeft = drawLineHistoryEl.firstElementChild.scrollWidth;
   }
 
   function addColumnspan(value, time) {
+    if (!drawLineHistoryEl) return;
     var i = 0;
-    var head = drawLineHistory.querySelector('thead tr');
+    var head = drawLineHistoryEl.querySelector('thead tr');
     var td = document.createElement("td");
     td.style.cssText = ocstyle;
     td.innerText = time;
     head.append(td);
-    var rows = drawLineHistory.querySelectorAll('tbody tr');
+    var rows = drawLineHistoryEl.querySelectorAll('tbody tr');
     var body = rows[0];
     var td = document.createElement("td");
     td.style.cssText = ocstyle;
@@ -14318,7 +14329,7 @@ function _default(obj, name, def, el, ctxName) {
     td.style.minWidth = td.innerHTML.length * 7 + "px";
     td.rowSpan = rows.length;
     body.append(td);
-    drawLineHistory.firstElementChild.scrollLeft = drawLineHistory.firstElementChild.scrollWidth;
+    drawLineHistoryEl.firstElementChild.scrollLeft = drawLineHistoryEl.firstElementChild.scrollWidth;
   }
 
   var historyi = -1;
@@ -14328,6 +14339,7 @@ function _default(obj, name, def, el, ctxName) {
 
     if (historyi >= 0) {
       var current = historyScope.history[historyi];
+      if (!current) return;
 
       if (current.type == "assignment") {
         addColumn(current.name, current.value, historyi);
@@ -14340,6 +14352,7 @@ function _default(obj, name, def, el, ctxName) {
 
     historyi++;
     var current = historyScope.history[historyi];
+    if (!current) return;
     var start = editor.getModel().getPositionAt(current.range[0]);
     var end = editor.getModel().getPositionAt(current.range[1]);
     historyDecorations = editor.deltaDecorations(historyDecorations, [{
@@ -14351,13 +14364,22 @@ function _default(obj, name, def, el, ctxName) {
   };
 
   if (historyControlsEl) {
-    var button = document.createElement("button");
-    button.innerText = "Step";
-    button.addEventListener('click', function (e) {
+    var resetButton = document.createElement("button");
+    resetButton.innerText = "Reset";
+    resetButton.addEventListener('click', function (e) {
+      historyi = -1;
+      startHistoryTable();
+      return false;
+    });
+    historyControlsEl.append(resetButton);
+    var stepButton = document.createElement("button");
+    stepButton.innerText = "Step";
+    stepButton.addEventListener('click', function (e) {
+      if (historyi == -1) startHistoryTable();
       Step();
       return false;
     });
-    historyControlsEl.append(button);
+    historyControlsEl.append(stepButton);
   }
 
   function evaluate() {
@@ -14438,10 +14460,6 @@ function _default(obj, name, def, el, ctxName) {
         }
       };
     } catch (e) {}
-  }
-
-  if (typeof el === "string") {
-    el = document.getElementById(el);
   }
 
   function configureEditor() {

@@ -17,6 +17,7 @@
     .blocks .paragraph {
         text-align: justify;
     }
+    .monacoDebugging { background-color: lightgray; }
 </style>
 </head>
 <body>
@@ -43,29 +44,30 @@
 <script src="./allowCode.js"></script>
 <div style="width: calc(var(--max-width) + 400px)">
     <div style="display:inline-block; width: var(--max-width);vertical-align:top;">
+        <div class="historyControls">
+        </div>
         <div class="code" data-language="javascript" style="height: 310px">
         </div>        
     </div>
     <div style="display:inline-block; width: 300px;vertical-align:top;">
         <canvas width="310" height="310">
         </canvas>
-        <script>
-            var ctx = window.int13h
-                .default(
-                    document.currentScript.previousElementSibling);
-            window.allowCode.default(ctx, "drawLine", 
-                "function drawLine(x0, y0, x1, y1, f) {\n\n}\n",
-                document.currentScript
-                    .parentNode.parentNode.querySelector(".code"),
-                'horizontalLine'
-            );            
-            var line = ctx.addLine([5,15],[25,15],"red");
-            
-            document.currentScript.parentNode
-                .addEventListener('datachanged', function(e) {
-                });
-        </script>
     </div>
+    <div class="history">
+    </div>
+    <script>
+        var ctx = window.int13h.default(document.currentScript.parentNode);
+        window.allowCode.default(ctx, "drawLine", 
+            "function drawLine(x0, y0, x1, y1, f) {\n\n}\n",
+            document.currentScript.parentNode,
+            'horizontalLine'
+        );            
+        var line = ctx.addLine([5,15],[25,15],"red");
+            
+        document.currentScript.parentNode
+            .addEventListener('datachanged', function(e) {
+            });
+    </script>
 </div>
 <h2 class="header">Vertical Lines</h2>
 <p class="paragraph">Another easy case is the vertical. That is very similar. Only that in this case, the start x-coord and the end x-coord are the same.</p>
@@ -74,29 +76,30 @@
 <script src="./allowCode.js"></script>
 <div style="width: calc(var(--max-width) + 400px)">
     <div style="display:inline-block; width: var(--max-width);vertical-align:top;">
+        <div class="historyControls">
+        </div>
         <div class="code" data-language="javascript" style="height: 310px">
         </div>        
     </div>
     <div style="display:inline-block; width: 300px;vertical-align:top;">
         <canvas width="310" height="310">
         </canvas>
-        <script>
-            var ctx = window.int13h
-                .default(
-                    document.currentScript.previousElementSibling);
-            window.allowCode.default(ctx, "drawLine", 
-                "function drawLine(x0, y0, x1, y1, f) {\n\n}\n",
-                document.currentScript
-                    .parentNode.parentNode.querySelector(".code"),
-                'verticalLine'
-            );            
-            var line = ctx.addLine([15,5],[15,25],"red");
-            
-            document.currentScript.parentNode
-                .addEventListener('datachanged', function(e) {
-                });
-        </script>
     </div>
+    <div class="history">
+    </div>
+    <script>
+        var ctx = window.int13h.default(document.currentScript.parentNode);
+        window.allowCode.default(ctx, "drawLine", 
+            "function drawLine(x0, y0, x1, y1, f) {\n\n}\n",
+            document.currentScript.parentNode,
+            'verticalLine'
+        );            
+        var line = ctx.addLine([15,5],[15,25],"red");
+            
+        document.currentScript.parentNode
+            .addEventListener('datachanged', function(e) {
+            });
+    </script>
 </div>
 <h2 class="header">Diagonal Lines</h2>
 <script>
