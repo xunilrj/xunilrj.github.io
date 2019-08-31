@@ -334,6 +334,7 @@ function WriteBook($book, $imgPrefix = ".")
                     <button class="pure-button" onclick="embedmp3(this, '$(getMP3File $_.DATE)', $($_.StartAt))">
                         Ouvir 
                     </button>
+                    <a href="trueoutspeak.html?episode=$($_.DATE)" target="_blank">Mais sobre este episódio</a>
                     <div class="audioholder">
                     </div>
                 </div>
