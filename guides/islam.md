@@ -160,5 +160,8 @@ https://www.crisismagazine.com/2019/beware-of-muslims-bearing-pamphlets
 # Violências, crimes e barbaridades cometidas pelo Maomé
 
 
+Narrated Abu Huraira: Allah's Apostle ﷺ said, "The Hour will not be established until you fight with the Jews, and the stone behind which a Jew will be hiding will say. "O Muslim! There is a Jew hiding behind me, so kill him."
+https://muflihun.com/bukhari/52/177
+
 "Narated By 'Abdullah bin 'Umar : The Jews came to Allah's Apostle and told him that a man and a woman from amongst them had committed illegal sexual intercourse. Allah's Apostle said to them, "What do you find in the Torah (old Testament) about the legal punishment of Ar-Rajm (stoning)?" They replied, (But) we announce their crime and lash them." Abdullah bin Salam said, "You are telling a lie; Torah contains the order of Rajm." They brought and opened the Torah and one of them solaced his hand on the Verse of Rajm and read the verses preceding and following it. Abdullah bin Salam said to him, "Lift your hand." When he lifted his hand, the Verse of Rajm was written there. They said, "Muhammad has told the truth; the Torah has the Verse of Rajm. The Prophet then gave the order that both of them should be stoned to death. ('Abdullah bin 'Umar said, "I saw the man leaning over the woman to shelter her from the stones."
 http://hadithcollection.com/sahihbukhari/-sp-145/sahih-bukhari-volume-004-book-056-hadith-number-829.html
