@@ -32,17 +32,25 @@ function GetImage($name,$size=100,$imgPrefix = ".")
     }
 }
 
-function WriteSuggestion($s, $name = "to", $imgPrefix = ".")
+function WriteSuggestion($s, $name = "to", $imgPrefix = ".", $suggestionHardLink = $false)
 {
     $s|% {
         $book = $books|? isbn -eq ($_|select -ExpandProperty $name)
+        $bookLink = "<div><strong><a href=""#$(GetAncherName $book.name $suggestionHardLink)"">$($book.name)</a></strong></div>"
+        if($suggestionHardLink){
+            if(Test-Path "../pages/$($book.isbn)/index.html") {
+                $bookLink = "<div><strong><a href=""$imgPrefix/pages/$($book.isbn)/index.html"">$($book.name)</a></strong></div>"
+            } else {
+                $bookLink = "<div><strong>$($book.name)</strong></div>"
+            }
+        }
 @"
         <div style="padding:20px;display:inline-block;max-width:300px">
             <div>
                 $(GetImage $book.name 100 $imgPrefix)
             </div>
             <div style="display:inline-block;vertical-align:top">
-                <div><strong><a href="#$(GetAncherName $book.name)">$($book.name)</a></strong></div>
+                $bookLink
                 <div>$($book.authors)</div>                
             </div>
         </div>    
@@ -50,7 +58,7 @@ function WriteSuggestion($s, $name = "to", $imgPrefix = ".")
     }
 }
 
-function GetSuggestions($name, $imgPrefix = ".")
+function GetSuggestions($name, $imgPrefix = ".", $suggestionHardLink = $false )
 {
     $row = $books|? name -eq $name
     $s1 = $suggestions|? from -eq $row.isbn
@@ -64,10 +72,10 @@ function GetSuggestions($name, $imgPrefix = ".")
         <div><strong>Mais livros</strong></div>
 "@
     if (($s1|Measure-Object).Count -gt 0) {
-        WriteSuggestion $s1 "to" $imgPrefix 
+        WriteSuggestion $s1 "to" $imgPrefix $suggestionHardLink
     }
     if (($s2|Measure-Object).Count -gt 0) {
-        WriteSuggestion $s2 "from" $imgPrefix 
+        WriteSuggestion $s2 "from" $imgPrefix $suggestionHardLink
     }
 @"
     </div>
@@ -147,17 +155,18 @@ function GetLinks($name)
 "@
 }
 
+function GetPageHeader ($title, $img, $decricao, $url) {
 @"
 <!DOCTYPE html>
 <head>
     <script src="https://unpkg.com/lunr/lunr.js"></script>
-    <title>Central HyperText do Olavo de Carvalho - livros sugeridos, True OutSpeak, artigos etc...</title>
+    <title>$title</title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-    <meta property="og:title" content="Central Olavo de Carvalho" />
+    <meta property="og:title" content="$title" />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="https://i.ytimg.com/vi/L4ClaPcp1k8/maxresdefault.jpg" />
-    <meta property="og:url" content="https://xunilrj.github.io/livros.html" />
-    <meta property="og:description" content="Sem a menor dificuldade [listo aqui] mais de quinhentos livros importantes, que suscitaram discussões intensas e estudos sérios nos EUA e na Europa, e que permanecem totalmente desconhecidos do nosso público, pelo simples fato de que sua leitura arriscaria furar o balão da autolatria esquerdista e varrer para o lixo do esquecimento inumeráveis prestígios acadêmicos e literários consagrados neste país ao longo das últimas décadas." />
+    <meta property="og:image" content="$img" />
+    <meta property="og:url" content="https://xunilrj.github.io/$url" />
+    <meta property="og:description" content="$decricao" />
 </head>
 <body>
 <script>
@@ -214,6 +223,10 @@ function ScrollTo(book){
     }
 }
 </script>
+"@
+}
+
+$indexHeader = @"
 <div style="position: fixed; right: 10px; background: white; border: solid 1px; padding: 5px">
     <span>Search (Title):</span>
     <input type="text" id="searchInput"></input>
@@ -244,7 +257,13 @@ function ScrollTo(book){
 </h1>
 <div><a href="./pages/olavo/25olavo.html"><strong>Ver</strong><a/><div>
 <h1>Livros</h1>
-"@ | Out-File "$dest/livros.html"
+"@
+
+$indexTitle = "Central HyperText do Olavo de Carvalho"
+$indexImg = "https://i.ytimg.com/vi/L4ClaPcp1k8/maxresdefault.jpg"
+$descricaoHeader = "Sem a menor dificuldade [listo aqui] mais de quinhentos livros importantes, que suscitaram discussões intensas e estudos sérios nos EUA e na Europa, e que permanecem totalmente desconhecidos do nosso público, pelo simples fato de que sua leitura arriscaria furar o balão da autolatria esquerdista e varrer para o lixo do esquecimento inumeráveis prestígios acadêmicos e literários consagrados neste país ao longo das últimas décadas."
+GetPageHeader $indexTitle $indexImg $descricaoHeader "livros.html" | Out-File "$dest/livros.html"
+$indexHeader | Out-File "$dest/livros.html" -Append
 
 function WriteGoodReads($row)
 {
@@ -299,13 +318,13 @@ function GetAncherName($name)
     $name
 }
 
-function WriteBook($book, $imgPrefix = ".")
+function WriteBook($book, $imgPrefix = ".", $suggestionHardLink = $false)
 {
     $_ = $book
     $title = "<div><strong><a id=""$(GetAncherName $_.Livro)"" class=""title"">$($_.Livro)</a></strong></div>"
     $row = $books|? name -eq $_.Livro
     if($row -ne $null) {
-        if( (Test-Path "$dest/pages/$($row.isbn)") -eq $true) {
+        if( (Test-Path "$dest/pages/$($row.isbn)/index.html") -eq $true) {
             $title = "<div><strong><a id=""$(GetAncherName $_.Livro)"" href=""./pages/$($row.isbn)/index.html"">$($_.Livro)</a></strong></div>"
         }
     }
@@ -334,7 +353,7 @@ function WriteBook($book, $imgPrefix = ".")
                     <button class="pure-button" onclick="embedmp3(this, '$(getMP3File $_.DATE)', $($_.StartAt))">
                         Ouvir 
                     </button>
-                    <a href="trueoutspeak.html?episode=$($_.DATE)" target="_blank">Mais sobre este episódio</a>
+                    <a href="$imgPrefix/trueoutspeak.html?episode=$($_.DATE)" target="_blank">Mais sobre este episódio</a>
                     <div class="audioholder">
                     </div>
                 </div>
@@ -343,7 +362,7 @@ function WriteBook($book, $imgPrefix = ".")
         }
         )
         $(GetLinks $_.Livro)
-        $(GetSuggestions $_.Livro $imgPrefix)
+        $(GetSuggestions $_.Livro $imgPrefix $suggestionHardLink)
     </div>
 "@
 }
@@ -392,5 +411,21 @@ $rows2|% { WriteBook($_) } | Out-File "$dest/livros.html" -Append
 "@ | Out-File "$dest/livros.html" -Append
 $html = cat "$dest/livros.html" -Raw
 [System.IO.File]::WriteAllText("$dest/livros.html",$html)
+
+$i = 0;
+$rows|% { 
+    Write-Progress -Activity "." -CurrentOperation "." -PercentComplete ([float]$i/[float]$rowsCount*100.0)
+    $i = $i + 1
+
+    $row = $books|? name -eq $_.Livro
+    if($row -ne $null) {
+        $imgPrefix = "../.."
+        $html = WriteBook $_ $imgPrefix $true
+        mkdir "$dest/pages/$($row.ISBN)" -Force -EA SilentlyContinue
+
+        GetPageHeader $row.name "$imgPrefix/covers/$($row.isbn).jpg" $_.Descricao "pages/$($row.ISBN)/index.html" | Out-File "$dest/pages/$($row.ISBN)/index.html"
+        $html | Out-File "$dest/pages/$($row.ISBN)/index.html" -Append
+    }
+}
 
 start "$dest/livros.html"
