@@ -325,7 +325,7 @@ function WriteBook($book, $imgPrefix = ".", $suggestionHardLink = $false)
     $row = $books|? name -eq $_.Livro
     if($row -ne $null) {
         if( (Test-Path "$dest/pages/$($row.isbn)/index.html") -eq $true) {
-            $title = "<div><strong><a id=""$(GetAncherName $_.Livro)"" href=""./pages/$($row.isbn)/index.html"">$($_.Livro)</a></strong></div>"
+            $title = "<div><strong><a id=""$(GetAncherName $_.Livro)"" href=""$imgPrefix/pages/$($row.isbn)/index.html"">$($_.Livro)</a></strong></div>"
         }
     }
 @"
