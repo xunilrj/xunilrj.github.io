@@ -424,7 +424,7 @@ $rows|% {
         mkdir "$dest/pages/$($row.ISBN)" -Force -EA SilentlyContinue
 
         $fileOut = "$dest/pages/$($row.ISBN)/index.html"
-        GetPageHeader $row.name "$imgPrefix/covers/$($row.isbn).jpg" $_.Descricao "pages/$($row.ISBN)/index.html" | Out-File $fileOut
+        GetPageHeader $row.name "https://xunilrj.github.io/covers/$($row.isbn).jpg" $_.Descricao "pages/$($row.ISBN)/index.html" | Out-File $fileOut
         $html | Out-File $fileOut -Append
 
         $html = cat $fileOut -Raw
