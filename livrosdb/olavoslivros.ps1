@@ -423,8 +423,12 @@ $rows|% {
         $html = WriteBook $_ $imgPrefix $true
         mkdir "$dest/pages/$($row.ISBN)" -Force -EA SilentlyContinue
 
-        GetPageHeader $row.name "$imgPrefix/covers/$($row.isbn).jpg" $_.Descricao "pages/$($row.ISBN)/index.html" | Out-File "$dest/pages/$($row.ISBN)/index.html"
-        $html | Out-File "$dest/pages/$($row.ISBN)/index.html" -Append
+        $fileOut = "$dest/pages/$($row.ISBN)/index.html"
+        GetPageHeader $row.name "$imgPrefix/covers/$($row.isbn).jpg" $_.Descricao "pages/$($row.ISBN)/index.html" | Out-File $fileOut
+        $html | Out-File $fileOut -Append
+
+        $html = cat $fileOut -Raw
+        [System.IO.File]::WriteAllText($fileOut,$html)
     }
 }
 
