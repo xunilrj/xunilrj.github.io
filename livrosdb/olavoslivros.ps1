@@ -420,7 +420,7 @@ $rows|% {
     $row = $books|? name -eq $_.Livro
     if($row -ne $null) {
         $imgPrefix = "../.."
-        $html = WriteBook $_ $imgPrefix $true
+        $html = "<div><a href=`"../../livros.html`">Ver mais livros</a></div>" + (WriteBook $_ $imgPrefix $true)
         mkdir "$dest/pages/$($row.ISBN)" -Force -EA SilentlyContinue
 
         $fileOut = "$dest/pages/$($row.ISBN)/index.html"
