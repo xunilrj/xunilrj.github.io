@@ -1,54 +1,77 @@
-<h1>Guia de Estudo: Eric Voegelin</h1>
-<ol id="items">    
-</ol>
+<html>
+    <head>
+        <!-- For Google -->
+        <meta name="description" content="Guia de estudo para Eric Voegelin." />
+        <meta name="keywords" content="Eric, Voegelin" />
 
-<script>
-    String.prototype.hashCode = function() {
-        var hash = 0, i, chr;
-        if (this.length === 0) return hash;
-        for (i = 0; i < this.length; i++) {
-            chr   = this.charCodeAt(i);
-            hash  = ((hash << 5) - hash) + chr;
-            hash |= 0; // Convert to 32bit integer
-        }
-        return hash;
-    };
-    var items = [
-        [`André Barreto: "Eric Voegelin e as religiões políticas"`,"https://www.youtube.com/watch?v=aMQ8PzyQ3-g"],
-        [`OliverTalk 49: A Politica Como Religião: Introdução a Eric Voegelin"`,"http://sensoincomum.org/2019/09/06/olivertalk-49-a-politica-como-religiao-introducao-a-eric-voegelin"],
-        [`OliverTalk 52: Nazismo e Socialismo – Voegelin contra Hitler e Stalin`,"http://sensoincomum.org/2019/09/18/olivertalk-nazismo-comunismo"],
-        [`Olivertalk 56: A corrupção da lei"`,"http://sensoincomum.org/2019/10/03/ideologia-corrupcao-voegelin"],
-        [`Palestra: Eric Voegelin e o cenário político atual`,"https://www.youtube.com/watch?v=VTuaoE4ol9M"],
-        [`Curso sobre a filosofia política em Eric Voegelin (parte 1 de 3)`,"https://youtu.be/xHRS-uSZN2g"],
-        [`Curso sobre a filosofia política em Eric Voegelin (parte 2 de 3)`,"https://youtu.be/1C1HX356EfE"],
-        [`Curso sobre a filosofia política em Eric Voegelin (parte 3 de 3)`,"https://youtu.be/oLh9p3mk-cc"],
-        [`Eric Voegelin - Estudos`,"https://www.youtube.com/playlist?list=PLrXaxgzvixjS2GjsbMM2VmAWykd_bE38n"],
-    ]
+        <!-- For Facebook -->
+        <meta property="og:title" content="Guia de estudo para Eric Voegelin" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="https://theimaginativeconservative.org/wp-content/uploads/2015/12/mid_34697.jpg" />
+        <meta property="og:url" content="https://xunilrj.github.io/guides/EricVoegelin.html" />
+        <meta property="og:description" content="Guia de estudo para Eric Voegelin" />
 
-    var obj;
-    
-    try {
-        obj = localStorage.getItem("guides.EricVoegelin");
-    } catch {}
-    if(!obj) obj = {};
-
-    var el = document.querySelector("ol#items");
-    items.forEach(x => {
-        var title = x[0];
-        var url = x[1];
-        var urlHash = x[1].hashCode();
-        var checked = !!obj[urlHash];
-        console.log(checked);
+        <!-- For Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Guia de estudo para Eric Voegelin" />
+        <meta name="twitter:description" content="Guia de estudo para Eric Voegelin" />
+        <meta name="twitter:image" content="https://theimaginativeconservative.org/wp-content/uploads/2015/12/mid_34697.jpg" />
+    </head>
+    <body>
+        <h1>Guia de Estudo: Eric Voegelin</h1>
+        <ol id="items">    
+        </ol>
         
-        var root = document.createElement("div");
-        root.innerHTML = `<h3>${title}</h3><input type="checkbox" ${checked ? "checked": ""}" data-url-hash="${urlHash}"/><a href="${url}">${url}</a>`;
+        <script>
+            String.prototype.hashCode = function() {
+                var hash = 0, i, chr;
+                if (this.length === 0) return hash;
+                for (i = 0; i < this.length; i++) {
+                    chr   = this.charCodeAt(i);
+                    hash  = ((hash << 5) - hash) + chr;
+                    hash |= 0; // Convert to 32bit integer
+                }
+                return hash;
+            };
+            var items = [
+                [`André Barreto: "Eric Voegelin e as religiões políticas"`,"https://www.youtube.com/watch?v=aMQ8PzyQ3-g"],
+                [`OliverTalk 49: A Politica Como Religião: Introdução a Eric Voegelin"`,"http://sensoincomum.org/2019/09/06/olivertalk-49-a-politica-como-religiao-introducao-a-eric-voegelin"],
+                [`OliverTalk 52: Nazismo e Socialismo – Voegelin contra Hitler e Stalin`,"http://sensoincomum.org/2019/09/18/olivertalk-nazismo-comunismo"],
+                [`Olivertalk 56: A corrupção da lei"`,"http://sensoincomum.org/2019/10/03/ideologia-corrupcao-voegelin"],
+                [`Palestra: Eric Voegelin e o cenário político atual`,"https://www.youtube.com/watch?v=VTuaoE4ol9M"],
+                [`Curso sobre a filosofia política em Eric Voegelin (parte 1 de 3)`,"https://youtu.be/xHRS-uSZN2g"],
+                [`Curso sobre a filosofia política em Eric Voegelin (parte 2 de 3)`,"https://youtu.be/1C1HX356EfE"],
+                [`Curso sobre a filosofia política em Eric Voegelin (parte 3 de 3)`,"https://youtu.be/oLh9p3mk-cc"],
+                [`Eric Voegelin - Estudos`,"https://www.youtube.com/playlist?list=PLrXaxgzvixjS2GjsbMM2VmAWykd_bE38n"],
+            ]
+        
+            var obj;
+            
+            try {
+                obj = localStorage.getItem("guides.EricVoegelin");
+            } catch {}
+            if(!obj) obj = {};
+        
+            var el = document.querySelector("ol#items");
+            items.forEach(x => {
+                var title = x[0];
+                var url = x[1];
+                var urlHash = x[1].hashCode();
+                var checked = !!obj[urlHash];
+                console.log(checked);
+                
+                var root = document.createElement("div");
+                root.innerHTML = `<h3>${title}</h3><input type="checkbox" ${checked ? "checked": ""}" data-url-hash="${urlHash}"/><a href="${url}">${url}</a>`;
+        
+                el.append(root);
+            });
+            el.addEventListener("input", function(e){
+                obj[e.target.dataset.urlHash] = e.target.checked;
+                try{
+                    localStorage.setItem(obj);
+                }catch {}
+            });
+        </script>
+    </body>
+</html>
 
-        el.append(root);
-    });
-    el.addEventListener("input", function(e){
-        obj[e.target.dataset.urlHash] = e.target.checked;
-        try{
-            localStorage.setItem(obj);
-        }catch {}
-    });
-</script>
