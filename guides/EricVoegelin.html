@@ -52,6 +52,7 @@
                 obj = localStorage.getItem(localStorageKey);
             } catch {}
             if(!obj) obj = {};
+            if(obj) obj = JSON.parse(obj);
         
             var el = document.querySelector("ol#items");
             items.forEach(x => {
