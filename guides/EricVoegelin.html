@@ -1,9 +1,54 @@
-<ol>
-    <li>https://www.youtube.com/watch?v=aMQ8PzyQ3-g</li>
-    <li>http://sensoincomum.org/2019/09/06/olivertalk-49-a-politica-como-religiao-introducao-a-eric-voegelin</li>
-    <li>http://sensoincomum.org/2019/09/18/olivertalk-nazismo-comunismo/</li>
-    <li>http://sensoincomum.org/2019/10/03/ideologia-corrupcao-voegelin</li>
-    <li>https://www.youtube.com/watch?v=VTuaoE4ol9M</li>
-    <li>https://www.youtube.com/watch?v=xHRS-uSZN2g&list=PLrXaxgzvixjS2GjsbMM2VmAWykd_bE38n&index=9&t=0s</li>
-    <li>https://www.youtube.com/playlist?list=PLrXaxgzvixjS2GjsbMM2VmAWykd_bE38n</li>
+<h1>Guia de Estudo: Eric Voegelin</h1>
+<ol id="items">    
 </ol>
+
+<script>
+    String.prototype.hashCode = function() {
+        var hash = 0, i, chr;
+        if (this.length === 0) return hash;
+        for (i = 0; i < this.length; i++) {
+            chr   = this.charCodeAt(i);
+            hash  = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to 32bit integer
+        }
+        return hash;
+    };
+    var items = [
+        [`André Barreto: "Eric Voegelin e as religiões políticas"`,"https://www.youtube.com/watch?v=aMQ8PzyQ3-g"],
+        [`OliverTalk 49: A Politica Como Religião: Introdução a Eric Voegelin"`,"http://sensoincomum.org/2019/09/06/olivertalk-49-a-politica-como-religiao-introducao-a-eric-voegelin"],
+        [`OliverTalk 52: Nazismo e Socialismo – Voegelin contra Hitler e Stalin`,"http://sensoincomum.org/2019/09/18/olivertalk-nazismo-comunismo"],
+        [`Olivertalk 56: A corrupção da lei"`,"http://sensoincomum.org/2019/10/03/ideologia-corrupcao-voegelin"],
+        [`Palestra: Eric Voegelin e o cenário político atual`,"https://www.youtube.com/watch?v=VTuaoE4ol9M"],
+        [`Curso sobre a filosofia política em Eric Voegelin (parte 1 de 3)`,"https://youtu.be/xHRS-uSZN2g"],
+        [`Curso sobre a filosofia política em Eric Voegelin (parte 2 de 3)`,"https://youtu.be/1C1HX356EfE"],
+        [`Curso sobre a filosofia política em Eric Voegelin (parte 3 de 3)`,"https://youtu.be/oLh9p3mk-cc"],
+        [`Eric Voegelin - Estudos`,"https://www.youtube.com/playlist?list=PLrXaxgzvixjS2GjsbMM2VmAWykd_bE38n"],
+    ]
+
+    var obj;
+    
+    try {
+        obj = localStorage.getItem("guides.EricVoegelin");
+    } catch {}
+    if(!obj) obj = {};
+
+    var el = document.querySelector("ol#items");
+    items.forEach(x => {
+        var title = x[0];
+        var url = x[1];
+        var urlHash = x[1].hashCode();
+        var checked = !!obj[urlHash];
+        console.log(checked);
+        
+        var root = document.createElement("div");
+        root.innerHTML = `<h3>${title}</h3><input type="checkbox" ${checked ? "checked": ""}" data-url-hash="${urlHash}"/><a href="${url}">${url}</a>`;
+
+        el.append(root);
+    });
+    el.addEventListener("input", function(e){
+        obj[e.target.dataset.urlHash] = e.target.checked;
+        try{
+            localStorage.setItem(obj);
+        }catch {}
+    });
+</script>
