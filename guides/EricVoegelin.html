@@ -62,7 +62,7 @@
                 var checked = !!obj[urlHash];
                 
                 var root = document.createElement("div");
-                root.innerHTML = `<h3>${title}</h3><input type="checkbox" ${checked ? "checked": ""}" data-url-hash="${urlHash}"/><a href="${url}">${url}</a>`;
+                root.innerHTML = `<h3>${title}</h3><input type="checkbox" ${checked ? "checked": ""} data-url-hash="${urlHash}"/><a href="${url}">${url}</a>`;
         
                 el.append(root);
             });
