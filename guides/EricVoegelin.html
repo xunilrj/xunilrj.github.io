@@ -67,7 +67,8 @@
             el.addEventListener("input", function(e){
                 obj[e.target.dataset.urlHash] = e.target.checked;
                 try{
-                    localStorage.setItem(obj);
+                    var json = JSON.stringify(obj);
+                    localStorage.setItem(json);
                 }catch {}
             });
         </script>
