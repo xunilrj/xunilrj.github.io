@@ -46,9 +46,10 @@
             ]
         
             var obj;
+            var localStorageKey = "guides.EricVoegelin";
             
             try {
-                obj = localStorage.getItem("guides.EricVoegelin");
+                obj = localStorage.getItem(localStorageKey);
             } catch {}
             if(!obj) obj = {};
         
@@ -68,7 +69,7 @@
                 obj[e.target.dataset.urlHash] = e.target.checked;
                 try{
                     var json = JSON.stringify(obj);
-                    localStorage.setItem(json);
+                    localStorage.setItem(localStorageKey, json);
                 }catch {}
             });
         </script>
