@@ -1,0 +1,79 @@
+<script>
+function embedmp3(element, file, startAt) {
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("audio");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+
+    setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        var allchapters = document.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        var current = allchapters[i - 1];
+        current.style.backgroundColor = "#ffffcc";
+    }, 1000);
+}
+</script>
+<script src="https://unpkg.com/lunr/lunr.js"></script><div><div>Search: </div><input id="searchInput"></input></div><div class="audioholder"></div><div><button onclick='embedmp3(this, "http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download")'>Ouvir este episódio</button></div><div data-chapterid="2006-12-04-0" data-chapterstart="40"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 40);">Ouvir esta parte</button><p><ul><li>Comentário ao Editorial do Diário do Comércio "Lembretes Indesejados", sobre: - as vitórias fáceis de Lula e de Chaves no continente</li><li>- histórico do sucesso esquerdista (OLAS, Foro de S. Paulo)</li><li>- causas da estagnação da direita (descaracterização ideológica, mimetismo do discurso da moda, falsa sensação de segurança, economicismo e indigência intelectual, entrega do ensino à esquerda).</li></ul></p></div><div data-chapterid="2006-12-04-1" data-chapterstart="272"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 272);">Ouvir esta parte</button><p><ul><li>Processo de ascensão da esquerda na A.L. Movimento revolucionário mundial.</li></ul></p></div><div data-chapterid="2006-12-04-2" data-chapterstart="362"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 362);">Ouvir esta parte</button><p><ul><li>Movimento revolucionário mundial (cont.). Fragmentação da direita.</li></ul></p></div><div data-chapterid="2006-12-04-3" data-chapterstart="460"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 460);">Ouvir esta parte</button><p><ul><li>Matança de dissidentes</li><li>KGB</li><li>Putin</li><li>espião envenenado morto em Londres</li><li>Pacto de solidariedade de Shangai (China, Rússia, países islâmicos e ONU). Mídia anti-americana nos EUA (New York Times, CNN, Washington Post).</li></ul></p></div><div data-chapterid="2006-12-04-4" data-chapterstart="690"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 690);">Ouvir esta parte</button><p><ul><li>Entrevistas com Yuri Vieira</li><li>Pastor Caio Fábio</li><li>Olavo não é simpatizante da TFP</li><li>raciocínio subjetivista típico do brasileiro</li><li>estudo objetivo da sociedade e da política se tornou quase impensável no Brasil.</li></ul></p></div><div data-chapterid="2006-12-04-5" data-chapterstart="900"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 900);">Ouvir esta parte</button><p><ul><li>Armindo Abreu</li><li>Livro "O Poder Secreto!"</li><li>questão sobre quem denunciou primeiro a existência do Foro de S. Paulo</li><li>conexão do Foro de S. Paulo com o "Diálogo Interamericano"</li><li>Dr. José Carlos Graça Wagner</li><li>fontes primárias (do FSP)</li><li>teoria do meta-capitalismo</li><li>"viadagem" do Sr. Armindo</li><li>inexistência de "mão secreta" que domina o mundo</li><li>influência do Sr. Armindo em círculos militares.</li></ul></p></div><div data-chapterid="2006-12-04-6" data-chapterstart="1414"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 1414);">Ouvir esta parte</button><p><ul><li>Opinião de Olavo sobre entrar em partido político para enfrentar a esquerda</li><li>esforço eleitoral isolado, fora de uma estratégia de longo prazo</li><li>dimensão histórica da ação política</li><li>imediatismo da direita</li><li>política eleitoral: superfície do processo</li><li>estratégia dos conservadores</li><li>ausência de projeto estratégico efetivo por parte da direita</li><li>estratégias de longo prazo superiores às imediatistas.</li></ul></p></div><div data-chapterid="2006-12-04-7" data-chapterstart="1800"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 1800);">Ouvir esta parte</button><p><ul><li>Universidades conservadoras nos EUA</li><li>site "Intellectual Conservative" (http://www.intellectualconservative.com/?19d0d128)</li><li>conservative colleges</li><li>hegemonia esquerdista na mídia brasileira.</li></ul></p></div><div data-chapterid="2006-12-04-8" data-chapterstart="1930"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 1930);">Ouvir esta parte</button><p><ul><li>Cristãos condenados no Paquistão por blasfêmia contra o Corão</li><li>perseguição aos cristãos no ocidente</li><li>assimetria (guerra assimétrica).</li></ul></p></div><div data-chapterid="2006-12-04-9" data-chapterstart="2060"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 2060);">Ouvir esta parte</button><p><ul><li>Apelos para que os EUA se retirassem do Iraque</li><li>exemplo do Vietnã</li><li>ocultamento por parte da mídia das atrocidades comunistas no Vietnã e Camboja</li><li>pacifismo assassino.</li></ul></p></div><div data-chapterid="2006-12-04-10" data-chapterstart="2196"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 2196);">Ouvir esta parte</button><p><ul><li>Conferência na Lipscomb University</li><li>teólogo Lee Camp</li><li>como viver pacificamente com os muçulmanos</li><li>Constituição Iraniana.</li></ul></p></div><div data-chapterid="2006-12-04-11" data-chapterstart="2308"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 2308);">Ouvir esta parte</button><p><ul><li>Emir Sader</li><li>Folha de S. Paulo</li><li>César Benjamim.</li></ul></p></div><div data-chapterid="2006-12-04-12" data-chapterstart="2450"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 2450);">Ouvir esta parte</button><p><ul><li>Reverendo Moon, diferença entre "opinião" e "conhecimento".</li></ul></p></div><div data-chapterid="2006-12-04-13" data-chapterstart="2569"><button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download', 2569);">Ouvir esta parte</button><p><ul><li>PSDB, esquerda fabiana</li><li>direita da esquerda.</li></ul></p></div><script>
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+
+var idx = lunr(function () {
+    this.ref('id')
+    this.field('text')
+    document.querySelectorAll("li").forEach(function (item) {
+        item.dataset.searchid = uuidv4();       
+        var obj = {
+            id: item.dataset.searchid,
+            text: item.innerText.toLowerCase()
+        };
+        this.add(obj);
+    }, this);
+});
+document.getElementById("searchInput")
+.addEventListener("input", function(e) {
+    var result = idx.search(e.target.value);
+    console.log(result);
+    if(result.length > 0){
+        var el = document.querySelector("[data-searchid='"+result[0].ref+"']");
+        console.log(el, el.parentNode.parentNode);
+        var startAt = parseInt(el.parentNode.parentNode.dataset.chapterstart);
+        embedmp3(document.querySelector('.audioholder'), "http://www.blogtalkradio.com/olavo/2006/12/04/true-outspeak.mp3?localembed=download", startAt);
+    }
+});  
+</script>
