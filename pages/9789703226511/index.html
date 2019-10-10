@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <title>Aristotle</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <meta property="og:title" content="Aristotle" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://xunilrj.github.io/covers/9789703226511.jpg" />
+    <meta property="og:url" content="https://xunilrj.github.io/pages/9789703226511/index.html" />
+    <meta property="og:description" content="Melhor livro sobre Aristóteles. não tem um problema na obra de Aristóteles que o autor não tenha percebido com muita clareza." />
+</head>
+<body>
+<script>
+function embedpdf(element, file) {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.onload = function() {
+        var loadingTask = pdfjsLib.getDocument(file);
+        loadingTask.promise.then(function(pdf) {
+            console.log(1);
+        });
+    }
+    script.src = 'https://unpkg.com/pdfjs-dist@2.0.943/build/pdf.min.js';
+    head.appendChild(script);
+}
+
+function embedyoutube(element, file, startAt) {    
+    var i = document.createElement("iframe");
+    i.width = "640";
+    i.height = "480px"
+    i.src = file;
+
+    var holder = element.parentNode.querySelector(".youtubeholder");
+    holder.innerHTML = "";
+    holder.appendChild(i);
+}
+
+function embedmp3(element, file, startAt) {    
+    var soundFile = document.createElement("audio");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = element.parentNode.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+}
+function ScrollTo(book){
+    if(book) {
+        var el = document.querySelectorAll("[id*='" + book + "']");
+        if(el[0]) el[0].scrollIntoView();
+    }
+}
+</script>
+<div><a href="../../livros.html">Ver mais livros</a></div>    <div style="padding: 10px" class="book">
+        <div>
+            <div style="display:inline-block">
+    <img src="../../covers/9789703226511.jpg" width="100px"/>
+</div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a id="Aristotle" href="../../pages/9789703226511/index.html">Aristotle</a></strong></div>
+                <div><span>Ingemar Düring</span></div>
+                <div>
+    <div id="gr_add_to_books">
+        <div class="gr_custom_each_container_">
+            <a target="_blank" style="border:none" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/isbn/9789703226511"><img src="https://www.goodreads.com/images/atmb_add_book-70x25.png" /></a>
+        </div>
+    </div>                    
+</div>                
+            </div>
+        </div>        
+                    <div style="padding:20px">
+                <div><strong>Olavo de Carvalho</strong></div>
+                <div style="padding-left:20px">
+                    <div>Melhor livro sobre Aristóteles. não tem um problema na obra de Aristóteles que o autor não tenha percebido com muita clareza.</div>
+                </div>
+                <div style="padding-left:20px">
+                    <a href="http://www.blogtalkradio.com/olavo/2007/07/16/true-outspeak.mp3?localembed=download">http://www.blogtalkradio.com/olavo/2007/07/16/true-outspeak.mp3?localembed=download</a>
+                </div>
+                <div style="padding-left:20px">
+                    <button class="pure-button" onclick="embedmp3(this, 'http://www.blogtalkradio.com/olavo/2007/07/16/true-outspeak.mp3?localembed=download', 1980)">
+                        Ouvir 
+                    </button>
+                    <a href="../../trueoutspeak.html?episode=2007-07-16" target="_blank">Mais sobre este episódio</a>
+                    <div class="audioholder">
+                    </div>
+                </div>
+            </div>
+            <div style="padding:20px">
+        <div><strong>Ver também</strong></div>
+        <ul>         <li>             <span>(Book) Aristoteles - Ingemar During (</span><a href="https://books.google.co.uk/books?id=Z9SrLUzJgSwC&printsec=frontcover#v=onepage&q&f=false">https://books.google.co.uk/books?id=Z9SrLUzJgSwC&printsec=frontcover#v=onepage&q&f=false</a><span>)</span>         </li>             <li>             <div>
+                <div>
+                    <span>Aristoteles - Ingemar During (</span><a href="https://www.youtube.com/watch?v=1IQD3Ft7Mi0">https://www.youtube.com/watch?v=1IQD3Ft7Mi0</a><span>)</span>   
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=1IQD3Ft7Mi0','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/1IQD3Ft7Mi0")'>Ver</button>
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>         </ul>
+    </div>
+        
+    </div>
