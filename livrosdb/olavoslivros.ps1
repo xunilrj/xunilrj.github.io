@@ -6,7 +6,7 @@ $books = Import-CSV "books.csv" -Delimiter ";" -Header "name","isbn","authors"
 $suggestions = Import-CSV "suggestion.csv" -Delimiter ";" -Header "from","to"
 $suggestionsLinks = Import-CSV "suggestion.links.csv" -Delimiter ";" -Header "from","url","title","summary"
 
-$dest = "F:/github/xunilrj.github.io"
+$dest = "D:/github/xunilrj.github.io"
 
 function getMP3File($date) {    
     if($date -is [System.String]) {
