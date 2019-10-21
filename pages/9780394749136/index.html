@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <title>The Civil War: A Narrative</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <meta property="og:title" content="The Civil War: A Narrative" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://xunilrj.github.io/covers/9780394749136.jpg" />
+    <meta property="og:url" content="https://xunilrj.github.io/pages/9780394749136/index.html" />
+    <meta property="og:description" content="História narrativa da Guerra Civil Americana. Pró-nortista, mas sem viés." />
+</head>
+<body>
+<script>
+function embedpdf(element, file) {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.onload = function() {
+        var loadingTask = pdfjsLib.getDocument(file);
+        loadingTask.promise.then(function(pdf) {
+            console.log(1);
+        });
+    }
+    script.src = 'https://unpkg.com/pdfjs-dist@2.0.943/build/pdf.min.js';
+    head.appendChild(script);
+}
+
+function embedyoutube(element, file, startAt) {    
+    var i = document.createElement("iframe");
+    i.width = "640";
+    i.height = "480px"
+    i.src = file;
+
+    var holder = element.parentNode.querySelector(".youtubeholder");
+    holder.innerHTML = "";
+    holder.appendChild(i);
+}
+
+function embedmp3(element, file, startAt) {    
+    var soundFile = document.createElement("audio");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = element.parentNode.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+}
+function ScrollTo(book){
+    if(book) {
+        var el = document.querySelectorAll("[id*='" + book + "']");
+        if(el[0]) el[0].scrollIntoView();
+    }
+}
+</script>
+<div><a href="../../livros.html">Ver mais livros</a></div>    <div style="padding: 10px" class="book">
+        <div>
+            <div style="display:inline-block">
+    <img src="../../covers/9780394749136.jpg" width="100px"/>
+</div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a id="The Civil War: A Narrative" href="../../pages/9780394749136/index.html">The Civil War: A Narrative</a></strong></div>
+                <div><span>Shelby Foote</span></div>
+                <div>
+    <div id="gr_add_to_books">
+        <div class="gr_custom_each_container_">
+            <a target="_blank" style="border:none" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/isbn/9780394749136"><img src="https://www.goodreads.com/images/atmb_add_book-70x25.png" /></a>
+        </div>
+    </div>                    
+</div>                
+            </div>
+        </div>        
+                    <div style="padding:20px">
+                <div><strong>Olavo de Carvalho</strong></div>
+                <div style="padding-left:20px">
+                    <div>História narrativa da Guerra Civil Americana. Pró-nortista, mas sem viés.</div>
+                </div>
+                <div style="padding-left:20px">
+                    <a href="http://www.blogtalkradio.com/olavo/2007/07/16/true-outspeak.mp3?localembed=download">http://www.blogtalkradio.com/olavo/2007/07/16/true-outspeak.mp3?localembed=download</a>
+                </div>
+                <div style="padding-left:20px">
+                    <button class="pure-button" onclick="embedmp3(this, 'http://www.blogtalkradio.com/olavo/2007/07/16/true-outspeak.mp3?localembed=download', 2220)">
+                        Ouvir 
+                    </button>
+                    <a href="../../trueoutspeak.html?episode=2007-07-16" target="_blank">Mais sobre este episódio</a>
+                    <div class="audioholder">
+                    </div>
+                </div>
+            </div>
+            <div style="padding:20px">
+        <div><strong>Ver também</strong></div>
+        <ul>         <li>             <span>(Book Review) Shelby Foote’s War Story (</span><a href="https://gardenandgun.com/articles/shelby-footes-war-story/">https://gardenandgun.com/articles/shelby-footes-war-story/</a><span>)</span>         </li>             <li>             <span>(Obituary) Shelby Foote, Historian and Novelist, Dies at 88 (</span><a href="https://www.nytimes.com/2005/06/29/books/shelby-foote-historian-and-novelist-dies-at-88.html">https://www.nytimes.com/2005/06/29/books/shelby-foote-historian-and-novelist-dies-at-88.html</a><span>)</span>         </li>             <li>             <div>
+                <div>
+                    <span>The Civil War - In Depth with Shelby Foote (</span><a href="https://www.youtube.com/watch?v=nQfKkCH_YoM">https://www.youtube.com/watch?v=nQfKkCH_YoM</a><span>)</span>   
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=nQfKkCH_YoM','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/nQfKkCH_YoM")'>Ver</button>
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>             <li>             <div>
+                <div>
+                    <span>Shelby Foote on The Great Compromise" (</span><a href="https://www.youtube.com/watch?v=_hF7MhEzADM">https://www.youtube.com/watch?v=_hF7MhEzADM</a><span>)</span>   
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=_hF7MhEzADM','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/_hF7MhEzADM")'>Ver</button>
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>             <li>             <div>
+                <div>
+                    <span>Shelby Foote & Walker Percy: Correspondence, Civil War, Quotes, Biography (1997) (</span><a href="https://youtu.be/ovspayOOzCA?list=PLdH3eYNvyv3ezN89yK3OtgVM4D5Ad7dpe">https://youtu.be/ovspayOOzCA?list=PLdH3eYNvyv3ezN89yK3OtgVM4D5Ad7dpe</a><span>)</span>                    
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=ovspayOOzCA?list=PLdH3eYNvyv3ezN89yK3OtgVM4D5Ad7dpe','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/ovspayOOzCA?list=PLdH3eYNvyv3ezN89yK3OtgVM4D5Ad7dpe")'>Ver</button>                                
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>             <li>             <span>Stars in Their Courses (</span><a href="https://www.c-span.org/video/?60099-1/stars-courses">https://www.c-span.org/video/?60099-1/stars-courses</a><span>)</span>         </li>         </ul>
+    </div>
+        
+    </div>
