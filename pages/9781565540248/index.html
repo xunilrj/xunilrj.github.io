@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <title>The South Was Right!</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <meta property="og:title" content="The South Was Right!" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://xunilrj.github.io/covers/9781565540248.jpg" />
+    <meta property="og:url" content="https://xunilrj.github.io/pages/9781565540248/index.html" />
+    <meta property="og:description" content="História narrativa da Guerra Civil Americana, com visão pró-sulista." />
+</head>
+<body>
+<script>
+function embedpdf(element, file) {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.onload = function() {
+        var loadingTask = pdfjsLib.getDocument(file);
+        loadingTask.promise.then(function(pdf) {
+            console.log(1);
+        });
+    }
+    script.src = 'https://unpkg.com/pdfjs-dist@2.0.943/build/pdf.min.js';
+    head.appendChild(script);
+}
+
+function embedyoutube(element, file, startAt) {    
+    var i = document.createElement("iframe");
+    i.width = "640";
+    i.height = "480px"
+    i.src = file;
+
+    var holder = element.parentNode.querySelector(".youtubeholder");
+    holder.innerHTML = "";
+    holder.appendChild(i);
+}
+
+function embedmp3(element, file, startAt) {    
+    var soundFile = document.createElement("audio");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = element.parentNode.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+}
+function ScrollTo(book){
+    if(book) {
+        var el = document.querySelectorAll("[id*='" + book + "']");
+        if(el[0]) el[0].scrollIntoView();
+    }
+}
+</script>
+<div><a href="../../livros.html">Ver mais livros</a></div>    <div style="padding: 10px" class="book">
+        <div>
+            <div style="display:inline-block">
+    <img src="../../covers/9781565540248.jpg" width="100px"/>
+</div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a id="The South Was Right!" href="../../pages/9781565540248/index.html">The South Was Right!</a></strong></div>
+                <div><span>James KennedyWalter Kennedy</span></div>
+                <div>
+    <div id="gr_add_to_books">
+        <div class="gr_custom_each_container_">
+            <a target="_blank" style="border:none" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/isbn/9781565540248"><img src="https://www.goodreads.com/images/atmb_add_book-70x25.png" /></a>
+        </div>
+    </div>                    
+</div>                
+            </div>
+        </div>        
+                    <div style="padding:20px">
+                <div><strong>Olavo de Carvalho</strong></div>
+                <div style="padding-left:20px">
+                    <div>História narrativa da Guerra Civil Americana, com visão pró-sulista.</div>
+                </div>
+                <div style="padding-left:20px">
+                    <a href="http://www.blogtalkradio.com/olavo/2007/07/16/true-outspeak.mp3?localembed=download">http://www.blogtalkradio.com/olavo/2007/07/16/true-outspeak.mp3?localembed=download</a>
+                </div>
+                <div style="padding-left:20px">
+                    <button class="pure-button" onclick="embedmp3(this, 'http://www.blogtalkradio.com/olavo/2007/07/16/true-outspeak.mp3?localembed=download', 2220)">
+                        Ouvir 
+                    </button>
+                    <a href="../../trueoutspeak.html?episode=2007-07-16" target="_blank">Mais sobre este episódio</a>
+                    <div class="audioholder">
+                    </div>
+                </div>
+            </div>
+            <div style="padding:20px">
+        <div><strong>Ver também</strong></div>
+        <ul>         <li>             <div>
+                <div>
+                    <span>Author Explanation of The South Was Right"" (</span><a href="https://www.youtube.com/watch?v=aA0CpcCium0">https://www.youtube.com/watch?v=aA0CpcCium0</a><span>)</span>   
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=aA0CpcCium0','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/aA0CpcCium0")'>Ver</button>
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>             <li>             <div>
+                <div>
+                    <span>Pelican Publishing Interview with Walter Donald Kennedy and James Ronald Kennedy (</span><a href="https://www.youtube.com/watch?v=ioKQkWfMR9c">https://www.youtube.com/watch?v=ioKQkWfMR9c</a><span>)</span>   
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=ioKQkWfMR9c','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/ioKQkWfMR9c")'>Ver</button>
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>             <li>             <div>
+                <div>
+                    <span>Pelican Publishing Interview #2 with James Ronald Kennedy and Walter Donald Kennedy (</span><a href="https://www.youtube.com/watch?v=PPf0k-rN4L8">https://www.youtube.com/watch?v=PPf0k-rN4L8</a><span>)</span>   
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=PPf0k-rN4L8','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/PPf0k-rN4L8")'>Ver</button>
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>             <li>             <div>
+                <div>
+                    <span>Pelican Publishing Interview #3 with authors of THE SOUTH WAS RIGHT (</span><a href="https://www.youtube.com/watch?v=AvyReiU5bg4">https://www.youtube.com/watch?v=AvyReiU5bg4</a><span>)</span>   
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=AvyReiU5bg4','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/AvyReiU5bg4")'>Ver</button>
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>             <li>             <div>
+                <div>
+                    <span>Pelican Publishing Interview #4 with Walter Donald Kennedy and James Ronald Kennedy (</span><a href="https://www.youtube.com/watch?v=zEGSAlmmD9o">https://www.youtube.com/watch?v=zEGSAlmmD9o</a><span>)</span>   
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=zEGSAlmmD9o','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/zEGSAlmmD9o")'>Ver</button>
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>         </ul>
+    </div>
+        
+    </div>
