@@ -12,7 +12,7 @@ function getMP3File($date) {
     if($date -is [System.String]) {
         $date = [System.DateTime]::ParseExact($date, "yyyy-MM-dd", [System.Globalization.CultureInfo]::new("en-us")).Date
     }
-    "http://www.blogtalkradio.com/olavo/$($date.Year)/$($date.Month.ToString("D2"))/$($date.Day.ToString("D2"))/true-outspeak.mp3?localembed=download"
+    "https://www.blogtalkradio.com/olavo/$($date.Year)/$($date.Month.ToString("D2"))/$($date.Day.ToString("D2"))/true-outspeak.mp3?localembed=download"
 }
 
 function GetImage($name,$size=100,$imgPrefix = ".")

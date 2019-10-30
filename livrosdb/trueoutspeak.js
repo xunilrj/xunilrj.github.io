@@ -1,5 +1,7 @@
 var fs = require('fs');
 var csvParse = require("csv-parse/lib/sync");
+var parser = require('subtitles-parser');
+
 
 function padLeft(number, n)
 {
@@ -13,6 +15,8 @@ csvParse(csv,{columns:["name","isbn","author"], delimiter: ';', bom: true}).forE
 });
 
 var html = [];
+function insertHeader(html)
+{
 html.push(`
 <html>
 <head>
@@ -54,7 +58,7 @@ function embedmp3(element, file, startAt, force) {
         return;
     }
 
-    var soundFile = document.createElement("audio");
+    var soundFile = document.createElement("video");
     soundFile.preload = "auto";
     soundFile.controls = true;
     soundFile.style = "width: 600px;";
@@ -75,10 +79,11 @@ function embedmp3(element, file, startAt, force) {
     soundFile.play();
 
     window.soundFile = soundFile;
-    window.episodeEl = element;
+    window.episodeEl = document.querySelector(\`[data-episodeurl=\"\${file}\"\`);
 
     window.interval = setInterval(function(){
         var currentTime = soundFile.currentTime;
+        console.log(currentTime);
         var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
         allchapters.forEach(function(x){
             x.style.backgroundColor = "white";
@@ -89,12 +94,17 @@ function embedmp3(element, file, startAt, force) {
             var startTime = parseInt(current.dataset.chapterstart);
             if(currentTime < startTime) break;
         }
-        var current = allchapters[i - 1];
-        current.style.backgroundColor = "#ffffcc";
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
     }, 1000);
 }
 </script>
 `);
+}
+insertHeader(html);
 
 html.push(`<script src="https://unpkg.com/lunr/lunr.js"></script>`);
 html.push(`<body style="margin-top:200px">`);
@@ -105,9 +115,11 @@ html.push(`<ul id="searchResult"></ul>`);
 html.push(`<div class="audioholder"><audio></audio></div>`);
 html.push(`</div>`);
 
-function insertEpisode(year, month, day, file)
+function insertEpisode(year, month, day, file, html)
 {
-    var url = `http://www.blogtalkradio.com/olavo/${padLeft(year, 4)}/${padLeft(month, 2)}/${padLeft(day, 2)}/true-outspeak.mp3?localembed=download`;
+    var url = `http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%20${padLeft(day, 2)}%20${padLeft(month, 2)}%20${padLeft(year, 4)}.mp4`;
+    var vtt = `D:/courses/sites/OlavoDeCarvalho/TrueOutspeak/fromyoutube/TrueOutspeak ${padLeft(day, 2)} ${padLeft(month, 2)} ${padLeft(year, 4)}.pt.srt`;
+    //var url = `http://www.blogtalkradio.com/olavo/${padLeft(year, 4)}/${padLeft(month, 2)}/${padLeft(day, 2)}/true-outspeak.mp3?localembed=download`;
     
     var json = {};
     var specialFile = `trueoutspeak/${padLeft(year, 4)}.${padLeft(month, 2)}.${padLeft(day, 2)}.json`;
@@ -127,7 +139,33 @@ function insertEpisode(year, month, day, file)
     html.push(`<button onclick='embedmp3(this.parentNode, "${url}")'>Ouvir este episódio</button>\n`);
     html.push(`</div>\n`);
     html.push(`<div data-episodeurl="${url}">\n`);
+
+    function toSeconds(hms)
+    {
+        var a = hms.split(':'); // split it at the colons
+        var s = a[2].split(",")[0];
+        return (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+s); 
+    }
+    var vttchapters;
+    try
+    {
+        var srt = fs.readFileSync(vtt,'utf8');
+        vttchapters = parser.fromSrt(srt);
+        vttchapters.forEach(x => {
+            x.startTime = toSeconds(x.startTime);
+            x.endTime = toSeconds(x.endTime);
+        });
+    }
+    catch(e)
+    {
+        //console.error(e)
+    }
+
     json.chapters.forEach((x,i) => {
+        var endTime = json.chapters[i+1];
+        if(!endTime) endTime = 9999999999;
+        else endTime = endTime.end_time;
+
         var id = `${padLeft(year, 4)}-${padLeft(month, 2)}-${padLeft(day, 2)}-${i}`;
         html.push(`<div data-chapterid="${id}" data-chapterstart="${x.start_time}">\n`);
         html.push(`<button onclick="embedmp3(document.querySelector('.audioholder'), '${url}', ${x.start_time});">Ouvir esta parte</button>\n`);
@@ -173,6 +211,20 @@ function insertEpisode(year, month, day, file)
         }
         html.push(`</ul></p>\n`);
         html.push(`</div>\n`);
+
+       
+
+        if(vttchapters){
+            html.push(`<p>\n`);
+            var subtitles = vttchapters.filter(xx => xx.startTime >= x.start_time && xx.endTime <= endTime )
+            //console.log(x.start_time, endTime, subtitles);
+            subtitles.forEach(x => {
+                html.push(`<span>`);
+                html.push(x.text);
+                html.push(`</span>`);
+            });
+            html.push(`</p>\n`);
+        }
     });
     html.push(`</div>`);
 }
@@ -182,14 +234,20 @@ fs.readdirSync("trueoutspeak").forEach(x => {
     var month = 12;
     var day = 04
     var r = x.match(/\d\d\d (?<YEAR>\d\d\d\d)-(?<MONTH>\d\d)-(?<DAY>\d\d) Olavo de Carvalho-............info.json/);
+
+    var episodehtml = [];
+    insertHeader(episodehtml);
+    episodehtml.push(`<div class="audioholder"><audio></audio></div>`);
+
     if(r && r.index === 0)
     {
-        insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x);
+        insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, html);
+        insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, episodehtml);
+        fs.writeFileSync(`episodes/${r.groups.YEAR}-${r.groups.MONTH}-${r.groups.DAY}.html`, episodehtml.join(""));
     }
     var r = x.match(/True( )?Outspeak -( Olavo de Carvalho -)? (?<DAY>\d?\d) de (?<MONTH>[a-zA-Zç]+?) de (?<YEAR>\d\d\d\d)(.*?).json/);
     if(r && r.index === 0)
     {
-        
         if(r.groups.MONTH == "janeiro") r.groups.MONTH = 1;
         if(r.groups.MONTH == "fevereiro") r.groups.MONTH = 2;
         if(r.groups.MONTH == "março") r.groups.MONTH = 3;
@@ -202,8 +260,12 @@ fs.readdirSync("trueoutspeak").forEach(x => {
         if(r.groups.MONTH == "outubro") r.groups.MONTH = 10;
         if(r.groups.MONTH == "novembro") r.groups.MONTH = 11;
         if(r.groups.MONTH == "dezembro") r.groups.MONTH = 12;
-        insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x);
+        insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, html);
+        
+        insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, episodehtml);
+        fs.writeFileSync(`episodes/${r.groups.YEAR}-${r.groups.MONTH}-${r.groups.DAY}.html`, episodehtml.join(""));
     }
+    
 });
 
 html.push(`<script>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <title>La agonía del Psicoanálisis</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <meta property="og:title" content="La agonía del Psicoanálisis" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://xunilrj.github.io/covers/B00525FWCO.jpg" />
+    <meta property="og:url" content="https://xunilrj.github.io/pages/B00525FWCO/index.html" />
+    <meta property="og:description" content="Em geral há um consenso de que psicanálise não é ciência, e esse livro fala sobre isso." />
+</head>
+<body>
+<script>
+function embedpdf(element, file) {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.onload = function() {
+        var loadingTask = pdfjsLib.getDocument(file);
+        loadingTask.promise.then(function(pdf) {
+            console.log(1);
+        });
+    }
+    script.src = 'https://unpkg.com/pdfjs-dist@2.0.943/build/pdf.min.js';
+    head.appendChild(script);
+}
+
+function embedyoutube(element, file, startAt) {    
+    var i = document.createElement("iframe");
+    i.width = "640";
+    i.height = "480px"
+    i.src = file;
+
+    var holder = element.parentNode.querySelector(".youtubeholder");
+    holder.innerHTML = "";
+    holder.appendChild(i);
+}
+
+function embedmp3(element, file, startAt) {    
+    var soundFile = document.createElement("audio");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = element.parentNode.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+}
+function ScrollTo(book){
+    if(book) {
+        var el = document.querySelectorAll("[id*='" + book + "']");
+        if(el[0]) el[0].scrollIntoView();
+    }
+}
+</script>
+<div><a href="../../livros.html">Ver mais livros</a></div>    <div style="padding: 10px" class="book">
+        <div>
+            <div style="display:inline-block">
+    <img src="../../covers/B00525FWCO.jpg" width="100px"/>
+</div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a id="La agonía del Psicoanálisis" href="../../pages/B00525FWCO/index.html">La agonía del Psicoanálisis</a></strong></div>
+                <div><span>Juan José López Ibor</span></div>
+                <div>
+    <div id="gr_add_to_books">
+        <div class="gr_custom_each_container_">
+            <a target="_blank" style="border:none" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/isbn/B00525FWCO"><img src="https://www.goodreads.com/images/atmb_add_book-70x25.png" /></a>
+        </div>
+    </div>                    
+</div>                
+            </div>
+        </div>        
+                    <div style="padding:20px">
+                <div><strong>Olavo de Carvalho</strong></div>
+                <div style="padding-left:20px">
+                    <div>Em geral há um consenso de que psicanálise não é ciência, e esse livro fala sobre isso.</div>
+                </div>
+                <div style="padding-left:20px">
+                    <a href="https://www.blogtalkradio.com/olavo/2007/07/16/true-outspeak.mp3?localembed=download">https://www.blogtalkradio.com/olavo/2007/07/16/true-outspeak.mp3?localembed=download</a>
+                </div>
+                <div style="padding-left:20px">
+                    <button class="pure-button" onclick="embedmp3(this, 'https://www.blogtalkradio.com/olavo/2007/07/16/true-outspeak.mp3?localembed=download', 2640)">
+                        Ouvir 
+                    </button>
+                    <a href="../../trueoutspeak.html?episode=2007-07-16" target="_blank">Mais sobre este episódio</a>
+                    <div class="audioholder">
+                    </div>
+                </div>
+            </div>
+            <div style="padding:20px">
+        <div><strong>Ver também</strong></div>
+        <ul>         <li> <p>"En la reunión de médicos y naturalistas alemanes que se celebró en Konisberg en septiembre de 1930, Oswald Bumke recapituló su crítica acerta del psicoanálisis, diseminada has entonces en varias de sus publicaciones; en toda su comunicación, como en su libro publicado poco después, expone, con la tersura peculiar de su estilo, una repulsa tan viva contra todo el sistema que llega a sentar la afirmación categórica de que el psicoanálisis no sólo no es ciencia natural, sino que ni siquiera merece la designación de ciencia para quienes no osan penetrar en el camino de la investigación, sin ahincarse en el rigor de unas demonstraciones."</p>             <span>Exégesis del complejo de Edipo (Sobre el psicoanálisis) (</span><a href="https://www.actaspsiquiatria.es/PDFS/SUPLEMENTOS/especial/La_obra_de_Juan_Jose_Lopez-Ibor.pdf">https://www.actaspsiquiatria.es/PDFS/SUPLEMENTOS/especial/La_obra_de_Juan_Jose_Lopez-Ibor.pdf</a><span>)</span>         </li>             <li>             <span>En el centenario de López Ibor (</span><a href="https://elpais.com/diario/2006/05/09/salud/1147125606_850215.html">https://elpais.com/diario/2006/05/09/salud/1147125606_850215.html</a><span>)</span>         </li>             <li>             <span>(Biografia) Juan José López Ibor (</span><a href="https://www.biografiasyvidas.com/biografia/l/lopez_ibor.htm">https://www.biografiasyvidas.com/biografia/l/lopez_ibor.htm</a><span>)</span>         </li>         </ul>
+    </div>
+        
+    </div>
