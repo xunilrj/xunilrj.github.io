@@ -12,7 +12,8 @@ function getMP3File($date) {
     if($date -is [System.String]) {
         $date = [System.DateTime]::ParseExact($date, "yyyy-MM-dd", [System.Globalization.CultureInfo]::new("en-us")).Date
     }
-    "https://www.blogtalkradio.com/olavo/$($date.Year)/$($date.Month.ToString("D2"))/$($date.Day.ToString("D2"))/true-outspeak.mp3?localembed=download"
+    "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%20$($date.Day.ToString("D2"))%20$($date.Month.ToString("D2"))%20$($date.Year).mp4"
+    #"https://www.blogtalkradio.com/olavo/$($date.Year)/$($date.Month.ToString("D2"))/$($date.Day.ToString("D2"))/true-outspeak.mp3?localembed=download"
 }
 
 function GetImage($name,$size=100,$imgPrefix = ".")
@@ -196,7 +197,7 @@ function embedyoutube(element, file, startAt) {
 }
 
 function embedmp3(element, file, startAt) {    
-    var soundFile = document.createElement("audio");
+    var soundFile = document.createElement("video");
     soundFile.preload = "auto";
     soundFile.controls = true;
     soundFile.style = "width: 600px;";

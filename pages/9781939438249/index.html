@@ -37,7 +37,7 @@ function embedyoutube(element, file, startAt) {
 }
 
 function embedmp3(element, file, startAt) {    
-    var soundFile = document.createElement("audio");
+    var soundFile = document.createElement("video");
     soundFile.preload = "auto";
     soundFile.controls = true;
     soundFile.style = "width: 600px;";
@@ -87,10 +87,10 @@ function ScrollTo(book){
                     <div>Já se vê a atuação dos Rockfeller's desde os anos 40 e 50.</div>
                 </div>
                 <div style="padding-left:20px">
-                    <a href="https://www.blogtalkradio.com/olavo/2007/01/15/true-outspeak.mp3?localembed=download">https://www.blogtalkradio.com/olavo/2007/01/15/true-outspeak.mp3?localembed=download</a>
+                    <a href="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4">http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4</a>
                 </div>
                 <div style="padding-left:20px">
-                    <button class="pure-button" onclick="embedmp3(this, 'https://www.blogtalkradio.com/olavo/2007/01/15/true-outspeak.mp3?localembed=download', 3060)">
+                    <button class="pure-button" onclick="embedmp3(this, 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4', 3060)">
                         Ouvir 
                     </button>
                     <a href="../../trueoutspeak.html?episode=2007-01-15" target="_blank">Mais sobre este episódio</a>
