@@ -1,0 +1,175 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2009-06-08">2009/06/08</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4">
+<div data-chapterid="2009-06-08-0" data-chapterstart="13">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 13);">Ouvir esta parte</button>
+<p><ul>
+<li>Sobre matéria comentadas nos programas (<a href="http://www.midiasemmascara.org/true-outspeak.html">http://www.midiasemmascara.org/true-outspeak.html</a>(<a href="http://web.archive.org/web/2009060800000/http://www.midiasemmascara.org/true-outspeak.html" target="_blank">@webarchive</a>))</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-1" data-chapterstart="70">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 70);">Ouvir esta parte</button>
+<p><ul>
+<li>LifeSiteNews em português (<a href="http://noticiasprofamilia.blogspot.com.br/">http://noticiasprofamilia.blogspot.com.br/</a>(<a href="http://web.archive.org/web/2009060800000/http://noticiasprofamilia.blogspot.com.br/" target="_blank">@webarchive</a>))</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-2" data-chapterstart="112">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 112);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, 9/11 Arábia Saudita</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-3" data-chapterstart="440">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 440);">Ouvir esta parte</button>
+<p><ul>
+<li>Criacionismo, Kent Hovind</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-4" data-chapterstart="491">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 491);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, elegibilidade</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-5" data-chapterstart="645">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 645);">Ouvir esta parte</button>
+<p><ul>
+<li>Crimes de ódio, 3 inversões que constituem a Mentalidade Revolucionária</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-6" data-chapterstart="853">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 853);">Ouvir esta parte</button>
+<p><ul>
+<li>Eric Voegelin, Lynn Thorndike: Historia da Magia e Ciência Experimental (Livro), Mentalidade revolucionária, Adam Weishaupt, Karl Marx, Bruno Garschagen</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-7" data-chapterstart="1541">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 1541);">Ouvir esta parte</button>
+<p><ul>
+<li>Peter Gay, Iluminismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-8" data-chapterstart="1846">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 1846);">Ouvir esta parte</button>
+<p><ul>
+<li>Movimento Gay, Valores familiares</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-9" data-chapterstart="2441">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 2441);">Ouvir esta parte</button>
+<p><ul>
+<li>Direito a propriedade, Princípios morais</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-10" data-chapterstart="2817">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 2817);">Ouvir esta parte</button>
+<p><ul>
+<li>Morgana Gomes, Joseph McCarthy, Albert Einstein</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-11" data-chapterstart="2901">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 2901);">Ouvir esta parte</button>
+<p><ul>
+<li>Vilém Flusser</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-12" data-chapterstart="2965">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 2965);">Ouvir esta parte</button>
+<p><ul>
+<li>Visto Americano</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-08-13" data-chapterstart="3006">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2006%202009.mp4', 3006);">Ouvir esta parte</button>
+<p><ul>
+<li>Jornalistas, Ditadura militar, Sentimento de admiração</li>
+</ul></p>
+</div>
+</div>

@@ -1,0 +1,181 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-04-21">2008/04/21</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4">
+<div data-chapterid="2008-04-21-0" data-chapterstart="12">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 12);">Ouvir esta parte</button>
+<p><ul>
+<li>General Augusto Heleno, Forças Armadas</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-1" data-chapterstart="119">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 119);">Ouvir esta parte</button>
+<p><ul>
+<li>Homossexualismo, ONU, Poligamia, Inglaterra</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-2" data-chapterstart="433">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 433);">Ouvir esta parte</button>
+<p><ul>
+<li>Vigilância Democrática (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-3" data-chapterstart="509">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 509);">Ouvir esta parte</button>
+<p><ul>
+<li>Constituição Federal, Propriedade Privada, MST, Sovietes, Lênin</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-4" data-chapterstart="695">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 695);">Ouvir esta parte</button>
+<p><ul>
+<li>Pensamento Conservador, George W. Bush, Papa Bento XVI, National Review, The American Spectator, Human Events, Al Gore, União Norte-americana, José Serra</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-5" data-chapterstart="993">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 993);">Ouvir esta parte</button>
+<p><ul>
+<li>Gênios literários, Debates públicos, Modificações estruturais, Política indigenista, Reserva Raposa Terra do Sol, Lula, Convivência, Viena, Universidade de Paris, Herberto Sales, Aurélio Buarque de Holanda Ferreira</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-6" data-chapterstart="1519">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 1519);">Ouvir esta parte</button>
+<p><ul>
+<li>Dan Scott, Santo Tomás de Aquino, Essência, Heresias</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-7" data-chapterstart="1692">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 1692);">Ouvir esta parte</button>
+<p><ul>
+<li>Pseudo-Nacionalismo, Brigadeiro Ferolla, Ditadura, Jair Bolsonaro, Mário Andreazza, Alaor Café</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-8" data-chapterstart="2068">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 2068);">Ouvir esta parte</button>
+<p><ul>
+<li>Helio Schwartzman, Caso Eloá, Crianças, Johan Huizinga, Darwinismo, Livre arbítrio, Aborto, Paul Ilie, "The age of Minerva" (Livro), Iluminismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-9" data-chapterstart="2609">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 2609);">Ouvir esta parte</button>
+<p><ul>
+<li>Israel, Palestina, Territórios muçulmanos, Imigração, Muçulmanos escravagistas</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-10" data-chapterstart="2785">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 2785);">Ouvir esta parte</button>
+<p><ul>
+<li>Solução global, Nacional Bolchevismo, Alexandre Duguin, Libertários, Movimento revolucionário</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-11" data-chapterstart="2978">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 2978);">Ouvir esta parte</button>
+<p><ul>
+<li>Física Quântica, Princípio do terceiro excluso, Contradições, Edmund Husserl, "Logical investigations" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-12" data-chapterstart="3125">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 3125);">Ouvir esta parte</button>
+<p><ul>
+<li>Mário Ferreira dos Santos, Princípios filosóficos, Filosofia escolástica, Kant, Santo Anselmo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-13" data-chapterstart="3309">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 3309);">Ouvir esta parte</button>
+<p><ul>
+<li>Georges Gurdieff</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-21-14" data-chapterstart="3366">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2004%202008.mp4', 3366);">Ouvir esta parte</button>
+<p><ul>
+<li>Astrologia, Conselheiros, Julios Evola, Islamismo</li>
+</ul></p>
+</div>
+</div>

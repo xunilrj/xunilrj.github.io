@@ -1,0 +1,163 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-03-17">2008/03/17</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4">
+<div data-chapterid="2008-03-17-0" data-chapterstart="17">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4', 17);">Ouvir esta parte</button>
+<p><ul>
+<li>Condoleezza Rice, Governos esquerdistas, Antiamericanismo, Escola de</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-17-1" data-chapterstart="535">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4', 535);">Ouvir esta parte</button>
+<p><ul>
+<li>Rafael Correa</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-17-2" data-chapterstart="599">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4', 599);">Ouvir esta parte</button>
+<p><ul>
+<li>Aristóteles, "Órganon" (Livro), Pinharonda Gomes, "Metafísica" (Livro) - Giovannni Reale, Jonathan Barnes</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-17-3" data-chapterstart="711">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4', 711);">Ouvir esta parte</button>
+<p><ul>
+<li>Homeschooling</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-17-4" data-chapterstart="864">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4', 864);">Ouvir esta parte</button>
+<p><ul>
+<li>João Pedro Stédile</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-17-5" data-chapterstart="980">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4', 980);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Jeremiah Wright, Escravidão, África, Árabes, Bill Clinton, Alan</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-17-6" data-chapterstart="1397">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4', 1397);">Ouvir esta parte</button>
+<p><ul>
+<li>Gramscianismo, frei Betto, Inversão, KGB, Igreja católica, Ricardo de la Cierva, "Las puertas del Infierno" (Livro), The Salisbury Review, Alexander Boot, "Same old Russia, same old lies" (Artigo) , Senador Gerson Camata, Sebastião Salgado, Capitalismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-17-7" data-chapterstart="1912">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4', 1912);">Ouvir esta parte</button>
+<p><ul>
+<li>Diógenes Carvalho Oliveira, Capitão Chandler, VPR, Quartim de Moraes, Orlando Lovecchio, Dilma Rousseff, Graciliano Ramos, "Vidas Secas" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-17-8" data-chapterstart="2388">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4', 2388);">Ouvir esta parte</button>
+<p><ul>
+<li>Tiragem de jornais</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-17-9" data-chapterstart="2666">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4', 2666);">Ouvir esta parte</button>
+<p><ul>
+<li>Paulo Francis, Samuel Wainer, Liberdade, Ditadura</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-17-10" data-chapterstart="3156">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4', 3156);">Ouvir esta parte</button>
+<p><ul>
+<li>Karl Marx</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-17-11" data-chapterstart="3255">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2003%202008.mp4', 3255);">Ouvir esta parte</button>
+<p><ul>
+<li>Oriente Médio, Israel, Direito Humanos, Mentalidade revolucionária,</li>
+</ul></p>
+</div>
+</div>

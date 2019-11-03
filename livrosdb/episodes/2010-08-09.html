@@ -1,0 +1,145 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-08-09">2010/08/09</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2008%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2008%202010.mp4">
+<div data-chapterid="2010-08-09-0" data-chapterstart="60">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2008%202010.mp4', 60);">Ouvir esta parte</button>
+<p><ul>
+<li>avisos, The Inter American, objetivo do True Outspeak</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-09-1" data-chapterstart="450">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2008%202010.mp4', 450);">Ouvir esta parte</button>
+<p><ul>
+<li>Encontrar amigos com os mesmos objetivos, amizade, Santo Tomás de Aquino</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-09-2" data-chapterstart="1615">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2008%202010.mp4', 1615);">Ouvir esta parte</button>
+<p><ul>
+<li>Taxas de infertilidade nos EUA, imitação de condutas idiotas, valores e hábitos são ditados pela mídia, culto da vida adolescente sem responsabilidades</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-09-3" data-chapterstart="1775">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2008%202010.mp4', 1775);">Ouvir esta parte</button>
+<p><ul>
+<li>diferenças entre comunismo e socialismo, essência do socialismo, socialismo fascista, Alemanha nazista, hoje no Brasil se aplica o regime socialista, existe democracia socialista?, Sérgio Britto: "O palco dos outros" (livro), social democracia, Janer Cristaldo: "O paraíso sexual democrata" (livro), Suécia</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-09-4" data-chapterstart="2200">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2008%202010.mp4', 2200);">Ouvir esta parte</button>
+<p><ul>
+<li>Proposta Serra (no site do PSDB), candidatura presidencial, PSDB faz parte do esquema com o PT, USP, Rockefeller</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-09-5" data-chapterstart="2380">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2008%202010.mp4', 2380);">Ouvir esta parte</button>
+<p><ul>
+<li>60% da população dos EUA tem certeza que Obama não nasceu nos EUA, Hugo Chávez, empresas brasileiras na Venezuela, Alemanha nazista, Thyssen, Abílio Diniz, MIR, PT</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-09-6" data-chapterstart="2700">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2008%202010.mp4', 2700);">Ouvir esta parte</button>
+<p><ul>
+<li>Juan Manoel Santos, Colômbia, FARC, Lula, essência de uma guerrilha, Uribe, movimento revolucionário</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-09-7" data-chapterstart="3205">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2008%202010.mp4', 3205);">Ouvir esta parte</button>
+<p><ul>
+<li>Yves Hublet, como lutar, planos do PT para implantar socialismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-09-8" data-chapterstart="3400">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2008%202010.mp4', 3400);">Ouvir esta parte</button>
+<p><ul>
+<li>jornalistas cúmplices de Obama receberam dinheiro de George Soros, relevância dos blogs</li>
+</ul></p>
+</div>
+</div>

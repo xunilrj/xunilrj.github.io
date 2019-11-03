@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-06-04">2007/06/04</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2006%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2006%202007.mp4">
+<div data-chapterid="2007-06-04-0" data-chapterstart="678">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2006%202007.mp4', 678);">Ouvir esta parte</button>
+<p><ul>
+<li>John Lukacs, George W. Bush</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-04-1" data-chapterstart="869">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2006%202007.mp4', 869);">Ouvir esta parte</button>
+<p><ul>
+<li>Padre Paulo Ricardo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-04-2" data-chapterstart="985">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2006%202007.mp4', 985);">Ouvir esta parte</button>
+<p><ul>
+<li>Luis Fernando Torres, Foro de São Paulo, Mídia esquerdista, Arnaldo Jabor, Lula, Agentes de influência, Uribe</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-04-3" data-chapterstart="1897">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2006%202007.mp4', 1897);">Ouvir esta parte</button>
+<p><ul>
+<li>"Brasil para todos", Católicas pelo Direito de Decidir, Grupo Gay da Bahia, Homofobia</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-04-4" data-chapterstart="2331">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2006%202007.mp4', 2331);">Ouvir esta parte</button>
+<p><ul>
+<li>Julgamento de Nuremberg, Stálin</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-04-5" data-chapterstart="2575">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2006%202007.mp4', 2575);">Ouvir esta parte</button>
+<p><ul>
+<li>Julio Severo, Pastor Ademir Kreutzfeld, Grupos gnósticos, Apóstolos de Cambridge, Distinção moral, Liberdade de consciência, Marcelo Crivela</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-04-6" data-chapterstart="3371">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2006%202007.mp4', 3371);">Ouvir esta parte</button>
+<p><ul>
+<li>Victor Frankl</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-04-7" data-chapterstart="3442">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2006%202007.mp4', 3442);">Ouvir esta parte</button>
+<p><ul>
+<li>Crianças pregadoras</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-04-8" data-chapterstart="3513">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2006%202007.mp4', 3513);">Ouvir esta parte</button>
+<p><ul>
+<li>Isaac Newton, "Nas origens da burrice ocidental" (Artigo)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-04-9" data-chapterstart="3622">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2006%202007.mp4', 3622);">Ouvir esta parte</button>
+<p><ul>
+<li>Mário Ferreira dos Santos, Filosofia concreta, Georg Cantor, Transfinitos, Lógicas paradoxais</li>
+</ul></p>
+</div>
+</div>

@@ -1,0 +1,199 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-03-31">2008/03/31</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4">
+<div data-chapterid="2008-03-31-0" data-chapterstart="22">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 22);">Ouvir esta parte</button>
+<p><ul>
+<li>Estados Unidos, Diplomacia, Departamento de Estado, Franklin Roosevelt, New Deal, União Soviética</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-1" data-chapterstart="410">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 410);">Ouvir esta parte</button>
+<p><ul>
+<li>Anti-tabagismo, Holanda, Maconha, Tráfico de drogas, Forces (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-2" data-chapterstart="656">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 656);">Ouvir esta parte</button>
+<p><ul>
+<li>Setor imobiliário, Federal Reserve, Inglaterra, Comissões técnicas, Reserva Raposa do Sol, ONGs, ONU, PT, Globalismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-3" data-chapterstart="851">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 851);">Ouvir esta parte</button>
+<p><ul>
+<li>Yuri Bezmenov, "Love letters to America" (Livro) - Ideologia, Democracia , Jeremiah Wright, Sociedade Fechada, Guerra assimétrica, Ação política, Disputa de poder, Quartim de Moraes, Capitão Chandler</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-4" data-chapterstart="1130">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 1130);">Ouvir esta parte</button>
+<p><ul>
+<li>Leis, Sistema COC de Ensino, Hugo von Hofmannsthal, Natureza</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-5" data-chapterstart="1517">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 1517);">Ouvir esta parte</button>
+<p><ul>
+<li>Inveja, "Dialética da inveja" (Artigo)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-6" data-chapterstart="1934">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 1934);">Ouvir esta parte</button>
+<p><ul>
+<li>Curso de Filosofia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-7" data-chapterstart="1977">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 1977);">Ouvir esta parte</button>
+<p><ul>
+<li>Carlos Mariguella, TV Cultura</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-8" data-chapterstart="2153">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 2153);">Ouvir esta parte</button>
+<p><ul>
+<li>Maomé (Caricatura), Fitna (Filme)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-9" data-chapterstart="2476">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 2476);">Ouvir esta parte</button>
+<p><ul>
+<li>Dith Pran, Camboja, "Campos da morte" (Filme)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-10" data-chapterstart="2530">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 2530);">Ouvir esta parte</button>
+<p><ul>
+<li>Teoria das tensões, Mário Ferreira dos Santos, Mathesis</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-11" data-chapterstart="2690">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 2690);">Ouvir esta parte</button>
+<p><ul>
+<li>Fernando Henrique Cardoso, Conferências</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-12" data-chapterstart="2819">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 2819);">Ouvir esta parte</button>
+<p><ul>
+<li>John McCain, Barack Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-13" data-chapterstart="2878">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 2878);">Ouvir esta parte</button>
+<p><ul>
+<li>PCC</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-14" data-chapterstart="2996">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 2996);">Ouvir esta parte</button>
+<p><ul>
+<li>Debate Rede Globo, Abraham Lincoln</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-15" data-chapterstart="3105">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 3105);">Ouvir esta parte</button>
+<p><ul>
+<li>Bernard-Henri Lévy</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-16" data-chapterstart="3236">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 3236);">Ouvir esta parte</button>
+<p><ul>
+<li>General Nery, Hugo Chávez</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-03-31-17" data-chapterstart="3329">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2031%2003%202008.mp4', 3329);">Ouvir esta parte</button>
+<p><ul>
+<li>FARC, Comunismo, Tarefeiro</li>
+</ul></p>
+</div>
+</div>

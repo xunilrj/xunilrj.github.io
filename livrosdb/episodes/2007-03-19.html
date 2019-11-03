@@ -1,0 +1,169 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-03-19">2007/03/19</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4">
+<div data-chapterid="2007-03-19-0" data-chapterstart="11">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 11);">Ouvir esta parte</button>
+<p><ul>
+<li>Legislação anti-homofobia.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-19-1" data-chapterstart="122">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 122);">Ouvir esta parte</button>
+<p><ul>
+<li>Grampos telefônicos, Cadastro de Associações, Liberdade de Imprensa.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-19-2" data-chapterstart="682">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 682);">Ouvir esta parte</button>
+<p><ul>
+<li>Keith Ellison, Barack Obama, Islam, Sayyd Qutb: "A sombra do Alcorão" (Livro), Guerra de Civilizações, Leibniz, Contradições da realidade.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-19-3" data-chapterstart="1539">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 1539);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunidades anti-petistas Orkut.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-19-4" data-chapterstart="1705">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 1705);">Ouvir esta parte</button>
+<p><ul>
+<li>Gurdjeff, Frank Lloyd Wright, Roger Fridland e Harold Zellman: "The Fellowship: the untold history of Frank Lloyd Wright and the Taliesin"</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-19-5" data-chapterstart="1919">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 1919);">Ouvir esta parte</button>
+<p><ul>
+<li>Conselho Mundial de Igrejas, Bernard Smith: "The Fraudulent Gospel. Politics and the World Council of Churches" (Livro), C. Gregg Singer: "Unholy Alliance. The definitive History of the National Council of Churches and its leftist policies" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-19-6" data-chapterstart="2228">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 2228);">Ouvir esta parte</button>
+<p><ul>
+<li>Mitt Romney.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-19-7" data-chapterstart="2377">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 2377);">Ouvir esta parte</button>
+<p><ul>
+<li>Dom Marcel Lefevbre, "Do liberalism a apostasia: a tragédia conciliar" (Livro), Julio Fleichman, "O itinerário spiritual da Igreja Católica" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-19-8" data-chapterstart="2627">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 2627);">Ouvir esta parte</button>
+<p><ul>
+<li>Spinoza, Pensadores portugueses, Pedro Calafate: "História do pensamento filosófico português" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-19-9" data-chapterstart="2778">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 2778);">Ouvir esta parte</button>
+<p><ul>
+<li>Turquia, Comunidade Européia, Governo Mundial, NAFTA.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-19-10" data-chapterstart="3054">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 3054);">Ouvir esta parte</button>
+<p><ul>
+<li>André Marc: "Dialética da afirmação" (Livro), Pierre Chaunu, Revolução Francesa, Hippolyte Taine: "Origens da França contemporânea" (Livro), Huizinga, Modris Eksteins.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-19-11" data-chapterstart="3255">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 3255);">Ouvir esta parte</button>
+<p><ul>
+<li>Cartão de crédito corporativo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-19-12" data-chapterstart="3312">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2003%202007.mp4', 3312);">Ouvir esta parte</button>
+<p><ul>
+<li>Templários, Maçonaria, Igreja Católica, John Robison: "Proof of a Conspiracy Against all the Religions and Governments of Europe" (Livro)</li>
+</ul></p>
+</div>
+</div>

@@ -1,0 +1,139 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-08-04">2008/08/04</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2008%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2008%202008.mp4">
+<div data-chapterid="2008-08-04-0" data-chapterstart="70">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2008%202008.mp4', 70);">Ouvir esta parte</button>
+<p><ul>
+<li>Seminário de filosofia (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-04-1" data-chapterstart="282">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2008%202008.mp4', 282);">Ouvir esta parte</button>
+<p><ul>
+<li>Barbara Gancia: "Olavo viu o ovo" (Artigo), CUT, Foro de São Paulo, Jornalistas, Gondim da Fonseca, Alexandre Ultramari, Gilberto Carvalho, Revista América Libre, FARC, Fernandinho Beira-Mar, Valter Pomar, Emir Sader, Raúl Reyes, Marco Aurélio Gárcia, Luiz Felipe de Alencastro, Council on Foreign Relations, CFR, Paulo Freire, Lula, Criminalidade, Lênin, Sequestros, Reinaldo Azevedo, Olivério Medina, Fernando Collor</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-04-2" data-chapterstart="2054">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2008%202008.mp4', 2054);">Ouvir esta parte</button>
+<p><ul>
+<li>Olimpíadas, China, Partido Comunista Chinês, Economia, Liberais, Jean-François Revel: "La grande parade: essai sur La survie de L'utopie socialiste" (Livro), Karl Marx</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-04-3" data-chapterstart="2450">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2008%202008.mp4', 2450);">Ouvir esta parte</button>
+<p><ul>
+<li>Tarso Genro, Ditadura, Revanchismo, Amazônia, ONU, Jornal Inconfidência, Escola Superior de Guerra</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-04-4" data-chapterstart="2650">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2008%202008.mp4', 2650);">Ouvir esta parte</button>
+<p><ul>
+<li>Desinformação, Ricardo Boechat, Patrick Hughes, Julie Sirrs, 11 de Setembro, KGB, CIA, Christopher Andrew</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-04-5" data-chapterstart="3095">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2008%202008.mp4', 3095);">Ouvir esta parte</button>
+<p><ul>
+<li>Bernard Lonergan: "Insight: a study of human understanding" (Livro), Inteligência</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-04-6" data-chapterstart="3209">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2008%202008.mp4', 3209);">Ouvir esta parte</button>
+<p><ul>
+<li>Militância comunista, Nabor Hélio de Brito, Roberto Negrão de Lima, Marxismo, "Delírio de interpretação", Paul Sérieux, Escola Austríaca, Eric Voegelin, Ludwig von Mises, "Socialismo: uma análise econômica e sociológica" (Livro), Eugen von Bohm-Bawerk, Mais-valia, Seitas satânicas, Marvin Antelman: "To eliminate the opiate" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-04-7" data-chapterstart="3569">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2008%202008.mp4', 3569);">Ouvir esta parte</button>
+<p><ul>
+<li>Liberais, Dmitri Volkogonov: "Stalin: triunfo e tragédia" (Livro)</li>
+</ul></p>
+</div>
+</div>

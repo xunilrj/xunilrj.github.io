@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-02-01">2010/02/01</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2002%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2002%202010.mp4">
+<div data-chapterid="2010-02-01-0" data-chapterstart="21">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2002%202010.mp4', 21);">Ouvir esta parte</button>
+<p><ul>
+<li>Multiculturalismo, Indigenismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-02-01-1" data-chapterstart="296">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2002%202010.mp4', 296);">Ouvir esta parte</button>
+<p><ul>
+<li>Mídia americana</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-02-01-2" data-chapterstart="427">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2002%202010.mp4', 427);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-02-01-3" data-chapterstart="557">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2002%202010.mp4', 557);">Ouvir esta parte</button>
+<p><ul>
+<li>Forças Armadas, Identidade Gay</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-02-01-4" data-chapterstart="998">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2002%202010.mp4', 998);">Ouvir esta parte</button>
+<p><ul>
+<li>MST</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-02-01-5" data-chapterstart="1350">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2002%202010.mp4', 1350);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunismo, Regime Militar</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-02-01-6" data-chapterstart="2177">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2002%202010.mp4', 2177);">Ouvir esta parte</button>
+<p><ul>
+<li>Liberalismo, Conservadorismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-02-01-7" data-chapterstart="2364">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2002%202010.mp4', 2364);">Ouvir esta parte</button>
+<p><ul>
+<li>Biográfia de Olavo de Carvalho</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-02-01-8" data-chapterstart="2667">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2002%202010.mp4', 2667);">Ouvir esta parte</button>
+<p><ul>
+<li>Conspirações</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-02-01-9" data-chapterstart="3057">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2002%202010.mp4', 3057);">Ouvir esta parte</button>
+<p><ul>
+<li>Suicídio, Homicídio, Controle Estatal, Democrácia, Ditadura Militar</li>
+</ul></p>
+</div>
+</div>

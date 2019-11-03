@@ -1,0 +1,199 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-01-28">2008/01/28</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4">
+<div data-chapterid="2008-01-28-0" data-chapterstart="50">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 50);">Ouvir esta parte</button>
+<p><ul>
+<li>Cardeal Theodore McCarrick, Cardeal Castillo Lara</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-1" data-chapterstart="168">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 168);">Ouvir esta parte</button>
+<p><ul>
+<li>Foro de São Paulo, Revista Veja, Reinaldo Azevedo, Fidel Castro, Lula, FARC, PT, Lênin, Fernandinho Beira-Mar, Violência, Lord Byron, Carlos Amorim, "CV, PCC: a irmandade do crime (Livro), Ivo Patarra, "Escândalo do Mensalão" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-2" data-chapterstart="856">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 856);">Ouvir esta parte</button>
+<p><ul>
+<li>Rodrigo Constantino, "O socialista cristão" (Artigo), Luiz Francisco F. de Sousa, "Socialismo: uma utopia cristã" (Livro), Ortega y Gasset</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-3" data-chapterstart="1186">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 1186);">Ouvir esta parte</button>
+<p><ul>
+<li>Hugo Chávez, Petróleo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-4" data-chapterstart="1331">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 1331);">Ouvir esta parte</button>
+<p><ul>
+<li>Fumantes, Forces (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-5" data-chapterstart="1436">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 1436);">Ouvir esta parte</button>
+<p><ul>
+<li>Julien Green, Guerra Civil americana, "Leviathan" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-6" data-chapterstart="1596">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 1596);">Ouvir esta parte</button>
+<p><ul>
+<li>Teoria das castas, Elites circulantes , Antonio Gramsci, Lincoln Moraes de Sousa - "Crônica de um partido não anunciado: programas e governos do PT entre 1979-2000 (Tese), Fontes primárias</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-7" data-chapterstart="1916">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 1916);">Ouvir esta parte</button>
+<p><ul>
+<li>Fernando da Mata Pimentel, MST, Fernando Henrique Cardoso</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-8" data-chapterstart="2045">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 2045);">Ouvir esta parte</button>
+<p><ul>
+<li>UNIFAI, Prof. Domingos Zamagna</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-9" data-chapterstart="2095">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 2095);">Ouvir esta parte</button>
+<p><ul>
+<li>"Os indomáveis" (Filme), Russel Crowe</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-10" data-chapterstart="2272">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 2272);">Ouvir esta parte</button>
+<p><ul>
+<li>Liberty Fund, Ludwig von Mises:"Socialismo: uma análise econômica e sociológica" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-11" data-chapterstart="2377">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 2377);">Ouvir esta parte</button>
+<p><ul>
+<li>Empresariado, Emílio Odebrecht</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-12" data-chapterstart="2603">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 2603);">Ouvir esta parte</button>
+<p><ul>
+<li>Che Guevara</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-13" data-chapterstart="2829">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 2829);">Ouvir esta parte</button>
+<p><ul>
+<li>"O possível e o extraordinário" (Blog), Padre Luiz Carlos Lodi, Pró-Vida de Anápolis (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-14" data-chapterstart="2893">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 2893);">Ouvir esta parte</button>
+<p><ul>
+<li>Aquecimento Global, Controle de Natalidade, Clube de Roma, Nova Era</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-15" data-chapterstart="3049">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 3049);">Ouvir esta parte</button>
+<p><ul>
+<li>Mídia Sem Máscara (Site), José Gomes Temporão</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-16" data-chapterstart="3361">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 3361);">Ouvir esta parte</button>
+<p><ul>
+<li>Perseguição cristã</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-28-17" data-chapterstart="3508">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2001%202008.mp4', 3508);">Ouvir esta parte</button>
+<p><ul>
+<li>Aborto, Pílula do dia seguinte, Carnaval</li>
+</ul></p>
+</div>
+</div>

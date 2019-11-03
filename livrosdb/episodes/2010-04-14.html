@@ -1,0 +1,127 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-04-14">2010/04/14</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2004%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2004%202010.mp4">
+<div data-chapterid="2010-04-14-0" data-chapterstart="60">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2004%202010.mp4', 60);">Ouvir esta parte</button>
+<p><ul>
+<li>Avisos</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-14-1" data-chapterstart="1095">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2004%202010.mp4', 1095);">Ouvir esta parte</button>
+<p><ul>
+<li>todo povo tem o governo que merece, Obama, Médici, Itamar Franco</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-14-2" data-chapterstart="1230">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2004%202010.mp4', 1230);">Ouvir esta parte</button>
+<p><ul>
+<li>Catolicismo no Brasil, Whitall Perry, São João Paulo II, Gilberto Freyre, brasileiro é cristão por esteticismo e sentimentalismo, Mario Vieira de Mello: "Desenvolvimento e cultura: o problema do estetismo no Brasil" (livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-14-3" data-chapterstart="1605">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2004%202010.mp4', 1605);">Ouvir esta parte</button>
+<p><ul>
+<li>Influência do Cristianismo na formação das instituições brasileiras, Dom Pedro I e Dom Pedro II, Marquês de Pombal, jesuítas, religiões afro, Martin Luther King Jr., brasileiro se interessa pelos pecados dos outros, Legionários de Cristo e seu sistema de pedofilia</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-14-4" data-chapterstart="2800">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2004%202010.mp4', 2800);">Ouvir esta parte</button>
+<p><ul>
+<li>Escola gay, o que é ser gay</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-14-5" data-chapterstart="3390">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2004%202010.mp4', 3390);">Ouvir esta parte</button>
+<p><ul>
+<li>Ridley Scott, artistas possuem um prestígio indevido, artista não é intelectual, filme Cruzada (br) ou Reino dos céus (pt)</li>
+</ul></p>
+</div>
+</div>

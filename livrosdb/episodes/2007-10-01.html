@@ -1,0 +1,163 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-10-01">2007/10/01</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4">
+<div data-chapterid="2007-10-01-0" data-chapterstart="22">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4', 22);">Ouvir esta parte</button>
+<p><ul>
+<li>Conservadorismo, Protestantismo, Catolicismo, Martin Heidegger, "Cristianismo e capitalismo" (Artigo), Unidade cristã, Judaísmo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-01-1" data-chapterstart="381">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4', 381);">Ouvir esta parte</button>
+<p><ul>
+<li>Guerra assimétrica, João Pedro Stédile, Bertold Brecht, Quartim de Moraes, Capitão Chandler, MST, Comunismo, China, PC do B, PT, FARC</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-01-2" data-chapterstart="1026">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4', 1026);">Ouvir esta parte</button>
+<p><ul>
+<li>Relatório Kinsey, Judith A. Reisman: "Kinsey: crimes and consequences: the Red Queen and the grand scheme" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-01-3" data-chapterstart="1165">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4', 1165);">Ouvir esta parte</button>
+<p><ul>
+<li>"O melhor do mundos", Leibniz, Voltaire</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-01-4" data-chapterstart="1287">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4', 1287);">Ouvir esta parte</button>
+<p><ul>
+<li>Ciência X Fé , Imannuel Kant, Herman Dooyweerd, Carlos Alberto Dória</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-01-5" data-chapterstart="1371">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4', 1371);">Ouvir esta parte</button>
+<p><ul>
+<li>ONU, Indígenas, Soberanias nacionais, Gondim da Fonseca, Perseguição anticristã, Guantánamo, Revolução Francesa, Homossexualismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-01-6" data-chapterstart="1940">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4', 1940);">Ouvir esta parte</button>
+<p><ul>
+<li>Índice Global de Talentos, IGT</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-01-7" data-chapterstart="2247">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4', 2247);">Ouvir esta parte</button>
+<p><ul>
+<li>Métodos contraceptivos</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-01-8" data-chapterstart="2352">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4', 2352);">Ouvir esta parte</button>
+<p><ul>
+<li>Che Guevara, Humberto Fontova, "Exposing the real Che Guevara: and the useful idiots Who idolize him" (Livro), Carlos Alberto Montaner</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-01-9" data-chapterstart="2645">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4', 2645);">Ouvir esta parte</button>
+<p><ul>
+<li>Revista Veja, Reinaldo Azevedo, Diogo Mainardi, Revolução cultural gramsciana</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-01-10" data-chapterstart="2900">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4', 2900);">Ouvir esta parte</button>
+<p><ul>
+<li>Maquiavel, Dante Germinio: "Was Machiavelli a spiritual realist?" (Livro), Mentiras cruzadas</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-01-11" data-chapterstart="3056">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2010%202007.mp4', 3056);">Ouvir esta parte</button>
+<p><ul>
+<li>KGB, Alexander Litvinenko, "Blowing Up Russia" (Livro), Mario Schimidt, Antonio Gramsci</li>
+</ul></p>
+</div>
+</div>

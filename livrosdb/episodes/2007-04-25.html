@@ -1,0 +1,175 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-04-25">2007/04/25</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4">
+<div data-chapterid="2007-04-25-0" data-chapterstart="16">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 16);">Ouvir esta parte</button>
+<p><ul>
+<li>Tiroteio escolas americanas.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-1" data-chapterstart="86">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 86);">Ouvir esta parte</button>
+<p><ul>
+<li>"Sitting Duck", "Firing back" (Livro), Desarmamento, Educação, Charlotte Iserbyt: "Deliberate dubing down of America" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-2" data-chapterstart="450">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 450);">Ouvir esta parte</button>
+<p><ul>
+<li>Desarmamento.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-3" data-chapterstart="612">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 612);">Ouvir esta parte</button>
+<p><ul>
+<li>Marxismo, Islamismo, Escravidão, Alberto da Costa e Silva: "A Enxada e a Lança- a África Antes dos Portugueses" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-4" data-chapterstart="815">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 815);">Ouvir esta parte</button>
+<p><ul>
+<li>Vestibular, Elite intelectual.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-5" data-chapterstart="1010">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 1010);">Ouvir esta parte</button>
+<p><ul>
+<li>Movimento gay, Clodovil Hernandes, "Lesbian World" (Livro), Cátaros.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-6" data-chapterstart="1423">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 1423);">Ouvir esta parte</button>
+<p><ul>
+<li>Religião, Karl Jaspers: "A fé filosófica" (Livro), Richard Dawkins, Daniel Dannett, Sam Harris, Ateísmo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-7" data-chapterstart="1970">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 1970);">Ouvir esta parte</button>
+<p><ul>
+<li>Tabagismo, Descriminalização das drogas, frei Betto, Georges Bernanos: "A impostura" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-8" data-chapterstart="2087">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 2087);">Ouvir esta parte</button>
+<p><ul>
+<li>Evangelhos apócrifos.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-9" data-chapterstart="2379">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 2379);">Ouvir esta parte</button>
+<p><ul>
+<li>René Guénon: "O erro espírita", Reencarnação.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-10" data-chapterstart="2593">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 2593);">Ouvir esta parte</button>
+<p><ul>
+<li>Beleza.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-11" data-chapterstart="2985">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 2985);">Ouvir esta parte</button>
+<p><ul>
+<li>Polícia, FARC.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-12" data-chapterstart="3124">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 3124);">Ouvir esta parte</button>
+<p><ul>
+<li>Roberto Mangabeira Unger.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-25-13" data-chapterstart="3167">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2004%202007.mp4', 3167);">Ouvir esta parte</button>
+<p><ul>
+<li>Busca por informações, Verdade objetiva, Mortimer J. Adler: "Great books of the Western World" (Série), "Como ler um livro" (Livro), Otto Maria Carpeaux, "História da literatura Ocidental" (Livro), Frederick Copleston, "História da filosofia" (Livro)</li>
+</ul></p>
+</div>
+</div>

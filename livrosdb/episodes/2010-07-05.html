@@ -1,0 +1,187 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-07-05">2010/07/05</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4">
+<div data-chapterid="2010-07-05-0" data-chapterstart="145">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 145);">Ouvir esta parte</button>
+<p><ul>
+<li>direita só vê a superfície da política a curto prazo, movimento comunista movimento de longo prazo, Antônio Gramsci, projeto islâmico de dominação</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-1" data-chapterstart="400">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 400);">Ouvir esta parte</button>
+<p><ul>
+<li>Erro estratégico de Marcell Van Hattem, importância da política de base, fontes de poder, o que ocorre quando não se tem militância</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-2" data-chapterstart="700">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 700);">Ouvir esta parte</button>
+<p><ul>
+<li>JK e Brasília, transferência da capital acabou com a democracia, MST, arquitetura comunista, cidade socialista ideal, privatizações por FHC, Marcell, necessidade de organizar militância, Collor</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-3" data-chapterstart="1120">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 1120);">Ouvir esta parte</button>
+<p><ul>
+<li>bispo Manoel Ferreira vai liderar campanha da Dilma entre evangélicos, Marcelo Crivella</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-4" data-chapterstart="1170">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 1170);">Ouvir esta parte</button>
+<p><ul>
+<li>"Nós quem, cara pálida?" (artigo: <a href="http://www.olavodecarvalho.org/nos-quem-cara-palida/">http://www.olavodecarvalho.org/nos-quem-cara-palida/</a>(<a href="http://web.archive.org/web/2010070500000/http://www.olavodecarvalho.org/nos-quem-cara-palida/" target="_blank">@webarchive</a>)), pedagogia, educação, Paulo Freire, Emília Ferreiro, Lev Vygotsky, Jean Piaget, Gilbert</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-5" data-chapterstart="1610">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 1610);">Ouvir esta parte</button>
+<p><ul>
+<li>site: <a href="www.yocreoenplazas.co">www.yocreoenplazas.co</a>(<a href="http://web.archive.org/web/2010070500000/www.yocreoenplazas.co" target="_blank">@webarchive</a>), Fernando Londoño: "El negocio de las desapariciones" (artigo), julgamento do Cel. Alfonso Plazas Vega na Colômbia</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-6" data-chapterstart="1800">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 1800);">Ouvir esta parte</button>
+<p><ul>
+<li>festividades de 04 de julho, carnaval no Brasil</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-7" data-chapterstart="1860">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 1860);">Ouvir esta parte</button>
+<p><ul>
+<li>Sobre extra-terrestres, invenção da Nova Ordem Mundial, globalistas, revista Planeta, ilusões materializadas</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-8" data-chapterstart="1980">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 1980);">Ouvir esta parte</button>
+<p><ul>
+<li>Ronald Radosh, infiltração comunista na Columbia University, estratégia Cloward Piven, Saul Alinsky (artigo: <a href="http://www.olavodecarvalho.org/os-pais-da-crise-americana/">http://www.olavodecarvalho.org/os-pais-da-crise-americana/</a>(<a href="http://web.archive.org/web/2010070500000/http://www.olavodecarvalho.org/os-pais-da-crise-americana/" target="_blank">@webarchive</a>)), Falência da previdência social dos EUA, Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-9" data-chapterstart="2175">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 2175);">Ouvir esta parte</button>
+<p><ul>
+<li>Projeto do Dia do Atirador, esportivo ou não</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-10" data-chapterstart="2220">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 2220);">Ouvir esta parte</button>
+<p><ul>
+<li>FARC, Mentalidade Revolucionária é uma doença, ninguém é capaz de inventar uma sociedade, A República de Platão, delírio de interpretação, Fidel Castro, Abílio Diniz</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-11" data-chapterstart="2595">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 2595);">Ouvir esta parte</button>
+<p><ul>
+<li>revolucionários trocam o discurso para seduzir</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-12" data-chapterstart="2700">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 2700);">Ouvir esta parte</button>
+<p><ul>
+<li>Proibição de porte de armas em Chicago</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-13" data-chapterstart="2850">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 2850);">Ouvir esta parte</button>
+<p><ul>
+<li>fugir da educação esquerdista, Mortimer Adler: "A arte de ler" (livro), método Feuerstein, educação liberal, livros clássicos, Bruno Tolentino, educação brasileira, problema no Brasil é a educação doméstica, educação igualitária, educação doméstica é ensinada pela Igreja Católica, Brasil foi criado pela Igreja Católica e pelo exército</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-14" data-chapterstart="3300">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 3300);">Ouvir esta parte</button>
+<p><ul>
+<li>Maçonaria nos EUA, França e no Brasil, anti-catolicismo, república brasileira</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-05-15" data-chapterstart="3390">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2007%202010.mp4', 3390);">Ouvir esta parte</button>
+<p><ul>
+<li>Lei da palmada, crianças são obedientes por instinto</li>
+</ul></p>
+</div>
+</div>

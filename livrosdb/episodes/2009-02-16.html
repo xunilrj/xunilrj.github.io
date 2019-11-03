@@ -1,0 +1,181 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2009-02-16">2009/02/16</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4">
+<div data-chapterid="2009-02-16-0" data-chapterstart="138">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 138);">Ouvir esta parte</button>
+<p><ul>
+<li>Notalatina (Blog)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-1" data-chapterstart="181">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 181);">Ouvir esta parte</button>
+<p><ul>
+<li>New Scientist (Site), Collin Barras: "Why sustainable power is insustainable" (Artigo), Energias renováveis, Petróleo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-2" data-chapterstart="347">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 347);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Processos</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-3" data-chapterstart="718">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 718);">Ouvir esta parte</button>
+<p><ul>
+<li>Falsificações, Ron Polarik, Town Hall (Site) , Obras filosóficas, Traduções, Aristóteles, Santo Tomás de Aquino, "Aristóteles em nova perspectiva" (Livro), Soren Kierkegarrd, Vladimir Soloviov, Padre Stanislavs Ladusans, "A crise da filosofia ocidental" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-4" data-chapterstart="1100">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 1100);">Ouvir esta parte</button>
+<p><ul>
+<li>Reserva Raposa Serra do Sol, Homossexualismo, Aborto, Moral judaico-cristã, Fidel Castro, PT</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-5" data-chapterstart="1554">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 1554);">Ouvir esta parte</button>
+<p><ul>
+<li>Opus Dei, Mateus Soares de Azevedo, Taricas, João Pedro Stédile, Éneas Carneiro</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-6" data-chapterstart="1742">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 1742);">Ouvir esta parte</button>
+<p><ul>
+<li>Naomi Wolf , Federal Emergency Management Agency, FEMA, Prisão de Guantánamo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-7" data-chapterstart="1872">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 1872);">Ouvir esta parte</button>
+<p><ul>
+<li>Segunda Vinda de Cristo, Anticristo, Berit Kjos, Kjos Ministries (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-8" data-chapterstart="1998">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 1998);">Ouvir esta parte</button>
+<p><ul>
+<li>Russell Kirk, "Dez princípios conservadores", Padre Paulo Ricardo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-9" data-chapterstart="2038">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 2038);">Ouvir esta parte</button>
+<p><ul>
+<li>Paz, Personalidade perfeita, Salvação, Lula, Dúvida, São Paulo Apóstolo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-10" data-chapterstart="2255">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 2255);">Ouvir esta parte</button>
+<p><ul>
+<li>Hans Küng</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-11" data-chapterstart="2323">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 2323);">Ouvir esta parte</button>
+<p><ul>
+<li>Gramscianismo, Burguesia, Mídia, Pierre Bourdeiu, KGB, Estado, George Soros, Bernard Goldberg: "Arrogance: rescuing America from the media elite" (Livro), "Bias: a CBS insider exposes how the media distort the news" (Livro), "A slobbering Love affair: the true (and pathetic) story of the torrid romance between Barack Obama and the mainstream media" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-12" data-chapterstart="2860">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 2860);">Ouvir esta parte</button>
+<p><ul>
+<li>Homofobia, Graciliano Ramos</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-13" data-chapterstart="3027">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 3027);">Ouvir esta parte</button>
+<p><ul>
+<li>Mentalidade revolucionária, Felicidade, "Mundo melhor"</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-16-14" data-chapterstart="3127">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2002%202009.mp4', 3127);">Ouvir esta parte</button>
+<p><ul>
+<li>Teoria da evolução, Charles Darwin, Design inteligente, "A origem das espécies" (Livro), John Angus Campbell, Retórica</li>
+</ul></p>
+</div>
+</div>

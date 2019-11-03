@@ -1,0 +1,139 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-11-12">2007/11/12</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2011%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2011%202007.mp4">
+<div data-chapterid="2007-11-12-0" data-chapterstart="45">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2011%202007.mp4', 45);">Ouvir esta parte</button>
+<p><ul>
+<li>Guy Sorman, "O ano do Galo: verdades sobre a China" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-11-12-1" data-chapterstart="85">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2011%202007.mp4', 85);">Ouvir esta parte</button>
+<p><ul>
+<li>Nadando contra a maré vermelha (Blog), Edward Griffin, Documentário, Revolução Russa, Alexander Kerensky, Esquerda Democrática, Conferência Ibero-Americana, José Luis Rodríguez Zapatero, Hugo Chávez, Rei Juan Carlos da Espanha,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-11-12-2" data-chapterstart="1245">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2011%202007.mp4', 1245);">Ouvir esta parte</button>
+<p><ul>
+<li>Folha de S. Paulo, Guerra retórica, Foro de São Paulo, Centimetragem, Guantánamo, Prisões cubanas, Aborto, Planned Parenthood, Paulo Henrique Amorim, Álvaro Uribe</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-11-12-3" data-chapterstart="2005">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2011%202007.mp4', 2005);">Ouvir esta parte</button>
+<p><ul>
+<li>Padre Olivério Medina, Brigadeiro Sérgio Ferolla</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-11-12-4" data-chapterstart="2139">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2011%202007.mp4', 2139);">Ouvir esta parte</button>
+<p><ul>
+<li>Socialismo, Liberdade, Antonio Gramsci, Revolução Francesa, Duque Luís Filipe d'Orleans, Tropa de Elite (Filme)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-11-12-5" data-chapterstart="2538">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2011%202007.mp4', 2538);">Ouvir esta parte</button>
+<p><ul>
+<li>Formadores de opinião</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-11-12-6" data-chapterstart="2752">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2011%202007.mp4', 2752);">Ouvir esta parte</button>
+<p><ul>
+<li>China, "The nine commentaries on the communist party" (Livro) - Falun Gong, Partido Comunista Chinês</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-11-12-7" data-chapterstart="3112">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2011%202007.mp4', 3112);">Ouvir esta parte</button>
+<p><ul>
+<li>Caio Rossi, Stanley Monteith, AIDS, "The population control agenda" (Artigo), Radio Liberty (Site), "The brotherhood of the darkness" (Livro), Margaret Sanger, Família Rockfeller</li>
+</ul></p>
+</div>
+</div>

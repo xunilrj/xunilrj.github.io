@@ -1,0 +1,145 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-05-14">2007/05/14</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2005%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2005%202007.mp4">
+<div data-chapterid="2007-05-14-0" data-chapterstart="8">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2005%202007.mp4', 8);">Ouvir esta parte</button>
+<p><ul>
+<li>Visita do Papa, Homofobia, Clodovil Hernandes, Cida Diogo, Luiz Sérgio, Grace Domingues: "Clodovil e a ética do decoro parlamentar" (Crônica), FARC, PCC, Comando Vermelho, Oscar Niemeyer,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-05-14-1" data-chapterstart="860">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2005%202007.mp4', 860);">Ouvir esta parte</button>
+<p><ul>
+<li>Xavier Zubiri: "Natureza, História, Deus" (Livro), Heidegger, Hiper-realismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-05-14-2" data-chapterstart="1095">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2005%202007.mp4', 1095);">Ouvir esta parte</button>
+<p><ul>
+<li>Paulo de Bessa Antunes: "Direito ambiental" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-05-14-3" data-chapterstart="1353">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2005%202007.mp4', 1353);">Ouvir esta parte</button>
+<p><ul>
+<li>Lynn Thorndyke, "The History of magic and experimental sciences" (Livro), Pierre Duhem, "Le sisteme Du Monde" (Livro), Arthur Kestler, "Os sonâmbulos" (Livro), Pierre Thuillier, "De Arquimedes a Einstein" (Livro), Royal Society, "O jardim das aflições" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-05-14-4" data-chapterstart="1695">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2005%202007.mp4', 1695);">Ouvir esta parte</button>
+<p><ul>
+<li>Emir Sader, Transcendência, Ludwig Feuerbach,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-05-14-5" data-chapterstart="1945">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2005%202007.mp4', 1945);">Ouvir esta parte</button>
+<p><ul>
+<li>"The great global warming swindol" (Documentário).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-05-14-6" data-chapterstart="2216">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2005%202007.mp4', 2216);">Ouvir esta parte</button>
+<p><ul>
+<li>Adam Smith, "Teoria dos sentimentos morais" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-05-14-7" data-chapterstart="2516">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2005%202007.mp4', 2516);">Ouvir esta parte</button>
+<p><ul>
+<li>Otto Maria Carpeaux, "História da Literatura Ocidental" (Livro), Mário Ferreira dos Santos.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-05-14-8" data-chapterstart="2978">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2005%202007.mp4', 2978);">Ouvir esta parte</button>
+<p><ul>
+<li>Christina Fontenelle: "Mulheres ofendidas" Crônica), Lyle H. Rossiter: "Liberal mind: the psychological causes of political madness" (Livro), Joseph Gabriel: "Ideologies and the corruption of thought" (Livro), Rino Cammilleri: "I mostri della ragione" (Livro).</li>
+</ul></p>
+</div>
+</div>

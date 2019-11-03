@@ -1,0 +1,163 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-12-01">2008/12/01</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4">
+<div data-chapterid="2008-12-01-0" data-chapterstart="1330">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4', 1330);">Ouvir esta parte</button>
+<p><ul>
+<li>Thomas Woods: "Como a Igreja construiu a civilização ocidental" (Livro),</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-01-1" data-chapterstart="1412">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4', 1412);">Ouvir esta parte</button>
+<p><ul>
+<li>Seminário de Filosofia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-01-2" data-chapterstart="1536">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4', 1536);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Wright Mills: "A elite do poder" (Livro), Council on Foreign Relations, CFR, Foro de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-01-3" data-chapterstart="2362">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4', 2362);">Ouvir esta parte</button>
+<p><ul>
+<li>Cliff Kincaid, "Obama nominees signal radical pro-UM Agenda" (Artigo: <a href="http://www.aim.org/aim-column/obama-nominees-signal-radical-pro-u-n-agenda/">http://www.aim.org/aim-column/obama-nominees-signal-radical-pro-u-n-agenda/</a>(<a href="http://web.archive.org/web/2008120100000/http://www.aim.org/aim-column/obama-nominees-signal-radical-pro-u-n-agenda/" target="_blank">@webarchive</a>)), George Soros,</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-01-4" data-chapterstart="2605">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4', 2605);">Ouvir esta parte</button>
+<p><ul>
+<li>Karl Mannhein: "Diagnóstico de nosso tempo" (Livro) , PT, Partido Nazista</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-01-5" data-chapterstart="2650">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4', 2650);">Ouvir esta parte</button>
+<p><ul>
+<li>Judi McLeod (artigo: <a href="http://www.canadafreepress.com/index.php/article/6485">http://www.canadafreepress.com/index.php/article/6485</a>(<a href="http://web.archive.org/web/2008120100000/http://www.canadafreepress.com/index.php/article/6485" target="_blank">@webarchive</a>))</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-01-6" data-chapterstart="2806">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4', 2806);">Ouvir esta parte</button>
+<p><ul>
+<li>Meditação do Dia de Ação de Graças (artigo: <a href="http://www.olavodecarvalho.org/semana/081128dc.html">http://www.olavodecarvalho.org/semana/081128dc.html</a>(<a href="http://web.archive.org/web/2008120100000/http://www.olavodecarvalho.org/semana/081128dc.html" target="_blank">@webarchive</a>)), Lula</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-01-7" data-chapterstart="2893">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4', 2893);">Ouvir esta parte</button>
+<p><ul>
+<li>Logosofia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-01-8" data-chapterstart="2951">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4', 2951);">Ouvir esta parte</button>
+<p><ul>
+<li>Georg Cantor, "O jardim das aflições" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-01-9" data-chapterstart="3004">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4', 3004);">Ouvir esta parte</button>
+<p><ul>
+<li>Mino Carta, Luis Nassif, Reinaldo Azevedo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-01-10" data-chapterstart="3134">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4', 3134);">Ouvir esta parte</button>
+<p><ul>
+<li>Movimento gay</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-01-11" data-chapterstart="3405">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2012%202008.mp4', 3405);">Ouvir esta parte</button>
+<p><ul>
+<li>Busca da verdade, José Saramago</li>
+</ul></p>
+</div>
+</div>

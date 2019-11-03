@@ -1,0 +1,127 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-04-05">2010/04/05</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2004%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2004%202010.mp4">
+<div data-chapterid="2010-04-05-0" data-chapterstart="60">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2004%202010.mp4', 60);">Ouvir esta parte</button>
+<p><ul>
+<li>Avisos, Curso de teologia do Pe Paulo Ricardo, <a href="www.eclesiae.com.br">www.eclesiae.com.br</a>(<a href="http://web.archive.org/web/2010040500000/www.eclesiae.com.br" target="_blank">@webarchive</a>)</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-05-1" data-chapterstart="160">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2004%202010.mp4', 160);">Ouvir esta parte</button>
+<p><ul>
+<li>Substituição do lixo acadêmico nas livrarias</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-05-2" data-chapterstart="1620">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2004%202010.mp4', 1620);">Ouvir esta parte</button>
+<p><ul>
+<li>Pedofilia, Relatório Kinsey, fraude, Alfred Kinsey era pedófilo, Judith Reisman</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-05-3" data-chapterstart="1780">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2004%202010.mp4', 1780);">Ouvir esta parte</button>
+<p><ul>
+<li>Criar pânico moral, engenharia social, Elizabeth Noelle-Newman: "Espiral do Silêncio" (livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-05-4" data-chapterstart="2310">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2004%202010.mp4', 2310);">Ouvir esta parte</button>
+<p><ul>
+<li>Denúncias contra as Forças Armadas, espiral do silêncio</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-05-5" data-chapterstart="2380">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2004%202010.mp4', 2380);">Ouvir esta parte</button>
+<p><ul>
+<li>Circulação de capitais nos EUA de Obama não é mais livre, (site: <a href="www.zerohedge.com">www.zerohedge.com</a>(<a href="http://web.archive.org/web/2010040500000/www.zerohedge.com" target="_blank">@webarchive</a>))</li>
+</ul></p>
+</div>
+</div>

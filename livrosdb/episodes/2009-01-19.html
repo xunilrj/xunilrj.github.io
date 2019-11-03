@@ -1,0 +1,181 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2009-01-19">2009/01/19</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4">
+<div data-chapterid="2009-01-19-0" data-chapterstart="168">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 168);">Ouvir esta parte</button>
+<p><ul>
+<li>Datas históricas, Constituição de 1988, Barack Obama, Napoleão Bonaparte, Moisés</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-1" data-chapterstart="400">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 400);">Ouvir esta parte</button>
+<p><ul>
+<li>Leon Panetta, Institute for Policy Studies, KGB, CIA, Divisão dos Estados Unidos</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-2" data-chapterstart="505">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 505);">Ouvir esta parte</button>
+<p><ul>
+<li>Manipulação da mídia, Jacques Derrida, Desconstrucionismo, Realidade objetiva, Tempo, Falsificações</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-3" data-chapterstart="1007">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 1007);">Ouvir esta parte</button>
+<p><ul>
+<li>Palavrões, Eric Voegelin</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-4" data-chapterstart="1175">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 1175);">Ouvir esta parte</button>
+<p><ul>
+<li>Cesare Battisti, Terroristas, Revolução comunista, América Latina, Marco Aurélio Garcia, Achille Lollo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-5" data-chapterstart="1393">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 1393);">Ouvir esta parte</button>
+<p><ul>
+<li>Paul Sérieux, Psicologia, Juan Alfredo César Muller, Zurique</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-6" data-chapterstart="1580">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 1580);">Ouvir esta parte</button>
+<p><ul>
+<li>Mente revolucionária, Intelectuais</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-7" data-chapterstart="1870">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 1870);">Ouvir esta parte</button>
+<p><ul>
+<li>Definição, Sim/Não, Discurso científico, Razão,</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-8" data-chapterstart="2099">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 2099);">Ouvir esta parte</button>
+<p><ul>
+<li>Esquerda, Doença mental</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-9" data-chapterstart="2314">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 2314);">Ouvir esta parte</button>
+<p><ul>
+<li>Percepção da realidade, Neurose, Psicanálise</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-10" data-chapterstart="2752">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 2752);">Ouvir esta parte</button>
+<p><ul>
+<li>Clube Bildeberg, Council for Foreign Relations, CFR</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-11" data-chapterstart="2854">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 2854);">Ouvir esta parte</button>
+<p><ul>
+<li>Barebacking, Movimento gay, Rick Warren, Guerra assimétrica, Pecado, Abraão</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-12" data-chapterstart="3195">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 3195);">Ouvir esta parte</button>
+<p><ul>
+<li>Narrativa, Realidade, Hitler, Stalin, Comunistas, Kruschev, Carlos Marighela, Negação da verdade</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-13" data-chapterstart="3460">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 3460);">Ouvir esta parte</button>
+<p><ul>
+<li>Governo de transição</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-01-19-14" data-chapterstart="3544">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2001%202009.mp4', 3544);">Ouvir esta parte</button>
+<p><ul>
+<li>Mídia Sem Máscara, Paulo Diniz, Edson Camargo</li>
+</ul></p>
+</div>
+</div>

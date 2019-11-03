@@ -115,7 +115,7 @@ html.push(`<ul id="searchResult"></ul>`);
 html.push(`<div class="audioholder"><audio></audio></div>`);
 html.push(`</div>`);
 
-function insertEpisode(year, month, day, file, html)
+function insertEpisode(year, month, day, file, html, transcription = false)
 {
     var url = `http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%20${padLeft(day, 2)}%20${padLeft(month, 2)}%20${padLeft(year, 4)}.mp4`;
     var vtt = `D:/courses/sites/OlavoDeCarvalho/TrueOutspeak/fromyoutube/TrueOutspeak ${padLeft(day, 2)} ${padLeft(month, 2)} ${padLeft(year, 4)}.pt.srt`;
@@ -214,7 +214,7 @@ function insertEpisode(year, month, day, file, html)
 
        
 
-        if(vttchapters){
+        if(transcription && vttchapters){
             html.push(`<p>\n`);
             var subtitles = vttchapters.filter(xx => xx.startTime >= x.start_time && xx.endTime <= endTime )
             //console.log(x.start_time, endTime, subtitles);

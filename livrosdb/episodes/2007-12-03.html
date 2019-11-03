@@ -1,0 +1,169 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-12-03">2007/12/03</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4">
+<div data-chapterid="2007-12-03-0" data-chapterstart="0">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 0);">Ouvir esta parte</button>
+<p><ul>
+<li>Plebiscito, Venezuela, Hugo Chávez, Alejandro Peña Esclusa, Jimmy Carter, Comunidade Européia, Christopher Story: "The European Union Collective", PT, Foro de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-03-1" data-chapterstart="316">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 316);">Ouvir esta parte</button>
+<p><ul>
+<li>José Gomes Temporão, Aborto, Clínicas clandestinas, Assassinatos de homossexuais, Tabagistas, Engenharia social, João Pereira Coutinho: "Socorro" (Artigo)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-03-2" data-chapterstart="685">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 685);">Ouvir esta parte</button>
+<p><ul>
+<li>Lula, Favelas, Samba, Fernandinho Beira-Mar, Hernando de Soto: "O segredo do Capital" (Livro), Registro de imóveis, Programa Fome Zero, Pequenas empresas, Partido Comunista</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-03-3" data-chapterstart="1336">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 1336);">Ouvir esta parte</button>
+<p><ul>
+<li>Evo Morales</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-03-4" data-chapterstart="1478">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 1478);">Ouvir esta parte</button>
+<p><ul>
+<li>Carl Jung, Wolfgang Smith, "Cosmos and transcendence: breaking through the barrier of scientific belief" (Livro), Intuição, Inconsciente coletivo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-03-5" data-chapterstart="1889">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 1889);">Ouvir esta parte</button>
+<p><ul>
+<li>Papa Bento XVI, Marxismo, Encíclica, Anatoli Golitsyn: "New lies for Old" (Livro), "The Perestroika deception: memoranda to the Central Intelligence Agency (Livro), Jean-François Revel, Ignacio Ramonet, Narcotráfico, Plano Colômbia</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-03-6" data-chapterstart="2193">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 2193);">Ouvir esta parte</button>
+<p><ul>
+<li>Mário de Andrade, "Macunaíma" (Livro), Haroldo de Campos, Bruno Tolentino, Antônio Houaiss</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-03-7" data-chapterstart="2346">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 2346);">Ouvir esta parte</button>
+<p><ul>
+<li>Notalatina (Blog), Graça Salgueiro</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-03-8" data-chapterstart="2453">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 2453);">Ouvir esta parte</button>
+<p><ul>
+<li>Formadores de Opinião, "Os 100 brasileiros mais importantes", Wanderley Guilherme dos Santos, Reinaldo Azevedo, Merval Pereira</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-03-9" data-chapterstart="2779">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 2779);">Ouvir esta parte</button>
+<p><ul>
+<li>Colégio de São Bento, Padre Paulo Ricardo, Dom Odilo Scherer, Júlio Felischmann, Dom Marcel Lefebvre, Concílio Vaticano II, R. J. Hummel</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-03-10" data-chapterstart="3396">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 3396);">Ouvir esta parte</button>
+<p><ul>
+<li>Romantismo Alemão, Movimento revolucionário, Unidade Interna Dialética, Hegel, Schelling</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-03-11" data-chapterstart="3545">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 3545);">Ouvir esta parte</button>
+<p><ul>
+<li>USP, Georg Lukács, Guilherme Motta</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-03-12" data-chapterstart="3733">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2003%2012%202007.mp4', 3733);">Ouvir esta parte</button>
+<p><ul>
+<li>Dinesh D'Souza, Ateísmo militante</li>
+</ul></p>
+</div>
+</div>

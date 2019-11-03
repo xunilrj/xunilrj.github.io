@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-02-19">2007/02/19</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2002%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2002%202007.mp4">
+<div data-chapterid="2007-02-19-0" data-chapterstart="24">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2002%202007.mp4', 24);">Ouvir esta parte</button>
+<p><ul>
+<li>Renato Janine Ribeiro: "Razão e sensibilidade", (Artigo), Assassinato João Hélio, USP, Inquisição, Tortura, Dilma Houssef, Pena de morte</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-19-1" data-chapterstart="360">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2002%202007.mp4', 360);">Ouvir esta parte</button>
+<p><ul>
+<li>Paul Feyerabend: "Contra o método" (Livro), Rodrigo Constantino, Karl Popper,Argumento poético e retórico, Teoria dos quatro discursos, Instrumento Erístico -- Susanne K. Langer, Modernismo, Modris Eksteins: "A sagração da Primavera" (Livro), 1ª Guerra Mundial, Unidade do movimento revolucionário, Johan Huizinga, "O Outono da Idade Média" (Livro), Iluminismo, Relatório Kruschev 1956, Nova Esquerda, Estados Unidos, Rebelião romântica, Jean Jacques Rousseau, FARC, Foro de São Paulo, Néo-iluminismo, Sérgio Paulo Rouanet, Voltaire, Diderot.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-19-2" data-chapterstart="918">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2002%202007.mp4', 918);">Ouvir esta parte</button>
+<p><ul>
+<li>Experiência pessoal, Comunismo, Marx, Carlos Brickman, Caio Prado Jr, George Lukács, Lênin: "Dicionário crítico do pensamento de Direita" (Livro),</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-19-3" data-chapterstart="1394">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2002%202007.mp4', 1394);">Ouvir esta parte</button>
+<p><ul>
+<li>Dicas de estudo, Leitura, Biblioteca pessoal, Antoni Gilbert Sertillanges: "A vida intelectual" (Livro), Níveis de leitura, Eric Voegelin: "The ecumenic age" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-19-4" data-chapterstart="1832">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2002%202007.mp4', 1832);">Ouvir esta parte</button>
+<p><ul>
+<li>Ayn Rand: "A virtude do egoísmo" (Livro): "The Fountainhead" (Filme), Egoísmo, Altruísmo, Arquitetura.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-19-5" data-chapterstart="2182">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2002%202007.mp4', 2182);">Ouvir esta parte</button>
+<p><ul>
+<li>Limitação de Deus, Santo Tomás de Aquino, Lógica.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-19-6" data-chapterstart="2338">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2002%202007.mp4', 2338);">Ouvir esta parte</button>
+<p><ul>
+<li>Paralaxe cognitiva, Guilherme de Ockham, Aristóteles, Empirismo, Descartes, Meta da História, Teoria da Evolução.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-19-7" data-chapterstart="2793">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2002%202007.mp4', 2793);">Ouvir esta parte</button>
+<p><ul>
+<li>Gnosticismo, Orlando Fedeli.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-19-8" data-chapterstart="2910">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2002%202007.mp4', 2910);">Ouvir esta parte</button>
+<p><ul>
+<li>Inveja, Jack Willard, Cláudio Lembo, Hitler.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-19-9" data-chapterstart="3205">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2002%202007.mp4', 3205);">Ouvir esta parte</button>
+<p><ul>
+<li>Educação, Liberdade, Poder da oração</li>
+</ul></p>
+</div>
+</div>

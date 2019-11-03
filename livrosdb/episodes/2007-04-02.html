@@ -1,0 +1,133 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-04-02">2007/04/02</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2004%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2004%202007.mp4">
+<div data-chapterid="2007-04-02-0" data-chapterstart="82">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2004%202007.mp4', 82);">Ouvir esta parte</button>
+<p><ul>
+<li>Hélio Schwartzman, Richard Dawkins, Sam Harris, Daniel Dennett, Cientistas religiosos, Epicuro, Demócrito, Michael Novak, Religião, Fé, Razão, Padre Stanley L. Jaki, Conhecimento, Experiência Transcendência, Gnosticismo, Edmund Russell: "Crise das ciências européia e a fenomenologia transcendental" (Livro), Pós-modernismo, Desconstrucionismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-02-1" data-chapterstart="858">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2004%202007.mp4', 858);">Ouvir esta parte</button>
+<p><ul>
+<li>Hélio Schwartzman, Bilac Pinto, Limitações intelectuais, Leitura.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-02-2" data-chapterstart="1035">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2004%202007.mp4', 1035);">Ouvir esta parte</button>
+<p><ul>
+<li>Igrejas pentecostais, Curas, Futebol, Regras morais, Bem ocasional/pleno.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-02-3" data-chapterstart="1622">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2004%202007.mp4', 1622);">Ouvir esta parte</button>
+<p><ul>
+<li>Islam, Taricas, Nomes de Deus, Coerência em bloco.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-02-4" data-chapterstart="1857">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2004%202007.mp4', 1857);">Ouvir esta parte</button>
+<p><ul>
+<li>Olavo de Carvalho: "Esboço do sistema filosófico" (Apostila)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-02-5" data-chapterstart="2196">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2004%202007.mp4', 2196);">Ouvir esta parte</button>
+<p><ul>
+<li>Gramsci, Hugo Chávez, Socialismo, Karl Marx, Lênin, Stálin, Estatização, Ludwig Von Mises, PFL, Revolução passiva, Controle aéreo, Linguagem dupla, Foro do São Paulo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-02-6" data-chapterstart="2533">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2004%202007.mp4', 2533);">Ouvir esta parte</button>
+<p><ul>
+<li>Movimento gay, Pedofilia , Exibicionismo, Identidade, Pedro Aberlardo</li>
+</ul></p>
+</div>
+</div>

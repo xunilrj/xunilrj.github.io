@@ -1,0 +1,187 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-01-07">2008/01/07</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4">
+<div data-chapterid="2008-01-07-0" data-chapterstart="0">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 0);">Ouvir esta parte</button>
+<p><ul>
+<li>Celso Lungaretti, Foro de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-1" data-chapterstart="164">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 164);">Ouvir esta parte</button>
+<p><ul>
+<li>Lucio de Brito Castelo Branco (Carta), "O imbecil coletivo" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-2" data-chapterstart="553">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 553);">Ouvir esta parte</button>
+<p><ul>
+<li>Hábito de leitura, Prisões</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-3" data-chapterstart="612">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 612);">Ouvir esta parte</button>
+<p><ul>
+<li>Aquecimento Global, Intergovernamental Panel on Climate Change, IPCC, China, Indústrias americanas, Ciência moderna, Edmund Husserl, "A crise das ciências européias e a fenomenologia transcendental' (Livro), Hugo Chávez, Globalismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-4" data-chapterstart="991">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 991);">Ouvir esta parte</button>
+<p><ul>
+<li>R. J. Rummel, Partidos maoístas, Nazismo, PC do B, Ditadura, Vladimir Herzog, Robert Crumb, Quartim de Moraes, Guerra Civil americana, American Vision (Site), Peter Marshall, Steve Wilkins (Debates)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-5" data-chapterstart="1541">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 1541);">Ouvir esta parte</button>
+<p><ul>
+<li>China, Pena de morte, Comércio de órgãos, Intervenções militares americanas, Senso das proporções, I-Ching, Falun Gong, Epoch Times, Perseguição religiosa</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-6" data-chapterstart="1941">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 1941);">Ouvir esta parte</button>
+<p><ul>
+<li>Sistema Nacional de Mobilização, SINAMOB</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-7" data-chapterstart="2053">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 2053);">Ouvir esta parte</button>
+<p><ul>
+<li>CNBB</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-8" data-chapterstart="2175">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 2175);">Ouvir esta parte</button>
+<p><ul>
+<li>Mike Huckabee, Barack Obama, Alan Keys</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-9" data-chapterstart="2275">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 2275);">Ouvir esta parte</button>
+<p><ul>
+<li>Ron Paul, Guerra do Iraque</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-10" data-chapterstart="2433">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 2433);">Ouvir esta parte</button>
+<p><ul>
+<li>Direitos iguais, Quilombos</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-11" data-chapterstart="2803">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 2803);">Ouvir esta parte</button>
+<p><ul>
+<li>FARC</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-12" data-chapterstart="2854">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 2854);">Ouvir esta parte</button>
+<p><ul>
+<li>Nuno Cavaco, Orlando Vitorino, "Dia de Reis", Brasília, Filosofia portuguesa, Filosofia escolástica, Renascimento, Filósofos palacianos, René Descartes, Galileu Galilei, Leibniz, Mário Ferreira dos Santos</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-13" data-chapterstart="3102">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 3102);">Ouvir esta parte</button>
+<p><ul>
+<li>Operação Condo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-14" data-chapterstart="3152">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 3152);">Ouvir esta parte</button>
+<p><ul>
+<li>Andrey Tarkovsky, "Solaris" (Filme), Fenomenologia, "O Sacrifício" (Filme)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-01-07-15" data-chapterstart="3241">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2001%202008.mp4', 3241);">Ouvir esta parte</button>
+<p><ul>
+<li>Martin Buber: "Eu e tu" (Livro)</li>
+</ul></p>
+</div>
+</div>

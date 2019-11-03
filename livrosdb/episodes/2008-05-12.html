@@ -1,0 +1,175 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-05-12">2008/05/12</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4">
+<div data-chapterid="2008-05-12-0" data-chapterstart="71">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 71);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunidade Olavo de Carvalho do B (Orkut), Perenialismo, Frithjof Schuon, Luís Carlos Prestes, Crise cultural, René Guénon, Galileu Galilei, São Roberto Belarmino, Argumentação retórica, Papa Bento XVI, Padres pedófilos, Movimento gay, Michael S. Rose, "Goodbye, good men: how liberals brought corruption into the Catholic Church" (Livro), ONU, Infalibilidade Papal, Karl Marx, Lênin, Doutrina metafísica, Estrutura da realidade</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-1" data-chapterstart="1203">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 1203);">Ouvir esta parte</button>
+<p><ul>
+<li>China</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-2" data-chapterstart="1313">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 1313);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Jeremiah Wright, Controle da água, Socialismo, Comissões técnicas, Poligamia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-3" data-chapterstart="1705">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 1705);">Ouvir esta parte</button>
+<p><ul>
+<li>"O imbecil coletivo II" (Livro) Victor Frankl, Noção de beleza, Dharma, Sentido da vida, Beto Rockfeller (Filme)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-4" data-chapterstart="1934">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 1934);">Ouvir esta parte</button>
+<p><ul>
+<li>Árabes, Muçulmanos, Mouros, Alberto da Costa e Silva - "A enxada e a lança: a África antes dos portugueses" (Livro), Escravagismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-5" data-chapterstart="2277">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 2277);">Ouvir esta parte</button>
+<p><ul>
+<li>Guerrilha, Colômbia, Richard Grasso, FARC</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-6" data-chapterstart="2399">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 2399);">Ouvir esta parte</button>
+<p><ul>
+<li>Christovam Buarque, Paraguai, José Julio Chiavenato, "Genocídio americano: a Guerra do Paraguai" (Livro), Francisco Poratioto, "Maldita Guerra: nova História da Guerra do Paraguai" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-7" data-chapterstart="2487">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 2487);">Ouvir esta parte</button>
+<p><ul>
+<li>Dilma Rousseff, Armando Valladares, Cuba</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-8" data-chapterstart="2698">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 2698);">Ouvir esta parte</button>
+<p><ul>
+<li>Georges Bernanos: "Diário de um pároco de aldeia" (Livro), J. D. Salinger, "O apanhador no campo de centeio" (Livro), Jório Dauster, Thomas Mann, Herbert Caro, "Doutor Fausto" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-9" data-chapterstart="2814">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 2814);">Ouvir esta parte</button>
+<p><ul>
+<li>Liberdade de expressão</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-10" data-chapterstart="3003">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 3003);">Ouvir esta parte</button>
+<p><ul>
+<li>Michel Schooyans: "La face cochee De L'ONU" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-11" data-chapterstart="3041">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 3041);">Ouvir esta parte</button>
+<p><ul>
+<li>Hugo Chávez, FARC, José Dirceu, Condoleezza Rice, Rede Globo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-12" data-chapterstart="3193">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 3193);">Ouvir esta parte</button>
+<p><ul>
+<li>Governo Mundial, Antonio Negri: "Império" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-12-13" data-chapterstart="3331">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2005%202008.mp4', 3331);">Ouvir esta parte</button>
+<p><ul>
+<li>Esoterismo cristão, Frithjof Schuon, René Guénon</li>
+</ul></p>
+</div>
+</div>

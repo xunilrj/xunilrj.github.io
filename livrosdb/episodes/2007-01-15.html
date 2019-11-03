@@ -1,0 +1,145 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-01-15">2007/01/15</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4">
+<div data-chapterid="2007-01-15-0" data-chapterstart="25">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4', 25);">Ouvir esta parte</button>
+<p><ul>
+<li>Ditadura, Tortura, Governo americano, Folha de S. Paulo, Governo Geisel, Cuba, Angola,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-15-1" data-chapterstart="665">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4', 665);">Ouvir esta parte</button>
+<p><ul>
+<li>Grassroots, Nancy Pelosi, Campanha para reforma da mídia,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-15-2" data-chapterstart="1110">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4', 1110);">Ouvir esta parte</button>
+<p><ul>
+<li>Iniciativa das religiões unidas, ONU, Lee Pen, "False dawn: the united religions initiative, globalism and the quest for a One-World religion" (Livro Citado), Daniel C. Dennett, "Breaking the spell: religion as a natural phenomenon" (Livro citado),</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-15-3" data-chapterstart="1325">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4', 1325);">Ouvir esta parte</button>
+<p><ul>
+<li>George Soros, antitabagismo, Descriminalização das drogas, Gilberto Gil</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-15-4" data-chapterstart="1571">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4', 1571);">Ouvir esta parte</button>
+<p><ul>
+<li>KGB, Operação Colômbia, Foro de São Paulo, FARC, Hugo Chávez, Fidel Castro, Umberto E. Fontova, "Fidel: Hollywood's Favorite yrant" (Livro), Che Guevara.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-15-5" data-chapterstart="1975">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4', 1975);">Ouvir esta parte</button>
+<p><ul>
+<li>Abu Graib, Guantánamo, Oscar Niemeyer,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-15-6" data-chapterstart="2270">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4', 2270);">Ouvir esta parte</button>
+<p><ul>
+<li>Venezuela, Irã Estados Unidos, Consciência moral,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-15-7" data-chapterstart="2790">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4', 2790);">Ouvir esta parte</button>
+<p><ul>
+<li>Movimento conservador americano: Think thanks: Heritage Foundation, Hudson Institute, Atlas Foundation, Claremont Institute, Rush Limbaugh, Ann Coulter, Conservative Chronicle, American Family Association, American Conservative Union, Renewel America, National Rifre Association, CFR (Concil On Foreign Relations), Dinástias Oligárquicas, René A. Wormser "Foundations: Their Power and Influence" (Livro citado)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-15-8" data-chapterstart="3110">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2001%202007.mp4', 3110);">Ouvir esta parte</button>
+<p><ul>
+<li>Pseudo cultura esquerdista, Otto Maria Carpeaux, Emir Sader, José Guilherme Merchior, Carlos Guilherme Mota</li>
+</ul></p>
+</div>
+</div>

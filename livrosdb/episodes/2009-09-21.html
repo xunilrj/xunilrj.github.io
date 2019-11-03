@@ -1,0 +1,163 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2009-09-21">2009/09/21</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4">
+<div data-chapterid="2009-09-21-0" data-chapterstart="14">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4', 14);">Ouvir esta parte</button>
+<p><ul>
+<li>Foro de São Paulo, Honduras, Nova Ordem Mundial, Casamento Gay, Antitabagismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-21-1" data-chapterstart="402">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4', 402);">Ouvir esta parte</button>
+<p><ul>
+<li>Unificação das Policias</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-21-2" data-chapterstart="581">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4', 581);">Ouvir esta parte</button>
+<p><ul>
+<li>Honduras, Manuel Zelaya, Mídia Brasileira</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-21-3" data-chapterstart="970">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4', 970);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-21-4" data-chapterstart="1314">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4', 1314);">Ouvir esta parte</button>
+<p><ul>
+<li>Aborto, Mídia</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-21-5" data-chapterstart="1414">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4', 1414);">Ouvir esta parte</button>
+<p><ul>
+<li>Lula, Esquerda, Foro de São Paulo, José Serra, Geraldo Alckmin, Forças Armadas</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-21-6" data-chapterstart="1937">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4', 1937);">Ouvir esta parte</button>
+<p><ul>
+<li>Antitabagismo, Michael Bloomberg, Nova York</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-21-7" data-chapterstart="2207">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4', 2207);">Ouvir esta parte</button>
+<p><ul>
+<li>Direito, Revolução pela Lei, Hermann Rauschning: The Revolution of Nihilism: Warning to the West (livro), Mente Revolucionária</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-21-8" data-chapterstart="2815">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4', 2815);">Ouvir esta parte</button>
+<p><ul>
+<li>Mudança ideológica de Olavo de Carvalho</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-21-9" data-chapterstart="2962">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4', 2962);">Ouvir esta parte</button>
+<p><ul>
+<li>Robert Chandler: Shadow World: Resurgent Russia, The Global New Left, and Radical Islam (livro), Christopher Andrew: The World Was Going Our Way: The KGB and the Battle for the Third World (livro), Alejandro Peña Esclusa, Heitor de Paola: O Eixo do Mal Latino-Americano (livro), Graça Salgueiro (<a href="www.notalatina.blogspot.com">www.notalatina.blogspot.com</a>(<a href="http://web.archive.org/web/2009092100000/www.notalatina.blogspot.com" target="_blank">@webarchive</a>)), Foro de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-21-10" data-chapterstart="3292">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4', 3292);">Ouvir esta parte</button>
+<p><ul>
+<li>Islãmismo, Cristianismo, Profecia de La Salette</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-21-11" data-chapterstart="3508">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2021%2009%202009.mp4', 3508);">Ouvir esta parte</button>
+<p><ul>
+<li>Gilberto Dimenstein: Universidade do prazer (artigo: <a href="http://www1.folha.uol.com.br/fsp/cotidian/ff2009200908.htm">http://www1.folha.uol.com.br/fsp/cotidian/ff2009200908.htm</a>(<a href="http://web.archive.org/web/2009092100000/http://www1.folha.uol.com.br/fsp/cotidian/ff2009200908.htm" target="_blank">@webarchive</a>))</li>
+</ul></p>
+</div>
+</div>

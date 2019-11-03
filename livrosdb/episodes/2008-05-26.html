@@ -1,0 +1,217 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-05-26">2008/05/26</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4">
+<div data-chapterid="2008-05-26-0" data-chapterstart="117">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 117);">Ouvir esta parte</button>
+<p><ul>
+<li>Wiley Drake: "Memorial Day" (Mensagem), Igreja, Política</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-1" data-chapterstart="316">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 316);">Ouvir esta parte</button>
+<p><ul>
+<li>Antonio Roberto Batista</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-2" data-chapterstart="368">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 368);">Ouvir esta parte</button>
+<p><ul>
+<li>Régine Pernoud: "A mulher na Idade Média" (Livro), "A mulher no tempo das catedrais" (Livros) , "O que não nos contaram sobre a Idade Média" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-3" data-chapterstart="449">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 449);">Ouvir esta parte</button>
+<p><ul>
+<li>Foro de São Paulo, Revista Veja, Valter Pomar, FARC, Lula</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-4" data-chapterstart="943">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 943);">Ouvir esta parte</button>
+<p><ul>
+<li>Maio de 1968, Nicolai Sarkozy, Tariq Ali, Socialismo, Capitalismo, Liberalismo amoral, Rodrigo Constantino</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-5" data-chapterstart="1160">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 1160);">Ouvir esta parte</button>
+<p><ul>
+<li>Aborto, Células-tronco embrionárias</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-6" data-chapterstart="1314">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 1314);">Ouvir esta parte</button>
+<p><ul>
+<li>Luiz Mott, Movimento gay, FECOMÉRCIO, Abram Szajman, Cuba, Fantasias sexuais, Paulo Ghiraldelli</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-7" data-chapterstart="1989">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 1989);">Ouvir esta parte</button>
+<p><ul>
+<li>Alberto Fujimori, Manuel Marulanda, Colômbia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-8" data-chapterstart="2071">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 2071);">Ouvir esta parte</button>
+<p><ul>
+<li>Ucrânia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-9" data-chapterstart="2170">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 2170);">Ouvir esta parte</button>
+<p><ul>
+<li>Planned Parenthood, Católicas pelo Direito de Decidir</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-10" data-chapterstart="2271">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 2271);">Ouvir esta parte</button>
+<p><ul>
+<li>"Las torturas de Fidel Castro" (Google Video)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-11" data-chapterstart="2318">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 2318);">Ouvir esta parte</button>
+<p><ul>
+<li>Wilder Costa: "Raposa-Serra do Sol e a monarquia britânica" (Artigo), Amazônia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-12" data-chapterstart="2445">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 2445);">Ouvir esta parte</button>
+<p><ul>
+<li>nióbio</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-13" data-chapterstart="2619">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 2619);">Ouvir esta parte</button>
+<p><ul>
+<li>Associação Cultural Montfort, Orlando Fideli</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-14" data-chapterstart="2713">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 2713);">Ouvir esta parte</button>
+<p><ul>
+<li>Otto Maria Carpeaux, "História da Literatura Ocidental" (Livro), Alceu Amoroso Lima, Murilo Felisberto</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-15" data-chapterstart="2876">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 2876);">Ouvir esta parte</button>
+<p><ul>
+<li>"A escória do mundo" (Artigo)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-16" data-chapterstart="2902">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 2902);">Ouvir esta parte</button>
+<p><ul>
+<li>Notalatina (Blog), Graça Salgueiro</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-17" data-chapterstart="2962">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 2962);">Ouvir esta parte</button>
+<p><ul>
+<li>Wes Vernon: "Barack Obama's communist connections" (Artigo), Renew America (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-18" data-chapterstart="2998">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 2998);">Ouvir esta parte</button>
+<p><ul>
+<li>Rússia, China, Defesa antimíssil</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-19" data-chapterstart="3102">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 3102);">Ouvir esta parte</button>
+<p><ul>
+<li>Eleições americanas, John McCain</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-26-20" data-chapterstart="3228">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2005%202008.mp4', 3228);">Ouvir esta parte</button>
+<p><ul>
+<li>Estatização do petróleo, Ted Kennedy</li>
+</ul></p>
+</div>
+</div>

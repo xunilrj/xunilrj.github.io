@@ -1,0 +1,205 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-04-07">2008/04/07</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4">
+<div data-chapterid="2008-04-07-0" data-chapterstart="26">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 26);">Ouvir esta parte</button>
+<p><ul>
+<li>Constantine Menges, Márcio Moreira Alves, Washington Times, Reverendo Moon</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-1" data-chapterstart="199">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 199);">Ouvir esta parte</button>
+<p><ul>
+<li>Universidade Federal do Pernambuco, Ângelo Monteiro</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-2" data-chapterstart="250">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 250);">Ouvir esta parte</button>
+<p><ul>
+<li>Siderot (Cidade), Haghaná (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-3" data-chapterstart="324">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 324);">Ouvir esta parte</button>
+<p><ul>
+<li>Foro de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-4" data-chapterstart="667">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 667);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Jeremiah Wright, Ali Kamel, Demétrio Magnoli, Wanderley Guilherme dos Santos , Luiz Antônio Giron, Lênin , General Andrade Nery, Reserva Raposa Serra do Sol, Jair Bolsonaro</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-5" data-chapterstart="1349">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 1349);">Ouvir esta parte</button>
+<p><ul>
+<li>Aulas História Afro/Indígena - "O Guarani" (Ópera), "O Escravo" (Ópera) - José de Alencar, Gonçalves Dias, Castro Alves, Muçulmanos escravagistas, Europa</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-6" data-chapterstart="1552">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 1552);">Ouvir esta parte</button>
+<p><ul>
+<li>Fascismo, Nazismo, Socialismo Nacional, Trótski, Ernst Topitsch: "Stalin's War: a radical new theory of the origins of the Second World War" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-7" data-chapterstart="1704">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 1704);">Ouvir esta parte</button>
+<p><ul>
+<li>Judeus anti-Israel, Judeus esquerdistas, Rabino Marvin Antelman, "To eliminate the opiate" (Livro), Papa Pio X, Modernismo, Apostasia, Jacob Frank, Movimentos Culturais/religiosos, Karl Marx, Michael S. Rose: "Goodbye! Good Men: how catholic seminares turned away two generations of vocation from the priesthood" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-8" data-chapterstart="2293">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 2293);">Ouvir esta parte</button>
+<p><ul>
+<li>Caio Blinder, Diogo Mainardi</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-9" data-chapterstart="2547">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 2547);">Ouvir esta parte</button>
+<p><ul>
+<li>Christopher Monckton, Al Gore, Aquecimento global , Pesquisa células-tronco embrionárias</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-10" data-chapterstart="2636">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 2636);">Ouvir esta parte</button>
+<p><ul>
+<li>FARC</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-11" data-chapterstart="2704">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 2704);">Ouvir esta parte</button>
+<p><ul>
+<li>Golpe de 64, João Goulart</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-12" data-chapterstart="2830">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 2830);">Ouvir esta parte</button>
+<p><ul>
+<li>Quartim de Moraes, Esquerda militar, Revolução bolivariana</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-13" data-chapterstart="3154">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 3154);">Ouvir esta parte</button>
+<p><ul>
+<li>Edmund Husserl: "A crise das ciências modernas e a fenomenologia transcendental" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-14" data-chapterstart="3247">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 3247);">Ouvir esta parte</button>
+<p><ul>
+<li>Revolução passiva, Antonio Gramsci, Carlos Catello Branco: "Os militares no poder" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-15" data-chapterstart="3405">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 3405);">Ouvir esta parte</button>
+<p><ul>
+<li>Paulo Brossard: "Entre duas guerras" (Artigo) , Tarso Genro, Reinaldo Azevedo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-16" data-chapterstart="3503">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 3503);">Ouvir esta parte</button>
+<p><ul>
+<li>Eugênio Bucci: "Em Brasília, 19 horas: a guerra entre a chapa-branca e o direito à informação no primeiro Governo Lula" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-17" data-chapterstart="3548">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 3548);">Ouvir esta parte</button>
+<p><ul>
+<li>Hélio Schwartzman</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-04-07-18" data-chapterstart="3562">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2004%202008.mp4', 3562);">Ouvir esta parte</button>
+<p><ul>
+<li>Gwynne Dyer: "The coming food catastrophe" (Artigo)</li>
+</ul></p>
+</div>
+</div>

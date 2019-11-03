@@ -1,0 +1,187 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2009-09-07">2009/09/07</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4">
+<div data-chapterid="2009-09-07-0" data-chapterstart="138">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 138);">Ouvir esta parte</button>
+<p><ul>
+<li>Reinaldo Azevedo, Esquerda, Foro de São Paulo, O nacionalismo de esquerda é uma fraude (artigo: <a href="http://www.olavodecarvalho.org/semana/refugio.htm">http://www.olavodecarvalho.org/semana/refugio.htm</a>(<a href="http://web.archive.org/web/2009090700000/http://www.olavodecarvalho.org/semana/refugio.htm" target="_blank">@webarchive</a>))</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-1" data-chapterstart="680">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 680);">Ouvir esta parte</button>
+<p><ul>
+<li>Construtivismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-2" data-chapterstart="878">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 878);">Ouvir esta parte</button>
+<p><ul>
+<li>Partido Federalista</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-3" data-chapterstart="1045">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 1045);">Ouvir esta parte</button>
+<p><ul>
+<li>Educação, Brasil, Eua</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-4" data-chapterstart="1296">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 1296);">Ouvir esta parte</button>
+<p><ul>
+<li>Bararck Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-5" data-chapterstart="1366">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 1366);">Ouvir esta parte</button>
+<p><ul>
+<li>Fidel Castro, Comunismo, Cristianismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-6" data-chapterstart="1487">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 1487);">Ouvir esta parte</button>
+<p><ul>
+<li>Estratégia Política</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-7" data-chapterstart="1620">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 1620);">Ouvir esta parte</button>
+<p><ul>
+<li>Terrorismo, Esquerda armada, Ditadura Militar</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-8" data-chapterstart="2059">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 2059);">Ouvir esta parte</button>
+<p><ul>
+<li>Tabagismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-9" data-chapterstart="2155">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 2155);">Ouvir esta parte</button>
+<p><ul>
+<li>Nelson Rodrigues</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-10" data-chapterstart="2355">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 2355);">Ouvir esta parte</button>
+<p><ul>
+<li>O Exército na História do Brasil (livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-11" data-chapterstart="2433">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 2433);">Ouvir esta parte</button>
+<p><ul>
+<li>Aristóteles em Nova Perspectiva (livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-12" data-chapterstart="2461">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 2461);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-13" data-chapterstart="2737">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 2737);">Ouvir esta parte</button>
+<p><ul>
+<li>Fernando Haddad, Manifesto Comunista</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-14" data-chapterstart="2854">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 2854);">Ouvir esta parte</button>
+<p><ul>
+<li>Homossexualismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-07-15" data-chapterstart="3408">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2009%202009.mp4', 3408);">Ouvir esta parte</button>
+<p><ul>
+<li>Homicídios</li>
+</ul></p>
+</div>
+</div>

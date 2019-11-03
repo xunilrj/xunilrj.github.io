@@ -1,0 +1,175 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-09-08">2008/09/08</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4">
+<div data-chapterid="2008-09-08-0" data-chapterstart="0">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 0);">Ouvir esta parte</button>
+<p><ul>
+<li>Seminario de Filosofia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-1" data-chapterstart="78">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 78);">Ouvir esta parte</button>
+<p><ul>
+<li>Estados Unidos, Rússia, Cooperação nuclear, Guerra fria, Movimento revolucionário, União Soviética, Comunismo, Nova Esquerda</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-2" data-chapterstart="343">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 343);">Ouvir esta parte</button>
+<p><ul>
+<li>Jeremy Scahill, "Blackwater: a ascenção do exército mercenário mais poderoso do mundo" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-3" data-chapterstart="464">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 464);">Ouvir esta parte</button>
+<p><ul>
+<li>Farol da Democracia (Site), Alejandro Peña Esclusa, "Dois critérios, dois resultados" (Artigo), Andrés Pastrana, Álvaro Uribe, Banditismo, Ditadura</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-4" data-chapterstart="692">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 692);">Ouvir esta parte</button>
+<p><ul>
+<li>René Guénon</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-5" data-chapterstart="713">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 713);">Ouvir esta parte</button>
+<p><ul>
+<li>Kim Jong II, Coréia do Norte</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-6" data-chapterstart="1206">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 1206);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Ato falho freudiano, Mahmoud Ahmadinejad, Inverstor's Business Daily, George W. Bush, Khalid Al Mansur, William Eyers, Sarah Palin, Ann Coulter, Joe Binden, Nova Ordem Mundial</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-7" data-chapterstart="2305">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 2305);">Ouvir esta parte</button>
+<p><ul>
+<li>Alex Jones, 11 de Setembro, Council on Foreign Relations, CFR, Rockfeller, Cliff Kincaid: "The hijacking of american foreign policy: how the United Nations subverts U. S. interests" (Livro), Accuracy in Media (Site), Harry Lamb</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-8" data-chapterstart="2523">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 2523);">Ouvir esta parte</button>
+<p><ul>
+<li>OPEC, Petróleo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-9" data-chapterstart="2622">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 2622);">Ouvir esta parte</button>
+<p><ul>
+<li>"Cadeia para ele" (Artigo), Carlos Lopes, Malcolm Muggeridge, Genocídio ucraniano, KGB, Walter Duranty, Serviço secreto britânico, Livro Negro do Comunismo (Livro), Stálin, Quartim de Moraes,</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-10" data-chapterstart="2952">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 2952);">Ouvir esta parte</button>
+<p><ul>
+<li>Míriam Leitão, Partido Democrata, Ku Klux Klan, Abraham Lincoln,</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-11" data-chapterstart="3010">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 3010);">Ouvir esta parte</button>
+<p><ul>
+<li>Hugo Chávez, Arkady Ostrovsky</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-12" data-chapterstart="3086">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 3086);">Ouvir esta parte</button>
+<p><ul>
+<li>Otto Reich, América Latina, Foro de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-08-13" data-chapterstart="3188">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2009%202008.mp4', 3188);">Ouvir esta parte</button>
+<p><ul>
+<li>"Makers and takers" (Livro), Peter Schweizer, Esquerdistas, Conservadorismo, PT, Jacques Derrida, Lula</li>
+</ul></p>
+</div>
+</div>

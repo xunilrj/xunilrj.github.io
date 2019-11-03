@@ -1,0 +1,169 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2009-05-04">2009/05/04</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4">
+<div data-chapterid="2009-05-04-0" data-chapterstart="17">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 17);">Ouvir esta parte</button>
+<p><ul>
+<li>Irã, Mahmoud Ahmadinejad, Cuba, Movimento Gay</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-05-04-1" data-chapterstart="155">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 155);">Ouvir esta parte</button>
+<p><ul>
+<li>Bolívia, Evo Morales, Human Rights Foundation</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-05-04-2" data-chapterstart="195">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 195);">Ouvir esta parte</button>
+<p><ul>
+<li>Luxemburgo, Henrique de Luxemburgo, Eutanásia, Desinformação</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-05-04-3" data-chapterstart="642">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 642);">Ouvir esta parte</button>
+<p><ul>
+<li>Foro de São Paulo, Palestina, Desinformação</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-05-04-4" data-chapterstart="769">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 769);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Hamas, Terrorismo, Iraque, Vietnã, Jane Fonda, Fontes primárias, Celso Lungaretti</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-05-04-5" data-chapterstart="1568">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 1568);">Ouvir esta parte</button>
+<p><ul>
+<li>Sociologia, Émile Durkheim, Nicolas Timasheff</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-05-04-6" data-chapterstart="1842">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 1842);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-05-04-7" data-chapterstart="2017">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 2017);">Ouvir esta parte</button>
+<p><ul>
+<li>Foro de São Paulo, Organização Latino-Americana de Solidariedade, OLAS, Unoamérica, Panamá, Alejandro Pena Esclusa, Chile, Colombia, FARC, Lula, Dilma Roussef</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-05-04-8" data-chapterstart="2671">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 2671);">Ouvir esta parte</button>
+<p><ul>
+<li>Umberto Eco: O Nome da Rosa (Livro), Aristóteles, Igreja</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-05-04-9" data-chapterstart="2826">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 2826);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-05-04-10" data-chapterstart="3068">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 3068);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-05-04-11" data-chapterstart="3189">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 3189);">Ouvir esta parte</button>
+<p><ul>
+<li>Paralaxe cognitiva, René Descartes, David Hume, Imannuel Kant</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-05-04-12" data-chapterstart="3490">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2005%202009.mp4', 3490);">Ouvir esta parte</button>
+<p><ul>
+<li>Mente revolucionária</li>
+</ul></p>
+</div>
+</div>

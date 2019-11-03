@@ -1,0 +1,175 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-07-07">2008/07/07</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4">
+<div data-chapterid="2008-07-07-0" data-chapterstart="71">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 71);">Ouvir esta parte</button>
+<p><ul>
+<li>Heitor de Paola: "O eixo do mal latino-americano e a Nova Ordem Mundial" (Livro), Direto do Abismo (Blog)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-1" data-chapterstart="118">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 118);">Ouvir esta parte</button>
+<p><ul>
+<li>Drogas, Argentina, Antitabagismo, Barack Obama, Aborto</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-2" data-chapterstart="273">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 273);">Ouvir esta parte</button>
+<p><ul>
+<li>ONGs, Patagônia, Indígenas, Amazônia, General Lessa, Joelmir Beting, Rede Globo, FARC, Oscar Niemeyer, Stalinismo, Comunismo, Mao Tsé-Tung, China</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-3" data-chapterstart="652">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 652);">Ouvir esta parte</button>
+<p><ul>
+<li>Adonis Georgiades: "Debunking in the Myth of homossexuality in ancient Greece" (Livro), Sócrates, Alcebíades, Book Finder (Site), Luiz Mott,</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-4" data-chapterstart="882">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 882);">Ouvir esta parte</button>
+<p><ul>
+<li>Lula, FARC, Reféns, Graça Salgueiro, Notalatina (Blog), Guerrilha, Luiz Felipe Lampreia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-5" data-chapterstart="1395">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 1395);">Ouvir esta parte</button>
+<p><ul>
+<li>Igreja Católica, CNBB</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-6" data-chapterstart="1641">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 1641);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunismo, Vladimir Bukovski, Arquivos de Moscou, "Julgamento em Moscou" (Livro), KGB, Christopher Andrew</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-7" data-chapterstart="1870">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 1870);">Ouvir esta parte</button>
+<p><ul>
+<li>Comissão de Direitos da Pessoa Humana, Forças Armadas, Donald Rumsfeld, Santo Tomás de Aquino, Ingrid Bittencourt</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-8" data-chapterstart="2086">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 2086);">Ouvir esta parte</button>
+<p><ul>
+<li>Invasões de Terra, MST, Ives Gandra Martins, Mauro Santayana, ONU, Sistema COC de Ensino, Cuba</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-9" data-chapterstart="2256">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 2256);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunidade Fora Lula (Orkut)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-10" data-chapterstart="2363">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 2363);">Ouvir esta parte</button>
+<p><ul>
+<li>Hugo Chávez, Frei Betto, Desinformação</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-11" data-chapterstart="2542">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 2542);">Ouvir esta parte</button>
+<p><ul>
+<li>Senador Jesse Helms</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-12" data-chapterstart="2622">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 2622);">Ouvir esta parte</button>
+<p><ul>
+<li>Tony Bellotto, Homofobia, "She stole my voice" (Documentário), Estupros</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-07-13" data-chapterstart="2996">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2007%2007%202008.mp4', 2996);">Ouvir esta parte</button>
+<p><ul>
+<li>Evolução moral, Guerras, Mortes, Comunismo, Hitler, Stálin, Frithjof Schuon, Revista Veja, Ditadura, Corrupção, Vladimir Herzog, Foro de São Paulo</li>
+</ul></p>
+</div>
+</div>

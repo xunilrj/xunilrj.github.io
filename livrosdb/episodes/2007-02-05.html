@@ -1,0 +1,163 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-02-05">2007/02/05</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4">
+<div data-chapterid="2007-02-05-0" data-chapterstart="45">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4', 45);">Ouvir esta parte</button>
+<p><ul>
+<li>Marco Bernardini, Espionagem, Telecom Itália, Daniel Dantas, Lulinha, Abin, Roberto Abdenur.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-05-1" data-chapterstart="265">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4', 265);">Ouvir esta parte</button>
+<p><ul>
+<li>Teoria do conhecimento, Andre Marc: "A dialética da afirmação" (Livro), Jacques Maritain, Santo Tomás de Aquino, Bernard Lonergan: "Insight: a comprehensive commentary" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-05-2" data-chapterstart="520">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4', 520);">Ouvir esta parte</button>
+<p><ul>
+<li>Ditadura.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-05-3" data-chapterstart="590">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4', 590);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunidade norte-americana, Robert Mandel, Moeda mundial, Eutanásia.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-05-4" data-chapterstart="905">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4', 905);">Ouvir esta parte</button>
+<p><ul>
+<li>Socialismo cristão, Movimento ideológico moderno, Movimento revolucionário messiânico, João Amós Comenius, Nova Ordem Mundial, Juízo Final, Eternidade, Futuro perfeito, Goethe, Manuel Bandeira, Estrutura falsa do Tempo, Quartim de Moraes, Capitão Chandler, Distorção da consciência moral, Movimento fascista europeu.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-05-5" data-chapterstart="1750">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4', 1750);">Ouvir esta parte</button>
+<p><ul>
+<li>Obesidade infantil.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-05-6" data-chapterstart="1800">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4', 1800);">Ouvir esta parte</button>
+<p><ul>
+<li>Partido Democrata americano, Congresso, Perda da percepção da realidade,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-05-7" data-chapterstart="1975">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4', 1975);">Ouvir esta parte</button>
+<p><ul>
+<li>Teoria dos Quatro Discursos, Quatro elementos</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-05-8" data-chapterstart="2040">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4', 2040);">Ouvir esta parte</button>
+<p><ul>
+<li>Conceitos jurídicos indeterminados.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-05-9" data-chapterstart="2240">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4', 2240);">Ouvir esta parte</button>
+<p><ul>
+<li>John Cornwell: "O Papa de Hitler" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-05-10" data-chapterstart="2305">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4', 2305);">Ouvir esta parte</button>
+<p><ul>
+<li>Pio XII, Concílio Vaticano II, Teologia da Libertação, Grupo pré-conciliar, Gustavo Corção, Julio Fleichman: "A crise é de fé e é grave" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-05-11" data-chapterstart="2656">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2002%202007.mp4', 2656);">Ouvir esta parte</button>
+<p><ul>
+<li>Rússia, Claire Sterling: "Thieves World: the threat of the New Global Network of organized crime" (Livro), Máfia russa, KGB</li>
+</ul></p>
+</div>
+</div>

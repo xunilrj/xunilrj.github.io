@@ -1,0 +1,163 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-08-16">2010/08/16</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4">
+<div data-chapterid="2010-08-16-0" data-chapterstart="0">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4', 0);">Ouvir esta parte</button>
+<p><ul>
+<li>Olavo anuncia o Curso de Imortalidade - tema o qual ele gosta muito. Fala do site Instituo Olavo de Carvalho fundada por Luciana Amato, grande aluna.</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-16-1" data-chapterstart="120">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4', 120);">Ouvir esta parte</button>
+<p><ul>
+<li>Livro do Poeta Silvério Duque - A pele de Ésau, Editora Via Litterarum de Salvador. Livro as Horas de Catarina livro relançado de Bruno Tolentino e o que o tornou conhecido e uma peça inédita do Bruno A andorinha ou a cilada de Deus. Olavo diz que o livro de Mortimer Adler Como Ler Livros é fundamental, Lançou o livro Memórias: o que não está escrito nos meus livros de Viktor Frankl, ambos da É Realizações.</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-16-2" data-chapterstart="330">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4', 330);">Ouvir esta parte</button>
+<p><ul>
+<li>Comício de Zé Serra no RS, cartazes denunciando a relação PT e Farc, ajudando o Zé Serra e ele mandou retirarem os cartazes.</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-16-3" data-chapterstart="640">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4', 640);">Ouvir esta parte</button>
+<p><ul>
+<li>Pergunta sobre a questão de OVNI e invasão extraterrestre. Olavo diz que é um E.T.</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-16-4" data-chapterstart="700">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4', 700);">Ouvir esta parte</button>
+<p><ul>
+<li>Livro de Ivo Patarra, sobre Lula como o bandido-mor - sabia tudo do Mensalão, nenhuma editora quis publicar, só acha na Interet. Censura na ditarua era pífia, Olavo disse que cansava de burlar os censores. Na era PT, a censura, feita pelos próprios jornalistas que proíbem certos assuntos.</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-16-5" data-chapterstart="1140">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4', 1140);">Ouvir esta parte</button>
+<p><ul>
+<li>Encontro do grupo gay: É jovem e a República.</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-16-6" data-chapterstart="1215">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4', 1215);">Ouvir esta parte</button>
+<p><ul>
+<li>Pergunta sobre a questão dos 3 poderes mundiais. Qual 3 é o pior? Comunismo, Islamismo ou Globalismo (Bilderberg e outros)? Islamic Terrorism: Adolf Hitler and Haj Amin Al-Husseini - Chuck Morse – livro.</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-16-7" data-chapterstart="2170">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4', 2170);">Ouvir esta parte</button>
+<p><ul>
+<li>Bloqueio do Blog do Júlio Severo em alguns lugares por ser classificado como Blog de Ódio.</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-16-8" data-chapterstart="2245">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4', 2245);">Ouvir esta parte</button>
+<p><ul>
+<li>Corrupção do Governo do Estado Rio, Sérgio Cabral. Brasileiro gosta de alguém pior que ele para se sentir melhor.</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-16-9" data-chapterstart="2780">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4', 2780);">Ouvir esta parte</button>
+<p><ul>
+<li>Alejandro Peña Esclusa, prisão e "frescura" do governo venezuelano.</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-16-10" data-chapterstart="3044">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4', 3044);">Ouvir esta parte</button>
+<p><ul>
+<li>Novo livro do Fidel Castro narra uma mentira sobre batalha na Sierra Maestra que não teve combate (livro do Humberto Fontana desmente toda palhaçada).</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-08-16-11" data-chapterstart="3360">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2008%202010.mp4', 3360);">Ouvir esta parte</button>
+<p><ul>
+<li>Sacanagem contra Gilberto Freire numa homenagem. Fala sobre Gerardo Mello Mourão (Invenção do mar) o qual Ezra Pound, criador da poesia moderna, elogia muito.</li>
+</ul></p>
+</div>
+</div>

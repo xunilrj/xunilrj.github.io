@@ -1,0 +1,145 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-08-13">2007/08/13</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2008%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2008%202007.mp4">
+<div data-chapterid="2007-08-13-0" data-chapterstart="0">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2008%202007.mp4', 0);">Ouvir esta parte</button>
+<p><ul>
+<li>Escola Sem Partido, Sistema COC de Ensino, Comunismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-13-1" data-chapterstart="217">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2008%202007.mp4', 217);">Ouvir esta parte</button>
+<p><ul>
+<li>FARC, PT, Drogas, Julio Bortolato, Juan Carlos Ramirez Abadia, Fernandinho Beira-Mar, Exército colombiano, Maierovitch, Olivério Medina, Sequestros, MIR, Luiz Eduardo Greenhalgh</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-13-2" data-chapterstart="594">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2008%202007.mp4', 594);">Ouvir esta parte</button>
+<p><ul>
+<li>"A mentalidade revolucionária" (Artigo), Juízo Final, Pseudo-religião, Lula, Tarso Genro, Zé Dirceu, Fidel Castro, PSOL, Aquile Lollo, Mensalão, Lênin, Stálin, Tribunal do futuro, Livro de Gênesis, "O Bem e o Mal", Cosmovisão, Movimentos revolucionários, João Pedro Stédile</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-13-3" data-chapterstart="1301">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2008%202007.mp4', 1301);">Ouvir esta parte</button>
+<p><ul>
+<li>Norma Braga, Anencefalia, Aborto.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-13-4" data-chapterstart="1301">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2008%202007.mp4', 1301);">Ouvir esta parte</button>
+<p><ul>
+<li>Atletas cubanos, Ditadura, Ted Kennedy, Jim Jones, Revolução comunista</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-13-5" data-chapterstart="1472">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2008%202007.mp4', 1472);">Ouvir esta parte</button>
+<p><ul>
+<li>Patriotismo, Nacionalismo, "O fim do ciclo nacionalista" (Palestra), ONU, Soberanias nacionais, Estados Unidos, Israel.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-13-6" data-chapterstart="1678">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2008%202007.mp4', 1678);">Ouvir esta parte</button>
+<p><ul>
+<li>"Fórum da Liberdade", Oded Grajev, Boris Casoy, Geraldo Alckimin.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-13-7" data-chapterstart="1967">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2008%202007.mp4', 1967);">Ouvir esta parte</button>
+<p><ul>
+<li>Oposição pré-moldada, Submissão, Bill O'Reilly, Sean Hannity, José Sarney, José Carlos Bardawil.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-13-8" data-chapterstart="2541">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2008%202007.mp4', 2541);">Ouvir esta parte</button>
+<p><ul>
+<li>Farol da Democracia Representativa (Site), Luiz Carlos Alborghetti,</li>
+</ul></p>
+</div>
+</div>

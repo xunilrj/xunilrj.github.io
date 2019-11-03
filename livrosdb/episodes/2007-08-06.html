@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-08-06">2007/08/06</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4">
+<div data-chapterid="2007-08-06-0" data-chapterstart="10">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4', 10);">Ouvir esta parte</button>
+<p><ul>
+<li>Movimento Endireita Brasil, Luiz Werneck Vianna, Nazismo, Karl Mannheim, "Diagnóstico de nosso tempo" (Livro), Desorganização sistemática da sociedade, Lei anti-homofobia</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-06-1" data-chapterstart="601">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4', 601);">Ouvir esta parte</button>
+<p><ul>
+<li>Mentalidade gnóstica/revolucionária, Liberalismo ateu, Lênin, Karl Marx,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-06-2" data-chapterstart="828">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4', 828);">Ouvir esta parte</button>
+<p><ul>
+<li>Conservadorismo, Ação do Tempo, Leis americanas/inglesas.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-06-3" data-chapterstart="948">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4', 948);">Ouvir esta parte</button>
+<p><ul>
+<li>José Guilherme Merquior: "A natureza do processo" (Livro), Ministro Mohammed Saeed al-Sahhaf, Guevarismo, Escolas militares, Guerra revolucionária, Cuba, Fidel Castro.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-06-4" data-chapterstart="1324">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4', 1324);">Ouvir esta parte</button>
+<p><ul>
+<li>Homofobia, Deco Ribeiro, Julio Severo, Luiz Mott, Mídia Sem Máscara, Denílson Lopes.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-06-5" data-chapterstart="1625">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4', 1625);">Ouvir esta parte</button>
+<p><ul>
+<li>KGB, FBI, Oliver Stone, Dr. Mabuse (Filme).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-06-6" data-chapterstart="2030">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4', 2030);">Ouvir esta parte</button>
+<p><ul>
+<li>"A lógica da destruição" (Artigo), Teoria da conspiração, Johnny English (Filme), Revolução gramsciana, Mário Ferreira dos Santos, Pseudo-intelectuais, Rainer Maria Rilke, "Torso arcaico de Apolo" (Soneto), Empresariado.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-06-7" data-chapterstart="2492">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4', 2492);">Ouvir esta parte</button>
+<p><ul>
+<li>USP, Congresso Mundial de Lógica.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-06-8" data-chapterstart="2596">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4', 2596);">Ouvir esta parte</button>
+<p><ul>
+<li>Shumpetter, "Destruição criativa", Engels, Hugo Von Hofmannsthal, Edmund Russell, Bernard Lonergan, Eric Voegelin, Xavier Zubiri, Revolução intelectual conservadora, Falsos ídolos, Perseguição anticristã, National Review (Revista).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-06-9" data-chapterstart="2804">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4', 2804);">Ouvir esta parte</button>
+<p><ul>
+<li>Mário Ferreira dos Santos, "Teoria geral das tensões" (Livro), Platão, Leibniz, Pitagorismo, Filosofia escolástica, Metalinguagem da ciência, José Bonifácio de Andrade e Silva</li>
+</ul></p>
+</div>
+</div>

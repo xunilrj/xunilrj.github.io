@@ -1,0 +1,169 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-04-28">2010/04/28</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4">
+<div data-chapterid="2010-04-28-0" data-chapterstart="60">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 60);">Ouvir esta parte</button>
+<p><ul>
+<li>Avisos</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-28-1" data-chapterstart="205">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 205);">Ouvir esta parte</button>
+<p><ul>
+<li>Gal. Venezuelano denuncia presença cubana no serviço secreto da Venezuela</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-28-2" data-chapterstart="240">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 240);">Ouvir esta parte</button>
+<p><ul>
+<li>Mídia esconde o que se sabe sobre Obama, Brasil, Foro de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-28-3" data-chapterstart="350">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 350);">Ouvir esta parte</button>
+<p><ul>
+<li>Elizabeth Noelle-Newmann: "A espiral do silêncio” (livro), Revolução Francesa</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-28-4" data-chapterstart="720">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 720);">Ouvir esta parte</button>
+<p><ul>
+<li>Brasil é recordista de censura segundo Google</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-28-5" data-chapterstart="975">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 975);">Ouvir esta parte</button>
+<p><ul>
+<li>Livro infantil distribuído pelo governo de Pernambuco: "Mamãe, como eu nasci?", sexualização infantil, Zelig (filme), Lula</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-28-6" data-chapterstart="1140">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 1140);">Ouvir esta parte</button>
+<p><ul>
+<li>Luiz Marins Filho, antropólogo, avisos por escrito não funcionam no Brasil, Analfabetismo funcional</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-28-7" data-chapterstart="1770">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 1770);">Ouvir esta parte</button>
+<p><ul>
+<li>Missa do Concílio Vaticano II, pe. Fábio de Melo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-28-8" data-chapterstart="2290">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 2290);">Ouvir esta parte</button>
+<p><ul>
+<li>Busto de Fidel Castro em Caracas, Empréstimo da China para a Venezuela</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-28-9" data-chapterstart="2360">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 2360);">Ouvir esta parte</button>
+<p><ul>
+<li>Vigilância da Amazônia pelo Exército Brasileiro, UFBA financia grupo gay da BA</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-28-10" data-chapterstart="3035">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 3035);">Ouvir esta parte</button>
+<p><ul>
+<li>Arizona exige que candidato comprove sua elegibilidade</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-28-11" data-chapterstart="3180">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 3180);">Ouvir esta parte</button>
+<p><ul>
+<li>Pastor Franklin Graham desconvidado ao Pentágono por pressão de Organização islâmica, The Council on American–Islamic Relations (CAIR)</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-04-28-12" data-chapterstart="3255">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2004%202010.mp4', 3255);">Ouvir esta parte</button>
+<p><ul>
+<li>proteção aos islâmicos na Inglaterra</li>
+</ul></p>
+</div>
+</div>

@@ -1,0 +1,157 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-05-05">2008/05/05</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4">
+<div data-chapterid="2008-05-05-0" data-chapterstart="35">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4', 35);">Ouvir esta parte</button>
+<p><ul>
+<li>Immanuel Kant</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-05-1" data-chapterstart="146">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4', 146);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunidade Olavo de Carvalho (Orkut), René Guénon, Cristianismo, Islã, Frithjof Schuon: "A idéia do melhor na ordem confessional" (Ensaio), Evangélicos, Esoterismo islâmico, Tarica, Trótski, Stálin, Alaor Café</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-05-2" data-chapterstart="1061">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4', 1061);">Ouvir esta parte</button>
+<p><ul>
+<li>Graça Salgueiro, Notalatina (Blog), Referendo, Bolívia, Jornalistas</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-05-3" data-chapterstart="1272">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4', 1272);">Ouvir esta parte</button>
+<p><ul>
+<li>Esoterismo cristão, Ordens monásticas, Conde de St. Germain, Jean Robin, "O Rei do mundo" (Livro), China, "Oriente e Ocidente" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-05-4" data-chapterstart="1570">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4', 1570);">Ouvir esta parte</button>
+<p><ul>
+<li>UFBA, Prof. Antônio Natalino Manta, Cultura baiana, Gilberto Gil, Rui Barbosa: "O Papa e o Concílio" (Livro), Santo Daime</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-05-5" data-chapterstart="2002">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4', 2002);">Ouvir esta parte</button>
+<p><ul>
+<li>Internet, Território indígena</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-05-6" data-chapterstart="2093">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4', 2093);">Ouvir esta parte</button>
+<p><ul>
+<li>Sionismo, Conflito árabe-israelense</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-05-7" data-chapterstart="2198">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4', 2198);">Ouvir esta parte</button>
+<p><ul>
+<li>Projeto Supranacional, Marxismo, Joseph Story, "The European Union Collective" (Livro), José Ortega y Gasset, Arnold Toynbee, Globalismo, Governo Mundial, Revista Sala de Aula, Nazismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-05-8" data-chapterstart="2556">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4', 2556);">Ouvir esta parte</button>
+<p><ul>
+<li>ONU, Congo, G. Edward Griffin: "The fearful máster: a second look at the United Nations" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-05-9" data-chapterstart="2658">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4', 2658);">Ouvir esta parte</button>
+<p><ul>
+<li>Colômbia, Paramilitarismo, Álvaro Uribe, FARC, Microempresários</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-05-10" data-chapterstart="3035">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2005%202008.mp4', 3035);">Ouvir esta parte</button>
+<p><ul>
+<li>Paralaxe cognitiva, Idealismo, Thomas Hobbes, Idade Média, Igreja</li>
+</ul></p>
+</div>
+</div>

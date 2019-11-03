@@ -1,0 +1,163 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2009-09-28">2009/09/28</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4">
+<div data-chapterid="2009-09-28-0" data-chapterstart="55">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4', 55);">Ouvir esta parte</button>
+<p><ul>
+<li>Guerrilha, João Goulart, Golpe Militar</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-28-1" data-chapterstart="391">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4', 391);">Ouvir esta parte</button>
+<p><ul>
+<li>Reinaldo Azevedo, Barack Obama, Engenharia Social, Escola de Frankfurt</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-28-2" data-chapterstart="1159">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4', 1159);">Ouvir esta parte</button>
+<p><ul>
+<li>Forças Armadas, Esquerda</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-28-3" data-chapterstart="1445">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4', 1445);">Ouvir esta parte</button>
+<p><ul>
+<li>Honduras, Manuel Zelaya, Mídia Brasileira</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-28-4" data-chapterstart="1616">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4', 1616);">Ouvir esta parte</button>
+<p><ul>
+<li>Estratégia Revolucionária</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-28-5" data-chapterstart="1734">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4', 1734);">Ouvir esta parte</button>
+<p><ul>
+<li>Favorecimento do Banditismo, Criminalidade, Movimento Revolucionário</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-28-6" data-chapterstart="2304">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4', 2304);">Ouvir esta parte</button>
+<p><ul>
+<li>Mudança de Sexo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-28-7" data-chapterstart="2468">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4', 2468);">Ouvir esta parte</button>
+<p><ul>
+<li>Ayn Rand, Objetivsmo</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-28-8" data-chapterstart="2676">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4', 2676);">Ouvir esta parte</button>
+<p><ul>
+<li>Aborto</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-28-9" data-chapterstart="2887">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4', 2887);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-28-10" data-chapterstart="3120">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4', 3120);">Ouvir esta parte</button>
+<p><ul>
+<li>Mario Ferreira dos Santos, Pedro Calafate: História do Pensamento Filosófico Português (livro), Aristóteles: Organon. (Trad. de José Pinharanda Gomes), Jean-Paul Dumont: Introduction à la méthode d'Aristote</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-09-28-11" data-chapterstart="3408">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2028%2009%202009.mp4', 3408);">Ouvir esta parte</button>
+<p><ul>
+<li>Teorias Conspiratórias, 11 de Setembro, Pearl Harbor, Franklin Roosevelt, George W. Bush, CIA</li>
+</ul></p>
+</div>
+</div>

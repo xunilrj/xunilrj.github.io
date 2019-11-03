@@ -1,0 +1,187 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2009-07-13">2009/07/13</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4">
+<div data-chapterid="2009-07-13-0" data-chapterstart="96">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 96);">Ouvir esta parte</button>
+<p><ul>
+<li>Controle internet, Controle dos Meios de Comunicação</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-1" data-chapterstart="733">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 733);">Ouvir esta parte</button>
+<p><ul>
+<li>Movimento Gay</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-2" data-chapterstart="1106">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 1106);">Ouvir esta parte</button>
+<p><ul>
+<li>Fim dos Tempos, Salmo 12</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-3" data-chapterstart="1217">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 1217);">Ouvir esta parte</button>
+<p><ul>
+<li>Guerra do Iraque, Barack Obama, Ação Histórica</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-4" data-chapterstart="1658">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 1658);">Ouvir esta parte</button>
+<p><ul>
+<li>Farc, Colômbia, Equador</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-5" data-chapterstart="1772">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 1772);">Ouvir esta parte</button>
+<p><ul>
+<li>KGB, Sergei Kourdakov</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-6" data-chapterstart="1817">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 1817);">Ouvir esta parte</button>
+<p><ul>
+<li>China</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-7" data-chapterstart="1846">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 1846);">Ouvir esta parte</button>
+<p><ul>
+<li>Farc, Taliban</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-8" data-chapterstart="1996">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 1996);">Ouvir esta parte</button>
+<p><ul>
+<li>Movimento Gay</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-9" data-chapterstart="2161">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 2161);">Ouvir esta parte</button>
+<p><ul>
+<li>Honduras, Barack Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-10" data-chapterstart="2330">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 2330);">Ouvir esta parte</button>
+<p><ul>
+<li>Controle governamental, Chips</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-11" data-chapterstart="2472">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 2472);">Ouvir esta parte</button>
+<p><ul>
+<li>Farc, Colômbia, Álvaro Uribe, Padre Kramer: A Batalha final do Diabo (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-12" data-chapterstart="2572">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 2572);">Ouvir esta parte</button>
+<p><ul>
+<li>Morte de Getúlio Bittencourt</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-13" data-chapterstart="2657">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 2657);">Ouvir esta parte</button>
+<p><ul>
+<li>José Saramago</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-14" data-chapterstart="2701">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 2701);">Ouvir esta parte</button>
+<p><ul>
+<li>Um globalismo cristianizado? (artigo <a href="http://www.olavodecarvalho.org/semana/090710dc.html">http://www.olavodecarvalho.org/semana/090710dc.html</a>(<a href="http://web.archive.org/web/2009071300000/http://www.olavodecarvalho.org/semana/090710dc.html" target="_blank">@webarchive</a>))</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-07-13-15" data-chapterstart="2851">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2013%2007%202009.mp4', 2851);">Ouvir esta parte</button>
+<p><ul>
+<li>Jornalismo, Quem manda no mundo?, Estruturas de poder</li>
+</ul></p>
+</div>
+</div>

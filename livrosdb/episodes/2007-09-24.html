@@ -1,0 +1,121 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-09-24">2007/09/24</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2024%2009%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2024%2009%202007.mp4">
+<div data-chapterid="2007-09-24-0" data-chapterstart="8">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2024%2009%202007.mp4', 8);">Ouvir esta parte</button>
+<p><ul>
+<li>Islamização, Holocausto, Escolas inglesas, Hitler, Nazismo, Greve, Stálin, Papa Pio XII, Charles de Gaulle, Multiculturalismo, Peter Hitchens: "The abolition of Britain: from Winston Churchill to Princess Diana" (Livro), Bat Ye'or, "Eurabia: the Euro-Arab axis" (Livro), Sociedades esotéricas islâmicas</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-24-1" data-chapterstart="1876">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2024%2009%202007.mp4', 1876);">Ouvir esta parte</button>
+<p><ul>
+<li>Irmandade Muçulmana, Osama Bin Laden, "O segredo da invasão islâmica" (Artigo), Taricas</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-24-2" data-chapterstart="1974">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2024%2009%202007.mp4', 1974);">Ouvir esta parte</button>
+<p><ul>
+<li>Julio Severo, Deputado Henrique Afonso, Aborto, Pedofilia, Denílson Lopes ,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-24-3" data-chapterstart="2481">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2024%2009%202007.mp4', 2481);">Ouvir esta parte</button>
+<p><ul>
+<li>Teologia da Libertação, Lional Ruby: "The art of making sense: a guide to logical thinking" (Livro), Semântica, Direito dos Povos Indígenas, Estimulação contraditória, Antonio Gramsci</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-24-4" data-chapterstart="2723">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2024%2009%202007.mp4', 2723);">Ouvir esta parte</button>
+<p><ul>
+<li>Vizinho do Jefferson (Blog)</li>
+</ul></p>
+</div>
+</div>

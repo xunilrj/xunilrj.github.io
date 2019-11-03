@@ -1,0 +1,222 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2006-12-18">2006/12/18</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4">
+<div data-chapterid="2006-12-18-0" data-chapterstart="18">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 18);">Ouvir esta parte</button>
+<p><ul>
+<li>Editorial do Diário do Comércio: "Por baixo da mesa"</li>
+<li>desconstrucionismo e multi-culturalismo</li>
+<li>artigo de Roberto Fernandes, "Multi-culturalismo Intelectual", Revista da USP de junho/agosto de 1999</li>
+<li>paralaxe cognitiva</li>
+<li>técnica de auto-embotamento intelectual</li>
+<li>exemplo do vizinho safado.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-1" data-chapterstart="288">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 288);">Ouvir esta parte</button>
+<p><ul>
+<li>Ipojuca Pontes e a nova tradução do livro de Dostoiévski "Os Demônios"</li>
+<li>Paulo Bezerra (tradutor)</li>
+<li>critica de Dostoievski ao movimento revolucionário em geral</li>
+<li>Editora 34.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-2" data-chapterstart="544">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 544);">Ouvir esta parte</button>
+<p><ul>
+<li>Matéria da revista Piauí (<a href="www.revistapiaui.com.br/2006/dez/perfil.htm">www.revistapiaui.com.br/2006/dez/perfil.htm</a>(<a href="http://web.archive.org/web/2006121800000/www.revistapiaui.com.br/2006/dez/perfil.htm" target="_blank">@webarchive</a>)), de Luiz Maklouf Carvalho, "O Ortodoxo"</li>
+<li>Marques de Sader (Emir Sader)</li>
+<li>Enciclopédia Contemporânea da América Latina e do Caribe, US$ 1.700,00 por verbete!!!</li>
+<li>Dicionário Crítico do Pensamento da Direita</li>
+<li>reducionismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-3" data-chapterstart="885">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 885);">Ouvir esta parte</button>
+<p><ul>
+<li>Entrevista de Fernando Morais a Paulo Henrique Amorin</li>
+<li>"Olga".</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-4" data-chapterstart="1020">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 1020);">Ouvir esta parte</button>
+<p><ul>
+<li>Instalação de mais 3.000 militares venezuelanos na Bolívia</li>
+<li>vídeos de Hugo Chávez no YouTube.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-5" data-chapterstart="1119">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 1119);">Ouvir esta parte</button>
+<p><ul>
+<li>Mel Gibson e anti-semitismo</li>
+<li>Anti-Defamation League (<a href="www.adl.org">www.adl.org</a>(<a href="http://web.archive.org/web/2006121800000/www.adl.org" target="_blank">@webarchive</a>))</li>
+<li>esquerda pró-islâmica</li>
+<li>Denis Prager (<a href="http://www.townhall.com/Columnists/DennisPrager">http://www.townhall.com/Columnists/DennisPrager</a>(<a href="http://web.archive.org/web/2006121800000/http://www.townhall.com/Columnists/DennisPrager" target="_blank">@webarchive</a>))</li>
+<li>Conselho Americano de Relações Islâmicas -- CAIR (Council on American-Islamic Relation (<a href="www.cair-net.org">www.cair-net.org</a>(<a href="http://web.archive.org/web/2006121800000/www.cair-net.org" target="_blank">@webarchive</a>))</li>
+<li>islamofobia</li>
+<li>encontros entre representante do Hamas com líderes do Partido Democrata</li>
+<li>Mark Foley e e-mails eróticos</li>
+<li>bebê anencéfalo no Brasil e eutanásia em bebês na Inglaterra.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-6" data-chapterstart="1680">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 1680);">Ouvir esta parte</button>
+<p><ul>
+<li>Obras pornográficas em bibliotecas infantis nos EUA</li>
+<li>Grassroots American Values (<a href="www.plan2succeed.org/grassroots">www.plan2succeed.org/grassroots</a>(<a href="http://web.archive.org/web/2006121800000/www.plan2succeed.org/grassroots" target="_blank">@webarchive</a>)).</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-7" data-chapterstart="1829">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 1829);">Ouvir esta parte</button>
+<p><ul>
+<li>Quebra de sigilo bancário por parte do governo</li>
+<li>dica de livros sobre Educação Liberal, livros de James Schall (<a href="http://www.amazon.ca/s?ie=UTF8&rh=n%3A927726%2Cp_27%3AJames+Schall&page=1">http://www.amazon.ca/s?ie=UTF8&rh=n%3A927726%2Cp_27%3AJames+Schall&page=1</a>(<a href="http://web.archive.org/web/2006121800000/http://www.amazon.ca/s?ie=UTF8&rh=n%3A927726%2Cp_27%3AJames+Schall&page=1" target="_blank">@webarchive</a>)), livro "Another Sort of Learning (<a href="http://www.amazon.ca/Another-Sort-Learning-James-Schall/dp/089870183X/ref=sr_1_4/702">http://www.amazon.ca/Another-Sort-Learning-James-Schall/dp/089870183X/ref=sr_1_4/702</a>(<a href="http://web.archive.org/web/2006121800000/http://www.amazon.ca/Another-Sort-Learning-James-Schall/dp/089870183X/ref=sr_1_4/702" target="_blank">@webarchive</a>)-7382255-0392819?ie=UTF8&s=books&qid=1179597397&sr=1-4).</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-8" data-chapterstart="1954">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 1954);">Ouvir esta parte</button>
+<p><ul>
+<li>John McCain (candidato republicano à presidência dos EUA) é um RINO (Republican In Name Only)</li>
+<li>Rudolph Giuliani</li>
+<li>candidatos republicanos à presidência, Newt Gingrich, Bloomberg, Mitt Romney (mórmon).</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-9" data-chapterstart="2097">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 2097);">Ouvir esta parte</button>
+<p><ul>
+<li>Dalmo Dallari</li>
+<li>Sentença desvinculada da denúncia.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-10" data-chapterstart="2210">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 2210);">Ouvir esta parte</button>
+<p><ul>
+<li>Lyndon LaRouche, "The Science of Christian Economy"</li>
+<li>estados nacionais.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-11" data-chapterstart="2358">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 2358);">Ouvir esta parte</button>
+<p><ul>
+<li>Júlio Severo e a proibição de qualquer manifestação contrária às sagradas escrituras</li>
+<li>home schooling.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-12" data-chapterstart="2470">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 2470);">Ouvir esta parte</button>
+<p><ul>
+<li>Chamada telefônica (Fábio)</li>
+<li>Mário Ferreira dos Santos e anarquismo</li>
+<li>debate de Caio Prado Júnior e Mário F. S.</li>
+<li>anarquismo cristão</li>
+<li>"O Homem que Nasceu Póstumo"</li>
+<li>Mário e Nietzsche</li>
+<li>estrutura da obra de Mário.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-13" data-chapterstart="2935">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 2935);">Ouvir esta parte</button>
+<p><ul>
+<li>Diferença entre comunismo e socialismo</li>
+<li>social-democracia européia e KGB.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-18-14" data-chapterstart="3055">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2012%202006.mp4', 3055);">Ouvir esta parte</button>
+<p><ul>
+<li>Chamada telefônica (Fábio again)</li>
+<li>Mário Ferreira dos Santos: "A Invasão Vertical dos Bárbaros" e "A Rebelião das Massas", de Ortega y Gassset</li>
+<li>outros livros com a mesma temática</li>
+<li>cultura superior no Brasil</li>
+<li>processo de imbecilização em escala mundial</li>
+<li>Paulo Bezerra e Dostoievski.</li>
+</ul></p>
+</div>
+</div>

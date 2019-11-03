@@ -1,0 +1,181 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-09-15">2008/09/15</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4">
+<div data-chapterid="2008-09-15-0" data-chapterstart="61">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 61);">Ouvir esta parte</button>
+<p><ul>
+<li>Ipojuca Pontes: "A manha do Barão" (Livro), Barão de Itararé</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-1" data-chapterstart="123">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 123);">Ouvir esta parte</button>
+<p><ul>
+<li>Rafael Correa, Odebrecht, Estatização, Chevron</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-2" data-chapterstart="456">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 456);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Ali Kamel, Partido Democrata, Ignácio da Silva Telles, Sarah Palin, Arnaldo Jabor, Partido Republicano, Estados Unidos, Israel, Palestina , Morton Sobell</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-3" data-chapterstart="896">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 896);">Ouvir esta parte</button>
+<p><ul>
+<li>Casal Rosenberg, Folha de S. Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-4" data-chapterstart="1090">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 1090);">Ouvir esta parte</button>
+<p><ul>
+<li>Eric Voegelin - "Reflexões autobiográficas" (Livro), Jacques Maritain, Filósofos cristãos, Mário Ferreira dos Santos</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-5" data-chapterstart="1421">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 1421);">Ouvir esta parte</button>
+<p><ul>
+<li>Nacional Socialismo Hitlerista, Hermann Rausching, "Conversações com Hitler" (Livro), Alfred Rosenberg, Neville Chamberlain, Bognor, Karl Marx, Racismo científico</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-6" data-chapterstart="1799">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 1799);">Ouvir esta parte</button>
+<p><ul>
+<li>Legislação, Terrorismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-7" data-chapterstart="1850">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 1850);">Ouvir esta parte</button>
+<p><ul>
+<li>Pré-sal, General Andrade Nery, Petróleo, Quarta Frota dos Estados Unidos, Nancy Pelosi, George Soros, Jornal A Hora do Povo, Carlos Lopes</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-8" data-chapterstart="2295">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 2295);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Louis Farrakhan, Inverstor's Business Daily</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-9" data-chapterstart="2607">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 2607);">Ouvir esta parte</button>
+<p><ul>
+<li>Louis Leville: "De l'Etre" (Livro), "De l"Acte" (Livro), "Du Temps ET de l"Etemité" (Livro), "De l"Âme Humaine" (Livro), "La présence totale" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-10" data-chapterstart="2698">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 2698);">Ouvir esta parte</button>
+<p><ul>
+<li>Elite intelectual</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-11" data-chapterstart="2752">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 2752);">Ouvir esta parte</button>
+<p><ul>
+<li>Tecnologia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-12" data-chapterstart="3100">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 3100);">Ouvir esta parte</button>
+<p><ul>
+<li>Cuba, Petróleo, Gás Natural</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-13" data-chapterstart="3320">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 3320);">Ouvir esta parte</button>
+<p><ul>
+<li>Mídia sem Máscara (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-09-15-14" data-chapterstart="3366">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2009%202008.mp4', 3366);">Ouvir esta parte</button>
+<p><ul>
+<li>Tulio Simoncini, Câncer, Doenças iatrogênicas, Carlos da Silva Lacaz, Fumantes, Revista Lancet</li>
+</ul></p>
+</div>
+</div>

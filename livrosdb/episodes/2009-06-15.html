@@ -1,0 +1,181 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2009-06-15">2009/06/15</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4">
+<div data-chapterid="2009-06-15-0" data-chapterstart="30">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 30);">Ouvir esta parte</button>
+<p><ul>
+<li>Pedofília, Tribunal de Justiça do Rio Grande do Sul, Movimento Gay, Mentalidade Revolucionária</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-1" data-chapterstart="848">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 848);">Ouvir esta parte</button>
+<p><ul>
+<li>Olavo Corinthiano</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-2" data-chapterstart="963">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 963);">Ouvir esta parte</button>
+<p><ul>
+<li>Ateísmo, Perseguição anticristã, Papa, Islamização</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-3" data-chapterstart="1243">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 1243);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Zoofília, Roberto Campos</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-4" data-chapterstart="1881">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 1881);">Ouvir esta parte</button>
+<p><ul>
+<li>5 Maiores Filósofos do Século XX para Olavo de Carvalho: Mario Ferreira dos Santos, Xavier Zubiri, Eric Voegilin, Louis Lavelle, Bernard Lonergan: Insight - Um estudo do conhecimento humano (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-5" data-chapterstart="2182">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 2182);">Ouvir esta parte</button>
+<p><ul>
+<li>Vladimir Safatle</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-6" data-chapterstart="2254">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 2254);">Ouvir esta parte</button>
+<p><ul>
+<li>Papa Paulo VI, Pacto de Metz, Concílio Vaticano II</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-7" data-chapterstart="2330">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 2330);">Ouvir esta parte</button>
+<p><ul>
+<li>Movimento Gay, Irã, EUA</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-8" data-chapterstart="2374">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 2374);">Ouvir esta parte</button>
+<p><ul>
+<li>Estudo, Loucura</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-9" data-chapterstart="2433">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 2433);">Ouvir esta parte</button>
+<p><ul>
+<li>Pedofília, Movimento Gay</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-10" data-chapterstart="2530">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 2530);">Ouvir esta parte</button>
+<p><ul>
+<li>Escola Sem Partido (<a href="www.escolasempartido.org">www.escolasempartido.org</a>(<a href="http://web.archive.org/web/2009061500000/www.escolasempartido.org" target="_blank">@webarchive</a>)), Manipulação politica</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-11" data-chapterstart="2582">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 2582);">Ouvir esta parte</button>
+<p><ul>
+<li>Mídia esquerdista</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-12" data-chapterstart="2692">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 2692);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, elegibilidade, Federal Reserve</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-13" data-chapterstart="3297">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 3297);">Ouvir esta parte</button>
+<p><ul>
+<li>Sarah Palin, David Letterman</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-06-15-14" data-chapterstart="3355">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2006%202009.mp4', 3355);">Ouvir esta parte</button>
+<p><ul>
+<li>Marcos Coimbra, CEBRES, Clube Birderberg, Antiamericanismo, Diálogo Interamericano, Foro de São Paulo, Jose Carlos Graça Wagner</li>
+</ul></p>
+</div>
+</div>

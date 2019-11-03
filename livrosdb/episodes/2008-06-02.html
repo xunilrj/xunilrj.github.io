@@ -1,0 +1,193 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-06-02">2008/06/02</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4">
+<div data-chapterid="2008-06-02-0" data-chapterstart="52">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 52);">Ouvir esta parte</button>
+<p><ul>
+<li>Luiz Mott, Museu do erotismo, Movimento gay, Fidel Castro</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-1" data-chapterstart="368">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 368);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunidade Web Justice (Orkut), Marco Fonseca</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-2" data-chapterstart="543">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 543);">Ouvir esta parte</button>
+<p><ul>
+<li>Orientação sexual, Romênia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-3" data-chapterstart="779">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 779);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunismo, Adolescentes, "Imbecil juvenil" (Artigo <a href="http://www.olavodecarvalho.org/textos/juvenil.htm">http://www.olavodecarvalho.org/textos/juvenil.htm</a>(<a href="http://web.archive.org/web/2008060200000/http://www.olavodecarvalho.org/textos/juvenil.htm" target="_blank">@webarchive</a>))</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-4" data-chapterstart="954">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 954);">Ouvir esta parte</button>
+<p><ul>
+<li>Peter Schwartz, Pobres</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-5" data-chapterstart="1043">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 1043);">Ouvir esta parte</button>
+<p><ul>
+<li>Portugal, Alimentação, Comunidade Européia, Mídia, The New York Times, Rush Limbaugh, Alex Jones, "End Game" (Documentário), Conservadores, Neo-conservadores,</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-6" data-chapterstart="1450">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 1450);">Ouvir esta parte</button>
+<p><ul>
+<li>Nemerson Lavoura (Blog), Foro de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-7" data-chapterstart="1598">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 1598);">Ouvir esta parte</button>
+<p><ul>
+<li>Clube Bildeberg</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-8" data-chapterstart="1645">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 1645);">Ouvir esta parte</button>
+<p><ul>
+<li>Células-tronco embrionárias, Immanuel Kant, Moral pública/privada, Razão</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-9" data-chapterstart="1843">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 1843);">Ouvir esta parte</button>
+<p><ul>
+<li>Juízes, Roma Antiga, Cargos públicos, Theodor Mommsen, "History of Rome"</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-10" data-chapterstart="1906">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 1906);">Ouvir esta parte</button>
+<p><ul>
+<li>Tecnologia, Controle populacional, Revista Lancet, Henfil</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-11" data-chapterstart="2294">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 2294);">Ouvir esta parte</button>
+<p><ul>
+<li>TV Aparecida, Zuenir Ventura: "Eles só queriam mudar o mundo" (Livro),</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-12" data-chapterstart="2507">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 2507);">Ouvir esta parte</button>
+<p><ul>
+<li>Sociologia, Escolas, Marilena Chauí, Quartim de Moraes</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-13" data-chapterstart="2611">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 2611);">Ouvir esta parte</button>
+<p><ul>
+<li>"A escória do mundo" (Artigo <a href="http://www.olavodecarvalho.org/semana/080520dce.html">http://www.olavodecarvalho.org/semana/080520dce.html</a>(<a href="http://web.archive.org/web/2008060200000/http://www.olavodecarvalho.org/semana/080520dce.html" target="_blank">@webarchive</a>)), Tarso Genro</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-14" data-chapterstart="2712">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 2712);">Ouvir esta parte</button>
+<p><ul>
+<li>Ciência, Deus, Matéria, Espírito, Oração, Milagres</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-15" data-chapterstart="3145">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 3145);">Ouvir esta parte</button>
+<p><ul>
+<li>Correio Braziliense</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-02-16" data-chapterstart="3207">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2006%202008.mp4', 3207);">Ouvir esta parte</button>
+<p><ul>
+<li>Michael Moore, Comissão Trilateral, Council Foreign Relations, CRF, George W. Bush, Condoleezza Rice</li>
+</ul></p>
+</div>
+</div>

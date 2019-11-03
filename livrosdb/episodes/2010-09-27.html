@@ -1,0 +1,205 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-09-27">2010/09/27</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4">
+<div data-chapterid="2010-09-27-0" data-chapterstart="60">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 60);">Ouvir esta parte</button>
+<p><ul>
+<li>recados</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-1" data-chapterstart="220">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 220);">Ouvir esta parte</button>
+<p><ul>
+<li>ONU nomeia embaixador para ET's</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-2" data-chapterstart="265">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 265);">Ouvir esta parte</button>
+<p><ul>
+<li>folheto da CNBB-Sul</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-3" data-chapterstart="315">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 315);">Ouvir esta parte</button>
+<p><ul>
+<li>Chávez Abarca, Cuba, Alejandro Peña Esclusa, bons resultados eleitorais na Venezuela</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-4" data-chapterstart="530">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 530);">Ouvir esta parte</button>
+<p><ul>
+<li>judeus esquerdistas, cultura judaica, religiosos x comunistas, obrigação dos católicos com os judeus, provocações de Lula</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-5" data-chapterstart="820">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 820);">Ouvir esta parte</button>
+<p><ul>
+<li>República de Platão com Marx, Karl Popper: "A sociedade aberta e seus inimigos" (livro), Eric Voegelin: "A História das idéias políticas" (livro), Thomas More, Campanella, Paul Friedlander</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-6" data-chapterstart="970">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 970);">Ouvir esta parte</button>
+<p><ul>
+<li>novo site agregador de notícias, site: veradextra.blogspot.com</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-7" data-chapterstart="1000">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 1000);">Ouvir esta parte</button>
+<p><ul>
+<li>Celso Amorim pede o retorno de Manuel Zelaya, ONU</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-8" data-chapterstart="1050">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 1050);">Ouvir esta parte</button>
+<p><ul>
+<li>Cuba autoriza emprego s privados em 78 serores, liberalismo na economia, China, socialismo, economia não é o motor da vida social, fatores decisivos são os de longa permanência, a base de uma sociedade é sua cultura e suas tradições, problemas na economia brasileira, Brasil sempre teve um Estado antes da nação</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-9" data-chapterstart="1630">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 1630);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunicado da organização 'Um milhão contra as FARC', expulsão de populações pelas FARC, (site: notalatina.blogspot.com)</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-10" data-chapterstart="1750">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 1750);">Ouvir esta parte</button>
+<p><ul>
+<li>site: <a href="www.foradilma.com">www.foradilma.com</a>(<a href="http://web.archive.org/web/2010092700000/www.foradilma.com" target="_blank">@webarchive</a>)</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-11" data-chapterstart="1790">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 1790);">Ouvir esta parte</button>
+<p><ul>
+<li>campanha Salvem o Brasil (site: <a href="www.salvemobrasil.com">www.salvemobrasil.com</a>(<a href="http://web.archive.org/web/2010092700000/www.salvemobrasil.com" target="_blank">@webarchive</a>)), aborto, candidatos abortistas, PT e o aborto, feto é um ser humano?</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-12" data-chapterstart="2210">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 2210);">Ouvir esta parte</button>
+<p><ul>
+<li>padres petistas no Paraná</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-13" data-chapterstart="2360">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 2360);">Ouvir esta parte</button>
+<p><ul>
+<li>previdência social da Inglaterra decide pagar serviços sexuais a retardados mentais, príncipe Charles</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-14" data-chapterstart="2940">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 2940);">Ouvir esta parte</button>
+<p><ul>
+<li>Lula afirma que tiveram medo de tirá-lo no seu primeiro mandato, Ivo Patarra: "O chefe" (livro), dados biográficos Olavo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-15" data-chapterstart="3120">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 3120);">Ouvir esta parte</button>
+<p><ul>
+<li>82% dos americanos não acreditam na grande mídia</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-16" data-chapterstart="3190">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 3190);">Ouvir esta parte</button>
+<p><ul>
+<li>lista de livros, indicações bibliográficas sobre como a revolução destrói a inteligência:</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-17" data-chapterstart="3360">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 3360);">Ouvir esta parte</button>
+<p><ul>
+<li>Ann Coulter e Joseph Farah, debate com gays</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-09-27-18" data-chapterstart="3530">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2009%202010.mp4', 3530);">Ouvir esta parte</button>
+<p><ul>
+<li>natureza do PT, o que devemos respeitar, noção de Deus, Platão, amar o que é sublime</li>
+</ul></p>
+</div>
+</div>

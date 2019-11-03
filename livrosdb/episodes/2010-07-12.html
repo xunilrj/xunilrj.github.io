@@ -1,0 +1,169 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-07-12">2010/07/12</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4">
+<div data-chapterid="2010-07-12-0" data-chapterstart="60">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 60);">Ouvir esta parte</button>
+<p><ul>
+<li>Instituto Olavo de Carvalho, Luciane Amato</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-12-1" data-chapterstart="120">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 120);">Ouvir esta parte</button>
+<p><ul>
+<li>editorial do jornal O Tempo (notas: <a href="http://www.olavodecarvalho.org/repressao-chavista-e-tres-notas/">http://www.olavodecarvalho.org/repressao-chavista-e-tres-notas/</a>(<a href="http://web.archive.org/web/2010071200000/http://www.olavodecarvalho.org/repressao-chavista-e-tres-notas/" target="_blank">@webarchive</a>)), ditadura, Democracia, "Discurso de direita", Centralismo democrático de Lênin, Foro de São Paulo, compromisso PT com Farc, consórcio de poder, regime nazista</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-12-2" data-chapterstart="780">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 780);">Ouvir esta parte</button>
+<p><ul>
+<li>João Calvino, revolução, Michel Walzer: "The Revolution of the Saints" (livro), mentalidade revolucionária, criação da militância por João Calvino, regime totalitário na Suíça, controle da vida privada, democracias modernas</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-12-3" data-chapterstart="1140">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 1140);">Ouvir esta parte</button>
+<p><ul>
+<li>Henry Mackoff: "A Música Como Arma - como a MTV serve à Nova Ordem Mundial"</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-12-4" data-chapterstart="1170">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 1170);">Ouvir esta parte</button>
+<p><ul>
+<li>goleiro Bruno, assassinato da mulher, controle populacional na fonte</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-12-5" data-chapterstart="1215">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 1215);">Ouvir esta parte</button>
+<p><ul>
+<li>Missa tridentina em Brasília (site: missatridentinaembrasilia.wordpress.com), mídia, ateísmo, T.S. Eliot, Virginia Woolf, Peter Hitchens: "Hate against God" (livro), Fernando Vallejo: "La puta de la babilonia" (livro), intrigas contra a Igreja Católica</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-12-6" data-chapterstart="1575">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 1575);">Ouvir esta parte</button>
+<p><ul>
+<li>Fofocas sobre Olavo, nazista, revista Humanos, holocausto, URSS ajudou os nazistas, Janer Cristaldo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-12-7" data-chapterstart="2140">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 2140);">Ouvir esta parte</button>
+<p><ul>
+<li>Método de alfabetização (site: <a href="www.professoradepapel.com.br">www.professoradepapel.com.br</a>(<a href="http://web.archive.org/web/2010071200000/www.professoradepapel.com.br" target="_blank">@webarchive</a>)), Cleunice Orlandi de Lima, educação se mede pelos resultados</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-12-8" data-chapterstart="2400">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 2400);">Ouvir esta parte</button>
+<p><ul>
+<li>Sobre os integralistas no Brasil, carta de Plínio Salgado a Hitler, Doutrina Social da Igreja, mentalidade revolucionária, propostas políticas devem ser de curto prazo, genocídio</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-12-9" data-chapterstart="2750">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 2750);">Ouvir esta parte</button>
+<p><ul>
+<li>história do século XX, globalistas, descristianizar os Estados Unidos, Benjamin Franklin Morris: "Christian Life and Character of the Civil Institutions of the United States", Peter A. Lillback: "George Washington's Sacred Fire", mentalidade revolucionária, universitários no Brasil</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-12-10" data-chapterstart="3020">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 3020);">Ouvir esta parte</button>
+<p><ul>
+<li>Marcel Van Hatten e Ricardo Sales na política, necessidade de militância, universidades</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-12-11" data-chapterstart="3140">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 3140);">Ouvir esta parte</button>
+<p><ul>
+<li>Juan López Linares, Cuba, Danny Glover, Fórum Social Mundial</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-07-12-12" data-chapterstart="3525">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2012%2007%202010.mp4', 3525);">Ouvir esta parte</button>
+<p><ul>
+<li>leis para filhos de pais divorciados, Wilhelm Reich</li>
+</ul></p>
+</div>
+</div>

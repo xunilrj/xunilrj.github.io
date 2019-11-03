@@ -1,0 +1,181 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-03-01">2010/03/01</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4">
+<div data-chapterid="2010-03-01-0" data-chapterstart="370">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 370);">Ouvir esta parte</button>
+<p><ul>
+<li>Candidatura de Mário de Oliveira, Lula e FARC, manifesto assinado em 2001</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-1" data-chapterstart="600">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 600);">Ouvir esta parte</button>
+<p><ul>
+<li>Mídia como órgão de censura, espiral do silêncio, controle do fluxo de informações, FHC, descriminalização das drogas, George Soros, Forum Social Mundial, globalistas, Instituto Tavistock, Técnica Pé na Porta, Kurt Levin, FARC, Lula, FHC, PT x PSDB</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-2" data-chapterstart="1440">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 1440);">Ouvir esta parte</button>
+<p><ul>
+<li>Ossadas guerrilha do Araguaia</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-3" data-chapterstart="1500">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 1500);">Ouvir esta parte</button>
+<p><ul>
+<li>Deutsche Welle desconfia que países esquerdistas criaram uma alternativa econômica contra os EUA</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-4" data-chapterstart="1730">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 1730);">Ouvir esta parte</button>
+<p><ul>
+<li>William Buckley, exclusão de "inconvenientes" no movimento conservador americano, John Birch Society, bom mocismo, regras de polidez método de opressão</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-5" data-chapterstart="1990">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 1990);">Ouvir esta parte</button>
+<p><ul>
+<li>Perenidade da obra do prof. Olavo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-6" data-chapterstart="2040">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 2040);">Ouvir esta parte</button>
+<p><ul>
+<li>FHC</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-7" data-chapterstart="2200">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 2200);">Ouvir esta parte</button>
+<p><ul>
+<li>Forças Armadas como poder moderador, patriotismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-8" data-chapterstart="2410">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 2410);">Ouvir esta parte</button>
+<p><ul>
+<li>Lula sobre economia no próximo governo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-9" data-chapterstart="2510">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 2510);">Ouvir esta parte</button>
+<p><ul>
+<li>funcionários Google presos por denunciarem crime</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-10" data-chapterstart="2910">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 2910);">Ouvir esta parte</button>
+<p><ul>
+<li>Sudário de Turim</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-11" data-chapterstart="2990">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 2990);">Ouvir esta parte</button>
+<p><ul>
+<li>Sobre as universidades no Brasil, Marcos Bagno, Pe. Paulo Ricardo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-12" data-chapterstart="3180">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 3180);">Ouvir esta parte</button>
+<p><ul>
+<li>Política Econômica, governo Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-13" data-chapterstart="3330">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 3330);">Ouvir esta parte</button>
+<p><ul>
+<li>apelosurgentes.com.br, aparições de Nossa Senhora</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-01-14" data-chapterstart="3510">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2001%2003%202010.mp4', 3510);">Ouvir esta parte</button>
+<p><ul>
+<li>Nietzsche e Hitler</li>
+</ul></p>
+</div>
+</div>

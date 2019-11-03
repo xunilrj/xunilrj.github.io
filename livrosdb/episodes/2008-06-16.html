@@ -1,0 +1,187 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-06-16">2008/06/16</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4">
+<div data-chapterid="2008-06-16-0" data-chapterstart="16">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 16);">Ouvir esta parte</button>
+<p><ul>
+<li>Wes Vernon, Aquecimento global, Renew America (Site), "The marxist roots of the global warming scare" (Artigo)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-1" data-chapterstart="59">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 59);">Ouvir esta parte</button>
+<p><ul>
+<li>Paulo Brossard, "As FARC do Brasil" (Artigo)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-2" data-chapterstart="81">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 81);">Ouvir esta parte</button>
+<p><ul>
+<li>John Allen Paulos, "Irreligion: a mathematician explains why the arguments for God just don't add up" (Livro), Leibniz, Religiões, Estrutura hierárquica</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-3" data-chapterstart="688">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 688);">Ouvir esta parte</button>
+<p><ul>
+<li>Lula, Cuba, Barack Obama, Alan Keyes</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-4" data-chapterstart="865">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 865);">Ouvir esta parte</button>
+<p><ul>
+<li>Aborto, José Gomes Temporão, Social Security</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-5" data-chapterstart="1027">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 1027);">Ouvir esta parte</button>
+<p><ul>
+<li>Frithjof Schuon, Monsenhor Lefèvre, Mateus Soares de Azevedo, Dom Lourenço Fleischman, Rama Coomaraswamy, Ricardo de la Cierva</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-6" data-chapterstart="1555">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 1555);">Ouvir esta parte</button>
+<p><ul>
+<li>Governo Mundial, "Travessia perigosa" (Artigo), Arnold Toynbee, Jurisdição territorial, Tribunal Penal Internacional, Islamismo, "Teoria da conspiração" (Filme), Antonio Donato</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-7" data-chapterstart="2268">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 2268);">Ouvir esta parte</button>
+<p><ul>
+<li>Israel Insider (Site), Barack Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-8" data-chapterstart="2376">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 2376);">Ouvir esta parte</button>
+<p><ul>
+<li>Duda Mendonça, Joseph Story</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-9" data-chapterstart="2485">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 2485);">Ouvir esta parte</button>
+<p><ul>
+<li>Portugal, Refendo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-10" data-chapterstart="2618">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 2618);">Ouvir esta parte</button>
+<p><ul>
+<li>Ron Paul, Guerra do Iraque, George W. Bush, Lévi-Strauss, Marvin Antelman</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-11" data-chapterstart="2980">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 2980);">Ouvir esta parte</button>
+<p><ul>
+<li>Paralaxe cognitiva, Platão, Aristóteles, Mário Vieira de Mello, "Desenvolvimento e cultura: o problema do esteticismo no Brasil" (Livro), Moral invertida, Cultura brasileira, Machado de Assis</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-12" data-chapterstart="3209">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 3209);">Ouvir esta parte</button>
+<p><ul>
+<li>Johan Huizinga, "O Outono da Idade Média" (Livro), "Nas sombras do amanhã" (Livro), Hippolyte Taine, "Origens da França contemporânea" (Livro), Jacob Burckhardt, "História da Renascença" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-13" data-chapterstart="3323">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 3323);">Ouvir esta parte</button>
+<p><ul>
+<li>Reinaldo Azevedo, FARC, Complexo de inferioridade</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-14" data-chapterstart="3402">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 3402);">Ouvir esta parte</button>
+<p><ul>
+<li>Silvério Duque</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-16-15" data-chapterstart="3493">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2006%202008.mp4', 3493);">Ouvir esta parte</button>
+<p><ul>
+<li>Exército brasileiro, Escola Superior de Guerra, General Meira Mattos</li>
+</ul></p>
+</div>
+</div>

@@ -1,0 +1,199 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-12-29">2008/12/29</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4">
+<div data-chapterid="2008-12-29-0" data-chapterstart="33">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 33);">Ouvir esta parte</button>
+<p><ul>
+<li>Seminário de Filosofia, Tripla intuição</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-1" data-chapterstart="84">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 84);">Ouvir esta parte</button>
+<p><ul>
+<li>Kant, Antonio Vargas</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-2" data-chapterstart="189">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 189);">Ouvir esta parte</button>
+<p><ul>
+<li>Tráfico de drogas, Evo Morales, Lula, Homicídios</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-3" data-chapterstart="330">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 330);">Ouvir esta parte</button>
+<p><ul>
+<li>Pastor Ray Moore, Crianças, Escolas americanas, José Gomes Temporão, Escolas brasileiras, Homeschooling, Julio Severo (Blog)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-4" data-chapterstart="720">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 720);">Ouvir esta parte</button>
+<p><ul>
+<li>Aquecimento global, Al Gore, The New York Times, Internet, Jornais</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-5" data-chapterstart="913">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 913);">Ouvir esta parte</button>
+<p><ul>
+<li>Mal, Possessão demoníaca, Malachi Martin, "Tratado de teologia ascética e mística" (Livro), Padre Adolph Tanquerey, Seraphim Rose</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-6" data-chapterstart="1100">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 1100);">Ouvir esta parte</button>
+<p><ul>
+<li>Bizarro</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-7" data-chapterstart="1370">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 1370);">Ouvir esta parte</button>
+<p><ul>
+<li>Antitabagismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-8" data-chapterstart="1870">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 1870);">Ouvir esta parte</button>
+<p><ul>
+<li>Iraque, Natal, George W. Bush</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-9" data-chapterstart="1941">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 1941);">Ouvir esta parte</button>
+<p><ul>
+<li>Embargo, Cuba, Embargo, Folha de S. Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-10" data-chapterstart="2052">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 2052);">Ouvir esta parte</button>
+<p><ul>
+<li>Razão, Contemplação do transcendente</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-11" data-chapterstart="2319">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 2319);">Ouvir esta parte</button>
+<p><ul>
+<li>História Essencial da Filosofia, Marcha militar n. 2, Sir Edward Elgar</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-12" data-chapterstart="2405">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 2405);">Ouvir esta parte</button>
+<p><ul>
+<li>Gilberto Gil,</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-13" data-chapterstart="2480">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 2480);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Acorn, Michele Obama, Gregory Craig, Fidel Castro</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-14" data-chapterstart="2609">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 2609);">Ouvir esta parte</button>
+<p><ul>
+<li>Padre Michel A. Schooyans, Governo mundial, ONU (<a href="http://web.archive.org/web/20090106173543/http">http://web.archive.org/web/20090106173543/http</a>(<a href="http://web.archive.org/web/2008122900000/http://web.archive.org/web/20090106173543/http" target="_blank">@webarchive</a>)://blog.cancaonova.com/felipeaquino/2008/12/24/)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-15" data-chapterstart="2683">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 2683);">Ouvir esta parte</button>
+<p><ul>
+<li>Foro de São Paulo, Mídia sem Máscara (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-16" data-chapterstart="3024">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 3024);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunidade Olavo de Carvalho nos odeia (Orkut)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-29-17" data-chapterstart="3187">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2012%202008.mp4', 3187);">Ouvir esta parte</button>
+<p><ul>
+<li>Edmund Burke</li>
+</ul></p>
+</div>
+</div>

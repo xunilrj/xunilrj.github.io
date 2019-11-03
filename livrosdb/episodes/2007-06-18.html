@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-06-18">2007/06/18</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2006%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2006%202007.mp4">
+<div data-chapterid="2007-06-18-0" data-chapterstart="0">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2006%202007.mp4', 0);">Ouvir esta parte</button>
+<p><ul>
+<li>Brasil Verdade (Site), Corrupção ,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-18-1" data-chapterstart="95">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2006%202007.mp4', 95);">Ouvir esta parte</button>
+<p><ul>
+<li>Empreiteira Emparsanco, PT, FARC, Wagner Canhendo, Armas, Odebrecht</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-18-2" data-chapterstart="483">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2006%202007.mp4', 483);">Ouvir esta parte</button>
+<p><ul>
+<li>Lamarca, Leis, Hugo Chávez, Dinheiro, Poder político, Manifestações de rua,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-18-3" data-chapterstart="1779">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2006%202007.mp4', 1779);">Ouvir esta parte</button>
+<p><ul>
+<li>José Gomes Temporão, Inversão da realidade, Dr. Mabuse (Filme), Guerra assimétrica,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-18-4" data-chapterstart="2282">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2006%202007.mp4', 2282);">Ouvir esta parte</button>
+<p><ul>
+<li>Companheiros das Américas, USAI</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-18-5" data-chapterstart="2374">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2006%202007.mp4', 2374);">Ouvir esta parte</button>
+<p><ul>
+<li>Carlos Mário da Silva Vellos, Juarez Altafin: "Cristianismo e a constituição" (Livro),</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-18-6" data-chapterstart="2522">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2006%202007.mp4', 2522);">Ouvir esta parte</button>
+<p><ul>
+<li>Propaganda stalinista, Fascismo, Rabino David Dalin: "O mito do Papa de Hitler" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-18-7" data-chapterstart="2588">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2006%202007.mp4', 2588);">Ouvir esta parte</button>
+<p><ul>
+<li>China, Voice of the Martyrs (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-18-8" data-chapterstart="2658">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2006%202007.mp4', 2658);">Ouvir esta parte</button>
+<p><ul>
+<li>Alvaro Uribe, FARC, Narcotráfico, Al Gore, Nancy Pelosi, Para-militares, CFR: Council on Foreign Relations</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-06-18-9" data-chapterstart="2963">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2006%202007.mp4', 2963);">Ouvir esta parte</button>
+<p><ul>
+<li>Marcel Granier, Centro Carter</li>
+</ul></p>
+</div>
+</div>

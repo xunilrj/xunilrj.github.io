@@ -1,0 +1,199 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-08-25">2008/08/25</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4">
+<div data-chapterid="2008-08-25-0" data-chapterstart="12">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 12);">Ouvir esta parte</button>
+<p><ul>
+<li>Seminario de Filosofia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-1" data-chapterstart="79">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 79);">Ouvir esta parte</button>
+<p><ul>
+<li>Paulo Martins, Imortais Guerreiros</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-2" data-chapterstart="117">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 117);">Ouvir esta parte</button>
+<p><ul>
+<li>Farol da Democracia (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-3" data-chapterstart="183">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 183);">Ouvir esta parte</button>
+<p><ul>
+<li>Leopoldo Serran, Ministério da Cultura, Funk, Escolas, Universidade para Todos, Sexo, Antonio Fernando Borges, Ângelo Monteiro, Leandro Konder, José Américo Motta Pessanha</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-4" data-chapterstart="585">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 585);">Ouvir esta parte</button>
+<p><ul>
+<li>Lula</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-5" data-chapterstart="714">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 714);">Ouvir esta parte</button>
+<p><ul>
+<li>"Makers and takers" (Livro), Peter Schweizer, Hoover Institutions</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-6" data-chapterstart="910">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 910);">Ouvir esta parte</button>
+<p><ul>
+<li>Nova Ordem Mundial, Mentira, Mídia, Juan Alfredo Cesar Muller, Movimento conservador</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-7" data-chapterstart="1226">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 1226);">Ouvir esta parte</button>
+<p><ul>
+<li>Luiz Mott</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-8" data-chapterstart="1358">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 1358);">Ouvir esta parte</button>
+<p><ul>
+<li>Luiz Eduardo Greenhalgh, Lei da Anistia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-9" data-chapterstart="1662">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 1662);">Ouvir esta parte</button>
+<p><ul>
+<li>Doutrinação comunista, Fundação Victor Civita, Revista Nova Escola</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-10" data-chapterstart="1815">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 1815);">Ouvir esta parte</button>
+<p><ul>
+<li>Homeschooling, Ministério da Educação</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-11" data-chapterstart="1919">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 1919);">Ouvir esta parte</button>
+<p><ul>
+<li>Criminalidade, Capitalismo, Norman Mailer</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-12" data-chapterstart="2232">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 2232);">Ouvir esta parte</button>
+<p><ul>
+<li>Antônio Cícero, "A elitização brasileira" (Artigo)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-13" data-chapterstart="2314">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 2314);">Ouvir esta parte</button>
+<p><ul>
+<li>Heitor de Paola, Vacinas, Rubéola, Esterilização, Governo Kennedy</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-14" data-chapterstart="2553">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 2553);">Ouvir esta parte</button>
+<p><ul>
+<li>Mentalidade revolucionária, Futuro hipotético, Persuasão, Condutas</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-15" data-chapterstart="2868">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 2868);">Ouvir esta parte</button>
+<p><ul>
+<li>Aborto</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-16" data-chapterstart="3017">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 3017);">Ouvir esta parte</button>
+<p><ul>
+<li>Voto obrigatório, Eleições americanas, Barack Obama, John Kerry, George W. Bush, Internet, Joe Biden, Sarah Palin</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-25-17" data-chapterstart="3550">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2025%2008%202008.mp4', 3550);">Ouvir esta parte</button>
+<p><ul>
+<li>Totalitarismo islâmico, Nazismo, Ion Mihai Pacepa, Falsidade idelógica, John McCain</li>
+</ul></p>
+</div>
+</div>

@@ -1,0 +1,175 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-03-05">2007/03/05</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4">
+<div data-chapterid="2007-03-05-0" data-chapterstart="23">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 23);">Ouvir esta parte</button>
+<p><ul>
+<li>Islam, Taricas, Xiitas, Georges Gurdjeff, Guerra cultural, Movimento Nova Era, René Guenón, Schon, Frank Lloyd Wright.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-1" data-chapterstart="745">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 745);">Ouvir esta parte</button>
+<p><ul>
+<li>George Soros, Lynne Stewart, Omar al-Rahman, Guerra do Iraque:</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-2" data-chapterstart="886">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 886);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-3" data-chapterstart="1020">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 1020);">Ouvir esta parte</button>
+<p><ul>
+<li>Brasileiros ilegais, Comunidade norte-americana.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-4" data-chapterstart="1204">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 1204);">Ouvir esta parte</button>
+<p><ul>
+<li>Obesidade infantil, Anti-tabagismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-5" data-chapterstart="1530">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 1530);">Ouvir esta parte</button>
+<p><ul>
+<li>Luiz Alberto Muniz Bandeira, Roberto Abdenur, Antiamericanismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-6" data-chapterstart="1800">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 1800);">Ouvir esta parte</button>
+<p><ul>
+<li>Rei Henrique VIII, Moisés.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-7" data-chapterstart="1870">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 1870);">Ouvir esta parte</button>
+<p><ul>
+<li>Petre Tutea, Tudor B. Munteano, Sócrates, Expressão da filosofia, Gerson Gianotti.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-8" data-chapterstart="2070">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 2070);">Ouvir esta parte</button>
+<p><ul>
+<li>Pierre Lévy, Pensamento individual/coletivo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-9" data-chapterstart="2240">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 2240);">Ouvir esta parte</button>
+<p><ul>
+<li>"O silêncio do inocentes" (filme), Propaganda subliminar, Hegel, Estado racional/satânico, Simbolismo cinematográfico</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-10" data-chapterstart="2530">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 2530);">Ouvir esta parte</button>
+<p><ul>
+<li>Grécia, Platão, Movimento revolucionário, Correntes messiânicas, Plínio Correia de Oliveira, "Revolução e contra-revolução" (Livro), Karl Marx, Revolução francesa, Anarquismo, Stálin, Pierre Drieu La Rochelle, "Socialisme fasciste" (Livro), Nazismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-11" data-chapterstart="2940">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 2940);">Ouvir esta parte</button>
+<p><ul>
+<li>George W. Bush, Napoleão Bonaparte, Al Gore.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-12" data-chapterstart="3158">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 3158);">Ouvir esta parte</button>
+<p><ul>
+<li>Míriam Leitão, Yuri Vieira, "O abominável homem do minhocão" (Conto), Alborguetti.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-05-13" data-chapterstart="3387">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2005%2003%202007.mp4', 3387);">Ouvir esta parte</button>
+<p><ul>
+<li>Anti-cristianismo, Movimento gay</li>
+</ul></p>
+</div>
+</div>

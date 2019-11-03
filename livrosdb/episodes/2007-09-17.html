@@ -1,0 +1,175 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-09-17">2007/09/17</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4">
+<div data-chapterid="2007-09-17-0" data-chapterstart="8">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 8);">Ouvir esta parte</button>
+<p><ul>
+<li>Farol da Democracia Representativa (Site)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-1" data-chapterstart="43">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 43);">Ouvir esta parte</button>
+<p><ul>
+<li>Rússia, Mercosul, Foro de São Paulo, Ascensão da Esquerda, América Latina, Lula, Hugo Chávez, Council on Foreign Relations, CFR, Kenneth Maxwell, Forças Armadas Latino-Americana, Brigadeiro Ferolla, Nacionalismo, Mensalão, Zé Dirceu, ONU, Amazônia</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-2" data-chapterstart="802">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 802);">Ouvir esta parte</button>
+<p><ul>
+<li>Antártida, Aquecimento Global</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-3" data-chapterstart="847">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 847);">Ouvir esta parte</button>
+<p><ul>
+<li>Crise de 1929, China, Irã, Partido Democrata Americano, Guerra do Iraque</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-4" data-chapterstart="1124">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 1124);">Ouvir esta parte</button>
+<p><ul>
+<li>Náurio Martins França: "A maldição de Deus sobre o homossexual" (Livro), Violência contra homossexuais</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-5" data-chapterstart="1479">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 1479);">Ouvir esta parte</button>
+<p><ul>
+<li>Genocídio, África, Perseguição anticristã</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-6" data-chapterstart="1970">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 1970);">Ouvir esta parte</button>
+<p><ul>
+<li>Wanderley Guilherme dos Santos, Mídia nacional ,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-7" data-chapterstart="2139">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 2139);">Ouvir esta parte</button>
+<p><ul>
+<li>Banqueiros, Metacapitalismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-8" data-chapterstart="2298">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 2298);">Ouvir esta parte</button>
+<p><ul>
+<li>João Ubaldo Ribeiro</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-9" data-chapterstart="2470">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 2470);">Ouvir esta parte</button>
+<p><ul>
+<li>Negro Acácio, Fernandinho Beira-Mar, FARC</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-10" data-chapterstart="2696">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 2696);">Ouvir esta parte</button>
+<p><ul>
+<li>Política de Redução de Danos, Liberalização das Drogas, George Soros, Asociación Antidroga (Site), Claudio Izaguirre, "Genocídio silencioso' (Artigo), Megan Fitzpatrick, "Canwest newservice" (Artigo) ,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-11" data-chapterstart="2958">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 2958);">Ouvir esta parte</button>
+<p><ul>
+<li>Ernesto Geisel, Silvio Frota, Emílio Médici</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-12" data-chapterstart="3099">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 3099);">Ouvir esta parte</button>
+<p><ul>
+<li>Mitos e Realidade, 11 de setembro, Homem na Lua, Golpe de 64</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-17-13" data-chapterstart="3218">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2009%202007.mp4', 3218);">Ouvir esta parte</button>
+<p><ul>
+<li>Nelson Jobim</li>
+</ul></p>
+</div>
+</div>

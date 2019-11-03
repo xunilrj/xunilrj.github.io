@@ -1,0 +1,157 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-07-23">2007/07/23</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4">
+<div data-chapterid="2007-07-23-0" data-chapterstart="60">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4', 60);">Ouvir esta parte</button>
+<p><ul>
+<li>"O futuro do pensamento brasileiro" (Livro), "A dialética simbólica" (Livro), Farol da democracia Representativa (Site).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-23-1" data-chapterstart="217">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4', 217);">Ouvir esta parte</button>
+<p><ul>
+<li>Legalização das drogas, George Soros, Cacaína, Cigarro, Forces (Site).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-23-2" data-chapterstart="645">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4', 645);">Ouvir esta parte</button>
+<p><ul>
+<li>Gilles Perralt: "Livro negro do capitalismo" (Livro), Jacopo Fo, Sergio Tomat, Laura Malucelli: "Livro negro do cristianismo" (Livro), Lênin, CNBB, Comunismo, R. J. Rummel, Demonocídio, Religiões, Ideologias ateísticas, Hélio Schwartzmann, Marco Aurélio Gárcia.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-23-3" data-chapterstart="1155">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4', 1155);">Ouvir esta parte</button>
+<p><ul>
+<li>Aristóteles: "Ética a Nicômano" (Livro), Contemplação, "Da contemplação cerebral" (apostila), Narciso Irala: "Controle cerebral e emocional" (Livro), Método geométrico construtivo, Argumentos, Metodologia filosófica.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-23-4" data-chapterstart="1606">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4', 1606);">Ouvir esta parte</button>
+<p><ul>
+<li>Antonio Carlos Magalhães, Eleitorado, Militância, Fernando Collor.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-23-5" data-chapterstart="1935">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4', 1935);">Ouvir esta parte</button>
+<p><ul>
+<li>Martin Heidegger, Desconstrucionismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-23-6" data-chapterstart="2168">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4', 2168);">Ouvir esta parte</button>
+<p><ul>
+<li>Eric Voegelin, Neoconservadorismo, Revolução internacional, Lucas Mafaldo, Justin Raymond, Leo Strauss, 11 de Setembro, George W. Bush, Inimigo interno, CFR: Council on Foreign Relations, Comunidade Norte-americana.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-23-7" data-chapterstart="2570">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4', 2570);">Ouvir esta parte</button>
+<p><ul>
+<li>Estudo da filosofia, Práticas mentais, Platão.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-23-8" data-chapterstart="2715">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4', 2715);">Ouvir esta parte</button>
+<p><ul>
+<li>Caucus for America (Site), Rabino Aryeh Spero: "The ACLU: Enemy of America and Christianity" (Artigo), Don Feder, Michael Horowitz, Genocídio anticristão.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-23-9" data-chapterstart="2859">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4', 2859);">Ouvir esta parte</button>
+<p><ul>
+<li>Propriedade privada, MST, Movimento gay, Luiz Mott, Denílson Lopes.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-23-10" data-chapterstart="3325">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2007%202007.mp4', 3325);">Ouvir esta parte</button>
+<p><ul>
+<li>Jorge Serrão, Eleição Presidencial, Política globalista, Crise aérea, FARC, José Bonifácio de Andrade e Silva</li>
+</ul></p>
+</div>
+</div>

@@ -1,0 +1,133 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-06-09">2008/06/09</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2006%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2006%202008.mp4">
+<div data-chapterid="2008-06-09-0" data-chapterstart="62">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2006%202008.mp4', 62);">Ouvir esta parte</button>
+<p><ul>
+<li>Dicta & Contradicta, Enzo Martins Peri, General Augusto Heleno, Globalismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-09-1" data-chapterstart="712">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2006%202008.mp4', 712);">Ouvir esta parte</button>
+<p><ul>
+<li>Aborto, Planned Paranenthood, Católicas pelo Direito de Decidir, Fundação Ford, Fundação Rockfeller, Acidentes de trânsito</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-09-2" data-chapterstart="893">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2006%202008.mp4', 893);">Ouvir esta parte</button>
+<p><ul>
+<li>Orlando Fidéli</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-09-3" data-chapterstart="1569">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2006%202008.mp4', 1569);">Ouvir esta parte</button>
+<p><ul>
+<li>Concílio de Trento, Contra Reforma, Companhia de Jesus, Eric Voegelin</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-09-4" data-chapterstart="2078">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2006%202008.mp4', 2078);">Ouvir esta parte</button>
+<p><ul>
+<li>"Influências discretas" (Artigo <a href="http://www.olavodecarvalho.org/semana/080508jb.html">http://www.olavodecarvalho.org/semana/080508jb.html</a>(<a href="http://web.archive.org/web/2008060900000/http://www.olavodecarvalho.org/semana/080508jb.html" target="_blank">@webarchive</a>)), Frithjof Schuon, Monsenhor Lefèvre, Rama Coomaraswamy, William Blake, Caifás, René Guénon, Islã</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-09-5" data-chapterstart="2462">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2006%202008.mp4', 2462);">Ouvir esta parte</button>
+<p><ul>
+<li>Petróleo, Jerome R. Corsi e Craig R. Smith "Black Goldstranglehold" (Livro) - Thomas Gold, "The deep hot biosphere: the myth of fossils foels" (Livro), Arábia Saudita, Soberanias, Estados Unidos, Israel, Palestina, "Visão japonesa dos Palestinas" (Artigo)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-06-09-6" data-chapterstart="2888">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2006%202008.mp4', 2888);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Alan Keyes, Negros americanos, Benedita da Silva, Clube Bilderberg, Hillary Clinton, Rush Limbaugh</li>
+</ul></p>
+</div>
+</div>

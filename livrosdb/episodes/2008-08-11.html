@@ -1,0 +1,169 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-08-11">2008/08/11</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4">
+<div data-chapterid="2008-08-11-0" data-chapterstart="17">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 17);">Ouvir esta parte</button>
+<p><ul>
+<li>Antologia Poética, Ângelo Monteiro, Paulo Coelho, Curso Introdução ao Método Filosófico</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-11-1" data-chapterstart="105">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 105);">Ouvir esta parte</button>
+<p><ul>
+<li>Barbara Gancia, Foro de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-11-2" data-chapterstart="195">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 195);">Ouvir esta parte</button>
+<p><ul>
+<li>Invasão Geórgia, Rússia, Petróleo, Estados Unidos, Iraque</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-11-3" data-chapterstart="377">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 377);">Ouvir esta parte</button>
+<p><ul>
+<li>Vermelho.org, Altamiro Borges, Fascismo, Ajuda União Soviética, Alemanha, Álvaro Uribe</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-11-4" data-chapterstart="630">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 630);">Ouvir esta parte</button>
+<p><ul>
+<li>Brigadeiro Sérgio Ferolla, Ocupação Amazônia, Lula</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-11-5" data-chapterstart="864">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 864);">Ouvir esta parte</button>
+<p><ul>
+<li>Sandra Almeida, Prof. Eduardo Ramalho Rabenhorst, Outdoors Campina Grande, Roberto Sicuteri</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-11-6" data-chapterstart="1035">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 1035);">Ouvir esta parte</button>
+<p><ul>
+<li>Narcotráfico, Curso, PT, Farc, PCC, Equador , Rafael Correa, Constituição, Nova Ordem Mundial, Dr. Rosinha, Plebiscito, Venezuela, Barack Obama, Estados Unidos, Guerra Vietnã, Mortos em Guerra, Pol Pot, Camboja</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-11-7" data-chapterstart="1376">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 1376);">Ouvir esta parte</button>
+<p><ul>
+<li>Teologia da Libertação, Papa João Paulo II, Bispo Dom Castro Maia, Bispo Dom Marcel Lefebvre, Católicas pelo Direito de Decidir, CNBB, frei Betto, Leonardo Boff, Maçonaria, Papa Bento XVI, Bispo Dom Carmo João Rhoden, Revista América Libre, Padre Paulo Ricardo, Marxismo cultural</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-11-8" data-chapterstart="2176">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 2176);">Ouvir esta parte</button>
+<p><ul>
+<li>E. Michael Jones: Libido Dominandi (livro), Liberação sexual, União Européia, Casamentos, Antonio Gramsci, Propriedade privada, Economia liberal, Cultura socialista, Economia fascista</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-11-9" data-chapterstart="2412">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 2412);">Ouvir esta parte</button>
+<p><ul>
+<li>General Paulo César Castro, Ditadura, Tortura, Terrorismo, Cuba, José Dirceu, MST</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-11-10" data-chapterstart="2859">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 2859);">Ouvir esta parte</button>
+<p><ul>
+<li>Desembargador Rui Portanova, FARC, Jair Bolsonaro, Tarso Genro, César Benjamin, China, Direitos humanos, PSOL</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-11-11" data-chapterstart="3170">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 3170);">Ouvir esta parte</button>
+<p><ul>
+<li>Heitor de Paola, Isto É, KGB</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-08-11-12" data-chapterstart="3257">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2008%202008.mp4', 3257);">Ouvir esta parte</button>
+<p><ul>
+<li>Graça Salgueiro, Vladimir Lênin, Karl Kautsky</li>
+</ul></p>
+</div>
+</div>

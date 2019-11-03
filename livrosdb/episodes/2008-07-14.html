@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-07-14">2008/07/14</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2007%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2007%202008.mp4">
+<div data-chapterid="2008-07-14-0" data-chapterstart="90">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2007%202008.mp4', 90);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunidade Olavo de Carvalho (Orkut), CNBB, "A Nova Era e a Revolução Cultural" (Livro), Lula, Vietnã, Walter Cronkite, Mídia americana, General Giap, João Pedro Stédile, Golpe Militar, Revolução Cultural, Papa Leão XIII, Comunismo , Concílio Vaticano II, Camboja, Pol Pot, Jesus Cristo, Profecia Nossa Senhora de La Salette, São Bernardo de Claraval</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-14-1" data-chapterstart="1163">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2007%202008.mp4', 1163);">Ouvir esta parte</button>
+<p><ul>
+<li>Pobres, Ditadura, Emílio Medici, São Paulo, Rio de Janeiro, Lula, Lulinha</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-14-2" data-chapterstart="1487">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2007%202008.mp4', 1487);">Ouvir esta parte</button>
+<p><ul>
+<li>Eleições americanas, Barack Obama, John McCain, Alan Keyes, Thomas Sowell</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-14-3" data-chapterstart="2002">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2007%202008.mp4', 2002);">Ouvir esta parte</button>
+<p><ul>
+<li>Daniel Dantas, Luis Eduardo Greenhalgh, Olivério Medina</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-14-4" data-chapterstart="2109">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2007%202008.mp4', 2109);">Ouvir esta parte</button>
+<p><ul>
+<li>Maçonaria, Illuminati, John Robison: "Proofs of conspiracy against all the religions and governments of Europe carried on in the secrets meetings of freemasons , Illuminati and reading societies" (Livro), Pais fundadores, Benjamin Morris: "The Christian life and character of the civil institutions of the United States" (Livro), Igreja Católica, Comunismo, Trotski, Marechal Tito</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-14-5" data-chapterstart="2413">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2007%202008.mp4', 2413);">Ouvir esta parte</button>
+<p><ul>
+<li>Ipojuca Pontes: "Lula e as Farc" (Artigo), José Nivaldo Cordeiro</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-14-6" data-chapterstart="2504">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2007%202008.mp4', 2504);">Ouvir esta parte</button>
+<p><ul>
+<li>Étienne Gilson</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-14-7" data-chapterstart="2563">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2007%202008.mp4', 2563);">Ouvir esta parte</button>
+<p><ul>
+<li>Ministro Gilmar Mendes, Grampo, Richard Nixon, Empresários, Legislação fiscal</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-14-8" data-chapterstart="2889">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2007%202008.mp4', 2889);">Ouvir esta parte</button>
+<p><ul>
+<li>Dom Redovino Rizzardo, Lei anti-homofobia, Luiz Mott, Opus Dei, Cezar & Paulinho</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-07-14-9" data-chapterstart="3123">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2014%2007%202008.mp4', 3123);">Ouvir esta parte</button>
+<p><ul>
+<li>Lei Maria da Penha, Celso Daniel, George W. Bush, Popularidade, Congresso americano, Nancy Pelosi, Congresso brasileiro</li>
+</ul></p>
+</div>
+</div>

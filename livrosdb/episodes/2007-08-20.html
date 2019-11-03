@@ -1,0 +1,157 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-08-20">2007/08/20</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4">
+<div data-chapterid="2007-08-20-0" data-chapterstart="0">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4', 0);">Ouvir esta parte</button>
+<p><ul>
+<li>Quartim de Moraes, Abaixo assinado [<a href="http://www.petitiononline.com/1848mc/petition.html">http://www.petitiononline.com/1848mc/petition.html</a>(<a href="http://web.archive.org/web/2007082000000/http://www.petitiononline.com/1848mc/petition.html" target="_blank">@webarchive</a>)], Centro de Estudos Marxistas, Unicamp, Ditadura cubana, Capitão Chandler, Democracia popular, Sargento Mario Kozel Filho, Orlando Lovechio Filho, Escravos, Regimes comunistas, Edmundo Fernandes</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-20-1" data-chapterstart="2050">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4', 2050);">Ouvir esta parte</button>
+<p><ul>
+<li>Juan Carlos Ramirez Abadia, FARC</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-20-2" data-chapterstart="2110">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4', 2110);">Ouvir esta parte</button>
+<p><ul>
+<li>Ignorância, Burrice maliciosa , Fidel Castro, Hugo Chávez.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-20-3" data-chapterstart="2337">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4', 2337);">Ouvir esta parte</button>
+<p><ul>
+<li>Movimento Gay</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-20-4" data-chapterstart="2389">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4', 2389);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-20-5" data-chapterstart="2540">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4', 2540);">Ouvir esta parte</button>
+<p><ul>
+<li>Mudança de sexo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-20-6" data-chapterstart="2725">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4', 2725);">Ouvir esta parte</button>
+<p><ul>
+<li>Bases do capitalismo, Rodney Stark, Thomas Woods, Anatoliy Golitsyn: "New lies for old"</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-20-7" data-chapterstart="2890">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4', 2890);">Ouvir esta parte</button>
+<p><ul>
+<li>Anti-americanismo, Pólo Norte, Política americana, George Soros, Golpe de 64, Lincoln Gordon</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-20-8" data-chapterstart="3054">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4', 3054);">Ouvir esta parte</button>
+<p><ul>
+<li>Karl Marx, Mais-valia, Capitalismo, Eric Voegelin.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-20-9" data-chapterstart="3325">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4', 3325);">Ouvir esta parte</button>
+<p><ul>
+<li>ONU, Reservas indígenas, Menna Barreto, "A farsa Ianomâmi" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-08-20-10" data-chapterstart="3392">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2020%2008%202007.mp4', 3392);">Ouvir esta parte</button>
+<p><ul>
+<li>Governo global, Ilhas Malvinas, Revista Realidade, Cláudio Lembro</li>
+</ul></p>
+</div>
+</div>

@@ -1,0 +1,145 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-03-29">2010/03/29</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2003%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2003%202010.mp4">
+<div data-chapterid="2010-03-29-0" data-chapterstart="60">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2003%202010.mp4', 60);">Ouvir esta parte</button>
+<p><ul>
+<li>Recados</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-29-1" data-chapterstart="1100">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2003%202010.mp4', 1100);">Ouvir esta parte</button>
+<p><ul>
+<li>prisão de Osvaldo Alvarez Paz, Venezuela,</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-29-2" data-chapterstart="1200">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2003%202010.mp4', 1200);">Ouvir esta parte</button>
+<p><ul>
+<li>Monopólio da esquerda nas manifestações públicas no Brasil, eleições​ com uma corrente política, disputa de cargos entre PT e PSDB</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-29-3" data-chapterstart="1320">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2003%202010.mp4', 1320);">Ouvir esta parte</button>
+<p><ul>
+<li>Projeto de reestruturação do Min. da Defesa, Projeto Soviético</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-29-4" data-chapterstart="1580">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2003%202010.mp4', 1580);">Ouvir esta parte</button>
+<p><ul>
+<li>Pedofilia, Igreja Católica (artigo: <a href="http://www.olavodecarvalho.org/cem-anos-de-pedofilia/">http://www.olavodecarvalho.org/cem-anos-de-pedofilia/</a>(<a href="http://web.archive.org/web/2010032900000/http://www.olavodecarvalho.org/cem-anos-de-pedofilia/" target="_blank">@webarchive</a>)), Papa Bento XVI, pe. Marcial Maciel, Legionários de Cristo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-29-5" data-chapterstart="2340">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2003%202010.mp4', 2340);">Ouvir esta parte</button>
+<p><ul>
+<li>erro nos pedidos de desculpa em nome da Igreja</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-29-6" data-chapterstart="2620">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2003%202010.mp4', 2620);">Ouvir esta parte</button>
+<p><ul>
+<li>Prêmio do Der Spiegel para quem acusar o Papa Bento XVI de pedofilia, Criação de uma Religião Mundial</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-29-7" data-chapterstart="2950">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2003%202010.mp4', 2950);">Ouvir esta parte</button>
+<p><ul>
+<li>Sobre erro no livro "Jardim das Aflições", movimento conservador nos EUA, Governo Obama, Seguro saúde obrigatório, centralização estatal, Lincoln, Thomas DiLorenzo: "The Real Lincoln" e "Lincoln Unmasked" (livros)</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-03-29-8" data-chapterstart="3215">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2029%2003%202010.mp4', 3215);">Ouvir esta parte</button>
+<p><ul>
+<li>A natureza do Estado, Revolução americana, Criação do Estado Americano, Andrew C. McLaughlin: "A Constitutional History of the United States" (livro),</li>
+</ul></p>
+</div>
+</div>

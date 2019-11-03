@@ -1,0 +1,163 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-10-22">2007/10/22</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4">
+<div data-chapterid="2007-10-22-0" data-chapterstart="0">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 0);">Ouvir esta parte</button>
+<p><ul>
+<li>Ombudsman, Folha de S. Paulo, Atleta cubano, Jogos Pan-Americanos</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-22-1" data-chapterstart="150">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 150);">Ouvir esta parte</button>
+<p><ul>
+<li>PL 122, Militância gay, São Francisco (Cidade), Leis contraditórias , Ann Coulter, Judeus</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-22-2" data-chapterstart="660">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 660);">Ouvir esta parte</button>
+<p><ul>
+<li>Prêmio Nobel, James Watson, Racismo, Ciência moderna, Eric Voegelin, "History of political ideas" (Livro), Identidade racial, Voltaire, Karl Marx, Charles Darwin: "A ascendência do homem" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-22-3" data-chapterstart="1112">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 1112);">Ouvir esta parte</button>
+<p><ul>
+<li>Alejandro Peña Esclusa, Hugo Chávez, Oposição na Venezuela, Herbert Marcuse, "Tolerância libertadora", Che Guevara, Mentalidade revolucionária, Seitas messiânicas</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-22-4" data-chapterstart="1598">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 1598);">Ouvir esta parte</button>
+<p><ul>
+<li>Língua inglesa, Charles de Gaulle, Hillary Clinton</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-22-5" data-chapterstart="1756">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 1756);">Ouvir esta parte</button>
+<p><ul>
+<li>"X-ray of a lie" (Documentário)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-22-6" data-chapterstart="1858">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 1858);">Ouvir esta parte</button>
+<p><ul>
+<li>Nicolas Sarkozy, França,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-22-7" data-chapterstart="1928">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 1928);">Ouvir esta parte</button>
+<p><ul>
+<li>"A Língua" (Blog), Odilon de Oliveira</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-22-8" data-chapterstart="1982">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 1982);">Ouvir esta parte</button>
+<p><ul>
+<li>"Hotel Ruanda" (Filme), Teologia da Libertação, Conflito de Darfur, ONU, Sionsimo, J. Edward Griffin, "The fearful máster: a second look at the United Nations (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-22-9" data-chapterstart="2217">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 2217);">Ouvir esta parte</button>
+<p><ul>
+<li>Obras de História:</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-22-10" data-chapterstart="3111">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 3111);">Ouvir esta parte</button>
+<p><ul>
+<li>Revista Época</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-22-11" data-chapterstart="3240">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 3240);">Ouvir esta parte</button>
+<p><ul>
+<li>IURD</li>
+</ul></p>
+</div>
+</div>

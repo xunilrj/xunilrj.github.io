@@ -1,0 +1,157 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-12-15">2008/12/15</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4">
+<div data-chapterid="2008-12-15-0" data-chapterstart="14">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4', 14);">Ouvir esta parte</button>
+<p><ul>
+<li>Astrologia, Janer Cristaldo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-15-1" data-chapterstart="232">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4', 232);">Ouvir esta parte</button>
+<p><ul>
+<li>Irmã Miriam Joseph, "O Trivium: as artes liberais da lógica, gramática e retórica" (Livro), Ministério da Educação</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-15-2" data-chapterstart="412">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4', 412);">Ouvir esta parte</button>
+<p><ul>
+<li>União de Organizações Democráticas da América, Unoamérica, Foro de São Paulo, Alejandro Peña Esclusa, Fuerza Solidaria, Olavo Setubal</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-15-3" data-chapterstart="597">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4', 597);">Ouvir esta parte</button>
+<p><ul>
+<li>Elis Nery, Aborto, José Gomes Temporão, Thomas Sowell, "The vision of the anointed: self-congratulation as a basis for social policy" (Livro), Educação sexual, Lei de cotas, Criminalidade, Carta Capital</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-15-4" data-chapterstart="1367">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4', 1367);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunidade Olavo de Carvalho nos Odeia (Orkut)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-15-5" data-chapterstart="1539">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4', 1539);">Ouvir esta parte</button>
+<p><ul>
+<li>Northrop Frye: "O código dos códigos" (Livro), Emir Sader, Robert Buchar, Barack Obama,</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-15-6" data-chapterstart="1665">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4', 1665);">Ouvir esta parte</button>
+<p><ul>
+<li>Pedro Dória, Comunidade Olavo de Carvalho (Orkut)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-15-7" data-chapterstart="1776">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4', 1776);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Ordem do Tempo, Debbie Schlussel</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-15-8" data-chapterstart="2357">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4', 2357);">Ouvir esta parte</button>
+<p><ul>
+<li>Dialética aristotélica, Discursos retóricos opostos, Método científico, Karl Popper, Cursos de Direito, Santo Tomás de Aquino</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-15-9" data-chapterstart="2761">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4', 2761);">Ouvir esta parte</button>
+<p><ul>
+<li>Eric Voegelin</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-12-15-10" data-chapterstart="2828">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2015%2012%202008.mp4', 2828);">Ouvir esta parte</button>
+<p><ul>
+<li>Ayn Rand, Ética do egoísmo, Nietzsche</li>
+</ul></p>
+</div>
+</div>

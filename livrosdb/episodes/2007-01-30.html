@@ -1,0 +1,175 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-01-30">2007/01/30</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4">
+<div data-chapterid="2007-01-30-0" data-chapterstart="43">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 43);">Ouvir esta parte</button>
+<p><ul>
+<li>Immannuel Wallerstein: "Declínio do poder americano" (Livro), Folha de S. Paulo, Lula, Hugo Chávez, Esquerda latino-americana, Fórum Econômico Mundial, Jacob Frankel, Comunismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-1" data-chapterstart="275">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 275);">Ouvir esta parte</button>
+<p><ul>
+<li>FARC, Prisioneiros políticos, Tráfico de drogas, Exército revolucionário (FARC, CV, PCC, MST)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-2" data-chapterstart="524">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 524);">Ouvir esta parte</button>
+<p><ul>
+<li>Chopin, Cartola, Tv Cultura, Ariano Suassuna: "Iniciação estética" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-3" data-chapterstart="742">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 742);">Ouvir esta parte</button>
+<p><ul>
+<li>Paralelismo, Teoria dos quatro discursos, Benedetto Croce, Instrumento de compreensão da História.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-4" data-chapterstart="1036">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 1036);">Ouvir esta parte</button>
+<p><ul>
+<li>Conceito indeterminado, Termo de significação indeterminada, Machado de Assis: "Teoria do Medalhão"</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-5" data-chapterstart="1242">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 1242);">Ouvir esta parte</button>
+<p><ul>
+<li>Concílio Vaticano II, Gustavo Corção.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-6" data-chapterstart="1418">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 1418);">Ouvir esta parte</button>
+<p><ul>
+<li>Pacto de Metz, Ion Mihai Pacepa, Kruschev, KGB, Rabino David Dalin: "The myth of Hitler's Pope" (Livro), Papa Pio XII, Otto Maria Carpeaux.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-7" data-chapterstart="1800">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 1800);">Ouvir esta parte</button>
+<p><ul>
+<li>Movimento gay.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-8" data-chapterstart="1935">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 1935);">Ouvir esta parte</button>
+<p><ul>
+<li>Eutanásia, Comissões técnicas, ONU.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-9" data-chapterstart="2110">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 2110);">Ouvir esta parte</button>
+<p><ul>
+<li>Cuba, antiamericanismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-10" data-chapterstart="2248">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 2248);">Ouvir esta parte</button>
+<p><ul>
+<li><a href="http://www.forces.org">http://www.forces.org</a>(<a href="http://web.archive.org/web/2007013000000/http://www.forces.org" target="_blank">@webarchive</a>), AntiAntitabagismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-11" data-chapterstart="2440">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 2440);">Ouvir esta parte</button>
+<p><ul>
+<li>Eutanásia.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-12" data-chapterstart="2520">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 2520);">Ouvir esta parte</button>
+<p><ul>
+<li>Religiões.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-30-13" data-chapterstart="3020">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2030%2001%202007.mp4', 3020);">Ouvir esta parte</button>
+<p><ul>
+<li>Educação, Charlotte Thomsom Iserbyt: "The deliberate dumbing down of America"</li>
+</ul></p>
+</div>
+</div>

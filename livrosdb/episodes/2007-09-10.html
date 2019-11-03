@@ -1,0 +1,175 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-09-10">2007/09/10</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4">
+<div data-chapterid="2007-09-10-0" data-chapterstart="25">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 25);">Ouvir esta parte</button>
+<p><ul>
+<li>Notalatina (blog).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-1" data-chapterstart="57">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 57);">Ouvir esta parte</button>
+<p><ul>
+<li>Pastor Silas Malafaia, Movimento gay, Desejo sexual, "Memórias do cárcere" (Livro), Para Gay (Paris), Senador Larry Craig, Deputado Mark Foley, Deputado Barney Frank, Deputado William Jefferson, Media Research (Site), Tom DeLay, Matt Lower</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-2" data-chapterstart="862">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 862);">Ouvir esta parte</button>
+<p><ul>
+<li>Congresso em Foco (Site), José Rodrigues Filho, Cartão Nacional de Saúde, Direito alternativo, Totalitarismo informal</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-3" data-chapterstart="1064">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 1064);">Ouvir esta parte</button>
+<p><ul>
+<li>Camboja, Vietnã, Lyndon Johnson, Pol Pot, João Goulart, Guerrilha, Ted Kennedy, Jim Jones, Linconln Gordon, Gloucho Marx, Jimmy Carter, Ditadura cubana, Julgamento de Nuremberg</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-4" data-chapterstart="1702">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 1702);">Ouvir esta parte</button>
+<p><ul>
+<li>Concílio Vaticano II, Pacto de Metz, Comunismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-5" data-chapterstart="2202">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 2202);">Ouvir esta parte</button>
+<p><ul>
+<li>Allan Bloom, "A cultura inculta" (Livro), Relativismo, Antropologia, Margaret Mead, Samoa</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-6" data-chapterstart="2399">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 2399);">Ouvir esta parte</button>
+<p><ul>
+<li>Escola de Frankfurt, Theodor Adorno, Nazismo, JosephGoebbels</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-7" data-chapterstart="2955">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 2955);">Ouvir esta parte</button>
+<p><ul>
+<li>Nota Fiscal Paulista, Reinaldo Azevedo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-8" data-chapterstart="3100">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 3100);">Ouvir esta parte</button>
+<p><ul>
+<li>Corinthians, MSI, Governo russo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-9" data-chapterstart="3183">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 3183);">Ouvir esta parte</button>
+<p><ul>
+<li>Ação Popular, Hegemonia cultural, Revolução cultural gramsciana</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-10" data-chapterstart="3576">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 3576);">Ouvir esta parte</button>
+<p><ul>
+<li>Farol da Democracia Representativa (Site), Graça Wagner, Associação Comercial de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-11" data-chapterstart="3763">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 3763);">Ouvir esta parte</button>
+<p><ul>
+<li>Universidade Federal da Paraíba (Exposição), Arte anticristã</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-12" data-chapterstart="3982">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 3982);">Ouvir esta parte</button>
+<p><ul>
+<li>Nelson Jobim, PT</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-09-10-13" data-chapterstart="4062">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2009%202007.mp4', 4062);">Ouvir esta parte</button>
+<p><ul>
+<li>TFP, Plínio Correa de Oliveira, Dom Bertrand, Criminalização da Direit</li>
+</ul></p>
+</div>
+</div>

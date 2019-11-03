@@ -1,0 +1,233 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2006-12-11">2006/12/11</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4">
+<div data-chapterid="2006-12-11-0" data-chapterstart="40">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 40);">Ouvir esta parte</button>
+<p><ul>
+<li>Leitura do Editorial do Diário do Comércio: "Fariseu Hipócrita"</li>
+<li>uso pejorativo da palavra raça, racismo</li>
+<li>Sen. Jorge Bornhauser.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-1" data-chapterstart="250">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 250);">Ouvir esta parte</button>
+<p><ul>
+<li>Ocultação de notícias</li>
+<li>Dalmo Dallari.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-2" data-chapterstart="715">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 715);">Ouvir esta parte</button>
+<p><ul>
+<li>Resolução da ONU sobre genocídio no Sudão</li>
+<li>limpeza étnica em Darfur, por parte dos muçulmanos</li>
+<li>abstenção do Brasil</li>
+<li>revista "The New Republic" (<a href="www.tnr.com">www.tnr.com</a>(<a href="http://web.archive.org/web/2006121100000/www.tnr.com" target="_blank">@webarchive</a>)), artigo de Isaac Chotiner sobre Mandela.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-3" data-chapterstart="860">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 860);">Ouvir esta parte</button>
+<p><ul>
+<li>Terroristas na região da Tríplice-Fronteira</li>
+<li>Brasil cúmplice de todas as organizações do FSP</li>
+<li>Lula office-boy do FSP</li>
+<li>Hugo Chávez e o "novo conceito de propriedade"</li>
+<li>eliminação da propriedade privada em outros lugares do continente</li>
+<li>eliminação da propriedade privada por meio da taxação.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-4" data-chapterstart="1160">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 1160);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunidade dos cristãos ameaçada no Iraque</li>
+<li>limpeza étnica muçulmana.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-5" data-chapterstart="1621">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 1621);">Ouvir esta parte</button>
+<p><ul>
+<li>ONU e projeto da Nova Civilização Mundial</li>
+<li>neutralização das soberanias nacionais</li>
+<li>modificação do panorama moral e religioso</li>
+<li>Eutanásia: fuga na Holanda, Inglaterra: médicos obrigados a fazer</li>
+<li>Brasília: 1º Fórum Espiritual Mundial</li>
+<li>lei da homofobia.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-6" data-chapterstart="1938">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 1938);">Ouvir esta parte</button>
+<p><ul>
+<li>Pergunta por e-mail: qual a situação do Partido Comunista nos EUA?</li>
+<li>estratégia diferenciada para o PC norte-americano feita por Stálin</li>
+<li>elite comunista norte-americana</li>
+<li>livro "Double Lives", de Stephen Koch.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-7" data-chapterstart="2085">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 2085);">Ouvir esta parte</button>
+<p><ul>
+<li>Livro - Double Lives: Spies and Writers in the Secret Soviet War of Ideas Against the West. by Stephen KOCH.</li>
+<div style="padding: 10px"><div style="display: inline-block"><img src="./covers/9780002555166.jpg" width="100px"></div><div style="display: inline-block; vertical-align:top"><div><strong><a href="./pages/9780002555166/index.html">Double Lives: Stalin, Willi Munzenberg and the Seduction of the Intellectuals</a></strong></div><div style="display: block; vertical-align:top"><span>Stephen Koch</strong></div><div><div id="gr_add_to_books"><div class="gr_custom_each_container_"><a target="_blank" style="border:none" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/isbn/9780002555166"><img src="https://www.goodreads.com/images/atmb_add_book-70x25.png" /></a></div></div></div></div></div></ol></ul></p>
+</div>
+<div data-chapterid="2006-12-11-8" data-chapterstart="2103">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 2103);">Ouvir esta parte</button>
+<p><ul>
+<li>Opinião do Príncipe D. Bertrand de Orleans e Bragança sobre Olavo</li>
+<li>abrangência do trabalho de Olavo</li>
+<li>opinião de Olavo sobre D. Bertrand.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-9" data-chapterstart="2205">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 2205);">Ouvir esta parte</button>
+<p><ul>
+<li>Assalto ao Ministro do STF</li>
+<li>problema da violência no Brasil.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-10" data-chapterstart="2310">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 2310);">Ouvir esta parte</button>
+<p><ul>
+<li>Influência de Max Scheler e Ortega y Gasset</li>
+<li>Sociologia do Conhecimento</li>
+<li>Karl Manhein</li>
+<li>filosofia e vida pessoal do filósofo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-11" data-chapterstart="2400">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 2400);">Ouvir esta parte</button>
+<p><ul>
+<li>Idéia de governo central e religiões</li>
+<li>projeto do governo mundial: degradação das grandes religiões.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-12" data-chapterstart="2504">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 2504);">Ouvir esta parte</button>
+<p><ul>
+<li>Programa de estudos</li>
+<li>plano pedagógico.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-13" data-chapterstart="2620">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 2620);">Ouvir esta parte</button>
+<p><ul>
+<li>Embargo econômico devido ao avanço das esquerdas?</li>
+<li>imobilismo dos EUA.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-14" data-chapterstart="2658">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 2658);">Ouvir esta parte</button>
+<p><ul>
+<li>Concilio Vaticano II e o comunismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-15" data-chapterstart="2750">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 2750);">Ouvir esta parte</button>
+<p><ul>
+<li>Cooperação entre Irã, Síria e Estados Unidos para pacificação do Iraque.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-16" data-chapterstart="2872">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 2872);">Ouvir esta parte</button>
+<p><ul>
+<li>Correções na parte históricas do Imbecil Coletivo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2006-12-11-17" data-chapterstart="2940">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2012%202006.mp4', 2940);">Ouvir esta parte</button>
+<p><ul>
+<li>Chamada telefônica (Marcelo/RJ)</li>
+<li>governo Pinochet</li>
+<li>Fidel Castro</li>
+<li>livro "O Livro Negro da Revolução Cubana"</li>
+<li>número de mortos e de prisioneiros da Rev. Cubana</li>
+<li>diferença entre as ditaduras reacionárias e ditaduras revolucionárias.</li>
+</ul></p>
+</div>
+</div>

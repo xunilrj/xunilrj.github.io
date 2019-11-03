@@ -1,0 +1,187 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-02-11">2008/02/11</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4">
+<div data-chapterid="2008-02-11-0" data-chapterstart="33">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 33);">Ouvir esta parte</button>
+<p><ul>
+<li>Arquidiocese de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-1" data-chapterstart="214">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 214);">Ouvir esta parte</button>
+<p><ul>
+<li>Partido Renovador Nacional de Portugal</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-2" data-chapterstart="243">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 243);">Ouvir esta parte</button>
+<p><ul>
+<li>MST</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-3" data-chapterstart="300">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 300);">Ouvir esta parte</button>
+<p><ul>
+<li>Chaim Perelman, "Aristóteles em nova perspectiva" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-4" data-chapterstart="370">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 370);">Ouvir esta parte</button>
+<p><ul>
+<li>Partido Republicano, Eleições americanas</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-5" data-chapterstart="462">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 462);">Ouvir esta parte</button>
+<p><ul>
+<li>Eleições venezuelanas, Tom de Castella</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-6" data-chapterstart="556">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 556);">Ouvir esta parte</button>
+<p><ul>
+<li>Frances Stonor Saunders, "Quem pagou a conta: a CIA na guerra fria da cultura"</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-7" data-chapterstart="1234">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 1234);">Ouvir esta parte</button>
+<p><ul>
+<li>Sebastião Nery, Fundação Ford, Fundação Rockfeller, CEBRAP, Ladislav</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-8" data-chapterstart="1722">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 1722);">Ouvir esta parte</button>
+<p><ul>
+<li>Rodrigo Constantino</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-9" data-chapterstart="1940">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 1940);">Ouvir esta parte</button>
+<p><ul>
+<li>Opus Dei, José Carlos Graça Wagner</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-10" data-chapterstart="2150">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 2150);">Ouvir esta parte</button>
+<p><ul>
+<li>Daniel Piza, Nilton da Costa</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-11" data-chapterstart="2216">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 2216);">Ouvir esta parte</button>
+<p><ul>
+<li>Juiz Odilon Rodrigues de Oliveira, FARC, Fernandinho Beira-Mar</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-12" data-chapterstart="2437">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 2437);">Ouvir esta parte</button>
+<p><ul>
+<li>Helio Schwartzman, Ciência X Religião, Santo Tomás de Aquino, Darwinismo,</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-13" data-chapterstart="2851">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 2851);">Ouvir esta parte</button>
+<p><ul>
+<li>Arcebispo Rowan Williams, Sharia, Taricas, Fernando Collor,</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-14" data-chapterstart="3122">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 3122);">Ouvir esta parte</button>
+<p><ul>
+<li>Comunismo, China</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-11-15" data-chapterstart="3398">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2002%202008.mp4', 3398);">Ouvir esta parte</button>
+<p><ul>
+<li>Mídia Sem Máscara (Site)</li>
+</ul></p>
+</div>
+</div>

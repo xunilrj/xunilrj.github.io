@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-01-18">2010/01/18</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2001%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2001%202010.mp4">
+<div data-chapterid="2010-01-18-0" data-chapterstart="50">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2001%202010.mp4', 50);">Ouvir esta parte</button>
+<p><ul>
+<li>Notalatina (Blog), Julio Severo, Movimento Gay</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-18-1" data-chapterstart="513">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2001%202010.mp4', 513);">Ouvir esta parte</button>
+<p><ul>
+<li>Anticristianismo, 10 Mandamentos</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-18-2" data-chapterstart="903">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2001%202010.mp4', 903);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Teoria da Conspiração</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-18-3" data-chapterstart="1192">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2001%202010.mp4', 1192);">Ouvir esta parte</button>
+<p><ul>
+<li>Lula, Africa, Ong, Onu</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-18-4" data-chapterstart="1286">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2001%202010.mp4', 1286);">Ouvir esta parte</button>
+<p><ul>
+<li>Macumba</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-18-5" data-chapterstart="1822">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2001%202010.mp4', 1822);">Ouvir esta parte</button>
+<p><ul>
+<li>Foro de São Paulo, Oliveiros da Silva Ferreira, Forças Armadas, Patriotismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-18-6" data-chapterstart="2559">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2001%202010.mp4', 2559);">Ouvir esta parte</button>
+<p><ul>
+<li>Auto Crítica, Pecados</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-18-7" data-chapterstart="2744">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2001%202010.mp4', 2744);">Ouvir esta parte</button>
+<p><ul>
+<li>Monopólios nos Meios de Comunicação</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-18-8" data-chapterstart="2913">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2001%202010.mp4', 2913);">Ouvir esta parte</button>
+<p><ul>
+<li>Críticos de Olavo de Carvalho, Retórica, Mortimer J. Adler: How to Speak How to Listen (livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-18-9" data-chapterstart="3459">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2018%2001%202010.mp4', 3459);">Ouvir esta parte</button>
+<p><ul>
+<li>Nossa Senhora de Fátima</li>
+</ul></p>
+</div>
+</div>

@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-02-26">2007/02/26</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2002%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2002%202007.mp4">
+<div data-chapterid="2007-02-26-0" data-chapterstart="14">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2002%202007.mp4', 14);">Ouvir esta parte</button>
+<p><ul>
+<li>Nelson Piquet.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-26-1" data-chapterstart="75">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2002%202007.mp4', 75);">Ouvir esta parte</button>
+<p><ul>
+<li>Lógica, Santo Anselmo: "Identidade e Univocidade" (Artigo), Kant, Realidade, Aristóteles, "Notas para uma introdução à filosofia" (Texto do próprio Olavo), Técnica filosófica, Dedução lógica, Aprender a filosofar, Argumentação.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-26-2" data-chapterstart="938">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2002%202007.mp4', 938);">Ouvir esta parte</button>
+<p><ul>
+<li>Ocultismo, Romantismo, Iluminismo, Renascença, Joscelyn Godwin: "The Pagan dream of the renaissance" (Livro), "The theosophical enlightenment: suny series in western esoteric traditions" (Livro), Astrologia popular, Alquimia, Voltaire, Diderot, D'Alambert, Sociedades secretas, Sebatian Frank, Comunismo, Igreja Católica, Ricardo de La Cierva, Judaísmo, Paul Ilie: "The Age of Minerva: counter-rational reason in the eighteenth Century: Goya and the paradigm of unreason in Western Europe"(Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-26-3" data-chapterstart="1411">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2002%202007.mp4', 1411);">Ouvir esta parte</button>
+<p><ul>
+<li>Marxismo, Movimento revolucionário, Modernismo, Movimento Nova Era,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-26-4" data-chapterstart="1620">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2002%202007.mp4', 1620);">Ouvir esta parte</button>
+<p><ul>
+<li>James Cameron, "O túmulo secreto de Jesus" (Documentário), Michael Baigent, Richard Leigh, Henry Lincoln, "O Santo Graal e a linhagem sagrada" (Livro), Al Gore, "Uma verdade inconveniente" (Documentário), Clube de Roma, Governo Mundial, Renato Janine Ribeiro, Comunidade norte-americana, Minutemen, Imigração ilegal, Accuracy in Media, Cliff Kincaid</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-26-5" data-chapterstart="2430">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2002%202007.mp4', 2430);">Ouvir esta parte</button>
+<p><ul>
+<li>Lulinha, Venezuela</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-26-6" data-chapterstart="2501">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2002%202007.mp4', 2501);">Ouvir esta parte</button>
+<p><ul>
+<li>Bibliografia das Universidades, Ludwig von Mises: "Ação humana" (Livro), "Socialismo: uma análise econômica e sociológica", "Teoria e história" (Livro), Adam Smith, Friedrich Hayek: "O caminho da servidão" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-26-7" data-chapterstart="2703">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2002%202007.mp4', 2703);">Ouvir esta parte</button>
+<p><ul>
+<li>Hugo Chávez, Estados Unidos da América do Sul.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-26-8" data-chapterstart="2855">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2002%202007.mp4', 2855);">Ouvir esta parte</button>
+<p><ul>
+<li>Cultura alemã</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-02-26-9" data-chapterstart="2934">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2002%202007.mp4', 2934);">Ouvir esta parte</button>
+<p><ul>
+<li>Ken Wilber, Psicologia.</li>
+</ul></p>
+</div>
+</div>

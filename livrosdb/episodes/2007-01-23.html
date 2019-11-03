@@ -1,0 +1,145 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-01-23">2007/01/23</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2001%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2001%202007.mp4">
+<div data-chapterid="2007-01-23-0" data-chapterstart="25">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2001%202007.mp4', 25);">Ouvir esta parte</button>
+<p><ul>
+<li>João Roberto Martins Filho: "A educação dos golpistas: cultura militar, influência francesa e golpe de 1964" (Livro), PCC, Comando Vermelho, MST, Economia capitalista, Karl Marx, Lênin.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-23-1" data-chapterstart="485">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2001%202007.mp4', 485);">Ouvir esta parte</button>
+<p><ul>
+<li>China, Governo Clinton, Crescimento econômico, Mao-Tse Tung.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-23-2" data-chapterstart="938">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2001%202007.mp4', 938);">Ouvir esta parte</button>
+<p><ul>
+<li>Gustavo Corção: "O Século do nada" (Livro), Concílio Vaticano II, Humanismo revolucionário, Papa Paulo VI, Pacto de Metz, Jacques Maritain: "O camponês de Garona" (Livro), Joseph Marechal: "O ponto de partida da metafísica" (Livro), Antonin Gilbert Sertillanges: "A vida intelectual" (Livro), Inversão de valores, Mário Ferreira dos Santos: "O homem que nasceu póstumo" (Livro), Miguel Reale</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-23-3" data-chapterstart="2127">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2001%202007.mp4', 2127);">Ouvir esta parte</button>
+<p><ul>
+<li>Santo Tomás de Aquino: "Verdade e conhecimento" (Livro), Inteligência,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-23-4" data-chapterstart="2248">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2001%202007.mp4', 2248);">Ouvir esta parte</button>
+<p><ul>
+<li>Jacques Rivette: "A Religiosa" (filme), Diderot.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-23-5" data-chapterstart="2334">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2001%202007.mp4', 2334);">Ouvir esta parte</button>
+<p><ul>
+<li>CFR (Concil on Foregn Relations), Comunidade norte-americana, Keneth Maxwell, Foro de São Paulo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-23-6" data-chapterstart="2617">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2001%202007.mp4', 2617);">Ouvir esta parte</button>
+<p><ul>
+<li>Jardim das Aflições (Livro), Jacob Bazarian, Astronomia, Astrologia, Galileu.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-23-7" data-chapterstart="3000">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2001%202007.mp4', 3000);">Ouvir esta parte</button>
+<p><ul>
+<li>Leitura, Conhecimento, Giovanni Reale: "A história da filosofia" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-01-23-8" data-chapterstart="3579">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2023%2001%202007.mp4', 3579);">Ouvir esta parte</button>
+<p><ul>
+<li>CV, FARC</li>
+</ul></p>
+</div>
+</div>

@@ -1,0 +1,145 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2009-03-09">2009/03/09</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2003%202009.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2003%202009.mp4">
+<div data-chapterid="2009-03-09-0" data-chapterstart="122">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2003%202009.mp4', 122);">Ouvir esta parte</button>
+<p><ul>
+<li>Curso de Filosofia</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-03-09-1" data-chapterstart="272">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2003%202009.mp4', 272);">Ouvir esta parte</button>
+<p><ul>
+<li>Leitura, Concentração</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-03-09-2" data-chapterstart="510">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2003%202009.mp4', 510);">Ouvir esta parte</button>
+<p><ul>
+<li>Conferência Mundial sobre Mudança Climática, Václav Klaus, Aquecimento global, Richard S. Lindzen</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-03-09-3" data-chapterstart="744">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2003%202009.mp4', 744);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Globalismo, Alan Keyes, Suicídio assistido, Células-tronco embrionárias, George W. Bush, Leon Panetta, Charles Freeman</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-03-09-4" data-chapterstart="1412">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2003%202009.mp4', 1412);">Ouvir esta parte</button>
+<p><ul>
+<li>Mídia Sem Máscara (Site), Media Watch, Lula, Benedita da Silva</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-03-09-5" data-chapterstart="1603">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2003%202009.mp4', 1603);">Ouvir esta parte</button>
+<p><ul>
+<li>Opus Dei, Aborto, Estupro, Excomunhão, Pacto de Metz, Dom José Cardoso Sobrinho</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-03-09-6" data-chapterstart="2715">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2003%202009.mp4', 2715);">Ouvir esta parte</button>
+<p><ul>
+<li>Ser Filósofo, Padre Stanislavs Ladusâns</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-03-09-7" data-chapterstart="2919">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2003%202009.mp4', 2919);">Ouvir esta parte</button>
+<p><ul>
+<li>Paulo Mercadante: "A coerência das incertezas" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-03-09-8" data-chapterstart="3031">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2009%2003%202009.mp4', 3031);">Ouvir esta parte</button>
+<p><ul>
+<li>Petróleo</li>
+</ul></p>
+</div>
+</div>

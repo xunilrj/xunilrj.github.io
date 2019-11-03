@@ -1,0 +1,145 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-04-16">2007/04/16</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2004%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2004%202007.mp4">
+<div data-chapterid="2007-04-16-0" data-chapterstart="34">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2004%202007.mp4', 34);">Ouvir esta parte</button>
+<p><ul>
+<li>Aborto, Folha de S. Paulo, H.G. Wells: "Forma das coisas futuras" (Livro), "A conspiração aberta" (Livro), Plebiscitos, Dr. Bernard Nathanson.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-16-1" data-chapterstart="493">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2004%202007.mp4', 493);">Ouvir esta parte</button>
+<p><ul>
+<li>Lei da mordaça gay, Igreja metodista, Santo Tomás de Aquino, Perseguição anticristã.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-16-2" data-chapterstart="777">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2004%202007.mp4', 777);">Ouvir esta parte</button>
+<p><ul>
+<li>Peter Hitchens: "The abolition of Britain" (Livro), Inglaterra, Holocausto, David Irving: "Hitler's War" (Livro), Islamismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-16-3" data-chapterstart="1117">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2004%202007.mp4', 1117);">Ouvir esta parte</button>
+<p><ul>
+<li>Milagres, Fé, Ciência, Fato abstrato/concreto, Desconstrucionismo, "O fim da era Einstein" (Artigo), Tecnologia, Física Quântica, Inquisição, Seitas heréticas, Cátaros, Engels.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-16-4" data-chapterstart="1986">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2004%202007.mp4', 1986);">Ouvir esta parte</button>
+<p><ul>
+<li>Aborto, Organizações Globo, ONU, Big Bang.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-16-5" data-chapterstart="2216">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2004%202007.mp4', 2216);">Ouvir esta parte</button>
+<p><ul>
+<li>Dráuzio Varella: "O crime da camisinha" (Artigo), AIDS, Comportamento sexual, Autoridade pública.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-16-6" data-chapterstart="2700">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2004%202007.mp4', 2700);">Ouvir esta parte</button>
+<p><ul>
+<li>Chávez, Lula, Petróleo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-16-7" data-chapterstart="2870">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2004%202007.mp4', 2870);">Ouvir esta parte</button>
+<p><ul>
+<li>Aborto, Portugal.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-04-16-8" data-chapterstart="3018">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2004%202007.mp4', 3018);">Ouvir esta parte</button>
+<p><ul>
+<li>Estado Laico, Richard Dawkins, Voice of the Martyrs, Iluminismo, Adam Smith</li>
+</ul></p>
+</div>
+</div>

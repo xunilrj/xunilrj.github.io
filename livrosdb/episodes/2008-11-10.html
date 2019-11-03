@@ -1,0 +1,169 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-11-10">2008/11/10</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4">
+<div data-chapterid="2008-11-10-0" data-chapterstart="14">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 14);">Ouvir esta parte</button>
+<p><ul>
+<li>"Pergunte ao John McCain", Barack Obama, Chicago Annenberg Challenge, Argemiro Ferreira, CEPAC</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-11-10-1" data-chapterstart="876">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 876);">Ouvir esta parte</button>
+<p><ul>
+<li>Foro de São Paulo, Mídia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-11-10-2" data-chapterstart="922">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 922);">Ouvir esta parte</button>
+<p><ul>
+<li>Arnaldo Jabor, Partido Republicano</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-11-10-3" data-chapterstart="1124">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 1124);">Ouvir esta parte</button>
+<p><ul>
+<li>Rush Limbaugh</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-11-10-4" data-chapterstart="1204">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 1204);">Ouvir esta parte</button>
+<p><ul>
+<li>Crise econômica, Raila Odinga, Alan Keyes</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-11-10-5" data-chapterstart="1571">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 1571);">Ouvir esta parte</button>
+<p><ul>
+<li>"Mudando o mundo" (Artigo)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-11-10-6" data-chapterstart="1996">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 1996);">Ouvir esta parte</button>
+<p><ul>
+<li>Perseguição anticristã</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-11-10-7" data-chapterstart="2316">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 2316);">Ouvir esta parte</button>
+<p><ul>
+<li>Força Civil de Segurança Nacional</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-11-10-8" data-chapterstart="2469">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 2469);">Ouvir esta parte</button>
+<p><ul>
+<li>Tarso Genro, Carlos Marighella</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-11-10-9" data-chapterstart="2530">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 2530);">Ouvir esta parte</button>
+<p><ul>
+<li>Internet, Liberdade</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-11-10-10" data-chapterstart="2738">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 2738);">Ouvir esta parte</button>
+<p><ul>
+<li>Mato Grosso do Sul, Reserva Indígena, Nova Ordem Mundial</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-11-10-11" data-chapterstart="3288">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 3288);">Ouvir esta parte</button>
+<p><ul>
+<li>Mística e dialética</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-11-10-12" data-chapterstart="3389">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2010%2011%202008.mp4', 3389);">Ouvir esta parte</button>
+<p><ul>
+<li>Criminalidade (<a href="http://www.americanthinker.com/2008/10/democide.html">http://www.americanthinker.com/2008/10/democide.html</a>(<a href="http://web.archive.org/web/2008111000000/http://www.americanthinker.com/2008/10/democide.html" target="_blank">@webarchive</a>))</li>
+</ul></p>
+</div>
+</div>

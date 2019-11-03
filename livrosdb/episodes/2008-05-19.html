@@ -1,0 +1,157 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-05-19">2008/05/19</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4">
+<div data-chapterid="2008-05-19-0" data-chapterstart="14">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4', 14);">Ouvir esta parte</button>
+<p><ul>
+<li>"Os homens certos no lugar certo" (Artigo), Tarso Genro, Jair Bolsonaro, Terrorismo, FARC, Foro de São Paulo, Militares</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-19-1" data-chapterstart="415">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4', 415);">Ouvir esta parte</button>
+<p><ul>
+<li>"A escória do mundo" (Artigo), Comunismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-19-2" data-chapterstart="771">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4', 771);">Ouvir esta parte</button>
+<p><ul>
+<li>Cliff Kincaid: "Global bondage: the U.N. plan to rule the World" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-19-3" data-chapterstart="1048">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4', 1048);">Ouvir esta parte</button>
+<p><ul>
+<li>Estereótipos, Debate, ONU, Governo Mundial, União Soviética , Aristóteles, Santo Tomás de Aquino, Teoria dos Quatro Discursos, Avicena, Demonstração lógica</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-19-4" data-chapterstart="1387">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4', 1387);">Ouvir esta parte</button>
+<p><ul>
+<li>Glauber Rocha, Estética, Cinema Novo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-19-5" data-chapterstart="1569">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4', 1569);">Ouvir esta parte</button>
+<p><ul>
+<li>Michael Moore, "Tiros em Columbine" (Filme), Noam Chomsky, "A corporação"</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-19-6" data-chapterstart="2227">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4', 2227);">Ouvir esta parte</button>
+<p><ul>
+<li>Reserva Raposa Serra do Sol</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-19-7" data-chapterstart="2476">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4', 2476);">Ouvir esta parte</button>
+<p><ul>
+<li>Anistia, Ciro Gomes</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-19-8" data-chapterstart="2565">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4', 2565);">Ouvir esta parte</button>
+<p><ul>
+<li>René Guénon, Paul Serant , Leitura</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-19-9" data-chapterstart="2897">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4', 2897);">Ouvir esta parte</button>
+<p><ul>
+<li>Forças Armadas, Quartim de Moraes, Capitão Chandler, Integralistas, Plínio Salgado</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-05-19-10" data-chapterstart="3246">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2019%2005%202008.mp4', 3246);">Ouvir esta parte</button>
+<p><ul>
+<li>Lula, Farc, Foro de São Paulo</li>
+</ul></p>
+</div>
+</div>

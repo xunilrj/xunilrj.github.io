@@ -1,0 +1,169 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2008-02-04">2008/02/04</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4">
+<div data-chapterid="2008-02-04-0" data-chapterstart="67">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 67);">Ouvir esta parte</button>
+<p><ul>
+<li>Ken Wilber, Partido Democrata, George W. Bush, Esquerdismo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-04-1" data-chapterstart="281">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 281);">Ouvir esta parte</button>
+<p><ul>
+<li>Dilma Houssef, FARC</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-04-2" data-chapterstart="513">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 513);">Ouvir esta parte</button>
+<p><ul>
+<li>PSDB, PC do B</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-04-3" data-chapterstart="688">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 688);">Ouvir esta parte</button>
+<p><ul>
+<li>PT, Fernando Henrique Cardoso, Antonio Gramsci, Democracia, Foro de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-04-4" data-chapterstart="1060">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 1060);">Ouvir esta parte</button>
+<p><ul>
+<li>Eleições americanas, Iraque</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-04-5" data-chapterstart="1251">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 1251);">Ouvir esta parte</button>
+<p><ul>
+<li>Hugo Chávez , Fernando Collor (Documentário), "Cidade de Deus" (Filme), Graciliano Ramos, "Vidas Secas" (Livro), Corrupção, Dinheiro</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-04-6" data-chapterstart="1694">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 1694);">Ouvir esta parte</button>
+<p><ul>
+<li>"One man versus China" (Documentário)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-04-7" data-chapterstart="1905">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 1905);">Ouvir esta parte</button>
+<p><ul>
+<li>José Serra, Pr. Silas Malafaia</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-04-8" data-chapterstart="2440">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 2440);">Ouvir esta parte</button>
+<p><ul>
+<li>Cartão corporativo, Lula, frei Betto, Emir Sader</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-04-9" data-chapterstart="2813">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 2813);">Ouvir esta parte</button>
+<p><ul>
+<li>Rodrigo Constantino: "Tradição e julgamento" (Artigo)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-04-10" data-chapterstart="3041">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 3041);">Ouvir esta parte</button>
+<p><ul>
+<li>"No más FARC" (Passeata)</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-04-11" data-chapterstart="3172">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 3172);">Ouvir esta parte</button>
+<p><ul>
+<li>Católicas pelo Direito de Decidir, Aborto</li>
+</ul></p>
+</div>
+<div data-chapterid="2008-02-04-12" data-chapterstart="3246">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2002%202008.mp4', 3246);">Ouvir esta parte</button>
+<p><ul>
+<li>"O imbecil coletivo" (Livro)</li>
+</ul></p>
+</div>
+</div>

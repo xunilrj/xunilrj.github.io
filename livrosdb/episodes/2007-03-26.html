@@ -1,0 +1,145 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-03-26">2007/03/26</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2003%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2003%202007.mp4">
+<div data-chapterid="2007-03-26-0" data-chapterstart="38">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2003%202007.mp4', 38);">Ouvir esta parte</button>
+<p><ul>
+<li>Resumo da obra de Olavo de Carvalho.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-26-1" data-chapterstart="247">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2003%202007.mp4', 247);">Ouvir esta parte</button>
+<p><ul>
+<li>Estado liberal clássico/absolutista, Gnosticismo revolucionário, Iluminismo, Gertrude Himmerfarb: "The roads to modernity the british, french and american enlightenments" (Livros), Eric Voegelin: "História das idéias políticas" (Livro), Revolta contra Deus, Marquês de Sade, Santo Tomás de Aquino, Conceitos morais, Thomas</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-26-2" data-chapterstart="1153">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2003%202007.mp4', 1153);">Ouvir esta parte</button>
+<p><ul>
+<li>Polônia, União Européia, Movimento gay, Movimento abortista, Dr. Bernard Nathanson, ONU, Soberania nacional, Nova Ordem Mundial, H. G. Wells, Mundo planificado, "Forma das coisas futuras" (Livro), "A conspiração aberta" (Livro), Sociedade Fabiana, Sidney e Beatrice Webb, Socialismo gradativo, Homeschooling, Pedofilia, Dominação islâmica, Governo mundial, Keith Ellison.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-26-3" data-chapterstart="2021">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2003%202007.mp4', 2021);">Ouvir esta parte</button>
+<p><ul>
+<li>Keynes, "Soviet Council" (Livro), Movimento comunista explícito, Movimento social democrata, Vladimir Bukovksy, KGB, Ralph Raico: "Keynes and reds" (artigo), Mises.org</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-26-4" data-chapterstart="2190">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2003%202007.mp4', 2190);">Ouvir esta parte</button>
+<p><ul>
+<li>Maioridade penal, Moral invertida, Benevolência natural .</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-26-5" data-chapterstart="2377">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2003%202007.mp4', 2377);">Ouvir esta parte</button>
+<p><ul>
+<li>Esquerdismo na Igreja, Princípio da hierarquia, Princípio da moralidade, Satanismo militante, Cardeal Ratzinger, TFP, Príncipe Dom Bertran, Plinio Corrêa de Oliveira, "Revolução e contra-revolução" (Livro), Dostoiévski: "Os possessos" (Livro).</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-26-6" data-chapterstart="2790">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2003%202007.mp4', 2790);">Ouvir esta parte</button>
+<p><ul>
+<li>Movimento revolucionário internacional, Neo-materialismo.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-26-7" data-chapterstart="3192">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2003%202007.mp4', 3192);">Ouvir esta parte</button>
+<p><ul>
+<li>Islam, Tarica, Frithjof Schuon, Georges Gurdieff, René Guénon.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-03-26-8" data-chapterstart="3467">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2026%2003%202007.mp4', 3467);">Ouvir esta parte</button>
+<p><ul>
+<li>Transmissão do símbolo da verdade, Rodrigo Constantino.</li>
+</ul></p>
+</div>
+</div>

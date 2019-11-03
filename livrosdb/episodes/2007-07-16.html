@@ -1,0 +1,193 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-07-16">2007/07/16</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4">
+<div data-chapterid="2007-07-16-0" data-chapterstart="115">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 115);">Ouvir esta parte</button>
+<p><ul>
+<li>Paulo Ghiraldelli Jr., "Amante de espetáculos", Platão, Mário Ferreira dos Santos, Elvis lives in evil Levis (Blog), Marilena Chauí, "Convite à filosofia" (Livro), Julián Maria , Theodor W. Adorno, Propostas musicais dodecafônicas, Joseph Goebbels, Goethe.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-1" data-chapterstart="780">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 780);">Ouvir esta parte</button>
+<p><ul>
+<li>Julio Severo, "O movimento homossexual" (Livro), Blog, Lula, vaia</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-2" data-chapterstart="985">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 985);">Ouvir esta parte</button>
+<p><ul>
+<li>Guerra justa, Auto defesa, Moral cristã, Santo Tomás de Aquino, Coréia do Norte, Saddam Hussein, Irã, Dinheiro falso</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-3" data-chapterstart="1226">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 1226);">Ouvir esta parte</button>
+<p><ul>
+<li>Ronaldo Laranjeira (Entrevista), Drogas, Redução de danos, FARC, Mídia</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-4" data-chapterstart="1410">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 1410);">Ouvir esta parte</button>
+<p><ul>
+<li>Secretaria de Estado da Educação de São Paulo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-5" data-chapterstart="1488">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 1488);">Ouvir esta parte</button>
+<p><ul>
+<li>Flávio de Carvalho</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-6" data-chapterstart="1577">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 1577);">Ouvir esta parte</button>
+<p><ul>
+<li>Caos social, Armas, Criminalidade</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-7" data-chapterstart="1775">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 1775);">Ouvir esta parte</button>
+<p><ul>
+<li>Theodore Mommsen, "The History of Rome" (Livro), M. Rostovtzeff, "História de Roma" (Livro), Victor Hanson, "A War like no other: how the Athenians and Spartans fought the Pelopomnesian War" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-8" data-chapterstart="1863">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 1863);">Ouvir esta parte</button>
+<p><ul>
+<li>Lei anti-homofóbica, Guerra do Iraque, Doutrina da Equidade, Rádio ,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-9" data-chapterstart="1975">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 1975);">Ouvir esta parte</button>
+<p><ul>
+<li>Jonathan Barnes, "The Cambridge Companion on Aristotle" (Livro), A. S. McGrade, "The Cambridge Companion to Medieval Philosophy" (Livro), Jean-Paul Dumont, "Introduction a la methode d'Aristote" (Livro), Ingmar During,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-10" data-chapterstart="2047">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 2047);">Ouvir esta parte</button>
+<p><ul>
+<li>Carlos Granier, RCTV</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-11" data-chapterstart="2224">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 2224);">Ouvir esta parte</button>
+<p><ul>
+<li>Guerra Civil Americana, Robert Lee, Douglas S. Freeman, "Lee: the kindle store" (Livro), Shelby Foote, "The Civil War: a narrative" (Livro), James Ronald Kennedy, Walter Donald Kennedy, "The South was right!" (Livro), William J. Bennett, "America: the last best hope" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-12" data-chapterstart="2410">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 2410);">Ouvir esta parte</button>
+<p><ul>
+<li>Megadeth, ONU , Manuel Castells, CFR: Council on Foreign Relations, Nova Ordem Mundial</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-13" data-chapterstart="2644">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 2644);">Ouvir esta parte</button>
+<p><ul>
+<li>Psicologia experimental, Psicanálise, Juan José López Ibor, "La agonia Del psicoanálisis" (Livro), Cura psicoanálitica, Sigmund Freud, Juan Alfredo Cesar Muller, Santo Daime</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-14" data-chapterstart="2888">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 2888);">Ouvir esta parte</button>
+<p><ul>
+<li>Paulo Arantes, "A revolução camuflada" (Artigo),</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-15" data-chapterstart="2959">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 2959);">Ouvir esta parte</button>
+<p><ul>
+<li>Ideologias ateísticas,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-07-16-16" data-chapterstart="3052">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2016%2007%202007.mp4', 3052);">Ouvir esta parte</button>
+<p><ul>
+<li>Bruno Tolentino</li>
+</ul></p>
+</div>
+</div>

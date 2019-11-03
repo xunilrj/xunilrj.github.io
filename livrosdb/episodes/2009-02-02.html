@@ -1,0 +1,229 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2009-02-02">2009/02/02</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4">
+<div data-chapterid="2009-02-02-0" data-chapterstart="125">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 125);">Ouvir esta parte</button>
+<p><ul>
+<li>"Um gênio da inépcia" (Artigo)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-1" data-chapterstart="152">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 152);">Ouvir esta parte</button>
+<p><ul>
+<li>Seminário de Filosofia, Democídio, R. J. Hummel</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-2" data-chapterstart="191">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 191);">Ouvir esta parte</button>
+<p><ul>
+<li>"Educação ao contrário" (Artigo), Professor Piloto (Blog)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-3" data-chapterstart="316">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 316);">Ouvir esta parte</button>
+<p><ul>
+<li>Reedição de livros</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-4" data-chapterstart="351">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 351);">Ouvir esta parte</button>
+<p><ul>
+<li>Clube Bildeberg, Council on Foreign Relations, CFR</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-5" data-chapterstart="574">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 574);">Ouvir esta parte</button>
+<p><ul>
+<li>Cursos de filosofia, Platão, Pesquisa científica, Círculo de aprendizado, Falsificações</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-6" data-chapterstart="1158">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 1158);">Ouvir esta parte</button>
+<p><ul>
+<li>Julio Payot, "Le travail intellectuel et la volonté" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-7" data-chapterstart="1280">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 1280);">Ouvir esta parte</button>
+<p><ul>
+<li>SINTUSP (Debate)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-8" data-chapterstart="1319">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 1319);">Ouvir esta parte</button>
+<p><ul>
+<li>Pragmatismo, Descrição objetiva, William James, Charles Spears, Richard Rorty</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-9" data-chapterstart="1455">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 1455);">Ouvir esta parte</button>
+<p><ul>
+<li>Arte moderna, Integralismo, Hitler, Nazifascismo, Comunismo, Modris Eksteins "A sagração da Primavera" (Livro), José Júlio Chiavenato, "A Guerra do Paraguai" (Livro), Francisco Doratiotto, "Maldita Guerra" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-10" data-chapterstart="1641">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 1641);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Mahmoud Abbas, Guantánamo, Campos de Concentração, Acorn</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-11" data-chapterstart="1868">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 1868);">Ouvir esta parte</button>
+<p><ul>
+<li>John R. Lott, "Democrats' economic plan: blame the Republicans for everything" (Artigo), Crise econômica</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-12" data-chapterstart="2564">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 2564);">Ouvir esta parte</button>
+<p><ul>
+<li>David Goldman</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-13" data-chapterstart="2660">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 2660);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-14" data-chapterstart="2771">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 2771);">Ouvir esta parte</button>
+<p><ul>
+<li>Bispo Richard Williamson, Hans Küng</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-15" data-chapterstart="3017">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 3017);">Ouvir esta parte</button>
+<p><ul>
+<li>Tarso Genro</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-16" data-chapterstart="3058">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 3058);">Ouvir esta parte</button>
+<p><ul>
+<li>Cesare Battisti</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-17" data-chapterstart="3093">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 3093);">Ouvir esta parte</button>
+<p><ul>
+<li>Japão</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-18" data-chapterstart="3197">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 3197);">Ouvir esta parte</button>
+<p><ul>
+<li>Aleksandr Dugin</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-19" data-chapterstart="3255">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 3255);">Ouvir esta parte</button>
+<p><ul>
+<li>Alejandro Peña Esclusa, Gerald Celente</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-20" data-chapterstart="3303">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 3303);">Ouvir esta parte</button>
+<p><ul>
+<li>Lula, Esquerda Latino-americana</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-21" data-chapterstart="3360">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 3360);">Ouvir esta parte</button>
+<p><ul>
+<li>The New York Times, Bernard Goldberg, "A slobbering love affair: the true (and pathetic) story of the torrid romance between Barack Obama and the Mainstream Media" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2009-02-02-22" data-chapterstart="3433">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2002%2002%202009.mp4', 3433);">Ouvir esta parte</button>
+<p><ul>
+<li>Cinema alemão, Lotter H. Eisner, "A tela demoníaca: as influências de Max Reinhardt e do expressionismo" (Livro), Siegfrie Kracauer - "De Caligari a Hitler: uma História psicológica do cinema alemão" (Livro)</li>
+</ul></p>
+</div>
+</div>

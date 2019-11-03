@@ -1,0 +1,169 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-12-17">2007/12/17</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4">
+<div data-chapterid="2007-12-17-0" data-chapterstart="0">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 0);">Ouvir esta parte</button>
+<p><ul>
+<li>Mário Ferreira dos Santos: "Tratado de simbólica" (Livro), Luis Fernando Veríssimo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-17-1" data-chapterstart="148">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 148);">Ouvir esta parte</button>
+<p><ul>
+<li>Farol da Democracia Representativa: "Carta aberta aos parlamentares brasileiros", Graça Salgueiro</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-17-2" data-chapterstart="297">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 297);">Ouvir esta parte</button>
+<p><ul>
+<li>Aborto, Rituais satânicos, José Gomes Temporão</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-17-3" data-chapterstart="622">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 622);">Ouvir esta parte</button>
+<p><ul>
+<li>Aristoi (Site), "Dicionário crítico do pensamento de Direita (Livro), Livros conservadores, Antônio Olympio, Groucho Marx,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-17-4" data-chapterstart="808">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 808);">Ouvir esta parte</button>
+<p><ul>
+<li>Raymundo Carrero, Marcelo Pelizzoli, Universidade Federal do Pernambuco</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-17-5" data-chapterstart="1145">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 1145);">Ouvir esta parte</button>
+<p><ul>
+<li>René Girard, Orgulho, Desejo mimético</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-17-6" data-chapterstart="1272">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 1272);">Ouvir esta parte</button>
+<p><ul>
+<li>Karl Marx, Fraude intelectual, Quartim de Moraes, Eric Voegelin: "História das idéias políticas" (Livro), "Os intelectuais" (Livro), Paul Johnson, Nathaniel Weyl: "Karl Marx, racist" (Livro), Richard Wurmbrand: "Marx & Satan (Livro), "A Voz dos Mártires"- Leslie R. Page: "Karl Marx and critical examination of his works" (Livro), Engels: "A condição da classe operária na Inglaterra" (Livro), David Felix: "Marx as politician" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-17-7" data-chapterstart="1913">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 1913);">Ouvir esta parte</button>
+<p><ul>
+<li>PT, Plebiscito, Lula, Antonio Gramsci, Hugo Chávez, John Cornwell: "O Papa de Hitler" (Livro), Israel/Palestina, Foro de São Paulo, Livre acesso à informação</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-17-8" data-chapterstart="2681">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 2681);">Ouvir esta parte</button>
+<p><ul>
+<li>Perseguição anticristã, Dinesh D'Souza, Christopher Hitchens, Daniel Dennett</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-17-9" data-chapterstart="2817">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 2817);">Ouvir esta parte</button>
+<p><ul>
+<li>Lei da palmada</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-17-10" data-chapterstart="2859">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 2859);">Ouvir esta parte</button>
+<p><ul>
+<li>Comitê de Defesa da Humanidade, Cuba, China, Guy Sorman: "O ano do galo: verdades sobre a China" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-17-11" data-chapterstart="3109">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 3109);">Ouvir esta parte</button>
+<p><ul>
+<li>Muçulmanos/Negros escravagistas, Sudão, Quilombolas, engenharia comportamental</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-12-17-12" data-chapterstart="3500">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2017%2012%202007.mp4', 3500);">Ouvir esta parte</button>
+<p><ul>
+<li>Armas</li>
+</ul></p>
+</div>
+</div>

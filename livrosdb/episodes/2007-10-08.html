@@ -1,0 +1,169 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2007-10-08">2007/10/08</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4">
+<div data-chapterid="2007-10-08-0" data-chapterstart="10">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 10);">Ouvir esta parte</button>
+<p><ul>
+<li>Mahmoud Ahmadinejad, Plebiscito, Antonio Gramsci, Movimento revolucionário, Juízo Final.</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-08-1" data-chapterstart="150">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 150);">Ouvir esta parte</button>
+<p><ul>
+<li>Hillary Clinton, Guerra do Iraque/Vietnã</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-08-2" data-chapterstart="282">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 282);">Ouvir esta parte</button>
+<p><ul>
+<li>Sociedade brasileira, Sociedade americana, Inveja, Amor ao próximo, Santo Agostinho, Leopold von Ranke, Michel Foucault, Jacques Derrida, Edmund Husserl, Max Scheller, Louis Lavelle, Xavier Zubiri, Grandes centros urbanos, "Central do Brasil" (Filme), Social Security</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-08-3" data-chapterstart="884">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 884);">Ouvir esta parte</button>
+<p><ul>
+<li>Laboratórios comunistas, Venezuela, Cuba, Romênia</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-08-4" data-chapterstart="1174">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 1174);">Ouvir esta parte</button>
+<p><ul>
+<li>Ipojuca Pontes, Zé Dirceu, Controle Social dos Meios de Comunicação, Franklin Martins, Lênin, Tróstsky, Karl Marx, Stálin, Mudança de planos, PT, PSDB, USP, Fundação Rockfeller, Fernando Henrique Cardoso, Che Guevara, Fidel Castro, Oscar Niemeyer, Emir Sader, Leonardo Boff, frei Betto, Revista Veja, Inglaterra, Margaret Tatcher, Holocausto , Bem, Mal</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-08-5" data-chapterstart="1987">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 1987);">Ouvir esta parte</button>
+<p><ul>
+<li>Cavaleiro Conde (blog), Documentário fotográfico, Guerra do Iraque, China</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-08-6" data-chapterstart="2270">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 2270);">Ouvir esta parte</button>
+<p><ul>
+<li>Jose Monir Nasser, Mortimer Adler, Educação Liberal</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-08-7" data-chapterstart="2385">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 2385);">Ouvir esta parte</button>
+<p><ul>
+<li>Platão, Michel Foucault, "Tropa de Elite" (Filme), USP</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-08-8" data-chapterstart="2595">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 2595);">Ouvir esta parte</button>
+<p><ul>
+<li>Jackson de Figueiredo, "Coluna de fogo" (Discurso), Joseph Dimitri, Contra-revolução, Contrário da revolução, Movimento revolucionário, Hernando Soto: "O mistério do capital" (Livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-08-9" data-chapterstart="2995">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 2995);">Ouvir esta parte</button>
+<p><ul>
+<li>Aeronáutica, Controle de vôo</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-08-10" data-chapterstart="3105">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 3105);">Ouvir esta parte</button>
+<p><ul>
+<li>Ministro José Gregório, Aborto, Saul Below, Lula,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-08-11" data-chapterstart="3225">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 3225);">Ouvir esta parte</button>
+<p><ul>
+<li>Folha de S. Paulo, Nelson Ascher, Eric Hobsbawn,</li>
+</ul></p>
+</div>
+<div data-chapterid="2007-10-08-12" data-chapterstart="3270">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2008%2010%202007.mp4', 3270);">Ouvir esta parte</button>
+<p><ul>
+<li>Jacob Burke, Johan Huizinga, Leopold von Ranke , Universidades Públicas</li>
+</ul></p>
+</div>
+</div>

@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<!-- For Google -->
+<meta name="description" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="keywords" content="olavo, carvalho" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+<meta property="og:url" content="http://xunilrj.github.io/trueoutspeak.html" />
+<meta property="og:description" content="Programa de rádio do Olavo de Carvalho" />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Índice do TrueOutspeak - Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:description" content="Programa de rádio do Olavo de Carvalho" />
+<meta name="twitter:image" content="https://duckduckgo.com/i/7dddcd52.jpg" />
+</head>
+<script>
+function embedmp3(element, file, startAt, force) {
+    clearInterval(window.interval);
+
+    if(window.episodeEl) {
+    var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+    }
+
+    if(force) {
+        window.soundFile = null;
+    }
+
+    if(window.soundFile)
+    {
+        window.soundFile.currentTime = startAt;
+        return;
+    }
+
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = document.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+
+    window.soundFile = soundFile;
+    window.episodeEl = document.querySelector(`[data-episodeurl="${file}"`);
+
+    window.interval = setInterval(function(){
+        var currentTime = soundFile.currentTime;
+        console.log(currentTime);
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+        allchapters.forEach(function(x){
+            x.style.backgroundColor = "white";
+        });
+        var i;
+        for(i=0;i<allchapters.length;++i){
+            var current = allchapters[i];
+            var startTime = parseInt(current.dataset.chapterstart);
+            if(currentTime < startTime) break;
+        }
+        if((i > 0)&&(i<=allchapters.length))
+        {
+            var current = allchapters[i - 1];
+            current.style.backgroundColor = "#ffffcc";
+        }
+    }, 1000);
+}
+</script>
+<div class="audioholder"><audio></audio></div><div>
+<h1 id="2010-01-04">2010/01/04</h1>
+<button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2001%202010.mp4")'>Ouvir este episódio</button>
+</div>
+<div data-episodeurl="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2001%202010.mp4">
+<div data-chapterid="2010-01-04-0" data-chapterstart="68">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2001%202010.mp4', 68);">Ouvir esta parte</button>
+<p><ul>
+<li>Lula, Espiral do silêncio</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-04-1" data-chapterstart="824">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2001%202010.mp4', 824);">Ouvir esta parte</button>
+<p><ul>
+<li>Nova Ordem Mundial, Comunismo, Socialismo, Antony C. Sutton: The Best Enemy Money Can Buy (livro), União Soviética, Joseph Stalin, Adolf Hitler, Leon Trotsky</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-04-2" data-chapterstart="1232">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2001%202010.mp4', 1232);">Ouvir esta parte</button>
+<p><ul>
+<li>Barack Obama, Guantánamo</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-04-3" data-chapterstart="1716">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2001%202010.mp4', 1716);">Ouvir esta parte</button>
+<p><ul>
+<li>Espiral do silêncio</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-04-4" data-chapterstart="1778">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2001%202010.mp4', 1778);">Ouvir esta parte</button>
+<p><ul>
+<li>Comissão da Verdade, Forças Armadas, Nelson Jobim</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-04-5" data-chapterstart="1980">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2001%202010.mp4', 1980);">Ouvir esta parte</button>
+<p><ul>
+<li>Jakob Böhme</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-04-6" data-chapterstart="2168">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2001%202010.mp4', 2168);">Ouvir esta parte</button>
+<p><ul>
+<li>Beatificação, Pio XII, Conservadorismo, Holocausto, Mussolini</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-04-7" data-chapterstart="2556">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2001%202010.mp4', 2556);">Ouvir esta parte</button>
+<p><ul>
+<li>Facismo, Jonah Goldberg: Liberal Fascism: The Secret History of the American Left, From Mussolini to the Politics of Meaning (livro)</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-04-8" data-chapterstart="2687">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2001%202010.mp4', 2687);">Ouvir esta parte</button>
+<p><ul>
+<li>Influências, Admiração, Julius Evola: A Tradição Hermética (livro), Titus Burckhardt: Alquimia (livro), Platão, Thomas Mann, George Lukács</li>
+</ul></p>
+</div>
+<div data-chapterid="2010-01-04-9" data-chapterstart="2989">
+<button onclick="embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2004%2001%202010.mp4', 2989);">Ouvir esta parte</button>
+<p><ul>
+<li>Scott Johnson, Barack Obama, Desarmamento</li>
+</ul></p>
+</div>
+</div>
