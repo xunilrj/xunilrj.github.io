@@ -108,7 +108,7 @@ insertHeader(html);
 
 html.push(`<script src="https://unpkg.com/lunr/lunr.js"></script>`);
 html.push(`<body style="margin-top:200px">`);
-html.push(`<div style="background:white;position:fixed;top:0;left:0;width:100vw;height:150px;border: dashed 1px">`);
+html.push(`<div style="background:white;position:fixed;top:0;left:60vw;width:100vw;height:150px;border: dashed 1px;overflow:auto;padding:10px">`);
 html.push(`<div>Buscar assunto: </div>`);
 html.push(`<input id="searchInput"></input> <button id="nextbutton">Next</button> <span id="currentResult"></span>`);
 html.push(`<ul id="searchResult"></ul>`);
@@ -135,7 +135,7 @@ function insertEpisode(year, month, day, file, html, transcription = false)
     if(!json.chapters) return;
 
     html.push(`<div>\n`);
-    html.push(`<h1 id="${padLeft(year, 4)}-${padLeft(month, 2)}-${padLeft(day, 2)}">${padLeft(year, 4)}/${padLeft(month, 2)}/${padLeft(day, 2)}</h1>\n`);
+    html.push(`<a href="/livrosdb/episodes/${padLeft(year, 4)}-${padLeft(month, 2)}-${padLeft(day, 2)}.html"><h1 id="${padLeft(year, 4)}-${padLeft(month, 2)}-${padLeft(day, 2)}">${padLeft(year, 4)}/${padLeft(month, 2)}/${padLeft(day, 2)}</h1></a>\n`);
     html.push(`<button onclick='embedmp3(this.parentNode, "${url}")'>Ouvir este episódio</button>\n`);
     html.push(`</div>\n`);
     html.push(`<div data-episodeurl="${url}">\n`);
@@ -212,16 +212,20 @@ function insertEpisode(year, month, day, file, html, transcription = false)
         html.push(`</ul></p>\n`);
         html.push(`</div>\n`);
 
-       
-
         if(transcription && vttchapters){
+            html.push(`<p><strong>Texto extraído automaticamente do vídeo. Espere baixa qualidade.</strong></p>`);
             html.push(`<p>\n`);
             var subtitles = vttchapters.filter(xx => xx.startTime >= x.start_time && xx.endTime <= endTime )
             //console.log(x.start_time, endTime, subtitles);
+            var lastText;
             subtitles.forEach(x => {
-                html.push(`<span>`);
-                html.push(x.text);
-                html.push(`</span>`);
+                var t = x.text.trim().replace("\n","").replace(lastText,"");
+                if(t.length == 0) return;
+                lastText = t;
+                html.push(`<div>`);
+                html.push(lastText);
+                html.push(`</div>`);
+                
             });
             html.push(`</p>\n`);
         }
@@ -242,7 +246,7 @@ fs.readdirSync("trueoutspeak").forEach(x => {
     if(r && r.index === 0)
     {
         insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, html);
-        insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, episodehtml);
+        insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, episodehtml, true);
         fs.writeFileSync(`episodes/${r.groups.YEAR}-${r.groups.MONTH}-${r.groups.DAY}.html`, episodehtml.join(""));
     }
     var r = x.match(/True( )?Outspeak -( Olavo de Carvalho -)? (?<DAY>\d?\d) de (?<MONTH>[a-zA-Zç]+?) de (?<YEAR>\d\d\d\d)(.*?).json/);
@@ -262,7 +266,7 @@ fs.readdirSync("trueoutspeak").forEach(x => {
         if(r.groups.MONTH == "dezembro") r.groups.MONTH = 12;
         insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, html);
         
-        insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, episodehtml);
+        insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, episodehtml, true);
         fs.writeFileSync(`episodes/${r.groups.YEAR}-${r.groups.MONTH}-${r.groups.DAY}.html`, episodehtml.join(""));
     }
     
