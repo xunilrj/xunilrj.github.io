@@ -83,7 +83,7 @@ function embedmp3(element, file, startAt, force) {
 
     window.interval = setInterval(function(){
         var currentTime = soundFile.currentTime;
-        console.log(currentTime);
+        //console.log(currentTime);
         var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
         allchapters.forEach(function(x){
             x.style.backgroundColor = "white";
@@ -125,9 +125,11 @@ function insertEpisode(year, month, day, file, html, transcription = false)
     var specialFile = `trueoutspeak/${padLeft(year, 4)}.${padLeft(month, 2)}.${padLeft(day, 2)}.json`;
     if(fs.existsSync(specialFile))
     {
+        //(specialFile);
         var contents = fs.readFileSync(specialFile, 'utf8');
         json.chapters = JSON.parse(contents);
     } else {
+        //console.log(`trueoutspeak/${file}`);
         var contents = fs.readFileSync(`trueoutspeak/${file}`, 'utf8');
         json = JSON.parse(contents);
     }
@@ -162,6 +164,7 @@ function insertEpisode(year, month, day, file, html, transcription = false)
     }
 
     json.chapters.forEach((x,i) => {
+        //console.log(x);
         var endTime = json.chapters[i+1];
         if(!endTime) endTime = 9999999999;
         else endTime = endTime.end_time;
@@ -212,8 +215,20 @@ function insertEpisode(year, month, day, file, html, transcription = false)
         html.push(`</ul></p>\n`);
         html.push(`</div>\n`);
 
-        if(transcription && vttchapters){
-            html.push(`<p><strong>Texto extraído automaticamente do vídeo. Espere baixa qualidade.</strong></p>`);
+        var transcriptionFile = `transcriptions/transcription.${padLeft(year, 4)}.${padLeft(month, 2)}.${padLeft(day, 2)}.${x.start_time}.partial.html`;
+        //console.log(transcriptionFile, fs.existsSync(transcriptionFile));
+        if(fs.existsSync(transcriptionFile))
+        {
+            var txt = fs.readFileSync(transcriptionFile);
+            html.push(`<p id="partial-${x.start_time}"><strong>Transcrição editada, porém parcial. Texto completo do trecho abaixo.</strong></p>`);
+            html.push(`<article style="margin: 0 auto;max-width:500px;">\n`);
+            html.push(txt);
+            html.push(`</article>\n`);
+        }
+        
+        if(transcription && vttchapters)
+        {
+            html.push(`<p id="auto-${x.start_time}"><strong>Texto extraído automaticamente do vídeo. Espere baixa qualidade.</strong></p>`);
             html.push(`<p>\n`);
             var subtitles = vttchapters.filter(xx => xx.startTime >= x.start_time && xx.endTime <= endTime )
             //console.log(x.start_time, endTime, subtitles);
@@ -241,10 +256,13 @@ fs.readdirSync("trueoutspeak").forEach(x => {
 
     var episodehtml = [];
     insertHeader(episodehtml);
-    episodehtml.push(`<div class="audioholder"><audio></audio></div>`);
+    
 
     if(r && r.index === 0)
     {
+        episodehtml.push(`<p><a href="../../trueoutspeak.html?episode=${r.groups.YEAR}-${r.groups.MONTH}-${r.groups.DAY}">Ver Mais Episódios</a></p>`);
+        episodehtml.push(`<div class="audioholder"><audio></audio></div>`);
+
         insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, html);
         insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, episodehtml, true);
         fs.writeFileSync(`episodes/${r.groups.YEAR}-${r.groups.MONTH}-${r.groups.DAY}.html`, episodehtml.join(""));
@@ -266,6 +284,8 @@ fs.readdirSync("trueoutspeak").forEach(x => {
         if(r.groups.MONTH == "dezembro") r.groups.MONTH = 12;
         insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, html);
         
+        episodehtml.push(`<p><a href="../../trueoutspeak.html?episode=${r.groups.YEAR}-${r.groups.MONTH}-${r.groups.DAY}">Ver Mais Episódios</a></p>`);
+        episodehtml.push(`<div class="audioholder"><audio></audio></div>`);
         insertEpisode(r.groups.YEAR, r.groups.MONTH, r.groups.DAY, x, episodehtml, true);
         fs.writeFileSync(`episodes/${r.groups.YEAR}-${r.groups.MONTH}-${r.groups.DAY}.html`, episodehtml.join(""));
     }

@@ -64,7 +64,7 @@ function embedmp3(element, file, startAt, force) {
 
     window.interval = setInterval(function(){
         var currentTime = soundFile.currentTime;
-        console.log(currentTime);
+        //console.log(currentTime);
         var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
         allchapters.forEach(function(x){
             x.style.backgroundColor = "white";
@@ -83,7 +83,7 @@ function embedmp3(element, file, startAt, force) {
     }, 1000);
 }
 </script>
-<div class="audioholder"><audio></audio></div><div>
+<p><a href="../../trueoutspeak.html?episode=2007-06-11">Ver Mais Episódios</a></p><div class="audioholder"><audio></audio></div><div>
 <a href="/livrosdb/episodes/2007-06-11.html"><h1 id="2007-06-11">2007/06/11</h1></a>
 <button onclick='embedmp3(this.parentNode, "http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2011%2006%202007.mp4")'>Ouvir este episódio</button>
 </div>
