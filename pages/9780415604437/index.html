@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <title>Diagnosis Of Our Time</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <meta property="og:title" content="Diagnosis Of Our Time" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://xunilrj.github.io/covers/9780415604437.jpg" />
+    <meta property="og:url" content="https://xunilrj.github.io/pages/9780415604437/index.html" />
+    <meta property="og:description" content="Existe um capítulo desse livro que todos deveriam ler: 'A estratégia do grupo nazista' para comparar os atos dos nazistas com os atos do PT. O que teria sido do fascismo e do nazismo sem a técnica da estimulação contraditória com que esses movimentos desorganizavam a sociedade civil." />
+</head>
+<body>
+<script>
+function embedpdf(element, file) {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.onload = function() {
+        var loadingTask = pdfjsLib.getDocument(file);
+        loadingTask.promise.then(function(pdf) {
+            console.log(1);
+        });
+    }
+    script.src = 'https://unpkg.com/pdfjs-dist@2.0.943/build/pdf.min.js';
+    head.appendChild(script);
+}
+
+function embedyoutube(element, file, startAt) {    
+    var i = document.createElement("iframe");
+    i.width = "640";
+    i.height = "480px"
+    i.src = file;
+
+    var holder = element.parentNode.querySelector(".youtubeholder");
+    holder.innerHTML = "";
+    holder.appendChild(i);
+}
+
+function embedmp3(element, file, startAt) {    
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = element.parentNode.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+}
+function ScrollTo(book){
+    if(book) {
+        var el = document.querySelectorAll("[id*='" + book + "']");
+        if(el[0]) el[0].scrollIntoView();
+    }
+}
+</script>
+<div><a href="../../livros.html">Ver mais livros</a></div>    <div style="padding: 10px" class="book">
+        <div>
+            <div style="display:inline-block">
+    <img src="../../covers/9780415604437.jpg" width="100px"/>
+</div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a id="Diagnosis Of Our Time" href="../../pages/9780415604437/index.html">Diagnosis Of Our Time</a></strong></div>
+                <div><span>Karl Mannheim</span></div>
+                <div>
+    <div id="gr_add_to_books">
+        <div class="gr_custom_each_container_">
+            <a target="_blank" style="border:none" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/isbn/9780415604437"><img src="https://www.goodreads.com/images/atmb_add_book-70x25.png" /></a>
+        </div>
+    </div>                    
+</div>                
+            </div>
+        </div>        
+                    <div style="padding:20px">
+                <div><strong>Olavo de Carvalho</strong></div>
+                <div style="padding-left:20px">
+                    <div>Existe um capítulo desse livro que todos deveriam ler: 'A estratégia do grupo nazista' para comparar os atos dos nazistas com os atos do PT. O que teria sido do fascismo e do nazismo sem a técnica da estimulação contraditória com que esses movimentos desorganizavam a sociedade civil.</div>
+                </div>
+                <div style="padding-left:20px">
+                    <a href="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4">http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4</a>
+                </div>
+                <div style="padding-left:20px">
+                    <button class="pure-button" onclick="embedmp3(this, 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2006%2008%202007.mp4', 410)">
+                        Ouvir 
+                    </button>
+                    <a href="../../trueoutspeak.html?episode=2007-08-06" target="_blank">Mais sobre este episódio</a>
+                    <div class="audioholder">
+                    </div>
+                </div>
+            </div>
+            <div style="padding:20px">
+        <div><strong>Ver também</strong></div>
+        <ul>         <li> <p>"Hitler inventou um novo método a que se pode dar o nome de estratégia do grupo nazista. O ponto capital da estratégia psicológica de Hitler é jamais encarar o individuo como pessoa,mas sempre como membro de um grupo social.O que Hitler faz por instinto está acorde com os descobrimentos da moderna Sociologia, ou seja, de que o homem é mais facilmente influenciado através dos vínculos do grupo; o que é mais importante ainda, as reações dele variam conforme o grupo particular a que pertence. O homem porta-se diferentemente na família, no clube, no exército, em seus negócios, ou como um cidadão em geral.</p><p>Hitler sabia instintivamente que enquanto as pessoas se sentem abrigadas em seus próprios grupos sociais, ficam imunes à influência dele. O artifício oculto da estratégia de Hitler, por conseguinte, consiste em romper a resistência do espírito individual por meio da desorganização dos grupos aos quais esses indivíduos pertencem.</p><p>Assim, há duas fases principais na estratégia do grupo de Hitler: a decomposição dos grupos tradicionais da sociedade civilizada e uma rápida reconstrução baseada em um padrão de grupos inteiramente novo. No trabalho de desintegração inicial ele pode, está claro, confiar em grande parte na ausência de planificação de nossa vida econômica. Por exemplo, essa ausência é responsável pela condição mais desmoralizante de todas, o desemprego crônico."</p>             <span>Trecho do livro Diagnóstico de Nosso Tempo", de Karl Mannheim - ESTRATÉGIA DO GRUPO NAZISTA." (</span><a href="https://cavaleirodotemplo.blogspot.com/2010/08/trecho-do-livro-diagnostico-de-nosso.html">https://cavaleirodotemplo.blogspot.com/2010/08/trecho-do-livro-diagnostico-de-nosso.html</a><span>)</span>         </li>             <li>             <span>Resumo comentado da obra de Karl Mannheim Diagnóstico de nosso tempo" enviado a Getúlio Vargas." (</span><a href="https://www.fgv.br/cpdoc/acervo/arquivo-pessoal/GV/textual/resumo-comentado-da-obra-de-karl-mannheim-diagnostico-de-nosso-tempo-enviado-a-getulio-vargas">https://www.fgv.br/cpdoc/acervo/arquivo-pessoal/GV/textual/resumo-comentado-da-obra-de-karl-mannheim-diagnostico-de-nosso-tempo-enviado-a-getulio-vargas</a><span>)</span>         </li>             <li> <p>"“Hitler inventou um novo método a que se pode dar o nome de estratégia do grupo nazista. O ponto capital da estratégia psicológica de Hitler é jamais encarar o indivíduo como pessoa, mas sempre como membro de um grupo social (…) Hitler sabia instintivamente que enquanto as pessoas se sentem abrigadas em seus próprios grupos sociais, ficam imunes à influência dele. O artifício oculto da estratégia de Hitler, por conseguinte, consiste em romper a resistência do espírito individual por meio da desorganização dos grupos aos quais esses indivíduos pertencem. Ele sabe que um homem sem laços com o grupo é como um caranguejo sem a carapaça (…) Assim, há duas fases principais na estratégia do grupo de Hitler: a decomposição dos grupos tradicionais da sociedade civilizada e uma rápida reconstrução baseada em um padrão de grupos inteiramente novo”"</p>             <span>Pais e Filhos: a perspectiva Bazárov e a ação dos educadores políticos (</span><a href="https://sensoincomum.org/2016/07/01/pais-e-filhos-perspectiva-bazarov/">https://sensoincomum.org/2016/07/01/pais-e-filhos-perspectiva-bazarov/</a><span>)</span>         </li>         </ul>
+    </div>
+        
+    </div>
