@@ -253,10 +253,9 @@ $indexHeader = @"
     <div><a href="http://www.olavodecarvalho.org/semana/050815dc.htm">http://www.olavodecarvalho.org/semana/050815dc.htm</a></div>
     </div>
 </div>
-<h1>
-    25 Elementos da filosofia do Olavo de Carvalho
-</h1>
-<div><a href="./pages/olavo/25olavo.html"><strong>Ver</strong><a/><div>
+<h1>25 Elementos da filosofia do Olavo de Carvalho</h1> <div><a href="./pages/olavo/25olavo.html"><strong>Ver</strong><a/><div>
+<h1>Resumo Teoria Política do Olavo de Carvalho</h1> <div><a href="./pages/olavo/teoria.politica.html"><strong>Ver</strong><a/><div>
+<h1>Melhores posts do Olavo de Carvalho</h1> <div><a href="./pages/olavo/facebook.html"><strong>Ver</strong><a/><div>
 <h1>Livros</h1>
 "@
 
