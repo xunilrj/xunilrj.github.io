@@ -51,14 +51,14 @@
                 [`Karl Marx segundo Eric Voegelin`,"https://cavaleirodotemplo.blogspot.com/2010/06/karl-marx-segundo-eric-voegelin.html"]
             ]
         
-            var obj;
+            var obj = {};
             var localStorageKey = "guides.EricVoegelin";
             
             try {
-                obj = localStorage.getItem(localStorageKey);
+                let s = localStorage.getItem(localStorageKey);
+                s = JSON.parse(obj);
+                obj = s;
             } catch {}
-            if(!obj) obj = {};
-            if(obj) obj = JSON.parse(obj);
         
             var el = document.querySelector("ol#items");
             items.forEach(x => {
