@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <title>Sabotage: America’s Enemies within the CIA</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <meta property="og:title" content="Sabotage: America’s Enemies within the CIA" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://xunilrj.github.io/covers/9781596985100.jpg" />
+    <meta property="og:url" content="https://xunilrj.github.io/pages/9781596985100/index.html" />
+    <meta property="og:description" content="Mostra que a CIA trabalha contra a América faz tempo, pelo menos desde o tempo de Clinton." />
+</head>
+<body>
+<script>
+function embedpdf(element, file) {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.onload = function() {
+        var loadingTask = pdfjsLib.getDocument(file);
+        loadingTask.promise.then(function(pdf) {
+            console.log(1);
+        });
+    }
+    script.src = 'https://unpkg.com/pdfjs-dist@2.0.943/build/pdf.min.js';
+    head.appendChild(script);
+}
+
+function embedyoutube(element, file, startAt) {    
+    var i = document.createElement("iframe");
+    i.width = "640";
+    i.height = "480px"
+    i.src = file;
+
+    var holder = element.parentNode.querySelector(".youtubeholder");
+    holder.innerHTML = "";
+    holder.appendChild(i);
+}
+
+function embedmp3(element, file, startAt) {    
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = element.parentNode.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+}
+function ScrollTo(book){
+    if(book) {
+        var el = document.querySelectorAll("[id*='" + book + "']");
+        if(el[0]) el[0].scrollIntoView();
+    }
+}
+</script>
+<div><a href="../../livros.html">Ver mais livros</a></div>    <div style="padding: 10px" class="book">
+        <div>
+            <div style="display:inline-block">
+    <img src="../../covers/9781596985100.jpg" width="100px"/>
+</div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a id="Sabotage: America’s Enemies within the CIA" href="../../pages/9781596985100/index.html">Sabotage: America’s Enemies within the CIA</a></strong></div>
+                <div><span>Rowan Scarborough</span></div>
+                <div>
+    <div id="gr_add_to_books">
+        <div class="gr_custom_each_container_">
+            <a target="_blank" style="border:none" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/isbn/9781596985100"><img src="https://www.goodreads.com/images/atmb_add_book-70x25.png" /></a>
+        </div>
+    </div>                    
+</div>                
+            </div>
+        </div>        
+                    <div style="padding:20px">
+                <div><strong>Olavo de Carvalho</strong></div>
+                <div style="padding-left:20px">
+                    <div>Mostra que a CIA trabalha contra a América faz tempo, pelo menos desde o tempo de Clinton.</div>
+                </div>
+                <div style="padding-left:20px">
+                    <a href="http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2008%202007.mp4">http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2008%202007.mp4</a>
+                </div>
+                <div style="padding-left:20px">
+                    <button class="pure-button" onclick="embedmp3(this, 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2027%2008%202007.mp4', 3390)">
+                        Ouvir 
+                    </button>
+                    <a href="../../trueoutspeak.html?episode=2007-08-27" target="_blank">Mais sobre este episódio</a>
+                    <div class="audioholder">
+                    </div>
+                </div>
+            </div>
+            <div style="padding:20px">
+        <div><strong>Ver também</strong></div>
+        <ul>         <li>             <span>Sabotage: America's Enemies Within the CIA (</span><a href="https://www.c-span.org/video/?200451-1/sabotage-americas-enemies-cia">https://www.c-span.org/video/?200451-1/sabotage-americas-enemies-cia</a><span>)</span>         </li>             <li>             <span>SABOTAGE: Rowan Scarborough Talks About his New CIA Book (</span><a href="https://humanevents.com/2007/07/16/sabotage-rowan-scarborough-talks-about-his-new-cia-book">https://humanevents.com/2007/07/16/sabotage-rowan-scarborough-talks-about-his-new-cia-book</a><span>)</span>         </li>             <li>             <div>
+                <div>
+                    <span>Has the CIA Become a Rogue Agency? Leaking of Intelligence Programs (2007) (</span><a href="https://www.youtube.com/watch?v=d4SrlgUgo7s">https://www.youtube.com/watch?v=d4SrlgUgo7s</a><span>)</span>   
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=d4SrlgUgo7s','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/d4SrlgUgo7s")'>Ver</button>
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>         </ul>
+    </div>
+        
+    </div>
