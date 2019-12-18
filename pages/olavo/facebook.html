@@ -122,7 +122,7 @@
     function ScrollTo(book){
         if(book) {
             var el = document.querySelectorAll("[data-href*='" + book + "']");
-            if(el[0]) el[0].parent.scrollIntoView();
+            if(el[0]) el[0].parentNode.scrollIntoView();
         }
     }
     if(window.URLSearchParams) {
