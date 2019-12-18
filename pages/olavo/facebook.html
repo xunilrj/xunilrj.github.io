@@ -118,5 +118,18 @@
             </div>
         </li>
     </ol> 
+    <script>
+    function ScrollTo(book){
+        if(book) {
+            var el = document.querySelectorAll("[data-href*='" + book + "']");
+            if(el[0]) el[0].scrollIntoView();
+        }
+    }
+    if(window.URLSearchParams) {
+        var urlParams = new URLSearchParams(window.location.search);
+        var book = urlParams.get('id');
+        ScrollTo(book);
+    }
+    </script>
 </body>
 </html>
