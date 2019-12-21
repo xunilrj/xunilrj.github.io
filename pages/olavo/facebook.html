@@ -6,8 +6,60 @@
         </style>
     </hread>
 <body>
+    <script>
+        function embedyoutube(element, file, startAt) {    
+            var i = document.createElement("iframe");
+            i.width = "640";
+            i.height = "480px"
+            i.src = file;
+
+            var holder = element.parentNode.querySelector(".youtubeholder");
+            holder.innerHTML = "";
+            holder.appendChild(i);
+        }
+    </script>
     <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
     <ol>
+        <li>
+            <h1>Meios de Ação</h1>
+            <div class="fb-post" 
+                data-href="https://www.facebook.com/olavo.decarvalho/posts/10157737839942192"
+                data-width="500">
+            </div>
+            <div class="fb-post" 
+                data-href="https://www.facebook.com/olavo.decarvalho/posts/10157737857227192"
+                data-width="500">
+            </div>
+            <div>
+                <p>
+                    Um dos erros mais frequentes na análise histórica é negligenciar o conflito, não raro invencível, entre ideologia e ação prática. 
+                    O conceito diferencial aí faltante é o de "meios de ação". Pouco importando os ideais e metas proclamados em duas ideologias, o fato é que, se os meios de ação disponíveis são os mesmos, 
+                    os grupos que as representam acabarão, sob pretextos opostos, agindo de maneiras bem semelhantes ou até iguais. 
+                </p>
+                <p>
+                    Só assim se explicam alguns fracassos históricos retumbantes, por exemplo o igualitarismo comunista criando 
+                    a sociedade mais estratificada de todos os tempos ou a proclamação nazista da superioridade racial
+                    alemã rebaixando esse povo ao nível do animalesco. Tudo isso porque, quanto mais nos afastamos dos 
+                    ideais abstratos e nos aproximamos da realidade concreta, mais os meios de ação disponíveis predominam, 
+                    como fatores causais, sobre as intenções e metas proclamadas.
+                </p>
+                <p>
+                    Outro exemplo característico: odiando os bolcheviques até à morte, os nazistas copiaram deles as técnicas de polícia política 
+                    e campos de concentração -- na verdade as únicas que existiam na época para eliminar oposições em massa. 
+                    Sob pretextos opostos, agiram igual.
+                </p>
+                <h4>Referências</h4>
+                <ul>
+                    <li>
+                        <div>Olavo de Carvalho: politica trata de poder, de pessoas e meios.</div>
+                        <a href="https://www.youtube.com/watch?v=x1801V04Xaw">https://www.youtube.com/watch?v=x1801V04Xaw</a>
+                        <button onclick='embedyoutube(this, "https://www.youtube.com/embed/x1801V04Xaw")'>Ver</button>                                
+                        <div class="youtubeholder">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
         <li>
             <h1>Comunismo, Fascismo</h1>
             <div class="fb-post" 
