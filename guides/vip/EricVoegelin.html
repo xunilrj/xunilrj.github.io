@@ -39,12 +39,10 @@
                     const el = document.createElement("div");
                     this.parentNode.appendChild(el);
                     const url = this.getAttribute("url");
-                    el.innerHTML = `<div>
-    <a style="cursor: pointer;" 
-    onmouseover="parentNode.children[1].style.display = 'block'" 
-    onmouseout="parentNode.children[1].style.display = 'none'"
-    href="${url}">ver mais...</a>
-    <div style="display: none; position: absolute; background: white; border: thin black; z-index: 1;">
+                    el.innerHTML = `<div class="on-hover">
+    <a style="cursor: pointer;" href="${url}">ver mais...</a>
+    <div class="display-none-block" style="position: absolute; background: white; border: thin black; z-index: 1;">
+    AAA
         <div class="fb-post" data-href="${url}" data-width="500">
         </div>
     </div>
@@ -53,6 +51,18 @@
             }
             customElements.define('quote-facebook-see-more', QuoteFacebookSeeMore);
         </script>
+        <style>
+            .on-hover .display-none-block
+            {
+                display: none;
+            }
+            .on-hover:hover .display-none-block
+            {
+                display: block;
+                margin-left: 100px;
+                transform:translateY(-50%);
+            }
+        </style>
     </head>
     <body>
         <a href="../index.html">&lt; Outros guias</a>
