@@ -17,6 +17,41 @@
         <meta name="twitter:description" content="Guia de estudo para Eric Voegelin" />
         <meta name="twitter:image" content="https://theimaginativeconservative.org/wp-content/uploads/2015/12/mid_34697.jpg" />
         <style> article { width: 50%; margin: 0 auto; max-width: 800px; }</style>
+        <script>
+            class QuoteFacebookSeeMore extends HTMLElement {
+                constructor() {
+                    super();
+                    this.attachShadow({mode: 'open'});
+                    this.shadowRoot.innerHTML = "<div>loading...</div>";
+                }
+
+                attributeChangedCallback(attr, old, value) {
+                    this.render();
+                }
+
+                connectedCallback()
+                {
+                    this.render();
+                }
+                
+                render()
+                {
+                    const url = this.getAttribute("url");
+                    this.shadowRoot.innerHTML = `<slot></slot>
+<div>
+    <a style="cursor: pointer;" 
+    onmouseover="parentNode.children[1].style.display = 'block'" 
+    onmouseout="parentNode.children[1].style.display = 'none'"
+    href="${url}">ver mais...</a>
+    <div style="display: none; position: absolute; background: white; border: thin black; z-index: 1;">
+        <div class="fb-post" data-href="${url}" data-width="500">
+        </div>
+    </div>
+</div>`;
+                }
+            }
+            customElements.define('quote-facebook-see-more', QuoteFacebookSeeMore);
+        </script>
     </head>
     <body>
         <a href="../index.html">&lt; Outros guias</a>
@@ -322,23 +357,13 @@
                         <p>Other references to this point</p>
                         <ul>
                             <li>
-                                <p>
-                                    Se um homem deforma sua existência, fechando-a para o fundamento divino, o cerne cognitivo em sua experiência de realidade mudará, porque ele tem de substituir o polo divino da tensão por um outro fenômeno imanente do mundo. O cerne cognitivo deformado, então, vincula um estilo deformado de cognição pelo qual a Primeira Realidade experienciada na existência aberta é transformada numa Segunda Realidade imaginada em existência fechada.
-                                </p>
-                                <p>página 291</p>
-                                <p>Ensaios Publicados 1966-1985</p>
-                                <div>
-                                    <a style="cursor: pointer;" 
-                                    onmouseover="parentNode.children[1].style.display = 'block'" 
-                                    onmouseout="parentNode.children[1].style.display = 'none'"
-                                    href="https://www.facebook.com/contraosacademicos/posts/2658565767556129">ver mais...</a>
-                                    <div style="display: none; position: absolute; background: white; border: thin black; z-index: 1;">
-                                        <div class="fb-post" 
-                                            data-href="https://www.facebook.com/contraosacademicos/posts/2658565767556129"
-                                            data-width="500">
-                                        </div>
-                                    </div>
-                                </div>
+                                <quote-facebook-see-more url="https://www.facebook.com/contraosacademicos/posts/2658565767556129">
+                                    <p>
+                                        Se um homem deforma sua existência, fechando-a para o fundamento divino, o cerne cognitivo em sua experiência de realidade mudará, porque ele tem de substituir o polo divino da tensão por um outro fenômeno imanente do mundo. O cerne cognitivo deformado, então, vincula um estilo deformado de cognição pelo qual a Primeira Realidade experienciada na existência aberta é transformada numa Segunda Realidade imaginada em existência fechada.
+                                    </p>
+                                    <p>página 291</p>
+                                    <p>Ensaios Publicados 1966-1985</p>
+                                </quote-facebook-see-more>
                             </li>
                         </ul>
                         <p>
@@ -352,15 +377,16 @@
                         </p>
                     </ul>
                 </li>
-                <li>
-                    <div class="fb-post" 
-                        data-href="https://www.facebook.com/contraosacademicos/posts/2658570084222364"
-                        data-width="500">
-                    </div>
-                    <p>Ninguém pode curar a desordem espiritual de uma "era". Um filósofo não pode fazer mais do que exercitar-se para livrar-se dos cascalhos de ídolos que, sob o nome de uma "era", ameaça aleijá-lo e enterrá-lo; 
-                        e pode esperar que o exemplo de seu esforço seja útil a outros que se encontram na mesma situação e experimentam o mesmo desejo de obter a humanidade dele sob Deus.</p>
-                    <p>Ensaios Publicados 1966-1985</p>                    
-                </li>
+                <p>Quotations</p>
+                <ul>
+                    <li>
+                        <quote-facebook-see-more url="https://www.facebook.com/contraosacademicos/posts/2658570084222364">
+                            <p>Ninguém pode curar a desordem espiritual de uma "era". Um filósofo não pode fazer mais do que exercitar-se para livrar-se dos cascalhos de ídolos que, sob o nome de uma "era", ameaça aleijá-lo e enterrá-lo; 
+                                e pode esperar que o exemplo de seu esforço seja útil a outros que se encontram na mesma situação e experimentam o mesmo desejo de obter a humanidade dele sob Deus.</p>
+                            <p>Ensaios Publicados 1966-1985</p> 
+                        </quote-facebook-see-more>
+                    </li>
+                </ul>
             </ul>
         </article>
         <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
