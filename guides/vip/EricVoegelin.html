@@ -21,8 +21,7 @@
             class QuoteFacebookSeeMore extends HTMLElement {
                 constructor() {
                     super();
-                    this.attachShadow({mode: 'open'});
-                    this.shadowRoot.innerHTML = "<div>loading...</div>";
+                    this.attachShadow({mode: "open"});
                 }
 
                 attributeChangedCallback(attr, old, value) {
@@ -36,9 +35,11 @@
                 
                 render()
                 {
+                    this.shadowRoot.innerHTML = "<slot></slot>";
+                    const el = document.createElement("div");
+                    this.parentNode.appendChild(el);
                     const url = this.getAttribute("url");
-                    this.shadowRoot.innerHTML = `<slot></slot>
-<div>
+                    el.innerHTML = `<div>
     <a style="cursor: pointer;" 
     onmouseover="parentNode.children[1].style.display = 'block'" 
     onmouseout="parentNode.children[1].style.display = 'none'"
