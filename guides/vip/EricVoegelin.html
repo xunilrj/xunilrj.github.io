@@ -40,7 +40,7 @@
                     this.parentNode.appendChild(el);
                     const url = this.getAttribute("url");
                     el.innerHTML = `<div class="on-hover">
-    <a style="cursor: pointer;" href="${url}">ver mais...</a>
+    <a style="cursor: pointer;" href="${url}">${url}</a>
     <div class="display-none-block" style="position: absolute">
         <div class="fb-post" data-href="${url}" data-width="500">
         </div>
