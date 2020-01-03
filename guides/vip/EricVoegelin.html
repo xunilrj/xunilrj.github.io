@@ -50,6 +50,27 @@
             }
             customElements.define('quote-facebook-see-more', QuoteFacebookSeeMore);
         </script>
+        <script>
+            class EmbeddedReference extends HTMLElement 
+            {
+                constructor() {
+                    super();
+                    this.attachShadow({mode: "open"});
+                }                
+                attributeChangedCallback(attr, old, value) { this.render(); }
+                connectedCallback() { this.render(); }
+
+                render()
+                {
+                    const title = this.getAttribute("title");
+                    this.shadowRoot.innerHTML = `<div class="embedded-reference">
+    <h4>${title}</h4>
+    <slot></slot>
+</div>`;
+                }
+            }
+            customElements.define('embedded-reference', EmbeddedReference);
+        </script>
         <style>
             .on-hover .display-none-block
             {
@@ -64,6 +85,11 @@
                 border: solid 1px black;
                 background: white;
                 z-index: 1;
+            }
+
+            .embedded-reference
+            {
+                margin-left: 100px;
             }
         </style>
     </head>
@@ -152,20 +178,21 @@
                         <p>
                             The motivations of my work, which culminates in a philosophy of history, are simple. They arise from the political situation. Anybody with an informed and reflective mind who lives in the twentieth century since the end of the First World War, as I did, finds himself hemmed in, if not oppressed, from all sides by a flood of ideological language — meaning thereby language symbols that pretend to be concepts but in fact are unanalyzed topoi or topics.
                         </p>
-                        <p>Topoi</p>
-                        <ul>
-                            <li>
-                                <div>
-                                    <span>topos: </span>
-                                    <span>a traditional theme (= subject) that is found in literature.</span>
-                                </div>
-                                <a href="https://dictionary.cambridge.org/dictionary/english/topos">https://dictionary.cambridge.org/dictionary/english/topos</a>
-                            </li>
-                            <li>
-                                <div>The topoi of the Rhetoric</div>
-                                <a href="https://plato.stanford.edu/entries/aristotle-rhetoric/supplement2.html">https://plato.stanford.edu/entries/aristotle-rhetoric/supplement2.html</a>
-                            </li>
-                        </ul>
+                        <embedded-reference title="Topoi">
+                            <ul>
+                                <li>
+                                    <div>
+                                        <span>topos: </span>
+                                        <span>a traditional theme (= subject) that is found in literature.</span>
+                                    </div>
+                                    <a href="https://dictionary.cambridge.org/dictionary/english/topos">https://dictionary.cambridge.org/dictionary/english/topos</a>
+                                </li>
+                                <li>
+                                    <div>The topoi of the Rhetoric</div>
+                                    <a href="https://plato.stanford.edu/entries/aristotle-rhetoric/supplement2.html">https://plato.stanford.edu/entries/aristotle-rhetoric/supplement2.html</a>
+                                </li>
+                            </ul>
+                        </embedded-reference>
                         <p>
                             [One] cannot deal with the users of ideological language as partners in a discussion, but [one] has to make them the object of investigation.
                         </p>
@@ -181,15 +208,17 @@
                         <p>
                             In relation to the dominant climate of the social sciences,the philosopher in America finds himself very much in the situation of Solzhenitsyn in relation to the Soviet Writer’s Union — the important difference, of course, being that our Soviet Writer’s Union cannot enlist governmental power for the purpose of suppressing scholars.
                         </p>
-                        <p>Solzhenitsyn</p>
-                        <ul>
-                            <li>
-                                <div>A World Split Apart — Commencement Address Delivered At Harvard University, June 8, 1978
-                                </div>
-                                <a href="http://www.orthodoxytoday.org/articles/SolzhenitsynHarvard.php">http://www.orthodoxytoday.org/articles/SolzhenitsynHarvard.php</a><span> or video at </span>
-                                <a href="https://www.youtube.com/watch?v=WuVG8SnxxCM">https://www.youtube.com/watch?v=WuVG8SnxxCM</a>
-                            </li>
-                        </ul>
+                        <div class="embedded-reference">
+                            <h4>Solzhenitsyn</h4>
+                            <ul>
+                                <li>
+                                    <div>A World Split Apart — Commencement Address Delivered At Harvard University, June 8, 1978
+                                    </div>
+                                    <a href="http://www.orthodoxytoday.org/articles/SolzhenitsynHarvard.php">http://www.orthodoxytoday.org/articles/SolzhenitsynHarvard.php</a><span> or video at </span>
+                                    <a href="https://www.youtube.com/watch?v=WuVG8SnxxCM">https://www.youtube.com/watch?v=WuVG8SnxxCM</a>
+                                </li>
+                            </ul>
+                        </div>
                         <p>
                             Hence, there are always enclaves in the West in which science can continue, and even flourish, in spite of the intellectual terrorism of institutions such as the mass media, university departments, foundations, and commercial publishing houses.
                         </p>
