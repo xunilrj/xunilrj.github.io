@@ -353,7 +353,7 @@ function WriteBook($book, $imgPrefix = ".", $suggestionHardLink = $false)
                     <button class="pure-button" onclick="embedmp3(this, '$(getMP3File $_.DATE)', $($_.StartAt))">
                         Ouvir 
                     </button>
-                    <a href="$imgPrefix/trueoutspeak.html?episode=$($_.DATE)" target="_blank">Mais sobre este episódio</a>
+                    <a href="$imgPrefix/livrosdb/episodes/$($_.DATE).html" target="_blank">Mais sobre este episódio</a>
                     <div class="audioholder">
                     </div>
                 </div>
