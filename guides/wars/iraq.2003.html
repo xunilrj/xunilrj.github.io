@@ -1,11 +1,25 @@
 <html>
     <head>
         <style>
-            article { max-width: 500px;}
+            article { max-width: 500px; width: 50%; margin: 0 auto;}
+            article iframe { margin-left: -150px;}
             article img { max-width: 500px;}
         </style>
         <script src="../../customElements/linkbook.js"></script>
         <script>
+            class EmbedYoutube extends HTMLElement {
+                constructor() {
+                    super();                    
+                }
+                connectedCallback() { this.render(); }
+                attributeChangedCallback() { this.render(); }
+                render() { 
+                    const id = this.getAttribute("id");
+                    this.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}" width="854" height="480"></iframe>` 
+                }
+            }
+            customElements.define('embed-youtube', EmbedYoutube, {  });
+
             class AutoText extends HTMLAnchorElement {
                 constructor() {
                     super();                    
@@ -20,7 +34,7 @@
     <body>
         <article>
             <p>Por que os EUA invadiram o Iraque?</p>
-            <div>https://www.youtube.com/watch?v=T2tbpUqNwRU</div>
+            <embed-youtube id="T2tbpUqNwRU"/>
             <p>Roteiro:</p>
             <p>Por que os Estados Unidos foram à guerra contra o Iraque em 2003? A decisão foi controversa na época e continua até hoje. Mas o motivo ficou claro: Saddam Hussein, o ditador brutal do Iraque há 35 anos, foi a principal ameaça para a paz no Oriente Médio.</p>
             <p>Com essa ameaça removida, a administração Bush acreditava que o estabelecimento de uma democracia em funcionamento no Iraque estimularia o crescimento da democracia em outros países do mundo árabe. À medida que a democracia se espalhava, o terrorismo se retiraria.</p>
