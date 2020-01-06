@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <style>
+            article { max-width: 500px;}
+            article img { max-width: 500px;}
+        </style>
+        <script src="../../customElements/linkbook.js"></script>
+        <script>
+            class AutoText extends HTMLAnchorElement {
+                constructor() {
+                    super();                    
+                }
+                connectedCallback() { this.render(); }
+                attributeChangedCallback() { this.render(); }
+                render() { this.innerHTML = this.getAttribute("href"); }
+            }
+            customElements.define('auto-text', AutoText, { extends: "a" });
+        </script>
+    </head>
+    <body>
+        <article>
+            <p>Por que os EUA invadiram o Iraque?</p>
+            <div>https://www.youtube.com/watch?v=T2tbpUqNwRU</div>
+            <p>Roteiro:</p>
+            <p>Por que os Estados Unidos foram à guerra contra o Iraque em 2003? A decisão foi controversa na época e continua até hoje. Mas o motivo ficou claro: Saddam Hussein, o ditador brutal do Iraque há 35 anos, foi a principal ameaça para a paz no Oriente Médio.</p>
+            <p>Com essa ameaça removida, a administração Bush acreditava que o estabelecimento de uma democracia em funcionamento no Iraque estimularia o crescimento da democracia em outros países do mundo árabe. À medida que a democracia se espalhava, o terrorismo se retiraria.</p>
+            <p>Mas é na vida manchada de sangue e na carreira de Saddam Hussein que precisamos nos concentrar para entender melhor por que os Estados Unidos se sentiram obrigados a agir em 2003.</p>
+            <p>Começamos com a Guerra Irã-Iraque, que Saddam começou em 1980 e que durou até 1988. Um milhão de pessoas morreram no decorrer da batalha de uma década. E durante essa guerra, as armas de destruição em massa (WMD) - especialmente gás venenoso - foram usadas regularmente por ambos os lados.</p>
+            <p>Uma vez que a guerra com o Irã terminou, em vez de construir sua nação quebrada, Saddam decidiu embarcar em outra aventura lunática: em 1990, ele tentou pegar 19% do petróleo no mundo invadindo o Kuwait.</p>
+            <p>Sua breve anexação do Kuwait provou ser outro desastre. A Mãe de Todas as Batalhas, como Saddam a chamou, acabou por ser uma derrota de 3 semanas, seu exército iraquiano totalmente derrotado por uma coalizão liderada pelos EUA. Mas ao invés de tratar Saddam como um criminoso de guerra, a América e o Ocidente lhe permitiram ficar no poder.</p>
+            <p>Esse apaziguamento eventualmente levou Saddam, mais uma vez, a tirar inteiramente a conclusão errada e a fazer outro erro colossal. Ele arrogantemente acreditava que seu exército iraquiano poderia realmente derrotar os Estados Unidos em um segundo encontro.</p>
+            <p>O seu trunfo, ele acreditava, ou pelo menos tentava fazer com que o mundo acreditasse, era sua posse de WMD - grandes quantidades de gás venenoso e, apenas em sua imaginação, um programa de desenvolvimento de armas nucleares que progredise rapidamente. Não havia motivo para duvidar de que ele tivesse WMD, pois usou gás venenoso em sua guerra contra o Irã. Ninguém - nem os alemães, nem os russos, nem os britânicos - tiveram dúvidas sobre isso.</p>
+            <p>Olhando para trás, nos doze anos entre a Guerra do Golfo e a Guerra do Iraque, Saddam poderia ter conseguido restabelecer a credibilidade internacional ao cumprir as 16 resoluções razoáveis ​​da ONU aprovadas entre novembro de 1990 e dezembro de 1999. Essas resoluções simplesmente exigiam que Saddam, Entre outras coisas: "destrua todos os seus mísseis balísticos com uma faixa superior a 150 quilômetros; Parar de apoiar o terrorismo internacionalmente e impedir que organizações terroristas operem no Iraque; E tomar a responsabilidade financeira por danos causados ​​pela Guerra do Golfo ".</p>
+            <p>Mas Saddam passou a década de 1990 desafiando e zombando da América e da Grã-Bretanha de todas as formas possíveis. Ele tentou derrubar os aviões da Força Aérea Real e da Força Aérea dos EUA sobre as zonas de exclusão criada para impedir que ele massacrasse seus próprios cidadãos; Ele lucrou desonestamente com o escândalo do programa da ONU "petróleo por comida", enquanto crianças iraquianas morreram de fome; Ele ofereceu US$25 mil às famílias de todos os terroristas suicidas palestinos; Ele abrigou muitos dos principais terroristas do mundo, e ele expulsou os inspetores de armas da ONU.</p>
+        </article>
+
+        <article>
+            <p>Armas de Destruição em Massa (ADM - WMD) Encontradas</p>
+            <ul>
+                <li>
+                    <p>The Secret Casualties of Iraq’s Abandoned Chemical Weapons</p>
+                    <a is="auto-text" href="https://www.nytimes.com/interactive/2014/10/14/world/middleeast/us-casualties-of-iraq-chemical-weapons.html"></a>
+                    <p>
+                        Jarrod L. Taylor, a former Army sergeant on hand for the destruction of mustard shells that burned two soldiers in his infantry company, joked of “wounds that never happened” from “that stuff that didn’t exist.” The public, he said, was misled for a decade. “I love it when I hear, ‘Oh there weren’t any chemical weapons in Iraq,’ ” he said. “There were plenty.”
+                    </p>
+                    <img src="https://static01.nyt.com/newsgraphics/2014/03/26/iraq/1a8f7176cc461e4239297f26179c4f51ebff025e/ai2html/ch1_map_all_munitions-ai2html-547.jpg"> 
+                </li>
+                <li>
+                    <p>Iraq's WMD Secreted in Syria, Sada Says</p>
+                    <a is="auto-text" href="https://www.nysun.com/foreign/iraqs-wmd-secreted-in-syria-sada-says/26514/"></a>
+                    <p>
+                        The man who served as the no. 2 official in Saddam Hussein's air force says Iraq moved weapons of mass destruction into Syria before the war by loading the weapons into civilian aircraft in which the passenger seats were removed.
+                    </p>
+                    <p>
+                        The Iraqi general, Georges Sada, makes the charges in a new book, "Saddam's Secrets," released this week. He detailed the transfers in an interview yesterday with The New York Sun.
+                    </p>
+                    <p>Saddam's Secrets</p>
+                    <img src="../../covers/B003TU1O0S.jpg">
+                    <a is="auto-text" href="https://www.amazon.co.uk/Saddams-Secrets-Georges-Hormuz-Sada-ebook/dp/B003TU1O0S"></a>
+                </li>
+                <li>
+                    <p>Os Iluminados</p>
+                    <a is="auto-text" href="https://xunilrj.github.io/pages/9780895260062/index.html"></a>
+                    <p>Bem, quem disse que não havia armas de destruição em massa no Iraque? A côrte dos iluminados. Os relatórios militares dizem que foram encontrados até agora:</p>
+                    <ul>
+                        <li>1,77 toneladas métricas de urânio enriquecido;</li>
+                        <li>1.500 galões de agentes químicos usados em armasli</li>
+                        <li>17 ogivas químicas com ciclosarina, um agente velienoso cinco vezes mais mortal que o gás sarin;</li>
+                        <li>Mil materiais radiativos em pó, prontos para disliersão sobre áreas populosas.</li>
+                        <li>Bombas com gás de mostarda e gás sarin.</li>
+                    </ul>
+                    <p>Se essas coisas não são armas de destruição em massa, são o quê? Peças do estojo “O Pequeno Químico”?</p>
+                    <p>Não há no Pentágono quem as ignore. Mas o Pentágono, na guerra de mídia, é nada. Só fiquei sabendo dessas descobertas porque as li no livro <link-book isbn="9780895260062" title="Disinformation: Media Myths That Undermine the War on Terror" />. Miniter, veterano jornalista investigativo, foi colunista do Wall Street Journal e do Washington Post . Escreveu também no New York Times , que hoje pode não gostar muito do que ele diz mas não pode tirá-lo da sua lista de best-sellers , onde ele está entrando pela terceira vez </p>
+                </li>               
+            </ul>
+        </article>
+    </body>
+</html>
