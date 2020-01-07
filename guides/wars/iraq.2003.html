@@ -6,40 +6,27 @@
             article img { max-width: 500px;}
         </style>
         <script src="../../customElements/linkbook.js"></script>
-        <script>
-            class EmbedYoutube extends HTMLElement {
-                constructor() {
-                    super();                    
-                }
-                connectedCallback() { this.render(); }
-                attributeChangedCallback() { this.render(); }
-                render() { 
-                    const id = this.getAttribute("id");
-                    this.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}" width="854" height="480"></iframe>` 
-                }
-            }
-            customElements.define('embed-youtube', EmbedYoutube, {  });
-
-            class AutoText extends HTMLAnchorElement {
-                constructor() {
-                    super();                    
-                }
-                connectedCallback() { this.render(); }
-                attributeChangedCallback() { this.render(); }
-                render() { this.innerHTML = this.getAttribute("href"); }
-            }
-            customElements.define('auto-text', AutoText, { extends: "a" });
-        </script>
+        <script src="../../customElements/embedyoutube.js"></script>
+        <script src="../../customElements/autotext.js"></script>
+        <script src="../../customElements/quotesmall.js"></script>
     </head>
     <body>
         <article>
             <p>Por que os EUA invadiram o Iraque?</p>
-            <embed-youtube id="T2tbpUqNwRU"/>
-            <p>Roteiro:</p>
-            <p>Por que os Estados Unidos foram à guerra contra o Iraque em 2003? A decisão foi controversa na época e continua até hoje. Mas o motivo ficou claro: Saddam Hussein, o ditador brutal do Iraque há 35 anos, foi a principal ameaça para a paz no Oriente Médio.</p>
-            <p>Com essa ameaça removida, a administração Bush acreditava que o estabelecimento de uma democracia em funcionamento no Iraque estimularia o crescimento da democracia em outros países do mundo árabe. À medida que a democracia se espalhava, o terrorismo se retiraria.</p>
-            <p>Mas é na vida manchada de sangue e na carreira de Saddam Hussein que precisamos nos concentrar para entender melhor por que os Estados Unidos se sentiram obrigados a agir em 2003.</p>
-            <p>Começamos com a Guerra Irã-Iraque, que Saddam começou em 1980 e que durou até 1988. Um milhão de pessoas morreram no decorrer da batalha de uma década. E durante essa guerra, as armas de destruição em massa (WMD) - especialmente gás venenoso - foram usadas regularmente por ambos os lados.</p>
+            <embed-youtube id="T2tbpUqNwRU"></embed-youtube>
+            <p>
+                Por que os Estados Unidos foram à guerra contra o Iraque em 2003? A decisão foi controversa na época e continua até hoje. Mas o motivo ficou claro: Saddam Hussein, o ditador brutal do Iraque há 35 anos, foi a principal ameaça para a paz no Oriente Médio.
+            </p>
+            <p>
+                Com essa ameaça removida, a administração Bush acreditava que o estabelecimento de uma democracia em funcionamento no Iraque estimularia o crescimento da democracia em outros países do mundo árabe. À medida que a democracia se espalhava, o terrorismo se retiraria.
+            </p>
+            <p>
+                Mas é na vida manchada de sangue e na carreira de Saddam Hussein que precisamos nos concentrar para entender melhor por que os Estados Unidos se sentiram obrigados a agir em 2003.
+            </p>
+            <p>
+                Começamos com a Guerra Irã-Iraque, que Saddam começou em 1980 e que durou até 1988. Um milhão de pessoas morreram no decorrer da batalha de uma década. E durante essa guerra, as armas de destruição em massa (WMD) - especialmente gás venenoso - foram usadas regularmente por ambos os lados.
+            </p>
+            <quote-small title="Guerra do Irã-Iraque (1980)" href="./Iran.Iraq.1980.html"></quote-small>
             <p>Uma vez que a guerra com o Irã terminou, em vez de construir sua nação quebrada, Saddam decidiu embarcar em outra aventura lunática: em 1990, ele tentou pegar 19% do petróleo no mundo invadindo o Kuwait.</p>
             <p>Sua breve anexação do Kuwait provou ser outro desastre. A Mãe de Todas as Batalhas, como Saddam a chamou, acabou por ser uma derrota de 3 semanas, seu exército iraquiano totalmente derrotado por uma coalizão liderada pelos EUA. Mas ao invés de tratar Saddam como um criminoso de guerra, a América e o Ocidente lhe permitiram ficar no poder.</p>
             <p>Esse apaziguamento eventualmente levou Saddam, mais uma vez, a tirar inteiramente a conclusão errada e a fazer outro erro colossal. Ele arrogantemente acreditava que seu exército iraquiano poderia realmente derrotar os Estados Unidos em um segundo encontro.</p>
