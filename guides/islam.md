@@ -190,3 +190,13 @@ Um caso famoso de jihad da moeda foi a do filho do presidente do Suriname, aqui 
 
 [TERRA – jihad bil sayf] Depois da jihad da moeda, vem a jihad como nós a conhecemos, a jihad da ESPADA (ou de ASSASSINATOS, como prefere o PhD Bill Warner). Este é o nível militar da guerra santa. Inclusive, a palavra “militância”, que usamos normalmente para protestos de rua, também está neste nível. Aqui a destruição e a humilhação dos inimigos de Deus é completa."  
 https://www.estudosnacionais.com/19847/os-muitos-tipos-de-jihads-segundo-o-phd-bill-warner
+
+# Guias 
+
+Islã é lindo e o Irã também
+https://www.youtube.com/watch?v=Mvqg-_9QH8U
+
+- https://livrariadobernardo.com/sao-gabriel--maome-e-o-islamismo
+- https://livrariadobernardo.com/inverno-arabe---o-isla--as-cruzadas-e-o-fim-dos-tempos
+- https://livrariadobernardo.com/teoria-e-tradicao-da-guerra-justa
+- https://livrariadobernardo.com/kit-entendendo-o-isla
