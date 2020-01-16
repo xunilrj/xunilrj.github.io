@@ -256,6 +256,7 @@ $indexHeader = @"
 <h1>25 Elementos da filosofia do Olavo de Carvalho</h1> <div><a href="./pages/olavo/25olavo.html"><strong>Ver</strong><a/><div>
 <h1>Resumo Teoria Política do Olavo de Carvalho</h1> <div><a href="./pages/olavo/teoria.politica.html"><strong>Ver</strong><a/><div>
 <h1>Melhores posts do Olavo de Carvalho</h1> <div><a href="./pages/olavo/facebook.html"><strong>Ver</strong><a/><div>
+<h5>Bons posts em geral</h5> <div><a href="./pages/facebook/goodposts.html"><strong>Ver</strong><a/><div>
 <h1>Livros</h1>
 "@
 
