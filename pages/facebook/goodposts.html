@@ -1,0 +1,83 @@
+<html>
+    <hread>
+        <title>Bons post do Facebook</title>
+        <style>
+        body { width: 50%; margin: 0 auto; }
+        </style>
+    </hread>
+<body>
+    <script>
+        function embedyoutube(element, file, startAt) {    
+            var i = document.createElement("iframe");
+            i.width = "640";
+            i.height = "480px"
+            i.src = file;
+
+            var holder = element.parentNode.querySelector(".youtubeholder");
+            holder.innerHTML = "";
+            holder.appendChild(i);
+        }
+    </script>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
+    <ol>
+        <li>
+            <h1>Camus versus Sarte</h1>
+            <div class="fb-post" 
+                data-href="https://www.facebook.com/permalink.php?story_fbid=1443829775797295&id=100005108589463"
+                data-width="500">
+            </div>
+            <p>
+                A polêmica entre Jean-Paul Sartre e Albert Camus foi um dos mais importantes episódios da vida intelectual no século XX.
+            </p>
+            <p>
+                A ruptura entre eles - após a publicação por Camus de O homem revoltado em 1951, mostra a diferença entre o intelectual honesto e o desonesto. Enquanto Albert Camus começava a reconhecer seus próprios erros intelectuais e os de sua geração, Sartre queria insistir neles:</p>
+            <quote>
+                "Vocês não acham, diz Camus, que todos nós somos responsáveis pela ausência de valores e que, se todos nós, provindo do nietzschianismo, do niilismo, disséssemos publicamente que nos enganamos e que há valores morais e que doravante faremos o necessário para os fundamentar e ilustrar, vocês não acham que seria o início de uma esperança?" (Albert Camus in: Olivier Todd, Albert Camus: uma vida).
+            </quote>
+            <p>
+                Sartre preferiu continuar mentindo sobre a União Soviética e sobre Cuba. Depois de visitar a União Soviética, escreveu: “Existe uma liberdade total de crítica na URSS”. E sobre Cuba, disse: “O país que emergiu da revolução cubana é uma democracia direta”. "Aí está o canalha, o límpido, o translúcido canalha Jean-Paul Sartre", como dizia Nelson Rodrigues.</p>
+            <p>
+                Já Albert Camus, homem de grande honestidade intelectual, morreu se aproximando da fé cristã. Morreu tentando escapar do niilismo de seu tempo. Sabia que Stálin não tinha razão:</p>
+            <quote>
+                “Perante o mais cerrado niilismo, não procurei senão as razões para ultrapassar esse niilismo. E isto não por virtude ou por uma rara elevação de alma, mas por uma fidelidade instintiva à luz em que nasci, e onde, desde há milhares de anos, os homens aprendem a saudar a vida, mesmo na dor.” (Albert Camus, Discursos da Suécia).
+            </quote>             
+            <p>Giovanni Catelli, em La mort de Camus, revela provas de que Camus foi assassinado pelo KGB.</p>
+            <h4>Referências</h4>
+            <ul>
+                <li>
+                    <h4>Camus vs. Sartre (Rare BBC Documentary)</h4>
+                    <a href="https://www.youtube.com/watch?v=_iW74PnBIGo">https://www.youtube.com/watch?v=_iW74PnBIGo</a>
+                    <button onclick='embedyoutube(this, "https://www.youtube.com/embed/_iW74PnBIGo")'>Ver</button>                                
+                    <div class="youtubeholder">
+                    </div>                    
+                </li>
+                <li>
+                    <h4>O Translúcido Canalha</h4>
+                    <p>Argumenta o filósofo que o Prêmio Nobel foi concedido a Boris Pasternak. Mas quem é Pasternak? Diz ele: — “Um escritor que não é lido em sua própria terra”. Vejam: — “Um escritor que não é lido em sua própria terra”. Aí está o canalha, o límpido, o translúcido canalha Jean-Paul Sartre. Se disse isso, é um canalha (e o disse num claro e deslavado documento para o mundo).</p>
+                    <p>E repito: — de uma simples frase emerge todo o canalha. Vejam bem. Um crime contra a inteligência impediu que Pasternak fosse lido em sua própria língua. E Sartre está a favor do “crime” e contra a vítima. Pasternak é um poeta, um romancista, um pensador que o totalitarismo soviético havia de exterminar, até fisicamente. E Sartre não pinga uma palavra de compaixão sobre o assassinato de um artista.</p>
+                    <p>O óbvio Ululante - página 206</p>
+                </li>
+                <li>
+                    <h4>Honoring Albert Camus</h4>
+                    <p>The other event is an astonishing new French book The Death of Camus. The world has long known that Camus was killed at age 46 on January 4, 1960 in an accident in a car, a very expensive Facel Vega, driven by Michel Gallimard, his publisher, in the small town of Villeblevin. The manner of his death, a car crash, perhaps caused by a blowout or a broken axle, into a tree by the vehicle travelling at high speed along a long stretch of straight road seemed to bear out the truth of Camus’ concept of absurdism. </p>
+                    <p>However, the new book by the Italian author Giovanni Catelli argues that he was killed by the KGB, because of his anti-Soviet writings, his support of the Hungarian uprising against the Communist rulers in 1956, and his support of Boris Pasternak. According to Catelli, Camus’ death was not due to an accident but was political assassination. He also implies that the French state, which was anxious for closer relations with Russia, as the visit of Nikita Khrushchev to Paris in March 1960 showed, may have been involved in the murder. All this is absurd conjecture, though Camus did have critics, even enemies, who were hostile to his ideas or actions: the Soviet Union, Algerian revolutionaries, French Communists, and French reactionaries such as the OAS (the Secret Army Organization). </p>
+                    <a href="https://www.americanthinker.com/articles/2019/12/honoring_albert_camus.html">https://www.americanthinker.com/articles/2019/12/honoring_albert_camus.html</a>
+                </li>
+            </ul>
+        </li>
+    </ol> 
+    <script>
+    function ScrollTo(book){
+        if(book) {
+            var el = document.querySelectorAll("[data-href*='" + book + "']");
+            if(el[0]) el[0].parentNode.scrollIntoView();
+        }
+    }
+    if(window.URLSearchParams) {
+        var urlParams = new URLSearchParams(window.location.search);
+        var book = urlParams.get('id');
+        ScrollTo(book);
+    }
+    </script>
+</body>
+</html>
