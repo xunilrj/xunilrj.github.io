@@ -8,6 +8,28 @@ $suggestionsLinks = Import-CSV "suggestion.links.csv" -Delimiter ";" -Header "fr
 
 $dest = "D:/github/xunilrj.github.io"
 
+function BookDetailPage($_)
+{
+    Write-Progress -Activity "." -CurrentOperation "." -PercentComplete ([float]$i/[float]$rowsCount*100.0)
+    $i = $i + 1
+
+    $row = $books|? name -eq $_.Livro
+    if($row -ne $null) {
+        $imgPrefix = "../.."
+        $html = "<div><a href=`"../../livros.html`">Ver mais livros</a></div>" + (WriteBook $_ $imgPrefix $true)
+        mkdir "$dest/pages/$($row.ISBN)" -Force -EA SilentlyContinue
+
+        $fileOut = "$dest/pages/$($row.ISBN)/index.html"
+        GetPageHeader $row.name "https://xunilrj.github.io/covers/$($row.isbn).jpg" $_.Descricao "pages/$($row.ISBN)/index.html" | Out-File $fileOut
+        $html | Out-File $fileOut -Append
+
+        $html = cat $fileOut -Raw
+        [System.IO.File]::WriteAllText($fileOut,$html)
+    }
+}
+
+
+
 function getMP3File($date) {    
     if($date -is [System.String]) {
         $date = [System.DateTime]::ParseExact($date, "yyyy-MM-dd", [System.Globalization.CultureInfo]::new("en-us")).Date
@@ -340,7 +362,14 @@ function WriteBook($book, $imgPrefix = ".", $suggestionHardLink = $false)
             </div>
         </div>        
         $(
-        if([string]::IsNullOrWhiteSpace($_.DATE) -eq $false){
+        if( ([string]::IsNullOrWhiteSpace($_.DATE) -eq $false) -and ($_.DATE.StartsWith("http"))){
+@"
+            <div style="padding:20px">
+                <p>Ver citação</p>
+                <a href="$($_.DATE)">$($_.DATE)</a>
+            </div>
+"@
+        } elseif([string]::IsNullOrWhiteSpace($_.DATE) -eq $false){
 @"
             <div style="padding:20px">
                 <div><strong>Olavo de Carvalho</strong></div>
@@ -367,6 +396,10 @@ function WriteBook($book, $imgPrefix = ".", $suggestionHardLink = $false)
     </div>
 "@
 }
+
+$i = 0;
+$rows|% { BookDetailPage $_ }
+$rows2|% { BookDetailPage $_ }
 
 $rowsCount = ($rows | Measure-Object).Count
 $i = 0
@@ -413,27 +446,5 @@ $rows2|% { WriteBook($_) } | Out-File "$dest/livros.html" -Append
 $html = cat "$dest/livros.html" -Raw
 [System.IO.File]::WriteAllText("$dest/livros.html",$html)
 
-function BookDetailPage($_)
-{
-    Write-Progress -Activity "." -CurrentOperation "." -PercentComplete ([float]$i/[float]$rowsCount*100.0)
-    $i = $i + 1
 
-    $row = $books|? name -eq $_.Livro
-    if($row -ne $null) {
-        $imgPrefix = "../.."
-        $html = "<div><a href=`"../../livros.html`">Ver mais livros</a></div>" + (WriteBook $_ $imgPrefix $true)
-        mkdir "$dest/pages/$($row.ISBN)" -Force -EA SilentlyContinue
-
-        $fileOut = "$dest/pages/$($row.ISBN)/index.html"
-        GetPageHeader $row.name "https://xunilrj.github.io/covers/$($row.isbn).jpg" $_.Descricao "pages/$($row.ISBN)/index.html" | Out-File $fileOut
-        $html | Out-File $fileOut -Append
-
-        $html = cat $fileOut -Raw
-        [System.IO.File]::WriteAllText($fileOut,$html)
-    }
-}
-
-$i = 0;
-$rows|% { BookDetailPage $_ }
-$rows2|% { BookDetailPage $_ }
 start "$dest/livros.html"
