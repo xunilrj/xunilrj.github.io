@@ -369,6 +369,14 @@ function WriteBook($book, $imgPrefix = ".", $suggestionHardLink = $false)
                 <a href="$($_.DATE)">$($_.DATE)</a>
             </div>
 "@
+            if( $_.DATE.Contains("ww.facebook.com/olavo.decarvalho") ) {
+@"
+            <div style="padding:20px">
+                <p>Ver os melhores posts do Olavo de Carvalho</p>
+                <a href="./pages/olavo/facebook.html">$($_.DATE)</a>
+            </div>
+"@
+            }
         } elseif([string]::IsNullOrWhiteSpace($_.DATE) -eq $false){
 @"
             <div style="padding:20px">
