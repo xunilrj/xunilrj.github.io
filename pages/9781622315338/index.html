@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <title>Goebbels: A Biography</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <meta property="og:title" content="Goebbels: A Biography" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://xunilrj.github.io/covers/9781622315338.jpg" />
+    <meta property="og:url" content="https://xunilrj.github.io/pages/9781622315338/index.html" />
+    <meta property="og:description" content="" />
+</head>
+<body>
+<script>
+function embedpdf(element, file) {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.onload = function() {
+        var loadingTask = pdfjsLib.getDocument(file);
+        loadingTask.promise.then(function(pdf) {
+            console.log(1);
+        });
+    }
+    script.src = 'https://unpkg.com/pdfjs-dist@2.0.943/build/pdf.min.js';
+    head.appendChild(script);
+}
+
+function embedyoutube(element, file, startAt) {    
+    var i = document.createElement("iframe");
+    i.width = "640";
+    i.height = "480px"
+    i.src = file;
+
+    var holder = element.parentNode.querySelector(".youtubeholder");
+    holder.innerHTML = "";
+    holder.appendChild(i);
+}
+
+function embedmp3(element, file, startAt) {    
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = element.parentNode.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+}
+function ScrollTo(book){
+    if(book) {
+        var el = document.querySelectorAll("[id*='" + book + "']");
+        if(el[0]) el[0].scrollIntoView();
+    }
+}
+</script>
+<div><a href="../../livros.html">Ver mais livros</a></div>    <div style="padding: 10px" class="book">
+        <div>
+            <div style="display:inline-block">
+    <img src="../../covers/9781622315338.jpg" width="100px"/>
+</div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a id="Goebbels: A Biography" href="../../pages/9781622315338/index.html">Goebbels: A Biography</a></strong></div>
+                <div><span>Peter Longerich</span></div>
+                <div>
+    <div id="gr_add_to_books">
+        <div class="gr_custom_each_container_">
+            <a target="_blank" style="border:none" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/isbn/9781622315338"><img src="https://www.goodreads.com/images/atmb_add_book-70x25.png" /></a>
+        </div>
+    </div>                    
+</div>                
+            </div>
+        </div>        
+                    <div style="padding:20px">
+                <span>Ver citação:</span><a href="https://www.facebook.com/permalink.php?story_fbid=748989578923525&id=100014374681823">https://www.facebook.com/permalink.php?story_fbid=748989578923525&id=100014374681823</a>
+                                    <p><a href="https://xunilrj.github.io/pages/facebook/goodposts.html">Ver os outros bons posts.</a></p>
+            </div>
+            <div style="padding:20px">
+        <div><strong>Ver também</strong></div>
+        <ul>         <li>             <div>
+                <div>
+                    <span>Peter Longerich Goebbels A Biography Part 02 Audiobook (</span><a href="https://youtu.be/WgmqESHOM0o?list=PLUXsMRFy8ZZUrM5cqAjNHCNCT1F_IHlPM">https://youtu.be/WgmqESHOM0o?list=PLUXsMRFy8ZZUrM5cqAjNHCNCT1F_IHlPM</a><span>)</span>                    
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=WgmqESHOM0o?list=PLUXsMRFy8ZZUrM5cqAjNHCNCT1F_IHlPM','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/WgmqESHOM0o?list=PLUXsMRFy8ZZUrM5cqAjNHCNCT1F_IHlPM")'>Ver</button>                                
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>             <li>             <div>
+                <div>
+                    <span>Peter Longerich Goebbels A Biography Part 03 Audiobook (</span><a href="https://www.youtube.com/watch?v=qpmOTZXlWBg&list=PLUXsMRFy8ZZUrM5cqAjNHCNCT1F_IHlPM&index=7&t=0s">https://www.youtube.com/watch?v=qpmOTZXlWBg&list=PLUXsMRFy8ZZUrM5cqAjNHCNCT1F_IHlPM&index=7&t=0s</a><span>)</span>   
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=qpmOTZXlWBg&list=PLUXsMRFy8ZZUrM5cqAjNHCNCT1F_IHlPM&index=7&t=0s','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/qpmOTZXlWBg&list=PLUXsMRFy8ZZUrM5cqAjNHCNCT1F_IHlPM&index=7&t=0s")'>Ver</button>
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>             <li>             <div>
+                <div>
+                    <span>Peter Longerich Goebbels A Biography Part 04 Audiobook (</span><a href="https://www.youtube.com/watch?v=fLLTnHR78qM&list=PLUXsMRFy8ZZUrM5cqAjNHCNCT1F_IHlPM&index=8&t=0s">https://www.youtube.com/watch?v=fLLTnHR78qM&list=PLUXsMRFy8ZZUrM5cqAjNHCNCT1F_IHlPM&index=8&t=0s</a><span>)</span>   
+                </div>
+                <button onclick="window.open('https://www.youtubnow.com/watch/?v=fLLTnHR78qM&list=PLUXsMRFy8ZZUrM5cqAjNHCNCT1F_IHlPM&index=8&t=0s','_blank')">Download</button>
+                <button onclick='embedyoutube(this, "https://www.youtube.com/embed/fLLTnHR78qM&list=PLUXsMRFy8ZZUrM5cqAjNHCNCT1F_IHlPM&index=8&t=0s")'>Ver</button>
+                <div class="youtubeholder">
+                </div>
+            </div>         </li>             <li>             <span>Goebbels by Peter Longerich – review (</span><a href="https://www.theguardian.com/books/2015/jul/22/goebbels-peter-longerich-review-joseph-nazi">https://www.theguardian.com/books/2015/jul/22/goebbels-peter-longerich-review-joseph-nazi</a><span>)</span>         </li>             <li>             <span>Goebbels by Peter Longerich; book review (</span><a href="https://www.independent.co.uk/arts-entertainment/books/reviews/goebbels-by-peter-longerich-book-review-10213572.html">https://www.independent.co.uk/arts-entertainment/books/reviews/goebbels-by-peter-longerich-book-review-10213572.html</a><span>)</span>         </li>             <li>             <span>(Book Review) Goebbels: A Biography (</span><a href="https://www.armyupress.army.mil/Journals/Military-Review/MR-Book-Reviews/March-2017/Book-Review-009/">https://www.armyupress.army.mil/Journals/Military-Review/MR-Book-Reviews/March-2017/Book-Review-009/</a><span>)</span>         </li>         </ul>
+    </div>
+            <div style="padding:20px">
+        <div><strong>Mais livros</strong></div>         <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/B01GBKTA1W.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/B01GBKTA1W/index.html">Socialisme Fasciste</a></strong></div>
+                <div>Pierre Drieu La Rochelle</div>                
+            </div>
+        </div>             <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/9781939438232.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/9781939438232/index.html">The Best Enemy Money Can Buy</a></strong></div>
+                <div>Antony C. Sutton</div>                
+            </div>
+        </div>             <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/9780895260345.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/9780895260345/index.html">The Myth of Hitler’s Pope</a></strong></div>
+                <div>David G. Dalin</div>                
+            </div>
+        </div>             <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/9781929631667.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/9781929631667/index.html">Hitler’s Table Talk, 1941-1944</a></strong></div>
+                <div>Hugh Trevor-Roper</div>                
+            </div>
+        </div>             <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/9780415604437.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/9780415604437/index.html">Diagnosis Of Our Time</a></strong></div>
+                <div>Karl Mannheim</div>                
+            </div>
+        </div>             <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/9780671760830.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/9780671760830/index.html">Who Financed Hitler: The Secret Funding of Hitler's Rise to Power, 1919-1933</a></strong></div>
+                <div>James Pool</div>                
+            </div>
+        </div>         </div>
+    </div>

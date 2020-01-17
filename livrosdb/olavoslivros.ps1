@@ -7,6 +7,9 @@ $suggestions = Import-CSV "suggestion.csv" -Delimiter ";" -Header "from","to"
 $suggestionsLinks = Import-CSV "suggestion.links.csv" -Delimiter ";" -Header "from","url","title","summary"
 
 $dest = "D:/github/xunilrj.github.io"
+$i = 0;
+$rowsCount = ($rows | Measure-Object).Count
+$rowsCount += ($rows2  | Measure-Object).Count
 
 function BookDetailPage($_)
 {
@@ -27,8 +30,6 @@ function BookDetailPage($_)
         [System.IO.File]::WriteAllText($fileOut,$html)
     }
 }
-
-
 
 function getMP3File($date) {    
     if($date -is [System.String]) {
@@ -369,9 +370,14 @@ function WriteBook($book, $imgPrefix = ".", $suggestionHardLink = $false)
                 $(
                 if( $_.DATE.Contains("ww.facebook.com/olavo.decarvalho") ) {
 @"
-                    <p><a href="https://xunilrj.github.io/pages/olavo/facebook.html">Ver os melhores posts do Olavo de Carvalho</a></p>
+                    <p><a href="https://xunilrj.github.io/pages/olavo/facebook.html">Ver os melhores posts do Olavo de Carvalho.</a></p>
 "@
-                })
+                } elseif( $_.DATE.Contains("ww.facebook.com") ) {
+@"
+                    <p><a href="https://xunilrj.github.io/pages/facebook/goodposts.html">Ver os outros bons posts.</a></p>
+"@
+                }
+                )
             </div>
 "@
         } elseif([string]::IsNullOrWhiteSpace($_.DATE) -eq $false){
@@ -402,7 +408,6 @@ function WriteBook($book, $imgPrefix = ".", $suggestionHardLink = $false)
 "@
 }
 
-$i = 0;
 $rows|% { BookDetailPage $_ }
 $rows2|% { BookDetailPage $_ }
 
@@ -450,6 +455,5 @@ $rows2|% { WriteBook($_) } | Out-File "$dest/livros.html" -Append
 "@ | Out-File "$dest/livros.html" -Append
 $html = cat "$dest/livros.html" -Raw
 [System.IO.File]::WriteAllText("$dest/livros.html",$html)
-
 
 start "$dest/livros.html"
