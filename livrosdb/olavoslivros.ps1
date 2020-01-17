@@ -365,18 +365,15 @@ function WriteBook($book, $imgPrefix = ".", $suggestionHardLink = $false)
         if( ([string]::IsNullOrWhiteSpace($_.DATE) -eq $false) -and ($_.DATE.StartsWith("http"))){
 @"
             <div style="padding:20px">
-                <p>Ver citação</p>
-                <a href="$($_.DATE)">$($_.DATE)</a>
-            </div>
-"@
-            if( $_.DATE.Contains("ww.facebook.com/olavo.decarvalho") ) {
+                <span>Ver citação:</span><a href="$($_.DATE)">$($_.DATE)</a>
+                $(
+                if( $_.DATE.Contains("ww.facebook.com/olavo.decarvalho") ) {
 @"
-            <div style="padding:20px">
-                <p>Ver os melhores posts do Olavo de Carvalho</p>
-                <a href="./pages/olavo/facebook.html">$($_.DATE)</a>
+                    <p><a href="https://xunilrj.github.io/pages/olavo/facebook.html">Ver os melhores posts do Olavo de Carvalho</a></p>
+"@
+                })
             </div>
 "@
-            }
         } elseif([string]::IsNullOrWhiteSpace($_.DATE) -eq $false){
 @"
             <div style="padding:20px">
