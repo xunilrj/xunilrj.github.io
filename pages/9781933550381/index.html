@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <title>Study Guide to Human Action: A Treatise on Economics</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <meta property="og:title" content="Study Guide to Human Action: A Treatise on Economics" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://xunilrj.github.io/covers/9781933550381.jpg" />
+    <meta property="og:url" content="https://xunilrj.github.io/pages/9781933550381/index.html" />
+    <meta property="og:description" content="" />
+</head>
+<body>
+<script>
+function embedpdf(element, file) {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.onload = function() {
+        var loadingTask = pdfjsLib.getDocument(file);
+        loadingTask.promise.then(function(pdf) {
+            console.log(1);
+        });
+    }
+    script.src = 'https://unpkg.com/pdfjs-dist@2.0.943/build/pdf.min.js';
+    head.appendChild(script);
+}
+
+function embedyoutube(element, file, startAt) {    
+    var i = document.createElement("iframe");
+    i.width = "640";
+    i.height = "480px"
+    i.src = file;
+
+    var holder = element.parentNode.querySelector(".youtubeholder");
+    holder.innerHTML = "";
+    holder.appendChild(i);
+}
+
+function embedmp3(element, file, startAt) {    
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = element.parentNode.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+}
+function ScrollTo(book){
+    if(book) {
+        var el = document.querySelectorAll("[id*='" + book + "']");
+        if(el[0]) el[0].scrollIntoView();
+    }
+}
+</script>
+<div><a href="../../livros.html">Ver mais livros</a></div>    <div style="padding: 10px" class="book">
+        <div>
+            <div style="display:inline-block">
+    <img src="../../covers/9781933550381.jpg" width="100px"/>
+</div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a id="Study Guide to Human Action: A Treatise on Economics" href="../../pages/9781933550381/index.html">Study Guide to Human Action: A Treatise on Economics</a></strong></div>
+                <div><span>Robert P. Murphy</span></div>
+                <div>
+    <div id="gr_add_to_books">
+        <div class="gr_custom_each_container_">
+            <a target="_blank" style="border:none" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/isbn/9781933550381"><img src="https://www.goodreads.com/images/atmb_add_book-70x25.png" /></a>
+        </div>
+    </div>                    
+</div>                
+            </div>
+        </div>        
+        
+            <div style="padding:20px">
+        <div><strong>Ver também</strong></div>
+        <ul>         <li>             <span>Human Action (</span><a href="https://mises.org/library/human-action-0">https://mises.org/library/human-action-0</a><span>)</span>         </li>             <li>             <span>(Audiobook) Human Action (</span><a href="https://mises.org/library/human-action-treatise-economics-0">https://mises.org/library/human-action-treatise-economics-0</a><span>)</span>         </li>             <li>             <span>Study Guide to Human Action: A Treatise on Economics (</span><a href="https://mises.org/library/study-guide-human-action-treatise-economics">https://mises.org/library/study-guide-human-action-treatise-economics</a><span>)</span>         </li>         </ul>
+    </div>
+            <div style="padding:20px">
+        <div><strong>Mais livros</strong></div>         <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/9781614273547.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/9781614273547/index.html">Ação Humana</a></strong></div>
+                <div>Ludwig Von Mises</div>                
+            </div>
+        </div>             <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/9781598132182.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/9781598132182/index.html">Choice: Cooperation, Enterprise, and Human Action</a></strong></div>
+                <div>Robert P. Murphy</div>                
+            </div>
+        </div>             <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/9780865975699.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/9780865975699/index.html">Theory and History – an interpretation of social and economic evolution</a></strong></div>
+                <div>Ludwig von Mises</div>                
+            </div>
+        </div>         </div>
+    </div>

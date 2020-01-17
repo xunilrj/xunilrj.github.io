@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <title>House of Intellect</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <meta property="og:title" content="House of Intellect" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://xunilrj.github.io/covers/9780313200717.jpg" />
+    <meta property="og:url" content="https://xunilrj.github.io/pages/9780313200717/index.html" />
+    <meta property="og:description" content="" />
+</head>
+<body>
+<script>
+function embedpdf(element, file) {
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.onload = function() {
+        var loadingTask = pdfjsLib.getDocument(file);
+        loadingTask.promise.then(function(pdf) {
+            console.log(1);
+        });
+    }
+    script.src = 'https://unpkg.com/pdfjs-dist@2.0.943/build/pdf.min.js';
+    head.appendChild(script);
+}
+
+function embedyoutube(element, file, startAt) {    
+    var i = document.createElement("iframe");
+    i.width = "640";
+    i.height = "480px"
+    i.src = file;
+
+    var holder = element.parentNode.querySelector(".youtubeholder");
+    holder.innerHTML = "";
+    holder.appendChild(i);
+}
+
+function embedmp3(element, file, startAt) {    
+    var soundFile = document.createElement("video");
+    soundFile.preload = "auto";
+    soundFile.controls = true;
+    soundFile.style = "width: 600px;";
+
+    var src = document.createElement("source");
+    src.src = file;    
+    soundFile.appendChild(src);
+
+    var holder = element.parentNode.querySelector(".audioholder");
+    holder.innerHTML = "";
+    holder.appendChild(soundFile);
+
+    soundFile.load();
+
+    if(startAt)
+        soundFile.currentTime = startAt;
+
+    soundFile.play();
+}
+function ScrollTo(book){
+    if(book) {
+        var el = document.querySelectorAll("[id*='" + book + "']");
+        if(el[0]) el[0].scrollIntoView();
+    }
+}
+</script>
+<div><a href="../../livros.html">Ver mais livros</a></div>    <div style="padding: 10px" class="book">
+        <div>
+            <div style="display:inline-block">
+    <img src="../../covers/9780313200717.jpg" width="100px"/>
+</div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a id="House of Intellect" href="../../pages/9780313200717/index.html">House of Intellect</a></strong></div>
+                <div><span>Jacques Barzun</span></div>
+                <div>
+    <div id="gr_add_to_books">
+        <div class="gr_custom_each_container_">
+            <a target="_blank" style="border:none" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/isbn/9780313200717"><img src="https://www.goodreads.com/images/atmb_add_book-70x25.png" /></a>
+        </div>
+    </div>                    
+</div>                
+            </div>
+        </div>        
+        
+            <div style="padding:20px">
+        <div><strong>Ver também</strong></div>
+        <ul>         <li> <p>"No plano intelectual, o estudante deve esforçar-se para obter a mais alta qualificação possível, adotando como modelos da sua auto-educação as práticas melhores registradas historicamente: as da Academia platônica, do Liceu aristotélico, da universidade européia no século XIII (com seus ecos residuais na filosofia cristã moderna, por exemplo La Vie Intellectuelle (A Vida Intelectual) de A. D. Sertillanges e Conseils sur la Vie Intellectuelle de Jean Guitton), da intelectualidade superior alemã no século XIX e austríaca no começo do século XX (tal como descrita, por exemplo, nos depoimentos de Eric Voegelin, Otto Maria Carpeaux e Marjorie Perloff) e, last not least, da tradição americana de liberal education (v., além do clássico How to Read a Book de Mortimer J. Adler, The Trivium, de Sister Miriam Joseph, Another Sort of Learning, de James V. Schall, e The House of Intellect, de Jacques Barzun)."</p>             <span>Pela restauração intelectual do Brasil (</span><a href="http://www.olavodecarvalho.org/semana/060904dc.html">http://www.olavodecarvalho.org/semana/060904dc.html</a><span>)</span>         </li>             <li>             <span>Educação Liberal (</span><a href="http://www.olavodecarvalho.org/palestras/2001educacaoliberal.htm">http://www.olavodecarvalho.org/palestras/2001educacaoliberal.htm</a><span>)</span>         </li>         </ul>
+    </div>
+            <div style="padding:20px">
+        <div><strong>Mais livros</strong></div>         <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/9780898701838.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/9780898701838/index.html">Another Sort of Learning</a></strong></div>
+                <div>James V. Schall</div>                
+            </div>
+        </div>             <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/9788588062863.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/9788588062863/index.html">A Vida Intelectual</a></strong></div>
+                <div>A. D. Sertillanges</div>                
+            </div>
+        </div>             <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/9780671212094.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/9780671212094/index.html">How to Read a Book: The Classic Guide to Intelligent Reading</a></strong></div>
+                <div>Mortimer J. Adler</div>                
+            </div>
+        </div>             <div style="padding:20px;display:inline-block;max-width:300px">
+            <div>
+                <div style="display:inline-block">
+    <img src="../../covers/9780967967509.jpg" width="100px"/>
+</div>
+            </div>
+            <div style="display:inline-block;vertical-align:top">
+                <div><strong><a href="../../pages/9780967967509/index.html">The Trivium: The Liberal Arts of Logic, Grammar and Rhetoric</a></strong></div>
+                <div>Sister Miriam Joseph</div>                
+            </div>
+        </div>         </div>
+    </div>

@@ -413,8 +413,8 @@ $rows2|% { WriteBook($_) } | Out-File "$dest/livros.html" -Append
 $html = cat "$dest/livros.html" -Raw
 [System.IO.File]::WriteAllText("$dest/livros.html",$html)
 
-$i = 0;
-$rows|% { 
+function BookDetailPage($_)
+{
     Write-Progress -Activity "." -CurrentOperation "." -PercentComplete ([float]$i/[float]$rowsCount*100.0)
     $i = $i + 1
 
@@ -433,4 +433,7 @@ $rows|% {
     }
 }
 
+$i = 0;
+$rows|% { BookDetailPage $_ }
+$rows2|% { BookDetailPage $_ }
 start "$dest/livros.html"
