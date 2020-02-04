@@ -1,17 +1,66 @@
+<script>
+    function embedmp3(element, file, startAt, force, autoPlay = true) {
+        clearInterval(window.interval);
+    
+        if(window.episodeEl) {
+        var allchapters = window.episodeEl.querySelectorAll("[data-chapterstart]");
+            allchapters.forEach(function(x){
+                x.style.backgroundColor = "white";
+            });
+        }
+    
+        if(force) {
+            window.soundFile = null;
+        }
+    
+        if(window.soundFile)
+        {
+            window.soundFile.currentTime = startAt;
+            return;
+        }
+    
+        var soundFile = document.createElement("video");
+        soundFile.preload = "auto";
+        soundFile.controls = true;
+        soundFile.style = "width: 600px;";
+    
+        var src = document.createElement("source");
+        src.src = file;    
+        soundFile.appendChild(src);
+    
+        var holder = document.querySelector(".audioholder");
+        holder.innerHTML = "";
+        holder.appendChild(soundFile);
+    
+        soundFile.load();
+    
+        if(startAt)
+            soundFile.currentTime = startAt;
+    
+        if(autoPlay)
+            soundFile.play();
+        else
+            soundFile.pause();
+    }
+</script>
 <h1>Guia para estudo de História</h1>
-<iframe src="https://www.youtube.com/embed?v=DNiOOwfN7Ng" width="640" height="480"></iframe>
+<div class="audioholder">
+</div>
+<script>
+    embedmp3(document.querySelector('.audioholder'), 'http://www.machinaaurum.com/trueoutspeak/TrueOutspeak%2022%2010%202007.mp4', 2217, true, false);
+</script>
 <br />
 Lista:
 <br />
-1) Leopold Von Ranke - Historia de los Papas
-<br />
-<a href="https://archive.org/details/historyofpopesth0101rank/page/n10">https://archive.org/details/historyofpopesth0101rank/page/n10</a>
-<br />
-<a href="https://archive.org/details/TheHistoryOfThePopes">https://archive.org/details/TheHistoryOfThePopes</a>
-<br />
-<a href="https://archive.org/details/in.ernet.dli.2015.174311/page/n3">https://archive.org/details/in.ernet.dli.2015.174311/page/n3</a>
-<br />
-<br />
+1) Leopold Von Ranke - Historia dos Papas
+<ul>
+    <li><span>The history of the Popes; their church and state: Volume I </span><a href="https://archive.org/details/historyofpopesth00rankuoft">https://archive.org/details/historyofpopesth00rankuoft</a></li>
+    <li><span>The history of the Popes; their church and state: Volume II </span><a href="https://archive.org/details/historyofpopesth01rankuoft">https://archive.org/details/historyofpopesth01rankuoft</a></li>
+    <li><span>The history of the Popes; their church and state: Volume III </span><a href="https://archive.org/details/historyofpopesth02rankuoft">https://archive.org/details/historyofpopesth02rankuoft</a></li>
+    <li><span>The history of the Popes during the last four centuries: Volume I </span><a href="https://archive.org/details/historyofpopesdu01rankuoft">https://archive.org/details/historyofpopesdu01rankuoft</a></li>
+    <li><span>The history of the Popes during the last four centuries: Volume II </span><a href="https://archive.org/details/historyofpopesdu02rankiala">https://archive.org/details/historyofpopesdu02rankiala</a></li>
+    <li><span>The history of the Popes during the last four centuries: Volume III </span><a href="https://archive.org/details/historyofthepope03rankuoft">https://archive.org/details/historyofthepope03rankuoft</a></li>
+</ul>
 2) Hippolyte Taine - Origem da França contemporânea
 <br />
 <a href="http://www.hellenicaworld.com/France/Literature/HippolyteATaine/en/TheOriginsOfContemporaryFrance1.html">http://www.hellenicaworld.com/France/Literature/HippolyteATaine/en/TheOriginsOfContemporaryFrance1.html</a>
