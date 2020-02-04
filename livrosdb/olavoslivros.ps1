@@ -191,6 +191,7 @@ function GetPageHeader ($title, $img, $decricao, $url) {
     <meta property="og:image" content="$img" />
     <meta property="og:url" content="https://xunilrj.github.io/$url" />
     <meta property="og:description" content="$decricao" />
+    <script data-ad-client="ca-pub-8654746170061657" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
 <script>
