@@ -5,15 +5,66 @@ import {mat4, vec3} from 'gl-matrix';
 import 'codyhouse-framework/main/assets/js/util';
 import applyMenuBar from './menuBar';
 import 'magic.css/dist/magic.css';
+import 'babel-polyfill';
 
-document.getElementById("playButton").addEventListener("click", e=> {
-    const selector = document.querySelector('#text');
-    selector.classList.add('magictime', 'puffOut');
-    selector.onanimationend = (e) => {
-        e.target.style.display = "none";
-        selector.onanimationend = null;
-    };
-})
+function whenEventIsRaised(obj, event)
+{
+    return new Promise((ok,rej) => {
+        obj[event] = (e) => {
+            ok(e);
+            obj[event] = null;
+        }
+    });
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function animate(id, animType, beforeStart)
+{
+    let selector = document.querySelector('#' + id);
+    if(beforeStart) beforeStart(selector);
+
+    selector.classList.add('magictime', animType);
+    const e = await whenEventIsRaised(selector, "onanimationend");
+    selector.classList.remove('magictime', animType);
+    return e;
+}
+
+async function minWindow(button)
+{
+    button.classList.remove("fa-play");
+    button.classList.add("fa-pause");
+    let t1 = animate('text', 'puffOut'); await sleep(200);
+    let t2 = animate('minimizedWindow', 'puffIn', x => x.style.display = "flex");
+
+    (await t1).target.style.display = "none";
+    await t2;
+}
+
+async function maxWindow(button)
+{
+    button.classList.remove("fa-pause");
+    button.classList.add("fa-play");
+    let t1 = animate('minimizedWindow', 'puffOut'); await sleep(200);
+    let t2 = animate('text', 'puffIn', x => x.style.display = "block"); 
+
+    (await t1).target.style.display = "none";
+    await t2;
+}
+
+document.getElementById("playButton").addEventListener("click", e => {
+    let button = e.target;
+
+    if(button.classList.contains("fa-play"))
+        minWindow(e.target);
+    else if(button.classList.contains("fa-pause"))
+        maxWindow(e.target);
+});
+document.getElementById("minimizedWindow").addEventListener("click", e => {
+    maxWindow(document.querySelector("#playButton i"));
+});
 
 applyMenuBar();
 
