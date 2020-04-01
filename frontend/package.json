@@ -12,7 +12,8 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
     "codyhouse-framework": "^2.5.5",
-    "gl-matrix": "^3.3.0"
+    "gl-matrix": "^3.3.0",
+    "magic.css": "^1.4.5"
   },
   "devDependencies": {
     "sass": "^1.26.3"

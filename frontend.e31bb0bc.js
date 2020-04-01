@@ -8663,7 +8663,13 @@ function applyMenuBar() {
     }
   }
 }
-},{}],"index.js":[function(require,module,exports) {
+},{}],"node_modules/magic.css/dist/magic.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("@fortawesome/fontawesome-free/css/all.min.css");
@@ -8678,8 +8684,19 @@ require("codyhouse-framework/main/assets/js/util");
 
 var _menuBar = _interopRequireDefault(require("./menuBar"));
 
+require("magic.css/dist/magic.css");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+document.getElementById("playButton").addEventListener("click", function (e) {
+  var selector = document.querySelector('#text');
+  selector.classList.add('magictime', 'puffOut');
+
+  selector.onanimationend = function (e) {
+    e.target.style.display = "none";
+    selector.onanimationend = null;
+  };
+});
 (0, _menuBar.default)();
 var canvas = document.getElementById('backgroundCanvas');
 
@@ -8787,7 +8804,7 @@ function draw(time) {
 }
 
 requestAnimationFrame(draw);
-},{"@fortawesome/fontawesome-free/css/all.min.css":"node_modules/@fortawesome/fontawesome-free/css/all.min.css","./index.css":"index.css","./index.scss":"index.scss","gl-matrix":"node_modules/gl-matrix/esm/index.js","codyhouse-framework/main/assets/js/util":"node_modules/codyhouse-framework/main/assets/js/util.js","./menuBar":"menuBar.js"}],"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@fortawesome/fontawesome-free/css/all.min.css":"node_modules/@fortawesome/fontawesome-free/css/all.min.css","./index.css":"index.css","./index.scss":"index.scss","gl-matrix":"node_modules/gl-matrix/esm/index.js","codyhouse-framework/main/assets/js/util":"node_modules/codyhouse-framework/main/assets/js/util.js","./menuBar":"menuBar.js","magic.css/dist/magic.css":"node_modules/magic.css/dist/magic.css"}],"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -8815,7 +8832,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56596" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58797" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

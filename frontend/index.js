@@ -4,6 +4,16 @@ import './index.scss';
 import {mat4, vec3} from 'gl-matrix';
 import 'codyhouse-framework/main/assets/js/util';
 import applyMenuBar from './menuBar';
+import 'magic.css/dist/magic.css';
+
+document.getElementById("playButton").addEventListener("click", e=> {
+    const selector = document.querySelector('#text');
+    selector.classList.add('magictime', 'puffOut');
+    selector.onanimationend = (e) => {
+        e.target.style.display = "none";
+        selector.onanimationend = null;
+    };
+})
 
 applyMenuBar();
 

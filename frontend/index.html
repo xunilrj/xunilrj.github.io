@@ -1,6 +1,6 @@
 <html>
 
-<body style="margin:0px">
+<body style="margin:0px;overflow:hidden">
     <canvas id="backgroundCanvas" style="width: 100vw; height: 100vh;position: absolute;z-index:-1"></canvas>
     <div style="height: 10vh;">
         <div style="padding: 10px">
@@ -12,7 +12,7 @@
                         <i class="fas fa-arrow-left"></i>
                         <span class="menu-bar__label">Previous</span>
                     </li>
-                    <li class="menu-bar__item menu-bar__item--hide" role="menuitem">
+                    <li id="playButton" class="menu-bar__item menu-bar__item--hide" role="menuitem">
                         <i class="fas fa-play"></i>
                         <span class="menu-bar__label">Play</span>
                     </li>
@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div style="width: 50vw; min-width: 600px; max-height: calc(90vh - 30px); margin: 0 auto; overflow-y: scroll; background: rgba(255,255,255,0.9)">
+    <div  id="text"  style="width: 50vw; min-width: 600px; max-height: calc(90vh - 30px); margin: 0 auto; overflow-y: scroll; background: rgba(255,255,255,0.9)">
         <article style="margin: 50px">
             <h1>What is Lorem Ipsum?</h1>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
