@@ -6,6 +6,18 @@ import 'codyhouse-framework/main/assets/js/util';
 import applyMenuBar from './menuBar';
 import 'magic.css/dist/magic.css';
 import 'babel-polyfill';
+import {setupFullScreenQuad, setupMixTextures} from './renderQuad.js';
+import gaussianBlurCODE from './gaussianBlur.glsl';
+import mixTextureCODE from './mixTexture.frag';
+import prepr from 'prepr';
+
+function gaussianBlurGLSL(dir, size)
+{
+    if(dir.startsWith("h"))
+        return prepr(gaussianBlurCODE, {BLURSIZE: size.toFixed("2"), DIR_H: true});
+    else if(dir.startsWith("v"))
+        return prepr(gaussianBlurCODE, {BLURSIZE: size.toFixed("2"), DIR_V: true});
+}
 
 function whenEventIsRaised(obj, event) {
     return new Promise((ok, rej) => {
@@ -72,6 +84,75 @@ function resizeCanvas() {
 }
 window.onresize = resizeCanvas;
 resizeCanvas();
+
+let targets = {};
+let targetsi = 0;
+const renderTargets = {
+    renderToScreen: (f) => {
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+        gl.viewport(0.0, 0.0, canvas.clientWidth, canvas.clientHeight);
+        f();
+    },
+    renderTo: (f, i) => {
+        const {frameBuffer, width, height, targetTexture} = targets[i];
+        gl.bindFramebuffer(gl.FRAMEBUFFER, frameBuffer);
+        gl.viewport(0.0, 0.0, width, height);
+        f();
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+
+        return targetTexture;
+    },
+    targetTexture: (i) => {
+        const {targetTexture} = targets[i];
+        return targetTexture;
+    },
+    gen: (gl, width, height, depth) => {
+        let depthBuffer;
+
+        if(depth)
+        {
+            depthBuffer  = gl.createRenderbuffer();
+            gl.bindRenderbuffer(gl.RENDERBUFFER, depthBuffer); 
+            gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, 
+                width, height);
+        }
+
+        const targetTexture = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, targetTexture);
+        {
+            const level = 0;
+            const internalFormat = gl.RGBA;
+            const border = 0;
+            const format = gl.RGBA;
+            const type = gl.UNSIGNED_BYTE;
+            const data = null;
+            gl.texImage2D(gl.TEXTURE_2D, level, internalFormat,
+                width, height, border,
+                format, type, data);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        }
+
+        const frameBuffer = gl.createFramebuffer();
+        gl.bindFramebuffer(gl.FRAMEBUFFER, frameBuffer);
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0,
+            gl.TEXTURE_2D, targetTexture, 0);
+        if(depth)
+        {
+            gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT,
+                gl.RENDERBUFFER, depthBuffer);
+        }
+
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+        gl.bindTexture(gl.TEXTURE_2D, null);
+        gl.bindRenderbuffer(gl.RENDERBUFFER, null);
+
+        let i = targetsi; ++targetsi;
+        targets[i] = {depthBuffer, targetTexture, frameBuffer, width, height}
+        return i;
+    }
+};
 
 const gl = canvas.getContext("webgl")
 
@@ -173,157 +254,26 @@ function initRotatingCube() {
     var view_matrix = mat4.create();
     var model_matrix = mat4.create();
 
-    // target texture
-    const targetTextureWidth = canvas.clientWidth;
-    const targetTextureHeight = canvas.clientHeight;
+    const fullSceneTarget = renderTargets.gen(gl, 
+        canvas.clientWidth, canvas.clientHeight,
+        true);
 
-    const depthBuffer  = gl.createRenderbuffer();
-    gl.bindRenderbuffer(gl.RENDERBUFFER, depthBuffer); 
-    gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, targetTextureWidth, targetTextureHeight);
+    const sceneTarget = renderTargets.gen(gl, 256, 256, true);
+    const hBlurTarget = renderTargets.gen(gl, 256, 256, false);
+    const vBlurTarget = renderTargets.gen(gl, 256, 256, false);
 
-    const targetTexture = gl.createTexture();
-    gl.bindTexture(gl.TEXTURE_2D, targetTexture);
-    {
-        const level = 0;
-        const internalFormat = gl.RGBA;
-        const border = 0;
-        const format = gl.RGBA;
-        const type = gl.UNSIGNED_BYTE;
-        const data = null;
-        gl.texImage2D(gl.TEXTURE_2D, level, internalFormat,
-            targetTextureWidth, targetTextureHeight, border,
-            format, type, data);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    }
-    const fb = gl.createFramebuffer();
-    gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
-    const attachmentPoint = gl.COLOR_ATTACHMENT0;
-    const level = 0;
-    gl.framebufferTexture2D(gl.FRAMEBUFFER, attachmentPoint, gl.TEXTURE_2D, targetTexture, level);
-    gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, depthBuffer);
-
-    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-    gl.bindTexture(gl.TEXTURE_2D, null);
-    gl.bindRenderbuffer(gl.RENDERBUFFER, null);
-    // --
-
-    let screenQuadVBO;
-    let screenVertShader;
-    let screenFragShader;
-    let screenShaderProgram;
-    let screenQuadPosition;
-    let screenQuadUVs;
-    let screenQuadSampler;
-    let screenQuadT;
-    let screent = 0;
-    function drawFullScreenQuad() {
-        // Only created once
-        if (screenQuadVBO == null) {
-            console.log("init")
-            var verts = [
-                // First triangle:
-                 1.0,  1.0, 1.0, 1.0,
-                 1.0, -1.0, 1.0, 0.0,
-                -1.0, -1.0, 0.0, 0.0,
-                // Second triangle:
-                -1.0, -1.0, 0.0, 0.0,
-                -1.0,  1.0, 0.0, 1.0, 
-                 1.0,  1.0, 1.0, 1.0
-            ];
-            screenQuadVBO = gl.createBuffer();
-            gl.bindBuffer(gl.ARRAY_BUFFER, screenQuadVBO);
-            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
-
-            var vertCode = 'attribute vec2 position;' +
-                'attribute vec2 uvs;' +
-                'varying vec3 vColor;' +
-                'void main(void) { ' +
-                'gl_Position = vec4(position,0,1);' +
-                'vColor = vec3(uvs,1.);' +
-                '}';
-
-            var fragCode = 'precision mediump float;' +
-                'uniform sampler2D uSampler;'+
-                'uniform float t;'+
-                'varying vec3 vColor;' +
-                'vec4 toGrayScale(vec4 p)' +
-                '{' +
-                '   float g = 0.2126*p.r + 0.7152*p.g + 0.0722*p.b;' +
-                '	return vec4(g, g, g, p.a);' +
-                '}' +
-                'void main(void) {' +
-                'vec4 p = texture2D(uSampler, vColor.xy);' +
-                'vec4 sourceColor = p;' +
-                'vec4 destColor = toGrayScale(p);' +
-                'gl_FragColor = mix(sourceColor, destColor, t);' +
-                '}';
-
-            screenVertShader = gl.createShader(gl.VERTEX_SHADER);
-            gl.shaderSource(screenVertShader, vertCode);
-            gl.compileShader(screenVertShader);
-
-            screenFragShader = gl.createShader(gl.FRAGMENT_SHADER);
-            gl.shaderSource(screenFragShader, fragCode);
-            gl.compileShader(screenFragShader);
-
-            var compiled = gl.getShaderParameter(screenFragShader, gl.COMPILE_STATUS);
-            console.log('Shader compiled successfully: ' + compiled);
-            var compilationLog = gl.getShaderInfoLog(screenFragShader);
-            console.log('Shader compiler log: ' + compilationLog);
-
-            screenShaderProgram = gl.createProgram();
-            gl.attachShader(screenShaderProgram, screenVertShader);
-            gl.attachShader(screenShaderProgram, screenFragShader);
-            gl.linkProgram(screenShaderProgram);
-
-            screenQuadPosition = gl.getAttribLocation(screenShaderProgram, "position");
-            screenQuadUVs = gl.getAttribLocation(screenShaderProgram, "uvs");
-            screenQuadSampler = gl.getUniformLocation(screenShaderProgram, 'uSampler');
-            screenQuadT = gl.getUniformLocation(screenShaderProgram, 't');
-        }
-
-        screent += 0.01;
-
-        gl.activeTexture(gl.TEXTURE0);
-        gl.bindTexture(gl.TEXTURE_2D, targetTexture);
-
-        gl.useProgram(screenShaderProgram);
-
-        gl.bindBuffer(gl.ARRAY_BUFFER, screenQuadVBO);        
-        gl.enableVertexAttribArray(screenQuadPosition);
-            gl.vertexAttribPointer(screenQuadPosition, 2, gl.FLOAT, false, 16, 0);
-        gl.enableVertexAttribArray(screenQuadUVs);
-            gl.vertexAttribPointer(screenQuadUVs, 2, gl.FLOAT, false, 16, 8);
-        gl.uniform1i(screenQuadSampler, 0);
-        gl.uniform1f(screenQuadT, (Math.cos(screent) + 1)/2);        
-        
-        gl.drawArrays(gl.TRIANGLES, 0, 6);        
-    }
+    const hBlurRender = setupFullScreenQuad(gl, ["t","blurStepSize"], gaussianBlurGLSL("h", 8));
+    const vBlurRender = setupFullScreenQuad(gl, ["t","blurStepSize"], gaussianBlurGLSL("v", 8));
+    const mixTexturesRender = setupMixTextures(gl, 2, [], mixTextureCODE);
 
     var time_old = 0;
-    fdraw = function (time) {
-        var dt = time - time_old;
-        mat4.rotateZ(model_matrix, model_matrix, dt * 0.0005);
-        mat4.rotateY(model_matrix, model_matrix, dt * 0.0002);
-        mat4.rotateX(model_matrix, model_matrix, dt * 0.0003);
-        time_old = time;
+    const fdrawCube = function(cr,cg,cb, ca) {
+        gl.enable(gl.DEPTH_TEST);   
+        gl.depthFunc(gl.LEQUAL);
 
-        mat4.perspective(proj_matrix, 45, canvas.clientWidth / canvas.clientHeight, 1, 100);
-        mat4.lookAt(view_matrix,
-            vec3.fromValues(-3, 3, 3),
-            vec3.fromValues(0, 0, 0),
-            vec3.fromValues(0, 1, 0)
-        );
+        gl.clearColor(cr, cg, cb, ca);
+        gl.clearDepth(1.0);
 
-        gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
-            gl.enable(gl.DEPTH_TEST);   
-            gl.depthFunc(gl.LEQUAL);
-            gl.clearColor(0.5, 0.5, 0.5, 0.9);
-            gl.clearDepth(1.0);        
-            gl.viewport(0.0, 0.0, canvas.width, canvas.height);
-    
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
         gl.useProgram(shaderProgram);
             gl.uniformMatrix4fv(Pmatrix, false, proj_matrix);
@@ -337,13 +287,51 @@ function initRotatingCube() {
                     gl.vertexAttribPointer(color, 3, gl.FLOAT, false, 0, 0);
         gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
 
-        {
-            gl.bindFramebuffer(gl.FRAMEBUFFER, null);            
-            gl.viewport(0.0, 0.0, canvas.width, canvas.height);
-            gl.clearColor(1, 0, 0, 1);
-            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-            drawFullScreenQuad(targetTexture);
-        }
+    };
+
+    let screent = 0;
+    fdraw = function (time) {
+        var dt = time - time_old;
+        time_old = time;
+
+        mat4.rotateZ(model_matrix, model_matrix, dt * 0.0005);
+        mat4.rotateY(model_matrix, model_matrix, dt * 0.0002);
+        mat4.rotateX(model_matrix, model_matrix, dt * 0.0003);
+        mat4.perspective(proj_matrix, 45, 
+            canvas.clientWidth / canvas.clientHeight, 1, 100);
+        mat4.lookAt(view_matrix,
+            vec3.fromValues(-3, 3, 3),
+            vec3.fromValues(0, 0, 0),
+            vec3.fromValues(0, 1, 0)
+        );
+
+        const smallScene = renderTargets.renderTo(
+            x => fdrawCube(0,0,0,0),
+            sceneTarget);
+
+        const hBlurTexture = renderTargets.renderTo(x => {
+            hBlurRender(smallScene, ([t,blurStepSize]) => {
+                gl.uniform1f(t, (Math.cos(screent) + 1)/2);        
+                gl.uniform1f(blurStepSize, 1.0/256.0);   
+            });
+        }, hBlurTarget);
+
+        const bluredTexture = renderTargets.renderTo(x => {
+            vBlurRender(hBlurTexture, ([t,blurStepSize]) => {
+                gl.uniform1f(t, (Math.cos(screent) + 1)/2);        
+                gl.uniform1f(blurStepSize, 1.0/256.0);   
+            });
+        }, vBlurTarget);
+
+        const fullSceneTexture = renderTargets.renderTo(
+            x => fdrawCube(0.5,0.5,0.5,1),
+            fullSceneTarget);
+
+        renderTargets.renderToScreen(() => {
+            mixTexturesRender([fullSceneTexture, bluredTexture], () => {
+
+            })
+        });
     }
 }
 

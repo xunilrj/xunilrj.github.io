@@ -16667,7 +16667,2427 @@ define(String.prototype, "padRight", "".padEnd);
 "pop,reverse,shift,keys,values,entries,indexOf,every,some,forEach,map,filter,find,findIndex,includes,join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill".split(",").forEach(function (key) {
   [][key] && define(Array, key, Function.call.bind([][key]));
 });
-},{"core-js/shim":"node_modules/core-js/shim.js","regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","core-js/fn/regexp/escape":"node_modules/core-js/fn/regexp/escape.js"}],"index.js":[function(require,module,exports) {
+},{"core-js/shim":"node_modules/core-js/shim.js","regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","core-js/fn/regexp/escape":"node_modules/core-js/fn/regexp/escape.js"}],"renderQuad.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setupFullScreenQuad = setupFullScreenQuad;
+exports.setupMixTextures = setupMixTextures;
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+var screenQuadVBO;
+var screenVertShader;
+
+function drawFullScreenQuad(gl, textures, shaderProgram, locations, setUniform, positionLocation, uvsLocation, samplerLocations) {
+  gl.useProgram(shaderProgram);
+  gl.bindBuffer(gl.ARRAY_BUFFER, screenQuadVBO);
+  gl.enableVertexAttribArray(positionLocation);
+  gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 16, 0);
+  gl.enableVertexAttribArray(uvsLocation);
+  gl.vertexAttribPointer(uvsLocation, 2, gl.FLOAT, false, 16, 8);
+
+  for (var i = 0; i < textures.length; ++i) {
+    gl.activeTexture(gl.TEXTURE0 + i);
+    gl.bindTexture(gl.TEXTURE_2D, textures[i]);
+    gl.uniform1i(samplerLocations[i], i);
+  }
+
+  if (setUniform) setUniform(locations);
+  gl.drawArrays(gl.TRIANGLES, 0, 6);
+}
+
+function setupQuadVBO(gl) {
+  if (!screenQuadVBO) {
+    var verts = [// First triangle:
+    1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 0.0, -1.0, -1.0, 0.0, 0.0, // Second triangle:
+    -1.0, -1.0, 0.0, 0.0, -1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+    screenQuadVBO = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, screenQuadVBO);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
+  }
+}
+
+function setupVertShader(gl) {
+  if (!screenVertShader) {
+    var vertCode = 'attribute vec2 position;' + 'attribute vec2 uvs;' + 'varying vec3 vColor;' + 'void main(void) { ' + 'gl_Position = vec4(position,0,1);' + 'vColor = vec3(uvs,1.);' + '}';
+    screenVertShader = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(screenVertShader, vertCode);
+    gl.compileShader(screenVertShader);
+  }
+}
+
+function setupFullScreenQuad(gl, uniforms, fragCode) {
+  setupQuadVBO(gl);
+  setupVertShader(gl);
+  var screenFragShader = gl.createShader(gl.FRAGMENT_SHADER);
+  gl.shaderSource(screenFragShader, fragCode);
+  gl.compileShader(screenFragShader);
+  var shaderProgram = gl.createProgram();
+  gl.attachShader(shaderProgram, screenVertShader);
+  gl.attachShader(shaderProgram, screenFragShader);
+  gl.linkProgram(shaderProgram);
+  var positionLocation = gl.getAttribLocation(shaderProgram, "position");
+  var uvsLocation = gl.getAttribLocation(shaderProgram, "uvs");
+  var samplerLocation = gl.getUniformLocation(shaderProgram, "uSampler");
+  var locations = uniforms.map(function (x) {
+    return gl.getUniformLocation(shaderProgram, x);
+  });
+  return function (texture, setUniform) {
+    drawFullScreenQuad(gl, [texture], shaderProgram, locations, setUniform, positionLocation, uvsLocation, [samplerLocation]);
+  };
+}
+
+function setupMixTextures(gl, nTextures, uniforms, fragCode) {
+  setupQuadVBO(gl);
+  setupVertShader(gl);
+  var screenFragShader = gl.createShader(gl.FRAGMENT_SHADER);
+  gl.shaderSource(screenFragShader, fragCode);
+  gl.compileShader(screenFragShader);
+  var shaderProgram = gl.createProgram();
+  gl.attachShader(shaderProgram, screenVertShader);
+  gl.attachShader(shaderProgram, screenFragShader);
+  gl.linkProgram(shaderProgram);
+  var positionLocation = gl.getAttribLocation(shaderProgram, "position");
+  var uvsLocation = gl.getAttribLocation(shaderProgram, "uvs");
+
+  var samplerLocations = _toConsumableArray(Array(nTextures).keys()).map(function (x) {
+    return gl.getUniformLocation(shaderProgram, "uSampler" + x);
+  });
+
+  var locations = uniforms.map(function (x) {
+    return gl.getUniformLocation(shaderProgram, x);
+  });
+  return function (textures, setUniform) {
+    drawFullScreenQuad(gl, textures, shaderProgram, locations, setUniform, positionLocation, uvsLocation, samplerLocations);
+  };
+}
+},{}],"gaussianBlur.glsl":[function(require,module,exports) {
+module.exports = "precision mediump float;\n#define GLSLIFY 1\nvarying vec3 vColor;\n\nuniform sampler2D uSampler;\nuniform float t;\nuniform float blurStepSize;\n\n#ifndef BLURSIZE\n#define BLURSIZE 8.0\n#endif\n\n#ifdef DIR_H\nvec2 dir = vec2(1.0, 0.0);\n#else ifdef DIR_V\nvec2 dir = vec2(0.0, 1.0);\n#endif\n    \nvec4 toGrayScale(vec4 p)\n{\n    float g = 0.2126*p.r + 0.7152*p.g + 0.0722*p.b;\n    return vec4(g, g, g, p.a);\n}\n\nvec4 toBlur(sampler2D sampler, vec2 uv, float blurStep)\n{\n    vec4 accum = texture2D(uSampler, uv);\n    float j = 0.0;\n    for(float i = 1.0;i <= BLURSIZE; i+=1.0) {\n        accum += texture2D(uSampler, uv + (i * blurStep * dir));\n        accum += texture2D(uSampler, uv - (i * blurStep * dir)); \n        j = i;\n    }\n    accum = accum / (2.0 * j + 1.0);\n    return vec4(accum.rgb, 1.0);\n}\n\nvoid main(void)\n{\n    vec4 p = texture2D(uSampler, vColor.xy);\n    vec4 sourceColor = p;\n    vec4 destColor = toBlur(uSampler, vColor.xy, blurStepSize);\n    gl_FragColor = mix(sourceColor, destColor, t);\n}";
+},{}],"mixTexture.frag":[function(require,module,exports) {
+module.exports = "precision mediump float;\n#define GLSLIFY 1\nvarying vec3 vColor;\n\nuniform sampler2D uSampler0;\nuniform sampler2D uSampler1;\n\nvoid main(void)\n{\n    vec4 ta = texture2D(uSampler0, vColor.xy);\n    vec4 tb = texture2D(uSampler1, vColor.xy);\n    \n    gl_FragColor = vec4((ta.rgb * ta.a) + (tb.rgb * tb.a), 1.0);\n}";
+},{}],"node_modules/parenthesis/index.js":[function(require,module,exports) {
+'use strict'
+
+/**
+ * @module parenthesis
+ */
+
+function parse (str, opts) {
+	// pretend non-string parsed per-se
+	if (typeof str !== 'string') return [str]
+
+	var res = [str]
+
+	if (typeof opts === 'string' || Array.isArray(opts)) {
+		opts = {brackets: opts}
+	}
+	else if (!opts) opts = {}
+
+	var brackets = opts.brackets ? (Array.isArray(opts.brackets) ? opts.brackets : [opts.brackets]) : ['{}', '[]', '()']
+
+	var escape = opts.escape || '___'
+
+	var flat = !!opts.flat
+
+	brackets.forEach(function (bracket) {
+		// create parenthesis regex
+		var pRE = new RegExp(['\\', bracket[0], '[^\\', bracket[0], '\\', bracket[1], ']*\\', bracket[1]].join(''))
+
+		var ids = []
+
+		function replaceToken(token, idx, str){
+			// save token to res
+			var refId = res.push(token.slice(bracket[0].length, -bracket[1].length)) - 1
+
+			ids.push(refId)
+
+			return escape + refId + escape
+		}
+
+		res.forEach(function (str, i) {
+			var prevStr
+
+			// replace paren tokens till there’s none
+			var a = 0
+			while (str != prevStr) {
+				prevStr = str
+				str = str.replace(pRE, replaceToken)
+				if (a++ > 10e3) throw Error('References have circular dependency. Please, check them.')
+			}
+
+			res[i] = str
+		})
+
+		// wrap found refs to brackets
+		ids = ids.reverse()
+		res = res.map(function (str) {
+			ids.forEach(function (id) {
+				str = str.replace(new RegExp('(\\' + escape + id + '\\' + escape + ')', 'g'), bracket[0] + '$1' + bracket[1])
+			})
+			return str
+		})
+	})
+
+	var re = new RegExp('\\' + escape + '([0-9]+)' + '\\' + escape)
+
+	// transform references to tree
+	function nest (str, refs, escape) {
+		var res = [], match
+
+		var a = 0
+		while (match = re.exec(str)) {
+			if (a++ > 10e3) throw Error('Circular references in parenthesis')
+
+			res.push(str.slice(0, match.index))
+
+			res.push(nest(refs[match[1]], refs))
+
+			str = str.slice(match.index + match[0].length)
+		}
+
+		res.push(str)
+
+		return res
+	}
+
+	return flat ? res : nest(res[0], res)
+}
+
+function stringify (arg, opts) {
+	if (opts && opts.flat) {
+		var escape = opts && opts.escape || '___'
+
+		var str = arg[0], prevStr
+
+		// pretend bad string stringified with no parentheses
+		if (!str) return ''
+
+
+		var re = new RegExp('\\' + escape + '([0-9]+)' + '\\' + escape)
+
+		var a = 0
+		while (str != prevStr) {
+			if (a++ > 10e3) throw Error('Circular references in ' + arg)
+			prevStr = str
+			str = str.replace(re, replaceRef)
+		}
+
+		return str
+	}
+
+	return arg.reduce(function f (prev, curr) {
+		if (Array.isArray(curr)) {
+			curr = curr.reduce(f, '')
+		}
+		return prev + curr
+	}, '')
+
+	function replaceRef(match, idx){
+		if (arg[idx] == null) throw Error('Reference ' + idx + 'is undefined')
+		return arg[idx]
+	}
+}
+
+function parenthesis (arg, opts) {
+	if (Array.isArray(arg)) {
+		return stringify(arg, opts)
+	}
+	else {
+		return parse(arg, opts)
+	}
+}
+
+parenthesis.parse = parse
+parenthesis.stringify = stringify
+
+module.exports = parenthesis
+
+},{}],"node_modules/prepr/node_modules/balanced-match/index.js":[function(require,module,exports) {
+module.exports = balanced;
+function balanced(a, b, str) {
+  var r = range(a, b, str);
+
+  return r && {
+    start: r[0],
+    end: r[1],
+    pre: str.slice(0, r[0]),
+    body: str.slice(r[0] + a.length, r[1]),
+    post: str.slice(r[1] + b.length)
+  };
+}
+
+balanced.range = range;
+function range(a, b, str) {
+  var begs, beg, left, right, result;
+  var ai = str.indexOf(a);
+  var bi = str.indexOf(b, ai + 1);
+  var i = ai;
+
+  if (ai >= 0 && bi > 0) {
+    begs = [];
+    left = str.length;
+
+    while (i < str.length && i >= 0 && ! result) {
+      if (i == ai) {
+        begs.push(i);
+        ai = str.indexOf(a, i + 1);
+      } else if (begs.length == 1) {
+        result = [ begs.pop(), bi ];
+      } else {
+        beg = begs.pop();
+        if (beg < left) {
+          left = beg;
+          right = bi;
+        }
+
+        bi = str.indexOf(b, i + 1);
+      }
+
+      i = ai < bi && ai >= 0 ? ai : bi;
+    }
+
+    if (begs.length) {
+      result = [ left, right ];
+    }
+  }
+
+  return result;
+}
+
+},{}],"node_modules/object-assign/index.js":[function(require,module,exports) {
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+'use strict';
+/* eslint-disable no-unused-vars */
+
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+  if (val === null || val === undefined) {
+    throw new TypeError('Object.assign cannot be called with null or undefined');
+  }
+
+  return Object(val);
+}
+
+function shouldUseNative() {
+  try {
+    if (!Object.assign) {
+      return false;
+    } // Detect buggy property enumeration order in older V8 versions.
+    // https://bugs.chromium.org/p/v8/issues/detail?id=4118
+
+
+    var test1 = new String('abc'); // eslint-disable-line no-new-wrappers
+
+    test1[5] = 'de';
+
+    if (Object.getOwnPropertyNames(test1)[0] === '5') {
+      return false;
+    } // https://bugs.chromium.org/p/v8/issues/detail?id=3056
+
+
+    var test2 = {};
+
+    for (var i = 0; i < 10; i++) {
+      test2['_' + String.fromCharCode(i)] = i;
+    }
+
+    var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+      return test2[n];
+    });
+
+    if (order2.join('') !== '0123456789') {
+      return false;
+    } // https://bugs.chromium.org/p/v8/issues/detail?id=3056
+
+
+    var test3 = {};
+    'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+      test3[letter] = letter;
+    });
+
+    if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    // We don't expect any of the above to throw, but better to be safe.
+    return false;
+  }
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+  var from;
+  var to = toObject(target);
+  var symbols;
+
+  for (var s = 1; s < arguments.length; s++) {
+    from = Object(arguments[s]);
+
+    for (var key in from) {
+      if (hasOwnProperty.call(from, key)) {
+        to[key] = from[key];
+      }
+    }
+
+    if (getOwnPropertySymbols) {
+      symbols = getOwnPropertySymbols(from);
+
+      for (var i = 0; i < symbols.length; i++) {
+        if (propIsEnumerable.call(from, symbols[i])) {
+          to[symbols[i]] = from[symbols[i]];
+        }
+      }
+    }
+  }
+
+  return to;
+};
+},{}],"node_modules/escaper/dist/escaper.js":[function(require,module,exports) {
+var define;
+var global = arguments[3];
+/*!
+ * Escaper v2.5.3
+ * https://github.com/kobezzza/Escaper
+ *
+ * Released under the MIT license
+ * https://github.com/kobezzza/Escaper/blob/master/LICENSE
+ *
+ * Date: Tue, 23 Jan 2018 15:58:45 GMT
+ */
+
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define('Escaper', ['exports'], factory) :
+	(factory((global.Escaper = {})));
+}(this, (function (exports) { 'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+var Escaper = void 0;
+var escaper = Escaper = {
+	VERSION: [2, 5, 3],
+	content: [],
+	cache: {},
+	snakeskinRgxp: null,
+	symbols: null,
+	replace: replace,
+	paste: paste
+};
+
+var stringLiterals = {
+	'"': true,
+	'\'': true,
+	'`': true
+};
+
+var literals = {
+	'/': true
+};
+
+for (var key in stringLiterals) {
+	if (!stringLiterals.hasOwnProperty(key)) {
+		break;
+	}
+
+	literals[key] = true;
+}
+
+var singleComments = {
+	'//': true,
+	'//*': true,
+	'//!': true,
+	'//#': true,
+	'//@': true,
+	'//$': true
+};
+
+var multComments = {
+	'/*': true,
+	'/**': true,
+	'/*!': true,
+	'/*#': true,
+	'/*@': true,
+	'/*$': true
+};
+
+var keyArr = [];
+var finalMap = {};
+
+for (var _key in literals) {
+	if (!literals.hasOwnProperty(_key)) {
+		break;
+	}
+
+	keyArr.push(_key);
+	finalMap[_key] = true;
+}
+
+for (var _key2 in singleComments) {
+	if (!singleComments.hasOwnProperty(_key2)) {
+		break;
+	}
+
+	keyArr.push(_key2);
+	finalMap[_key2] = true;
+}
+
+for (var _key3 in multComments) {
+	if (!multComments.hasOwnProperty(_key3)) {
+		break;
+	}
+
+	keyArr.push(_key3);
+	finalMap[_key3] = true;
+}
+
+var rgxpFlags = [];
+var rgxpFlagsMap = {
+	'g': true,
+	'm': true,
+	'i': true,
+	'y': true,
+	'u': true
+};
+
+for (var _key4 in rgxpFlagsMap) {
+	if (!rgxpFlagsMap.hasOwnProperty(_key4)) {
+		break;
+	}
+
+	rgxpFlags.push(_key4);
+}
+
+var escapeEndMap = {
+	'-': true,
+	'+': true,
+	'*': true,
+	'%': true,
+	'~': true,
+	'>': true,
+	'<': true,
+	'^': true,
+	',': true,
+	';': true,
+	'=': true,
+	'|': true,
+	'&': true,
+	'!': true,
+	'?': true,
+	':': true,
+	'(': true,
+	'{': true,
+	'[': true
+};
+
+var escapeEndWordMap = {
+	'return': true,
+	'yield': true,
+	'await': true,
+	'typeof': true,
+	'void': true,
+	'instanceof': true,
+	'delete': true,
+	'in': true,
+	'new': true,
+	'of': true
+};
+
+/**
+ * @param {!Object} obj
+ * @param {!Object} p
+ * @param {(boolean|number)} val
+ */
+function mix(obj, p, val) {
+	for (var _key5 in obj) {
+		if (!obj.hasOwnProperty(_key5)) {
+			break;
+		}
+
+		if (_key5 in p === false) {
+			p[_key5] = val;
+		}
+	}
+}
+
+var symbols = void 0;
+var snakeskinRgxp = void 0;
+
+var uSRgxp = /[^\s/]/;
+var wRgxp = /[a-z]/;
+var sRgxp = /\s/;
+var nRgxp = /[\r\n]/;
+var posRgxp = /\${pos}/g;
+
+var objMap = {
+	'object': true,
+	'function': true
+};
+
+/**
+ * Replaces all found blocks ' ... ', " ... ", ` ... `, / ... /, // ..., /* ... *\/ to
+ * __ESCAPER_QUOT__number_ in a string and returns a new string
+ *
+ * @param {string} str - source string
+ * @param {(Object<string, boolean>|boolean)=} [opt_withCommentsOrParams=false] - parameters:
+ *
+ *     (if a parameter value is set to -1, then all found matches will be removed from the final string,
+ *          or if the value will be set to true/false they will be included/excluded)
+ *
+ *     *) @label    - template for replacement, e.g. __ESCAPER_QUOT__${pos}_
+ *     *) @all      - replaces all found matches
+ *     *) @comments - replaces all kinds of comments
+ *     *) @strings  - replaces all kinds of string literals
+ *     *) @literals - replaces all kinds of string literals and regular expressions
+ *     *) `
+ *     *) '
+ *     *) "
+ *     *) /
+ *     *) //
+ *     *) //*
+ *     *) //!
+ *     *) //#
+ *     *) //@
+ *     *) //$
+ *     *) /*
+ *     *) /**
+ *     *) /*!
+ *     *) /*#
+ *     *) /*@
+ *     *) /*$
+ *
+ *     OR if the value is boolean, then will be replaced all found comments (true) / literals (false)
+ *
+ * @param {Array=} [opt_content=Escaper.content] - array for matches
+ * @param {?boolean=} [opt_snakeskin] - private parameter for using with Snakeskin
+ * @return {string}
+ */
+function replace(str, opt_withCommentsOrParams, opt_content, opt_snakeskin) {
+	symbols = symbols || Escaper.symbols || 'a-z';
+	snakeskinRgxp = snakeskinRgxp || Escaper.snakeskinRgxp || new RegExp('[!$' + symbols + '_]', 'i');
+
+	var _Escaper = Escaper,
+	    cache = _Escaper.cache,
+	    content = _Escaper.content;
+
+
+	var isObj = Boolean(opt_withCommentsOrParams && objMap[typeof opt_withCommentsOrParams === 'undefined' ? 'undefined' : _typeof(opt_withCommentsOrParams)]);
+
+	var p = isObj ? Object(opt_withCommentsOrParams) : {};
+
+	function mark(pos) {
+		if (p['@label']) {
+			return p['@label'].replace(posRgxp, pos);
+		}
+
+		return '__ESCAPER_QUOT__' + pos + '_';
+	}
+
+	var withComments = false;
+	if (typeof opt_withCommentsOrParams === 'boolean') {
+		withComments = Boolean(opt_withCommentsOrParams);
+	}
+
+	if ('@comments' in p) {
+		mix(multComments, p, p['@comments']);
+		mix(singleComments, p, p['@comments']);
+		delete p['@comments'];
+	}
+
+	if ('@strings' in p) {
+		mix(stringLiterals, p, p['@strings']);
+		delete p['@strings'];
+	}
+
+	if ('@literals' in p) {
+		mix(literals, p, p['@literals']);
+		delete p['@literals'];
+	}
+
+	if ('@all' in p) {
+		mix(finalMap, p, p['@all']);
+		delete p['@all'];
+	}
+
+	var cacheKey = '';
+	for (var i = -1; ++i < keyArr.length;) {
+		var el = keyArr[i];
+
+		if (multComments[el] || singleComments[el]) {
+			p[el] = withComments || p[el];
+		} else {
+			p[el] = p[el] || !isObj;
+		}
+
+		cacheKey += p[el] + ',';
+	}
+
+	var initStr = str,
+	    stack = opt_content || content;
+
+	if (stack === content && cache[cacheKey] && cache[cacheKey][initStr]) {
+		return cache[cacheKey][initStr];
+	}
+
+	var begin = false,
+	    end = true;
+
+	var escape = false,
+	    comment = false;
+
+	var selectionStart = 0,
+	    block = false;
+
+	var templateVar = 0,
+	    filterStart = false;
+
+	var cut = void 0,
+	    label = void 0;
+
+	var part = '',
+	    rPart = '';
+
+	for (var _i = -1; ++_i < str.length;) {
+		var _el = str.charAt(_i);
+
+		var next = str.charAt(_i + 1),
+		    word = str.substr(_i, 2),
+		    extWord = str.substr(_i, 3);
+
+		if (!comment) {
+			if (!begin) {
+				if (_el === '/') {
+					if (singleComments[word] || multComments[word]) {
+						if (singleComments[extWord] || multComments[extWord]) {
+							comment = extWord;
+						} else {
+							comment = word;
+						}
+					}
+
+					if (comment) {
+						selectionStart = _i;
+						continue;
+					}
+				}
+
+				if (escapeEndMap[_el] || escapeEndWordMap[rPart]) {
+					end = true;
+					rPart = '';
+				} else if (uSRgxp.test(_el)) {
+					end = false;
+				}
+
+				if (wRgxp.test(_el)) {
+					part += _el;
+				} else {
+					rPart = part;
+					part = '';
+				}
+
+				var skip = false;
+				if (opt_snakeskin) {
+					if (_el === '|' && snakeskinRgxp.test(next)) {
+						filterStart = true;
+						end = false;
+						skip = true;
+					} else if (filterStart && sRgxp.test(_el)) {
+						filterStart = false;
+						end = true;
+						skip = true;
+					}
+				}
+
+				if (!skip) {
+					if (escapeEndMap[_el]) {
+						end = true;
+					} else if (uSRgxp.test(_el)) {
+						end = false;
+					}
+				}
+			}
+
+			// [] inside RegExp
+			if (begin === '/' && !escape) {
+				if (_el === '[') {
+					block = true;
+				} else if (_el === ']') {
+					block = false;
+				}
+			}
+
+			if (!begin && templateVar) {
+				if (_el === '}') {
+					templateVar--;
+				} else if (_el === '{') {
+					templateVar++;
+				}
+
+				if (!templateVar) {
+					_el = '`';
+				}
+			}
+
+			if (begin === '`' && !escape && word === '${') {
+				_el = '`';
+				_i++;
+				templateVar++;
+			}
+
+			if (finalMap[_el] && (_el !== '/' || end) && !begin) {
+				begin = _el;
+				selectionStart = _i;
+			} else if (begin && (_el === '\\' || escape)) {
+				escape = !escape;
+			} else if (finalMap[_el] && begin === _el && !escape && (begin !== '/' || !block)) {
+				if (_el === '/') {
+					for (var j = -1; ++j < rgxpFlags.length;) {
+						if (rgxpFlagsMap[str.charAt(_i + 1)]) {
+							_i++;
+						}
+					}
+				}
+
+				begin = false;
+				end = false;
+
+				if (p[_el]) {
+					cut = str.substring(selectionStart, _i + 1);
+
+					if (p[_el] === -1) {
+						label = '';
+					} else {
+						label = mark(stack.length);
+						stack.push(cut);
+					}
+
+					str = str.substring(0, selectionStart) + label + str.substring(_i + 1);
+					_i += label.length - cut.length;
+				}
+			}
+		} else if (nRgxp.test(next) && singleComments[comment] || multComments[_el + str.charAt(_i - 1)] && _i - selectionStart > 2 && multComments[comment]) {
+			if (p[comment]) {
+				cut = str.substring(selectionStart, _i + 1);
+
+				if (p[comment] === -1) {
+					label = '';
+				} else {
+					label = mark(stack.length);
+					stack.push(cut);
+				}
+
+				str = str.substring(0, selectionStart) + label + str.substring(_i + 1);
+				_i += label.length - cut.length;
+			}
+
+			comment = false;
+		}
+	}
+
+	if (stack === content) {
+		cache[cacheKey] = cache[cacheKey] || {};
+		cache[cacheKey][initStr] = str;
+	}
+
+	return str;
+}
+
+var pasteRgxp = /__ESCAPER_QUOT__(\d+)_/g;
+
+/**
+ * Replaces all found blocks __ESCAPER_QUOT__number_ to real content in a string
+ * and returns a new string
+ *
+ * @param {string} str - source string
+ * @param {Array=} [opt_content=Escaper.content] - array of matches
+ * @param {RegExp=} [opt_rgxp] - RegExp for searching, e.g. /__ESCAPER_QUOT__(\d+)_/g
+ * @return {string}
+ */
+function paste(str, opt_content, opt_rgxp) {
+	return str.replace(opt_rgxp || pasteRgxp, function (str, pos) {
+		return (opt_content || Escaper.content)[pos];
+	});
+}
+
+exports['default'] = escaper;
+exports.replace = replace;
+exports.paste = paste;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+
+},{}],"node_modules/jsep/build/jsep.js":[function(require,module,exports) {
+//     JavaScript Expression Parser (JSEP) 0.3.4
+//     JSEP may be freely distributed under the MIT License
+//     http://jsep.from.so/
+
+/*global module: true, exports: true, console: true */
+(function (root) {
+  'use strict'; // Node Types
+  // ----------
+  // This is the full set of types that any JSEP node can be.
+  // Store them here to save space when minified
+
+  var COMPOUND = 'Compound',
+      IDENTIFIER = 'Identifier',
+      MEMBER_EXP = 'MemberExpression',
+      LITERAL = 'Literal',
+      THIS_EXP = 'ThisExpression',
+      CALL_EXP = 'CallExpression',
+      UNARY_EXP = 'UnaryExpression',
+      BINARY_EXP = 'BinaryExpression',
+      LOGICAL_EXP = 'LogicalExpression',
+      CONDITIONAL_EXP = 'ConditionalExpression',
+      ARRAY_EXP = 'ArrayExpression',
+      PERIOD_CODE = 46,
+      // '.'
+  COMMA_CODE = 44,
+      // ','
+  SQUOTE_CODE = 39,
+      // single quote
+  DQUOTE_CODE = 34,
+      // double quotes
+  OPAREN_CODE = 40,
+      // (
+  CPAREN_CODE = 41,
+      // )
+  OBRACK_CODE = 91,
+      // [
+  CBRACK_CODE = 93,
+      // ]
+  QUMARK_CODE = 63,
+      // ?
+  SEMCOL_CODE = 59,
+      // ;
+  COLON_CODE = 58,
+      // :
+  throwError = function (message, index) {
+    var error = new Error(message + ' at character ' + index);
+    error.index = index;
+    error.description = message;
+    throw error;
+  },
+      // Operations
+  // ----------
+  // Set `t` to `true` to save space (when minified, not gzipped)
+  t = true,
+      // Use a quickly-accessible map to store all of the unary operators
+  // Values are set to `true` (it really doesn't matter)
+  unary_ops = {
+    '-': t,
+    '!': t,
+    '~': t,
+    '+': t
+  },
+      // Also use a map for the binary operations but set their values to their
+  // binary precedence for quick reference:
+  // see [Order of operations](http://en.wikipedia.org/wiki/Order_of_operations#Programming_language)
+  binary_ops = {
+    '||': 1,
+    '&&': 2,
+    '|': 3,
+    '^': 4,
+    '&': 5,
+    '==': 6,
+    '!=': 6,
+    '===': 6,
+    '!==': 6,
+    '<': 7,
+    '>': 7,
+    '<=': 7,
+    '>=': 7,
+    '<<': 8,
+    '>>': 8,
+    '>>>': 8,
+    '+': 9,
+    '-': 9,
+    '*': 10,
+    '/': 10,
+    '%': 10
+  },
+      // Get return the longest key length of any object
+  getMaxKeyLen = function (obj) {
+    var max_len = 0,
+        len;
+
+    for (var key in obj) {
+      if ((len = key.length) > max_len && obj.hasOwnProperty(key)) {
+        max_len = len;
+      }
+    }
+
+    return max_len;
+  },
+      max_unop_len = getMaxKeyLen(unary_ops),
+      max_binop_len = getMaxKeyLen(binary_ops),
+      // Literals
+  // ----------
+  // Store the values to return for the various literals we may encounter
+  literals = {
+    'true': true,
+    'false': false,
+    'null': null
+  },
+      // Except for `this`, which is special. This could be changed to something like `'self'` as well
+  this_str = 'this',
+      // Returns the precedence of a binary operator or `0` if it isn't a binary operator
+  binaryPrecedence = function (op_val) {
+    return binary_ops[op_val] || 0;
+  },
+      // Utility function (gets called from multiple places)
+  // Also note that `a && b` and `a || b` are *logical* expressions, not binary expressions
+  createBinaryExpression = function (operator, left, right) {
+    var type = operator === '||' || operator === '&&' ? LOGICAL_EXP : BINARY_EXP;
+    return {
+      type: type,
+      operator: operator,
+      left: left,
+      right: right
+    };
+  },
+      // `ch` is a character code in the next three functions
+  isDecimalDigit = function (ch) {
+    return ch >= 48 && ch <= 57; // 0...9
+  },
+      isIdentifierStart = function (ch) {
+    return ch === 36 || ch === 95 || // `$` and `_`
+    ch >= 65 && ch <= 90 || // A...Z
+    ch >= 97 && ch <= 122 || // a...z
+    ch >= 128 && !binary_ops[String.fromCharCode(ch)]; // any non-ASCII that is not an operator
+  },
+      isIdentifierPart = function (ch) {
+    return ch === 36 || ch === 95 || // `$` and `_`
+    ch >= 65 && ch <= 90 || // A...Z
+    ch >= 97 && ch <= 122 || // a...z
+    ch >= 48 && ch <= 57 || // 0...9
+    ch >= 128 && !binary_ops[String.fromCharCode(ch)]; // any non-ASCII that is not an operator
+  },
+      // Parsing
+  // -------
+  // `expr` is a string with the passed in expression
+  jsep = function (expr) {
+    // `index` stores the character number we are currently at while `length` is a constant
+    // All of the gobbles below will modify `index` as we move along
+    var index = 0,
+        charAtFunc = expr.charAt,
+        charCodeAtFunc = expr.charCodeAt,
+        exprI = function (i) {
+      return charAtFunc.call(expr, i);
+    },
+        exprICode = function (i) {
+      return charCodeAtFunc.call(expr, i);
+    },
+        length = expr.length,
+        // Push `index` up to the next non-space character
+    gobbleSpaces = function () {
+      var ch = exprICode(index); // space or tab
+
+      while (ch === 32 || ch === 9 || ch === 10 || ch === 13) {
+        ch = exprICode(++index);
+      }
+    },
+        // The main parsing function. Much of this code is dedicated to ternary expressions
+    gobbleExpression = function () {
+      var test = gobbleBinaryExpression(),
+          consequent,
+          alternate;
+      gobbleSpaces();
+
+      if (exprICode(index) === QUMARK_CODE) {
+        // Ternary expression: test ? consequent : alternate
+        index++;
+        consequent = gobbleExpression();
+
+        if (!consequent) {
+          throwError('Expected expression', index);
+        }
+
+        gobbleSpaces();
+
+        if (exprICode(index) === COLON_CODE) {
+          index++;
+          alternate = gobbleExpression();
+
+          if (!alternate) {
+            throwError('Expected expression', index);
+          }
+
+          return {
+            type: CONDITIONAL_EXP,
+            test: test,
+            consequent: consequent,
+            alternate: alternate
+          };
+        } else {
+          throwError('Expected :', index);
+        }
+      } else {
+        return test;
+      }
+    },
+        // Search for the operation portion of the string (e.g. `+`, `===`)
+    // Start by taking the longest possible binary operations (3 characters: `===`, `!==`, `>>>`)
+    // and move down from 3 to 2 to 1 character until a matching binary operation is found
+    // then, return that binary operation
+    gobbleBinaryOp = function () {
+      gobbleSpaces();
+      var biop,
+          to_check = expr.substr(index, max_binop_len),
+          tc_len = to_check.length;
+
+      while (tc_len > 0) {
+        // Don't accept a binary op when it is an identifier.
+        // Binary ops that start with a identifier-valid character must be followed
+        // by a non identifier-part valid character
+        if (binary_ops.hasOwnProperty(to_check) && (!isIdentifierStart(exprICode(index)) || index + to_check.length < expr.length && !isIdentifierPart(exprICode(index + to_check.length)))) {
+          index += tc_len;
+          return to_check;
+        }
+
+        to_check = to_check.substr(0, --tc_len);
+      }
+
+      return false;
+    },
+        // This function is responsible for gobbling an individual expression,
+    // e.g. `1`, `1+2`, `a+(b*2)-Math.sqrt(2)`
+    gobbleBinaryExpression = function () {
+      var ch_i, node, biop, prec, stack, biop_info, left, right, i; // First, try to get the leftmost thing
+      // Then, check to see if there's a binary operator operating on that leftmost thing
+
+      left = gobbleToken();
+      biop = gobbleBinaryOp(); // If there wasn't a binary operator, just return the leftmost node
+
+      if (!biop) {
+        return left;
+      } // Otherwise, we need to start a stack to properly place the binary operations in their
+      // precedence structure
+
+
+      biop_info = {
+        value: biop,
+        prec: binaryPrecedence(biop)
+      };
+      right = gobbleToken();
+
+      if (!right) {
+        throwError("Expected expression after " + biop, index);
+      }
+
+      stack = [left, biop_info, right]; // Properly deal with precedence using [recursive descent](http://www.engr.mun.ca/~theo/Misc/exp_parsing.htm)
+
+      while (biop = gobbleBinaryOp()) {
+        prec = binaryPrecedence(biop);
+
+        if (prec === 0) {
+          break;
+        }
+
+        biop_info = {
+          value: biop,
+          prec: prec
+        }; // Reduce: make a binary expression from the three topmost entries.
+
+        while (stack.length > 2 && prec <= stack[stack.length - 2].prec) {
+          right = stack.pop();
+          biop = stack.pop().value;
+          left = stack.pop();
+          node = createBinaryExpression(biop, left, right);
+          stack.push(node);
+        }
+
+        node = gobbleToken();
+
+        if (!node) {
+          throwError("Expected expression after " + biop, index);
+        }
+
+        stack.push(biop_info, node);
+      }
+
+      i = stack.length - 1;
+      node = stack[i];
+
+      while (i > 1) {
+        node = createBinaryExpression(stack[i - 1].value, stack[i - 2], node);
+        i -= 2;
+      }
+
+      return node;
+    },
+        // An individual part of a binary expression:
+    // e.g. `foo.bar(baz)`, `1`, `"abc"`, `(a % 2)` (because it's in parenthesis)
+    gobbleToken = function () {
+      var ch, to_check, tc_len;
+      gobbleSpaces();
+      ch = exprICode(index);
+
+      if (isDecimalDigit(ch) || ch === PERIOD_CODE) {
+        // Char code 46 is a dot `.` which can start off a numeric literal
+        return gobbleNumericLiteral();
+      } else if (ch === SQUOTE_CODE || ch === DQUOTE_CODE) {
+        // Single or double quotes
+        return gobbleStringLiteral();
+      } else if (ch === OBRACK_CODE) {
+        return gobbleArray();
+      } else {
+        to_check = expr.substr(index, max_unop_len);
+        tc_len = to_check.length;
+
+        while (tc_len > 0) {
+          // Don't accept an unary op when it is an identifier.
+          // Unary ops that start with a identifier-valid character must be followed
+          // by a non identifier-part valid character
+          if (unary_ops.hasOwnProperty(to_check) && (!isIdentifierStart(exprICode(index)) || index + to_check.length < expr.length && !isIdentifierPart(exprICode(index + to_check.length)))) {
+            index += tc_len;
+            return {
+              type: UNARY_EXP,
+              operator: to_check,
+              argument: gobbleToken(),
+              prefix: true
+            };
+          }
+
+          to_check = to_check.substr(0, --tc_len);
+        }
+
+        if (isIdentifierStart(ch) || ch === OPAREN_CODE) {
+          // open parenthesis
+          // `foo`, `bar.baz`
+          return gobbleVariable();
+        }
+      }
+
+      return false;
+    },
+        // Parse simple numeric literals: `12`, `3.4`, `.5`. Do this by using a string to
+    // keep track of everything in the numeric literal and then calling `parseFloat` on that string
+    gobbleNumericLiteral = function () {
+      var number = '',
+          ch,
+          chCode;
+
+      while (isDecimalDigit(exprICode(index))) {
+        number += exprI(index++);
+      }
+
+      if (exprICode(index) === PERIOD_CODE) {
+        // can start with a decimal marker
+        number += exprI(index++);
+
+        while (isDecimalDigit(exprICode(index))) {
+          number += exprI(index++);
+        }
+      }
+
+      ch = exprI(index);
+
+      if (ch === 'e' || ch === 'E') {
+        // exponent marker
+        number += exprI(index++);
+        ch = exprI(index);
+
+        if (ch === '+' || ch === '-') {
+          // exponent sign
+          number += exprI(index++);
+        }
+
+        while (isDecimalDigit(exprICode(index))) {
+          //exponent itself
+          number += exprI(index++);
+        }
+
+        if (!isDecimalDigit(exprICode(index - 1))) {
+          throwError('Expected exponent (' + number + exprI(index) + ')', index);
+        }
+      }
+
+      chCode = exprICode(index); // Check to make sure this isn't a variable name that start with a number (123abc)
+
+      if (isIdentifierStart(chCode)) {
+        throwError('Variable names cannot start with a number (' + number + exprI(index) + ')', index);
+      } else if (chCode === PERIOD_CODE) {
+        throwError('Unexpected period', index);
+      }
+
+      return {
+        type: LITERAL,
+        value: parseFloat(number),
+        raw: number
+      };
+    },
+        // Parses a string literal, staring with single or double quotes with basic support for escape codes
+    // e.g. `"hello world"`, `'this is\nJSEP'`
+    gobbleStringLiteral = function () {
+      var str = '',
+          quote = exprI(index++),
+          closed = false,
+          ch;
+
+      while (index < length) {
+        ch = exprI(index++);
+
+        if (ch === quote) {
+          closed = true;
+          break;
+        } else if (ch === '\\') {
+          // Check for all of the common escape codes
+          ch = exprI(index++);
+
+          switch (ch) {
+            case 'n':
+              str += '\n';
+              break;
+
+            case 'r':
+              str += '\r';
+              break;
+
+            case 't':
+              str += '\t';
+              break;
+
+            case 'b':
+              str += '\b';
+              break;
+
+            case 'f':
+              str += '\f';
+              break;
+
+            case 'v':
+              str += '\x0B';
+              break;
+
+            default:
+              str += ch;
+          }
+        } else {
+          str += ch;
+        }
+      }
+
+      if (!closed) {
+        throwError('Unclosed quote after "' + str + '"', index);
+      }
+
+      return {
+        type: LITERAL,
+        value: str,
+        raw: quote + str + quote
+      };
+    },
+        // Gobbles only identifiers
+    // e.g.: `foo`, `_value`, `$x1`
+    // Also, this function checks if that identifier is a literal:
+    // (e.g. `true`, `false`, `null`) or `this`
+    gobbleIdentifier = function () {
+      var ch = exprICode(index),
+          start = index,
+          identifier;
+
+      if (isIdentifierStart(ch)) {
+        index++;
+      } else {
+        throwError('Unexpected ' + exprI(index), index);
+      }
+
+      while (index < length) {
+        ch = exprICode(index);
+
+        if (isIdentifierPart(ch)) {
+          index++;
+        } else {
+          break;
+        }
+      }
+
+      identifier = expr.slice(start, index);
+
+      if (literals.hasOwnProperty(identifier)) {
+        return {
+          type: LITERAL,
+          value: literals[identifier],
+          raw: identifier
+        };
+      } else if (identifier === this_str) {
+        return {
+          type: THIS_EXP
+        };
+      } else {
+        return {
+          type: IDENTIFIER,
+          name: identifier
+        };
+      }
+    },
+        // Gobbles a list of arguments within the context of a function call
+    // or array literal. This function also assumes that the opening character
+    // `(` or `[` has already been gobbled, and gobbles expressions and commas
+    // until the terminator character `)` or `]` is encountered.
+    // e.g. `foo(bar, baz)`, `my_func()`, or `[bar, baz]`
+    gobbleArguments = function (termination) {
+      var ch_i,
+          args = [],
+          node,
+          closed = false;
+
+      while (index < length) {
+        gobbleSpaces();
+        ch_i = exprICode(index);
+
+        if (ch_i === termination) {
+          // done parsing
+          closed = true;
+          index++;
+          break;
+        } else if (ch_i === COMMA_CODE) {
+          // between expressions
+          index++;
+        } else {
+          node = gobbleExpression();
+
+          if (!node || node.type === COMPOUND) {
+            throwError('Expected comma', index);
+          }
+
+          args.push(node);
+        }
+      }
+
+      if (!closed) {
+        throwError('Expected ' + String.fromCharCode(termination), index);
+      }
+
+      return args;
+    },
+        // Gobble a non-literal variable name. This variable name may include properties
+    // e.g. `foo`, `bar.baz`, `foo['bar'].baz`
+    // It also gobbles function calls:
+    // e.g. `Math.acos(obj.angle)`
+    gobbleVariable = function () {
+      var ch_i, node;
+      ch_i = exprICode(index);
+
+      if (ch_i === OPAREN_CODE) {
+        node = gobbleGroup();
+      } else {
+        node = gobbleIdentifier();
+      }
+
+      gobbleSpaces();
+      ch_i = exprICode(index);
+
+      while (ch_i === PERIOD_CODE || ch_i === OBRACK_CODE || ch_i === OPAREN_CODE) {
+        index++;
+
+        if (ch_i === PERIOD_CODE) {
+          gobbleSpaces();
+          node = {
+            type: MEMBER_EXP,
+            computed: false,
+            object: node,
+            property: gobbleIdentifier()
+          };
+        } else if (ch_i === OBRACK_CODE) {
+          node = {
+            type: MEMBER_EXP,
+            computed: true,
+            object: node,
+            property: gobbleExpression()
+          };
+          gobbleSpaces();
+          ch_i = exprICode(index);
+
+          if (ch_i !== CBRACK_CODE) {
+            throwError('Unclosed [', index);
+          }
+
+          index++;
+        } else if (ch_i === OPAREN_CODE) {
+          // A function call is being made; gobble all the arguments
+          node = {
+            type: CALL_EXP,
+            'arguments': gobbleArguments(CPAREN_CODE),
+            callee: node
+          };
+        }
+
+        gobbleSpaces();
+        ch_i = exprICode(index);
+      }
+
+      return node;
+    },
+        // Responsible for parsing a group of things within parentheses `()`
+    // This function assumes that it needs to gobble the opening parenthesis
+    // and then tries to gobble everything within that parenthesis, assuming
+    // that the next thing it should see is the close parenthesis. If not,
+    // then the expression probably doesn't have a `)`
+    gobbleGroup = function () {
+      index++;
+      var node = gobbleExpression();
+      gobbleSpaces();
+
+      if (exprICode(index) === CPAREN_CODE) {
+        index++;
+        return node;
+      } else {
+        throwError('Unclosed (', index);
+      }
+    },
+        // Responsible for parsing Array literals `[1, 2, 3]`
+    // This function assumes that it needs to gobble the opening bracket
+    // and then tries to gobble the expressions as arguments.
+    gobbleArray = function () {
+      index++;
+      return {
+        type: ARRAY_EXP,
+        elements: gobbleArguments(CBRACK_CODE)
+      };
+    },
+        nodes = [],
+        ch_i,
+        node;
+
+    while (index < length) {
+      ch_i = exprICode(index); // Expressions can be separated by semicolons, commas, or just inferred without any
+      // separators
+
+      if (ch_i === SEMCOL_CODE || ch_i === COMMA_CODE) {
+        index++; // ignore separators
+      } else {
+        // Try to gobble each expression individually
+        if (node = gobbleExpression()) {
+          nodes.push(node); // If we weren't able to find a binary expression and are out of room, then
+          // the expression passed in probably has too much
+        } else if (index < length) {
+          throwError('Unexpected "' + exprI(index) + '"', index);
+        }
+      }
+    } // If there's only one expression just try returning the expression
+
+
+    if (nodes.length === 1) {
+      return nodes[0];
+    } else {
+      return {
+        type: COMPOUND,
+        body: nodes
+      };
+    }
+  }; // To be filled in by the template
+
+
+  jsep.version = '0.3.4';
+
+  jsep.toString = function () {
+    return 'JavaScript Expression Parser (JSEP) v' + jsep.version;
+  };
+  /**
+   * @method jsep.addUnaryOp
+   * @param {string} op_name The name of the unary op to add
+   * @return jsep
+   */
+
+
+  jsep.addUnaryOp = function (op_name) {
+    max_unop_len = Math.max(op_name.length, max_unop_len);
+    unary_ops[op_name] = t;
+    return this;
+  };
+  /**
+   * @method jsep.addBinaryOp
+   * @param {string} op_name The name of the binary op to add
+   * @param {number} precedence The precedence of the binary op (can be a float)
+   * @return jsep
+   */
+
+
+  jsep.addBinaryOp = function (op_name, precedence) {
+    max_binop_len = Math.max(op_name.length, max_binop_len);
+    binary_ops[op_name] = precedence;
+    return this;
+  };
+  /**
+   * @method jsep.addLiteral
+   * @param {string} literal_name The name of the literal to add
+   * @param {*} literal_value The value of the literal
+   * @return jsep
+   */
+
+
+  jsep.addLiteral = function (literal_name, literal_value) {
+    literals[literal_name] = literal_value;
+    return this;
+  };
+  /**
+   * @method jsep.removeUnaryOp
+   * @param {string} op_name The name of the unary op to remove
+   * @return jsep
+   */
+
+
+  jsep.removeUnaryOp = function (op_name) {
+    delete unary_ops[op_name];
+
+    if (op_name.length === max_unop_len) {
+      max_unop_len = getMaxKeyLen(unary_ops);
+    }
+
+    return this;
+  };
+  /**
+   * @method jsep.removeAllUnaryOps
+   * @return jsep
+   */
+
+
+  jsep.removeAllUnaryOps = function () {
+    unary_ops = {};
+    max_unop_len = 0;
+    return this;
+  };
+  /**
+   * @method jsep.removeBinaryOp
+   * @param {string} op_name The name of the binary op to remove
+   * @return jsep
+   */
+
+
+  jsep.removeBinaryOp = function (op_name) {
+    delete binary_ops[op_name];
+
+    if (op_name.length === max_binop_len) {
+      max_binop_len = getMaxKeyLen(binary_ops);
+    }
+
+    return this;
+  };
+  /**
+   * @method jsep.removeAllBinaryOps
+   * @return jsep
+   */
+
+
+  jsep.removeAllBinaryOps = function () {
+    binary_ops = {};
+    max_binop_len = 0;
+    return this;
+  };
+  /**
+   * @method jsep.removeLiteral
+   * @param {string} literal_name The name of the literal to remove
+   * @return jsep
+   */
+
+
+  jsep.removeLiteral = function (literal_name) {
+    delete literals[literal_name];
+    return this;
+  };
+  /**
+   * @method jsep.removeAllLiterals
+   * @return jsep
+   */
+
+
+  jsep.removeAllLiterals = function () {
+    literals = {};
+    return this;
+  }; // In desktop environments, have a way to restore the old value for `jsep`
+
+
+  if (typeof exports === 'undefined') {
+    var old_jsep = root.jsep; // The star of the show! It's a function!
+
+    root.jsep = jsep; // And a courteous function willing to move out of the way for other similarly-named objects!
+
+    jsep.noConflict = function () {
+      if (root.jsep === jsep) {
+        root.jsep = old_jsep;
+      }
+
+      return jsep;
+    };
+  } else {
+    // In Node.JS environments
+    if (typeof module !== 'undefined' && module.exports) {
+      exports = module.exports = jsep;
+    } else {
+      exports.parse = jsep;
+    }
+  }
+})(this);
+},{}],"node_modules/expression-eval/index.js":[function(require,module,exports) {
+var jsep = require('jsep');
+
+/**
+ * Evaluation code from JSEP project, under MIT License.
+ * Copyright (c) 2013 Stephen Oney, http://jsep.from.so/
+ */
+
+var binops = {
+  '||':  function (a, b) { return a || b; },
+  '&&':  function (a, b) { return a && b; },
+  '|':   function (a, b) { return a | b; },
+  '^':   function (a, b) { return a ^ b; },
+  '&':   function (a, b) { return a & b; },
+  '==':  function (a, b) { return a == b; }, // jshint ignore:line
+  '!=':  function (a, b) { return a != b; }, // jshint ignore:line
+  '===': function (a, b) { return a === b; },
+  '!==': function (a, b) { return a !== b; },
+  '<':   function (a, b) { return a < b; },
+  '>':   function (a, b) { return a > b; },
+  '<=':  function (a, b) { return a <= b; },
+  '>=':  function (a, b) { return a >= b; },
+  '<<':  function (a, b) { return a << b; },
+  '>>':  function (a, b) { return a >> b; },
+  '>>>': function (a, b) { return a >>> b; },
+  '+':   function (a, b) { return a + b; },
+  '-':   function (a, b) { return a - b; },
+  '*':   function (a, b) { return a * b; },
+  '/':   function (a, b) { return a / b; },
+  '%':   function (a, b) { return a % b; }
+};
+
+var unops = {
+  '-' :  function (a) { return -a; },
+  '+' :  function (a) { return a; },
+  '~' :  function (a) { return ~a; },
+  '!' :  function (a) { return !a; },
+};
+
+function evaluateArray ( list, context ) {
+  return list.map(function (v) { return evaluate(v, context); });
+}
+
+function evaluateMember ( node, context ) {
+  var object = evaluate(node.object, context);
+  if ( node.computed ) {
+    return [object, object[evaluate(node.property, context)]];
+  } else {
+    return [object, object[node.property.name]];
+  }
+}
+
+function evaluate ( node, context ) {
+
+  switch ( node.type ) {
+
+    case 'ArrayExpression':
+      return evaluateArray( node.elements, context );
+
+    case 'BinaryExpression':
+      return binops[ node.operator ]( evaluate( node.left, context ), evaluate( node.right, context ) );
+
+    case 'CallExpression':
+      var caller, fn, assign;
+      if (node.callee.type === 'MemberExpression') {
+        assign = evaluateMember( node.callee, context );
+        caller = assign[0];
+        fn = assign[1];
+      } else {
+        fn = evaluate( node.callee, context );
+      }
+      if (typeof fn  !== 'function') { return undefined; }
+      return fn.apply( caller, evaluateArray( node.arguments, context ) );
+
+    case 'ConditionalExpression':
+      return evaluate( node.test, context )
+        ? evaluate( node.consequent, context )
+        : evaluate( node.alternate, context );
+
+    case 'Identifier':
+      return context[node.name];
+
+    case 'Literal':
+      return node.value;
+
+    case 'LogicalExpression':
+      if (node.operator === '||') {
+        return evaluate( node.left, context ) || evaluate( node.right, context );
+      } else if (node.operator === '&&') { 
+        return evaluate( node.left, context ) && evaluate( node.right, context );
+      }
+      return binops[ node.operator ]( evaluate( node.left, context ), evaluate( node.right, context ) );
+
+    case 'MemberExpression':
+      return evaluateMember(node, context)[1];
+
+    case 'ThisExpression':
+      return context;
+
+    case 'UnaryExpression':
+      return unops[ node.operator ]( evaluate( node.argument, context ) );
+
+    default:
+      return undefined;
+  }
+
+}
+
+function compile (expression) {
+  return evaluate.bind(null, jsep(expression));
+}
+
+module.exports = {
+  parse: jsep,
+  eval: evaluate,
+  compile: compile
+};
+
+},{"jsep":"node_modules/jsep/build/jsep.js"}],"node_modules/strip-json-comments/index.js":[function(require,module,exports) {
+'use strict';
+
+var singleComment = 1;
+var multiComment = 2;
+
+function stripWithoutWhitespace() {
+  return '';
+}
+
+function stripWithWhitespace(str, start, end) {
+  return str.slice(start, end).replace(/\S/g, ' ');
+}
+
+module.exports = function (str, opts) {
+  opts = opts || {};
+  var currentChar;
+  var nextChar;
+  var insideString = false;
+  var insideComment = false;
+  var offset = 0;
+  var ret = '';
+  var strip = opts.whitespace === false ? stripWithoutWhitespace : stripWithWhitespace;
+
+  for (var i = 0; i < str.length; i++) {
+    currentChar = str[i];
+    nextChar = str[i + 1];
+
+    if (!insideComment && currentChar === '"') {
+      var escaped = str[i - 1] === '\\' && str[i - 2] !== '\\';
+
+      if (!escaped) {
+        insideString = !insideString;
+      }
+    }
+
+    if (insideString) {
+      continue;
+    }
+
+    if (!insideComment && currentChar + nextChar === '//') {
+      ret += str.slice(offset, i);
+      offset = i;
+      insideComment = singleComment;
+      i++;
+    } else if (insideComment === singleComment && currentChar + nextChar === '\r\n') {
+      i++;
+      insideComment = false;
+      ret += strip(str, offset, i);
+      offset = i;
+      continue;
+    } else if (insideComment === singleComment && currentChar === '\n') {
+      insideComment = false;
+      ret += strip(str, offset, i);
+      offset = i;
+    } else if (!insideComment && currentChar + nextChar === '/*') {
+      ret += str.slice(offset, i);
+      offset = i;
+      insideComment = multiComment;
+      i++;
+      continue;
+    } else if (insideComment === multiComment && currentChar + nextChar === '*/') {
+      i++;
+      insideComment = false;
+      ret += strip(str, offset, i + 1);
+      offset = i + 1;
+      continue;
+    }
+  }
+
+  return ret + (insideComment ? strip(str.substr(offset)) : str.substr(offset));
+};
+},{}],"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/node_modules/process/browser.js":[function(require,module,exports) {
+
+// shim for using process in browser
+var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+  throw new Error('setTimeout has not been defined');
+}
+
+function defaultClearTimeout() {
+  throw new Error('clearTimeout has not been defined');
+}
+
+(function () {
+  try {
+    if (typeof setTimeout === 'function') {
+      cachedSetTimeout = setTimeout;
+    } else {
+      cachedSetTimeout = defaultSetTimout;
+    }
+  } catch (e) {
+    cachedSetTimeout = defaultSetTimout;
+  }
+
+  try {
+    if (typeof clearTimeout === 'function') {
+      cachedClearTimeout = clearTimeout;
+    } else {
+      cachedClearTimeout = defaultClearTimeout;
+    }
+  } catch (e) {
+    cachedClearTimeout = defaultClearTimeout;
+  }
+})();
+
+function runTimeout(fun) {
+  if (cachedSetTimeout === setTimeout) {
+    //normal enviroments in sane situations
+    return setTimeout(fun, 0);
+  } // if setTimeout wasn't available but was latter defined
+
+
+  if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+    cachedSetTimeout = setTimeout;
+    return setTimeout(fun, 0);
+  }
+
+  try {
+    // when when somebody has screwed with setTimeout but no I.E. maddness
+    return cachedSetTimeout(fun, 0);
+  } catch (e) {
+    try {
+      // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+      return cachedSetTimeout.call(null, fun, 0);
+    } catch (e) {
+      // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+      return cachedSetTimeout.call(this, fun, 0);
+    }
+  }
+}
+
+function runClearTimeout(marker) {
+  if (cachedClearTimeout === clearTimeout) {
+    //normal enviroments in sane situations
+    return clearTimeout(marker);
+  } // if clearTimeout wasn't available but was latter defined
+
+
+  if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+    cachedClearTimeout = clearTimeout;
+    return clearTimeout(marker);
+  }
+
+  try {
+    // when when somebody has screwed with setTimeout but no I.E. maddness
+    return cachedClearTimeout(marker);
+  } catch (e) {
+    try {
+      // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+      return cachedClearTimeout.call(null, marker);
+    } catch (e) {
+      // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+      // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+      return cachedClearTimeout.call(this, marker);
+    }
+  }
+}
+
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+  if (!draining || !currentQueue) {
+    return;
+  }
+
+  draining = false;
+
+  if (currentQueue.length) {
+    queue = currentQueue.concat(queue);
+  } else {
+    queueIndex = -1;
+  }
+
+  if (queue.length) {
+    drainQueue();
+  }
+}
+
+function drainQueue() {
+  if (draining) {
+    return;
+  }
+
+  var timeout = runTimeout(cleanUpNextTick);
+  draining = true;
+  var len = queue.length;
+
+  while (len) {
+    currentQueue = queue;
+    queue = [];
+
+    while (++queueIndex < len) {
+      if (currentQueue) {
+        currentQueue[queueIndex].run();
+      }
+    }
+
+    queueIndex = -1;
+    len = queue.length;
+  }
+
+  currentQueue = null;
+  draining = false;
+  runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+  var args = new Array(arguments.length - 1);
+
+  if (arguments.length > 1) {
+    for (var i = 1; i < arguments.length; i++) {
+      args[i - 1] = arguments[i];
+    }
+  }
+
+  queue.push(new Item(fun, args));
+
+  if (queue.length === 1 && !draining) {
+    runTimeout(drainQueue);
+  }
+}; // v8 likes predictible objects
+
+
+function Item(fun, array) {
+  this.fun = fun;
+  this.array = array;
+}
+
+Item.prototype.run = function () {
+  this.fun.apply(null, this.array);
+};
+
+process.title = 'browser';
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) {
+  return [];
+};
+
+process.binding = function (name) {
+  throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () {
+  return '/';
+};
+
+process.chdir = function (dir) {
+  throw new Error('process.chdir is not supported');
+};
+
+process.umask = function () {
+  return 0;
+};
+},{}],"node_modules/prepr/index.js":[function(require,module,exports) {
+var process = require("process");
+var define;
+/**
+ * Preprocess in C-preprocessor fashion
+ * @module  prepr
+ */
+
+var paren = require('parenthesis');
+var balanced = require('balanced-match');
+var extend = require('object-assign');
+var escaper = require('escaper');
+var ee = require('expression-eval');
+var stripComments = require('strip-json-comments')
+
+
+/**
+ * Main processing function
+ */
+function preprocess (what, how) {
+	var result = '';
+	var source = what + '';
+
+	//defined macros
+	//FIXME: provide real values here
+	var macros = extend({
+		__LINE__: 0,
+		__FILE__: '_',
+		__VERSION__: 100,
+		defined: function (arg) {
+			return [].slice.call(arguments).every(function (arg) {
+				return macros[arg] != null;
+			}) ? 1 : 0;
+		}
+	}, how);
+
+	return process(source);
+
+
+	//process chunk of a string by finding out macros and replacing them
+	function process (str) {
+		if (!str) return '';
+
+		var arr = [];
+
+		var chunk = str;
+
+		//find next directive, get chunk to process before it
+		var directive = /#[A-Za-z0-9_$]+/ig.exec(str);
+
+		//get chunk to process - before next call
+		if (directive) {
+			chunk = chunk.slice(0, directive.index);
+			str = str.slice(directive.index);
+		}
+
+
+		//escape bad things
+		chunk = escape(chunk, arr);
+
+		//replace all defined X to defined (X)
+		chunk = chunk.replace(/\bdefined\s*([A-Za-z0-9_$]+)/g, 'defined($1)');
+
+		//for each registered macro do it’s call
+		for (var name in macros) {
+			//fn macro
+			if (macros[name] instanceof Function) {
+				chunk = processFunction(chunk, name, macros[name]);
+			}
+		}
+
+		chunk = escape(chunk, arr);
+
+		//for each defined var do replacement
+		for (var name in macros) {
+			//value replacement
+			if (!(macros[name] instanceof Function)) {
+				chunk = processDefinition(chunk, name, macros[name]);
+			}
+		}
+
+		chunk = unescape(chunk, arr);
+
+		//process directive
+		if (directive) {
+			if (/^#def/.test(directive[0])) {
+				str = define(str);
+			}
+			else if (/^#undef/.test(directive[0])) {
+				str = undefine(str);
+			}
+			else if (/^#if/.test(directive[0])) {
+				str = processIf(str);
+			}
+			else if (/^#line/.test(directive[0])) {
+				var data = /#[A-Za-z0-9_]+\s*([-0-9]+)?[^\n]*/.exec(str);
+				macros.__LINE__ = parseInt(data[1]);
+				str = str.slice(data.index + data[0].length);
+			}
+			else if (/^#version/.test(directive[0])) {
+				var data = /#[A-Za-z0-9_]+\s*([-0-9]+)?[^\n]*/.exec(str);
+				macros.__VERSION__ = parseInt(data[1]);
+				str = str.slice(data.index + data[0].length);
+			}
+			else {
+				//drop directive line
+				var directiveDecl = /\n/m.exec(str);
+				chunk += str.slice(0, directiveDecl.index) + '\n';
+				str = str.slice(directiveDecl.index)
+			}
+
+			return chunk + process(str);
+		}
+
+		return chunk;
+	}
+
+	//replace defined macros from a string
+	function processFunction (str, name, fn) {
+		var arr = [];
+		str = escape(str, arr);
+
+		var parts = paren(str, {
+			flat: true,
+			brackets: '()',
+			escape: '___'
+		});
+
+		var re = new RegExp(name + '\\s*\\(___([0-9]+)___\\)', 'g');
+
+		//replace each macro call with result
+		parts = parts.map(function (part) {
+			return part.replace(re, function (match, argsPartIdx) {
+				//parse arguments
+				var args = parts[argsPartIdx].trim();
+				if (args.length) {
+					args = args.split(/\s*,\s*/);
+					args = args.map(function (arg) {
+						var argParts = parts.slice();
+						argParts[0] = arg;
+						return paren.stringify(argParts, {flat: true, escape: '___'});
+					}).map(function (arg) {
+						return arg;
+					});
+				} else {
+					args = [];
+				}
+
+				if (args.length != fn.length) throw Error(`macro "${name}" requires ${fn.length} arguments, but ${args.length} given`);
+
+				//apply macro call with args
+				return fn.apply(null, args);
+			});
+		});
+
+		str = paren.stringify(parts, {flat: true, escape: '___'});
+
+		str = unescape(str, arr);
+
+		return str;
+	}
+
+	//replace defined variables from a string
+	function processDefinition (str, name, value) {
+		var arr = [];
+		str = escape(str, arr);
+
+		//apply concatenation ENTRY ## something → valueSomething
+		str = str.replace(new RegExp(`([^#A-Za-z0-9_$]|^)${name}\\s*##\\s*([A-Za-z0-9_$]*)`, 'g'), function (match, pre, post) {
+			return pre + value + post;
+		});
+		str = str.replace(new RegExp(`([A-Za-z0-9_$]*)\\s*##\\s*${name}([^A-Za-z0-9_$]|$)`, 'g'), function (match, pre, post) {
+			return pre + value + post;
+		});
+
+		//replace definition entries
+		str = str.replace(new RegExp(`([^#A-Za-z0-9_$]|^)${name}([^A-Za-z0-9_$]|$)`, 'g'), function (match, pre, post) {
+
+			//insert definition
+			if (macros[value] != null && !(macros[value] instanceof Function)) value = macros[value];
+
+			return pre + value + post;
+		});
+		//replace stringifications
+		str = str.replace(new RegExp(`#${name}([^A-Za-z0-9_$]|$)`, 'g'), function (match, post) {
+			return  '"' + value + '"' + post;
+		});
+
+		str = unescape(str, arr);
+
+		return str;
+	}
+
+	//helpers to escape unfoldable things in strings
+	function escape (str, arr) {
+		return escaper.replace(str, true, arr)
+	}
+
+	function unescape (str, arr) {
+		if (!arr || !arr.length) return str
+
+		return escaper.paste(str, arr)
+	}
+
+
+
+	//register macro, #define directive
+	function define (str) {
+		var data = /#[A-Za-z]+[ ]*([A-Za-z0-9_$]*)(?:\(([^\(\)]*)\))?[ \r]*([^\n]*)$/m.exec(str);
+		str = str.slice(data.index + data[0].length);
+
+		var name = data[1];
+		var args = data[2];
+		var value = data[3] || true;
+
+		if (!name || !value) throw Error(`Macro definition "${data[0]}" is malformed`);
+
+		//register function macro
+		//#define FOO(A, B) (expr)
+		if (args != null) {
+			if (args.trim().length) {
+				args = args.split(/\s*,\s*/);
+			}
+			else {
+				args = [];
+			}
+
+			function fn () {
+				var result = value;
+
+				//for each arg - replace it’s occurence in `result`
+				for (var i = 0; i < args.length; i++) {
+					result = processDefinition(result, args[i], arguments[i]);
+				}
+
+				result = process(result);
+
+				return result;
+			};
+			Object.defineProperty(fn, 'length', {
+				value: args.length
+			});
+
+			macros[name] = fn;
+		}
+
+		//register value macro
+		//#define FOO insertion
+		//#define FOO (expr)
+		else {
+			macros[name] = value;
+		}
+
+		return str;
+	}
+
+	//unregister macro, #undef directive
+	function undefine (str) {
+		var data = /#[A-Za-z0-9_]+[ ]*([A-Za-z0-9_$]+)/.exec(str);
+		delete macros[data[1]];
+
+		return str.slice(data.index + data[0].length);
+	}
+
+	//process if/else/ifdef/elif/ifndef/defined
+	function processIf (str) {
+		var match = balanced('#if', '#endif', str)
+
+		//if no nested ifs - means we are in clause, return as is
+		if (!match) return str;
+		var body = match.body;
+		var post = match.post;
+		var elseBody = '';
+
+		//find else part
+		var matchElse = balanced('#if', '#else', str)
+		if (matchElse && matchElse.end <= match.end) {
+			elseBody = matchElse.post.slice(matchElse.post.indexOf('\n'), -match.post.length - 6);
+			body = matchElse.body;
+		}
+
+		//ifdef
+		if(/^def/.test(body)) {
+			body = body.slice(3);
+			var nameMatch = /[A-Za-z0-9_$]+/.exec(body);
+			var name = nameMatch[0];
+			body = body.slice(name.length + nameMatch.index);
+			if (macros[name] != null) str = process(body);
+			else str = process(elseBody);
+		}
+		//ifndef
+		else if (/^ndef/.test(body)) {
+			body = body.slice(4);
+			var nameMatch = /[A-Za-z0-9_$]+/.exec(body);
+			var name = nameMatch[0];
+			body = body.slice(name.length + nameMatch.index);
+			if (macros[name] == null) str = process(body);
+			else str = process(elseBody);
+		}
+		//if
+		else {
+			//split elifs
+			var clauses = body.split(/^\s*#elif\s+/m);
+
+			var result = false;
+
+			//find first triggered clause
+			for (var i = 0; i < clauses.length; i++) {
+				var clause = clauses[i];
+
+				var exprMatch = /\s*(.*)/.exec(clause);
+				var expr = exprMatch[0];
+				clause = clause.slice(expr.length + exprMatch.index);
+
+				//eval expression
+				expr = stripComments(process(expr));
+
+				try {
+					var expr = ee.parse(expr);
+					result = ee.eval(expr, macros);
+				} catch (e) {
+					result = false;
+				}
+
+				if (result) {
+					str = process(clause);
+					break;
+				}
+			}
+
+			//else clause
+			if (!result) {
+				str = process(elseBody);
+			}
+		}
+
+
+		//trim post till the first endline, because there may be comments after #endif
+		var match = /[\n\r]/.exec(post);
+		if (match) post = post.slice(match.index);
+
+		return str + post;
+	}
+}
+
+
+module.exports = preprocess;
+
+},{"parenthesis":"node_modules/parenthesis/index.js","balanced-match":"node_modules/prepr/node_modules/balanced-match/index.js","object-assign":"node_modules/object-assign/index.js","escaper":"node_modules/escaper/dist/escaper.js","expression-eval":"node_modules/expression-eval/index.js","strip-json-comments":"node_modules/strip-json-comments/index.js","process":"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/node_modules/process/browser.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("@fortawesome/fontawesome-free/css/all.min.css");
@@ -16686,11 +19106,37 @@ require("magic.css/dist/magic.css");
 
 require("babel-polyfill");
 
+var _renderQuad = require("./renderQuad.js");
+
+var _gaussianBlur = _interopRequireDefault(require("./gaussianBlur.glsl"));
+
+var _mixTexture = _interopRequireDefault(require("./mixTexture.frag"));
+
+var _prepr = _interopRequireDefault(require("prepr"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function gaussianBlurGLSL(dir, size) {
+  if (dir.startsWith("h")) return (0, _prepr.default)(_gaussianBlur.default, {
+    BLURSIZE: size.toFixed("2"),
+    DIR_H: true
+  });else if (dir.startsWith("v")) return (0, _prepr.default)(_gaussianBlur.default, {
+    BLURSIZE: size.toFixed("2"),
+    DIR_V: true
+  });
+}
 
 function whenEventIsRaised(obj, event) {
   return new Promise(function (ok, rej) {
@@ -16840,6 +19286,76 @@ function resizeCanvas() {
 
 window.onresize = resizeCanvas;
 resizeCanvas();
+var targets = {};
+var targetsi = 0;
+var renderTargets = {
+  renderToScreen: function renderToScreen(f) {
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    gl.viewport(0.0, 0.0, canvas.clientWidth, canvas.clientHeight);
+    f();
+  },
+  renderTo: function renderTo(f, i) {
+    var _targets$i = targets[i],
+        frameBuffer = _targets$i.frameBuffer,
+        width = _targets$i.width,
+        height = _targets$i.height,
+        targetTexture = _targets$i.targetTexture;
+    gl.bindFramebuffer(gl.FRAMEBUFFER, frameBuffer);
+    gl.viewport(0.0, 0.0, width, height);
+    f();
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    return targetTexture;
+  },
+  targetTexture: function targetTexture(i) {
+    var targetTexture = targets[i].targetTexture;
+    return targetTexture;
+  },
+  gen: function gen(gl, width, height, depth) {
+    var depthBuffer;
+
+    if (depth) {
+      depthBuffer = gl.createRenderbuffer();
+      gl.bindRenderbuffer(gl.RENDERBUFFER, depthBuffer);
+      gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, width, height);
+    }
+
+    var targetTexture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, targetTexture);
+    {
+      var level = 0;
+      var internalFormat = gl.RGBA;
+      var border = 0;
+      var format = gl.RGBA;
+      var type = gl.UNSIGNED_BYTE;
+      var data = null;
+      gl.texImage2D(gl.TEXTURE_2D, level, internalFormat, width, height, border, format, type, data);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    }
+    var frameBuffer = gl.createFramebuffer();
+    gl.bindFramebuffer(gl.FRAMEBUFFER, frameBuffer);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, targetTexture, 0);
+
+    if (depth) {
+      gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, depthBuffer);
+    }
+
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    gl.bindTexture(gl.TEXTURE_2D, null);
+    gl.bindRenderbuffer(gl.RENDERBUFFER, null);
+    var i = targetsi;
+    ++targetsi;
+    targets[i] = {
+      depthBuffer: depthBuffer,
+      targetTexture: targetTexture,
+      frameBuffer: frameBuffer,
+      width: width,
+      height: height
+    };
+    return i;
+  }
+};
 var gl = canvas.getContext("webgl");
 var fdraw;
 
@@ -16896,117 +19412,22 @@ function initRotatingCube() {
 
   var view_matrix = _glMatrix.mat4.create();
 
-  var model_matrix = _glMatrix.mat4.create(); // target texture
+  var model_matrix = _glMatrix.mat4.create();
 
-
-  var targetTextureWidth = canvas.clientWidth;
-  var targetTextureHeight = canvas.clientHeight;
-  var depthBuffer = gl.createRenderbuffer();
-  gl.bindRenderbuffer(gl.RENDERBUFFER, depthBuffer);
-  gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, targetTextureWidth, targetTextureHeight);
-  var targetTexture = gl.createTexture();
-  gl.bindTexture(gl.TEXTURE_2D, targetTexture);
-  {
-    var _level = 0;
-    var internalFormat = gl.RGBA;
-    var border = 0;
-    var format = gl.RGBA;
-    var type = gl.UNSIGNED_BYTE;
-    var data = null;
-    gl.texImage2D(gl.TEXTURE_2D, _level, internalFormat, targetTextureWidth, targetTextureHeight, border, format, type, data);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-  }
-  var fb = gl.createFramebuffer();
-  gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
-  var attachmentPoint = gl.COLOR_ATTACHMENT0;
-  var level = 0;
-  gl.framebufferTexture2D(gl.FRAMEBUFFER, attachmentPoint, gl.TEXTURE_2D, targetTexture, level);
-  gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, depthBuffer);
-  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-  gl.bindTexture(gl.TEXTURE_2D, null);
-  gl.bindRenderbuffer(gl.RENDERBUFFER, null); // --
-
-  var screenQuadVBO;
-  var screenVertShader;
-  var screenFragShader;
-  var screenShaderProgram;
-  var screenQuadPosition;
-  var screenQuadUVs;
-  var screenQuadSampler;
-  var screenQuadT;
-  var screent = 0;
-
-  function drawFullScreenQuad() {
-    // Only created once
-    if (screenQuadVBO == null) {
-      console.log("init");
-      var verts = [// First triangle:
-      1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 0.0, -1.0, -1.0, 0.0, 0.0, // Second triangle:
-      -1.0, -1.0, 0.0, 0.0, -1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0];
-      screenQuadVBO = gl.createBuffer();
-      gl.bindBuffer(gl.ARRAY_BUFFER, screenQuadVBO);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
-      var vertCode = 'attribute vec2 position;' + 'attribute vec2 uvs;' + 'varying vec3 vColor;' + 'void main(void) { ' + 'gl_Position = vec4(position,0,1);' + 'vColor = vec3(uvs,1.);' + '}';
-      var fragCode = 'precision mediump float;' + 'uniform sampler2D uSampler;' + 'uniform float t;' + 'varying vec3 vColor;' + 'vec4 toGrayScale(vec4 p)' + '{' + '   float g = 0.2126*p.r + 0.7152*p.g + 0.0722*p.b;' + '	return vec4(g, g, g, p.a);' + '}' + 'void main(void) {' + 'vec4 p = texture2D(uSampler, vColor.xy);' + 'vec4 sourceColor = p;' + 'vec4 destColor = toGrayScale(p);' + 'gl_FragColor = mix(sourceColor, destColor, t);' + '}';
-      screenVertShader = gl.createShader(gl.VERTEX_SHADER);
-      gl.shaderSource(screenVertShader, vertCode);
-      gl.compileShader(screenVertShader);
-      screenFragShader = gl.createShader(gl.FRAGMENT_SHADER);
-      gl.shaderSource(screenFragShader, fragCode);
-      gl.compileShader(screenFragShader);
-      var compiled = gl.getShaderParameter(screenFragShader, gl.COMPILE_STATUS);
-      console.log('Shader compiled successfully: ' + compiled);
-      var compilationLog = gl.getShaderInfoLog(screenFragShader);
-      console.log('Shader compiler log: ' + compilationLog);
-      screenShaderProgram = gl.createProgram();
-      gl.attachShader(screenShaderProgram, screenVertShader);
-      gl.attachShader(screenShaderProgram, screenFragShader);
-      gl.linkProgram(screenShaderProgram);
-      screenQuadPosition = gl.getAttribLocation(screenShaderProgram, "position");
-      screenQuadUVs = gl.getAttribLocation(screenShaderProgram, "uvs");
-      screenQuadSampler = gl.getUniformLocation(screenShaderProgram, 'uSampler');
-      screenQuadT = gl.getUniformLocation(screenShaderProgram, 't');
-    }
-
-    screent += 0.01;
-    gl.activeTexture(gl.TEXTURE0);
-    gl.bindTexture(gl.TEXTURE_2D, targetTexture);
-    gl.useProgram(screenShaderProgram);
-    gl.bindBuffer(gl.ARRAY_BUFFER, screenQuadVBO);
-    gl.enableVertexAttribArray(screenQuadPosition);
-    gl.vertexAttribPointer(screenQuadPosition, 2, gl.FLOAT, false, 16, 0);
-    gl.enableVertexAttribArray(screenQuadUVs);
-    gl.vertexAttribPointer(screenQuadUVs, 2, gl.FLOAT, false, 16, 8);
-    gl.uniform1i(screenQuadSampler, 0);
-    gl.uniform1f(screenQuadT, (Math.cos(screent) + 1) / 2);
-    gl.drawArrays(gl.TRIANGLES, 0, 6);
-  }
-
+  var fullSceneTarget = renderTargets.gen(gl, canvas.clientWidth, canvas.clientHeight, true);
+  var sceneTarget = renderTargets.gen(gl, 256, 256, true);
+  var hBlurTarget = renderTargets.gen(gl, 256, 256, false);
+  var vBlurTarget = renderTargets.gen(gl, 256, 256, false);
+  var hBlurRender = (0, _renderQuad.setupFullScreenQuad)(gl, ["t", "blurStepSize"], gaussianBlurGLSL("h", 8));
+  var vBlurRender = (0, _renderQuad.setupFullScreenQuad)(gl, ["t", "blurStepSize"], gaussianBlurGLSL("v", 8));
+  var mixTexturesRender = (0, _renderQuad.setupMixTextures)(gl, 2, [], _mixTexture.default);
   var time_old = 0;
 
-  fdraw = function fdraw(time) {
-    var dt = time - time_old;
-
-    _glMatrix.mat4.rotateZ(model_matrix, model_matrix, dt * 0.0005);
-
-    _glMatrix.mat4.rotateY(model_matrix, model_matrix, dt * 0.0002);
-
-    _glMatrix.mat4.rotateX(model_matrix, model_matrix, dt * 0.0003);
-
-    time_old = time;
-
-    _glMatrix.mat4.perspective(proj_matrix, 45, canvas.clientWidth / canvas.clientHeight, 1, 100);
-
-    _glMatrix.mat4.lookAt(view_matrix, _glMatrix.vec3.fromValues(-3, 3, 3), _glMatrix.vec3.fromValues(0, 0, 0), _glMatrix.vec3.fromValues(0, 1, 0));
-
-    gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+  var fdrawCube = function fdrawCube(cr, cg, cb, ca) {
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
-    gl.clearColor(0.5, 0.5, 0.5, 0.9);
+    gl.clearColor(cr, cg, cb, ca);
     gl.clearDepth(1.0);
-    gl.viewport(0.0, 0.0, canvas.width, canvas.height);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     gl.useProgram(shaderProgram);
     gl.uniformMatrix4fv(Pmatrix, false, proj_matrix);
@@ -17019,13 +19440,53 @@ function initRotatingCube() {
     gl.enableVertexAttribArray(color);
     gl.vertexAttribPointer(color, 3, gl.FLOAT, false, 0, 0);
     gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
-    {
-      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-      gl.viewport(0.0, 0.0, canvas.width, canvas.height);
-      gl.clearColor(1, 0, 0, 1);
-      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-      drawFullScreenQuad(targetTexture);
-    }
+  };
+
+  var screent = 0;
+
+  fdraw = function fdraw(time) {
+    var dt = time - time_old;
+    time_old = time;
+
+    _glMatrix.mat4.rotateZ(model_matrix, model_matrix, dt * 0.0005);
+
+    _glMatrix.mat4.rotateY(model_matrix, model_matrix, dt * 0.0002);
+
+    _glMatrix.mat4.rotateX(model_matrix, model_matrix, dt * 0.0003);
+
+    _glMatrix.mat4.perspective(proj_matrix, 45, canvas.clientWidth / canvas.clientHeight, 1, 100);
+
+    _glMatrix.mat4.lookAt(view_matrix, _glMatrix.vec3.fromValues(-3, 3, 3), _glMatrix.vec3.fromValues(0, 0, 0), _glMatrix.vec3.fromValues(0, 1, 0));
+
+    var smallScene = renderTargets.renderTo(function (x) {
+      return fdrawCube(0, 0, 0, 0);
+    }, sceneTarget);
+    var hBlurTexture = renderTargets.renderTo(function (x) {
+      hBlurRender(smallScene, function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            t = _ref2[0],
+            blurStepSize = _ref2[1];
+
+        gl.uniform1f(t, (Math.cos(screent) + 1) / 2);
+        gl.uniform1f(blurStepSize, 1.0 / 256.0);
+      });
+    }, hBlurTarget);
+    var bluredTexture = renderTargets.renderTo(function (x) {
+      vBlurRender(hBlurTexture, function (_ref3) {
+        var _ref4 = _slicedToArray(_ref3, 2),
+            t = _ref4[0],
+            blurStepSize = _ref4[1];
+
+        gl.uniform1f(t, (Math.cos(screent) + 1) / 2);
+        gl.uniform1f(blurStepSize, 1.0 / 256.0);
+      });
+    }, vBlurTarget);
+    var fullSceneTexture = renderTargets.renderTo(function (x) {
+      return fdrawCube(0.5, 0.5, 0.5, 1);
+    }, fullSceneTarget);
+    renderTargets.renderToScreen(function () {
+      mixTexturesRender([fullSceneTexture, bluredTexture], function () {});
+    });
   };
 }
 
@@ -17037,7 +19498,7 @@ function draw(time) {
 }
 
 requestAnimationFrame(draw);
-},{"@fortawesome/fontawesome-free/css/all.min.css":"node_modules/@fortawesome/fontawesome-free/css/all.min.css","./index.css":"index.css","./index.scss":"index.scss","gl-matrix":"node_modules/gl-matrix/esm/index.js","codyhouse-framework/main/assets/js/util":"node_modules/codyhouse-framework/main/assets/js/util.js","./menuBar":"menuBar.js","magic.css/dist/magic.css":"node_modules/magic.css/dist/magic.css","babel-polyfill":"node_modules/babel-polyfill/lib/index.js"}],"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@fortawesome/fontawesome-free/css/all.min.css":"node_modules/@fortawesome/fontawesome-free/css/all.min.css","./index.css":"index.css","./index.scss":"index.scss","gl-matrix":"node_modules/gl-matrix/esm/index.js","codyhouse-framework/main/assets/js/util":"node_modules/codyhouse-framework/main/assets/js/util.js","./menuBar":"menuBar.js","magic.css/dist/magic.css":"node_modules/magic.css/dist/magic.css","babel-polyfill":"node_modules/babel-polyfill/lib/index.js","./renderQuad.js":"renderQuad.js","./gaussianBlur.glsl":"gaussianBlur.glsl","./mixTexture.frag":"mixTexture.frag","prepr":"node_modules/prepr/index.js"}],"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -17065,7 +19526,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55124" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53735" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
