@@ -16770,10 +16770,10 @@ function setupMixTextures(gl, nTextures, uniforms, fragCode) {
     drawFullScreenQuad(gl, textures, shaderProgram, locations, setUniform, positionLocation, uvsLocation, samplerLocations);
   };
 }
-},{}],"gaussianBlur.glsl":[function(require,module,exports) {
+},{}],"gaussianBlur.frag":[function(require,module,exports) {
 module.exports = "precision mediump float;\n#define GLSLIFY 1\nvarying vec3 vColor;\n\nuniform sampler2D uSampler;\nuniform float t;\nuniform float blurStepSize;\n\n#ifndef BLURSIZE\n#define BLURSIZE 8.0\n#endif\n\n#ifdef DIR_H\nvec2 dir = vec2(1.0, 0.0);\n#else ifdef DIR_V\nvec2 dir = vec2(0.0, 1.0);\n#endif\n    \nvec4 toGrayScale(vec4 p)\n{\n    float g = 0.2126*p.r + 0.7152*p.g + 0.0722*p.b;\n    return vec4(g, g, g, p.a);\n}\n\nvec4 toBlur(sampler2D sampler, vec2 uv, float blurStep)\n{\n    vec4 accum = texture2D(uSampler, uv);\n    float j = 0.0;\n    for(float i = 1.0;i <= BLURSIZE; i+=1.0) {\n        accum += texture2D(uSampler, uv + (i * blurStep * dir));\n        accum += texture2D(uSampler, uv - (i * blurStep * dir)); \n        j = i;\n    }\n    accum = accum / (2.0 * j + 1.0);\n    return vec4(accum.rgb, 1.0);\n}\n\nvoid main(void)\n{\n    vec4 p = texture2D(uSampler, vColor.xy);\n    vec4 sourceColor = p;\n    vec4 destColor = toBlur(uSampler, vColor.xy, blurStepSize);\n    gl_FragColor = mix(sourceColor, destColor, t);\n}";
 },{}],"mixTexture.frag":[function(require,module,exports) {
-module.exports = "precision mediump float;\n#define GLSLIFY 1\nvarying vec3 vColor;\n\nuniform sampler2D uSampler0;\nuniform sampler2D uSampler1;\n\nvoid main(void)\n{\n    vec4 ta = texture2D(uSampler0, vColor.xy);\n    vec4 tb = texture2D(uSampler1, vColor.xy);\n    \n    gl_FragColor = vec4((ta.rgb * ta.a) + (tb.rgb * tb.a), 1.0);\n}";
+module.exports = "precision mediump float;\n#define GLSLIFY 1\nvarying vec3 vColor;\n\nuniform sampler2D uSampler0;\nuniform sampler2D uSampler1;\n\nvec3 rgb2hsv(vec3 c)\n{\n    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);\n    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));\n    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));\n\n    float d = q.x - min(q.w, q.y);\n    float e = 1.0e-10;\n    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);\n}\n\nvec3 hsv2rgb(vec3 c)\n{\n    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);\n    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);\n    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);\n}\n\nvoid main(void)\n{\n    vec4 ta = texture2D(uSampler0, vColor.xy);\n    ta = vec4(rgb2hsv(ta.rgb), 1);\n    ta.y *= 0.8;\n    ta = vec4(hsv2rgb(ta.rgb),1);\n    vec4 tb = texture2D(uSampler1, vColor.xy);\n    \n    gl_FragColor = vec4((ta.rgb * ta.a) + (tb.rgb * tb.a), 1.0);\n}";
 },{}],"node_modules/parenthesis/index.js":[function(require,module,exports) {
 'use strict'
 
@@ -19108,7 +19108,7 @@ require("babel-polyfill");
 
 var _renderQuad = require("./renderQuad.js");
 
-var _gaussianBlur = _interopRequireDefault(require("./gaussianBlur.glsl"));
+var _gaussianBlur = _interopRequireDefault(require("./gaussianBlur.frag"));
 
 var _mixTexture = _interopRequireDefault(require("./mixTexture.frag"));
 
@@ -19418,8 +19418,8 @@ function initRotatingCube() {
   var sceneTarget = renderTargets.gen(gl, 256, 256, true);
   var hBlurTarget = renderTargets.gen(gl, 256, 256, false);
   var vBlurTarget = renderTargets.gen(gl, 256, 256, false);
-  var hBlurRender = (0, _renderQuad.setupFullScreenQuad)(gl, ["t", "blurStepSize"], gaussianBlurGLSL("h", 8));
-  var vBlurRender = (0, _renderQuad.setupFullScreenQuad)(gl, ["t", "blurStepSize"], gaussianBlurGLSL("v", 8));
+  var hBlurRender = (0, _renderQuad.setupFullScreenQuad)(gl, ["t", "blurStepSize"], gaussianBlurGLSL("h", 16));
+  var vBlurRender = (0, _renderQuad.setupFullScreenQuad)(gl, ["t", "blurStepSize"], gaussianBlurGLSL("v", 16));
   var mixTexturesRender = (0, _renderQuad.setupMixTextures)(gl, 2, [], _mixTexture.default);
   var time_old = 0;
 
@@ -19498,7 +19498,7 @@ function draw(time) {
 }
 
 requestAnimationFrame(draw);
-},{"@fortawesome/fontawesome-free/css/all.min.css":"node_modules/@fortawesome/fontawesome-free/css/all.min.css","./index.css":"index.css","./index.scss":"index.scss","gl-matrix":"node_modules/gl-matrix/esm/index.js","codyhouse-framework/main/assets/js/util":"node_modules/codyhouse-framework/main/assets/js/util.js","./menuBar":"menuBar.js","magic.css/dist/magic.css":"node_modules/magic.css/dist/magic.css","babel-polyfill":"node_modules/babel-polyfill/lib/index.js","./renderQuad.js":"renderQuad.js","./gaussianBlur.glsl":"gaussianBlur.glsl","./mixTexture.frag":"mixTexture.frag","prepr":"node_modules/prepr/index.js"}],"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@fortawesome/fontawesome-free/css/all.min.css":"node_modules/@fortawesome/fontawesome-free/css/all.min.css","./index.css":"index.css","./index.scss":"index.scss","gl-matrix":"node_modules/gl-matrix/esm/index.js","codyhouse-framework/main/assets/js/util":"node_modules/codyhouse-framework/main/assets/js/util.js","./menuBar":"menuBar.js","magic.css/dist/magic.css":"node_modules/magic.css/dist/magic.css","babel-polyfill":"node_modules/babel-polyfill/lib/index.js","./renderQuad.js":"renderQuad.js","./gaussianBlur.frag":"gaussianBlur.frag","./mixTexture.frag":"mixTexture.frag","prepr":"node_modules/prepr/index.js"}],"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -19526,7 +19526,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53735" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51880" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

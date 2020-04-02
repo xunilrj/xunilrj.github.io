@@ -7,7 +7,7 @@ import applyMenuBar from './menuBar';
 import 'magic.css/dist/magic.css';
 import 'babel-polyfill';
 import {setupFullScreenQuad, setupMixTextures} from './renderQuad.js';
-import gaussianBlurCODE from './gaussianBlur.glsl';
+import gaussianBlurCODE from './gaussianBlur.frag';
 import mixTextureCODE from './mixTexture.frag';
 import prepr from 'prepr';
 
@@ -262,8 +262,8 @@ function initRotatingCube() {
     const hBlurTarget = renderTargets.gen(gl, 256, 256, false);
     const vBlurTarget = renderTargets.gen(gl, 256, 256, false);
 
-    const hBlurRender = setupFullScreenQuad(gl, ["t","blurStepSize"], gaussianBlurGLSL("h", 8));
-    const vBlurRender = setupFullScreenQuad(gl, ["t","blurStepSize"], gaussianBlurGLSL("v", 8));
+    const hBlurRender = setupFullScreenQuad(gl, ["t","blurStepSize"], gaussianBlurGLSL("h", 16));
+    const vBlurRender = setupFullScreenQuad(gl, ["t","blurStepSize"], gaussianBlurGLSL("v", 16));
     const mixTexturesRender = setupMixTextures(gl, 2, [], mixTextureCODE);
 
     var time_old = 0;
