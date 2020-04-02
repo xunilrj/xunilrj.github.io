@@ -16835,7 +16835,7 @@ var canvas = document.getElementById('backgroundCanvas');
 
 function resizeCanvas() {
   canvas.width = canvas.clientWidth;
-  canvas.height = canvas.clientHeight;
+  canvas.height = canvas.clientHeight; //TODO resize framebuffer
 }
 
 window.onresize = resizeCanvas;
@@ -16896,7 +16896,93 @@ function initRotatingCube() {
 
   var view_matrix = _glMatrix.mat4.create();
 
-  var model_matrix = _glMatrix.mat4.create();
+  var model_matrix = _glMatrix.mat4.create(); // target texture
+
+
+  var targetTextureWidth = canvas.clientWidth;
+  var targetTextureHeight = canvas.clientHeight;
+  var depthBuffer = gl.createRenderbuffer();
+  gl.bindRenderbuffer(gl.RENDERBUFFER, depthBuffer);
+  gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, targetTextureWidth, targetTextureHeight);
+  var targetTexture = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, targetTexture);
+  {
+    var _level = 0;
+    var internalFormat = gl.RGBA;
+    var border = 0;
+    var format = gl.RGBA;
+    var type = gl.UNSIGNED_BYTE;
+    var data = null;
+    gl.texImage2D(gl.TEXTURE_2D, _level, internalFormat, targetTextureWidth, targetTextureHeight, border, format, type, data);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  }
+  var fb = gl.createFramebuffer();
+  gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+  var attachmentPoint = gl.COLOR_ATTACHMENT0;
+  var level = 0;
+  gl.framebufferTexture2D(gl.FRAMEBUFFER, attachmentPoint, gl.TEXTURE_2D, targetTexture, level);
+  gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, depthBuffer);
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  gl.bindTexture(gl.TEXTURE_2D, null);
+  gl.bindRenderbuffer(gl.RENDERBUFFER, null); // --
+
+  var screenQuadVBO;
+  var screenVertShader;
+  var screenFragShader;
+  var screenShaderProgram;
+  var screenQuadPosition;
+  var screenQuadUVs;
+  var screenQuadSampler;
+  var screenQuadT;
+  var screent = 0;
+
+  function drawFullScreenQuad() {
+    // Only created once
+    if (screenQuadVBO == null) {
+      console.log("init");
+      var verts = [// First triangle:
+      1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 0.0, -1.0, -1.0, 0.0, 0.0, // Second triangle:
+      -1.0, -1.0, 0.0, 0.0, -1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+      screenQuadVBO = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, screenQuadVBO);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
+      var vertCode = 'attribute vec2 position;' + 'attribute vec2 uvs;' + 'varying vec3 vColor;' + 'void main(void) { ' + 'gl_Position = vec4(position,0,1);' + 'vColor = vec3(uvs,1.);' + '}';
+      var fragCode = 'precision mediump float;' + 'uniform sampler2D uSampler;' + 'uniform float t;' + 'varying vec3 vColor;' + 'vec4 toGrayScale(vec4 p)' + '{' + '   float g = 0.2126*p.r + 0.7152*p.g + 0.0722*p.b;' + '	return vec4(g, g, g, p.a);' + '}' + 'void main(void) {' + 'vec4 p = texture2D(uSampler, vColor.xy);' + 'vec4 sourceColor = p;' + 'vec4 destColor = toGrayScale(p);' + 'gl_FragColor = mix(sourceColor, destColor, t);' + '}';
+      screenVertShader = gl.createShader(gl.VERTEX_SHADER);
+      gl.shaderSource(screenVertShader, vertCode);
+      gl.compileShader(screenVertShader);
+      screenFragShader = gl.createShader(gl.FRAGMENT_SHADER);
+      gl.shaderSource(screenFragShader, fragCode);
+      gl.compileShader(screenFragShader);
+      var compiled = gl.getShaderParameter(screenFragShader, gl.COMPILE_STATUS);
+      console.log('Shader compiled successfully: ' + compiled);
+      var compilationLog = gl.getShaderInfoLog(screenFragShader);
+      console.log('Shader compiler log: ' + compilationLog);
+      screenShaderProgram = gl.createProgram();
+      gl.attachShader(screenShaderProgram, screenVertShader);
+      gl.attachShader(screenShaderProgram, screenFragShader);
+      gl.linkProgram(screenShaderProgram);
+      screenQuadPosition = gl.getAttribLocation(screenShaderProgram, "position");
+      screenQuadUVs = gl.getAttribLocation(screenShaderProgram, "uvs");
+      screenQuadSampler = gl.getUniformLocation(screenShaderProgram, 'uSampler');
+      screenQuadT = gl.getUniformLocation(screenShaderProgram, 't');
+    }
+
+    screent += 0.01;
+    gl.activeTexture(gl.TEXTURE0);
+    gl.bindTexture(gl.TEXTURE_2D, targetTexture);
+    gl.useProgram(screenShaderProgram);
+    gl.bindBuffer(gl.ARRAY_BUFFER, screenQuadVBO);
+    gl.enableVertexAttribArray(screenQuadPosition);
+    gl.vertexAttribPointer(screenQuadPosition, 2, gl.FLOAT, false, 16, 0);
+    gl.enableVertexAttribArray(screenQuadUVs);
+    gl.vertexAttribPointer(screenQuadUVs, 2, gl.FLOAT, false, 16, 8);
+    gl.uniform1i(screenQuadSampler, 0);
+    gl.uniform1f(screenQuadT, (Math.cos(screent) + 1) / 2);
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+  }
 
   var time_old = 0;
 
@@ -16910,22 +16996,36 @@ function initRotatingCube() {
     _glMatrix.mat4.rotateX(model_matrix, model_matrix, dt * 0.0003);
 
     time_old = time;
-    gl.enable(gl.DEPTH_TEST);
-    gl.depthFunc(gl.LEQUAL);
-    gl.clearColor(0.5, 0.5, 0.5, 0.9);
-    gl.clearDepth(1.0);
 
     _glMatrix.mat4.perspective(proj_matrix, 45, canvas.clientWidth / canvas.clientHeight, 1, 100);
 
     _glMatrix.mat4.lookAt(view_matrix, _glMatrix.vec3.fromValues(-3, 3, 3), _glMatrix.vec3.fromValues(0, 0, 0), _glMatrix.vec3.fromValues(0, 1, 0));
 
+    gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+    gl.enable(gl.DEPTH_TEST);
+    gl.depthFunc(gl.LEQUAL);
+    gl.clearColor(0.5, 0.5, 0.5, 0.9);
+    gl.clearDepth(1.0);
     gl.viewport(0.0, 0.0, canvas.width, canvas.height);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.useProgram(shaderProgram);
     gl.uniformMatrix4fv(Pmatrix, false, proj_matrix);
     gl.uniformMatrix4fv(Vmatrix, false, view_matrix);
     gl.uniformMatrix4fv(Mmatrix, false, model_matrix);
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer);
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
+    gl.enableVertexAttribArray(position);
+    gl.vertexAttribPointer(position, 3, gl.FLOAT, false, 0, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, color_buffer);
+    gl.enableVertexAttribArray(color);
+    gl.vertexAttribPointer(color, 3, gl.FLOAT, false, 0, 0);
     gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+    {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.viewport(0.0, 0.0, canvas.width, canvas.height);
+      gl.clearColor(1, 0, 0, 1);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      drawFullScreenQuad(targetTexture);
+    }
   };
 }
 
@@ -16965,7 +17065,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61475" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55124" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
