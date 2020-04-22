@@ -19087,7 +19087,3647 @@ function preprocess (what, how) {
 
 module.exports = preprocess;
 
-},{"parenthesis":"node_modules/parenthesis/index.js","balanced-match":"node_modules/prepr/node_modules/balanced-match/index.js","object-assign":"node_modules/object-assign/index.js","escaper":"node_modules/escaper/dist/escaper.js","expression-eval":"node_modules/expression-eval/index.js","strip-json-comments":"node_modules/strip-json-comments/index.js","process":"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/node_modules/process/browser.js"}],"index.js":[function(require,module,exports) {
+},{"parenthesis":"node_modules/parenthesis/index.js","balanced-match":"node_modules/prepr/node_modules/balanced-match/index.js","object-assign":"node_modules/object-assign/index.js","escaper":"node_modules/escaper/dist/escaper.js","expression-eval":"node_modules/expression-eval/index.js","strip-json-comments":"node_modules/strip-json-comments/index.js","process":"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/node_modules/process/browser.js"}],"node_modules/@jaames/iro/dist/iro.es.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+/*!
+ * iro.js v5.1.6
+ * 2016-2020 James Daniel
+ * Licensed under MPL 2.0
+ * github.com/jaames/iro.js
+ */
+var n,
+    u,
+    t,
+    i,
+    r,
+    o,
+    f = {},
+    e = [],
+    c = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|^--/i;
+
+function s(n, l) {
+  for (var u in l) {
+    n[u] = l[u];
+  }
+
+  return n;
+}
+
+function a(n) {
+  var l = n.parentNode;
+  l && l.removeChild(n);
+}
+
+function h(n, l, u) {
+  var t,
+      i,
+      r,
+      o,
+      f = arguments;
+
+  if (l = s({}, l), arguments.length > 3) {
+    for (u = [u], t = 3; t < arguments.length; t++) {
+      u.push(f[t]);
+    }
+  }
+
+  if (null != u && (l.children = u), null != n && null != n.defaultProps) {
+    for (i in n.defaultProps) {
+      void 0 === l[i] && (l[i] = n.defaultProps[i]);
+    }
+  }
+
+  return o = l.key, null != (r = l.ref) && delete l.ref, null != o && delete l.key, v(n, l, o, r);
+}
+
+function v(l, u, t, i) {
+  var r = {
+    type: l,
+    props: u,
+    key: t,
+    ref: i,
+    __k: null,
+    __p: null,
+    __b: 0,
+    __e: null,
+    l: null,
+    __c: null,
+    constructor: void 0
+  };
+  return n.vnode && n.vnode(r), r;
+}
+
+function d(n) {
+  return n.children;
+}
+
+function y(n) {
+  if (null == n || "boolean" == typeof n) {
+    return null;
+  }
+
+  if ("string" == typeof n || "number" == typeof n) {
+    return v(null, n, null, null);
+  }
+
+  if (null != n.__e || null != n.__c) {
+    var l = v(n.type, n.props, n.key, null);
+    return l.__e = n.__e, l;
+  }
+
+  return n;
+}
+
+function m(n, l) {
+  this.props = n, this.context = l;
+}
+
+function w(n, l) {
+  if (null == l) {
+    return n.__p ? w(n.__p, n.__p.__k.indexOf(n) + 1) : null;
+  }
+
+  for (var u; l < n.__k.length; l++) {
+    if (null != (u = n.__k[l]) && null != u.__e) {
+      return u.__e;
+    }
+  }
+
+  return "function" == typeof n.type ? w(n) : null;
+}
+
+function g(n) {
+  var l, u;
+
+  if (null != (n = n.__p) && null != n.__c) {
+    for (n.__e = n.__c.base = null, l = 0; l < n.__k.length; l++) {
+      if (null != (u = n.__k[l]) && null != u.__e) {
+        n.__e = n.__c.base = u.__e;
+        break;
+      }
+    }
+
+    return g(n);
+  }
+}
+
+function k(l) {
+  (!l.__d && (l.__d = !0) && 1 === u.push(l) || i !== n.debounceRendering) && (i = n.debounceRendering, (n.debounceRendering || t)(_));
+}
+
+function _() {
+  var n, l, t, i, r, o, f, e;
+
+  for (u.sort(function (n, l) {
+    return l.__v.__b - n.__v.__b;
+  }); n = u.pop();) {
+    n.__d && (t = void 0, i = void 0, o = (r = (l = n).__v).__e, f = l.__P, e = l.u, l.u = !1, f && (t = [], i = $(f, r, s({}, r), l.__n, void 0 !== f.ownerSVGElement, null, t, e, null == o ? w(r) : o), j(t, r), i != o && g(r)));
+  }
+}
+
+function b(n, l, u, t, i, r, o, c, s) {
+  var h,
+      v,
+      p,
+      d,
+      y,
+      m,
+      g,
+      k = u && u.__k || e,
+      _ = k.length;
+
+  if (c == f && (c = null != r ? r[0] : _ ? w(u, 0) : null), h = 0, l.__k = x(l.__k, function (u) {
+    if (null != u) {
+      if (u.__p = l, u.__b = l.__b + 1, null === (p = k[h]) || p && u.key == p.key && u.type === p.type) {
+        k[h] = void 0;
+      } else {
+        for (v = 0; v < _; v++) {
+          if ((p = k[v]) && u.key == p.key && u.type === p.type) {
+            k[v] = void 0;
+            break;
+          }
+
+          p = null;
+        }
+      }
+
+      if (d = $(n, u, p = p || f, t, i, r, o, null, c, s), (v = u.ref) && p.ref != v && (g || (g = [])).push(v, u.__c || d, u), null != d) {
+        if (null == m && (m = d), null != u.l) {
+          d = u.l, u.l = null;
+        } else if (r == p || d != c || null == d.parentNode) {
+          n: if (null == c || c.parentNode !== n) {
+            n.appendChild(d);
+          } else {
+            for (y = c, v = 0; (y = y.nextSibling) && v < _; v += 2) {
+              if (y == d) {
+                break n;
+              }
+            }
+
+            n.insertBefore(d, c);
+          }
+
+          "option" == l.type && (n.value = "");
+        }
+
+        c = d.nextSibling, "function" == typeof l.type && (l.l = d);
+      }
+    }
+
+    return h++, u;
+  }), l.__e = m, null != r && "function" != typeof l.type) {
+    for (h = r.length; h--;) {
+      null != r[h] && a(r[h]);
+    }
+  }
+
+  for (h = _; h--;) {
+    null != k[h] && D(k[h], k[h]);
+  }
+
+  if (g) {
+    for (h = 0; h < g.length; h++) {
+      A(g[h], g[++h], g[++h]);
+    }
+  }
+}
+
+function x(n, l, u) {
+  if (null == u && (u = []), null == n || "boolean" == typeof n) {
+    l && u.push(l(null));
+  } else if (Array.isArray(n)) {
+    for (var t = 0; t < n.length; t++) {
+      x(n[t], l, u);
+    }
+  } else {
+    u.push(l ? l(y(n)) : n);
+  }
+
+  return u;
+}
+
+function C(n, l, u, t, i) {
+  var r;
+
+  for (r in u) {
+    r in l || N(n, r, null, u[r], t);
+  }
+
+  for (r in l) {
+    i && "function" != typeof l[r] || "value" === r || "checked" === r || u[r] === l[r] || N(n, r, l[r], u[r], t);
+  }
+}
+
+function P(n, l, u) {
+  "-" === l[0] ? n.setProperty(l, u) : n[l] = "number" == typeof u && !1 === c.test(l) ? u + "px" : null == u ? "" : u;
+}
+
+function N(n, l, u, t, i) {
+  var r, o, f, e, c;
+  if ("key" === (l = i ? "className" === l ? "class" : l : "class" === l ? "className" : l) || "children" === l) ;else if ("style" === l) {
+    if (r = n.style, "string" == typeof u) {
+      r.cssText = u;
+    } else {
+      if ("string" == typeof t && (r.cssText = "", t = null), t) {
+        for (o in t) {
+          u && o in u || P(r, o, "");
+        }
+      }
+
+      if (u) {
+        for (f in u) {
+          t && u[f] === t[f] || P(r, f, u[f]);
+        }
+      }
+    }
+  } else {
+    "o" === l[0] && "n" === l[1] ? (e = l !== (l = l.replace(/Capture$/, "")), c = l.toLowerCase(), l = (c in n ? c : l).slice(2), u ? (t || n.addEventListener(l, T, e), (n.t || (n.t = {}))[l] = u) : n.removeEventListener(l, T, e)) : "list" !== l && "tagName" !== l && "form" !== l && !i && l in n ? n[l] = null == u ? "" : u : "function" != typeof u && "dangerouslySetInnerHTML" !== l && (l !== (l = l.replace(/^xlink:?/, "")) ? null == u || !1 === u ? n.removeAttributeNS("http://www.w3.org/1999/xlink", l.toLowerCase()) : n.setAttributeNS("http://www.w3.org/1999/xlink", l.toLowerCase(), u) : null == u || !1 === u ? n.removeAttribute(l) : n.setAttribute(l, u));
+  }
+}
+
+function T(l) {
+  return this.t[l.type](n.event ? n.event(l) : l);
+}
+
+function $(l, u, t, i, r, o, f, e, c, a) {
+  var h,
+      v,
+      p,
+      y,
+      w,
+      g,
+      k,
+      _,
+      C,
+      P,
+      N = u.type;
+
+  if (void 0 !== u.constructor) {
+    return null;
+  }
+
+  (h = n.__b) && h(u);
+
+  try {
+    n: if ("function" == typeof N) {
+      if (_ = u.props, C = (h = N.contextType) && i[h.__c], P = h ? C ? C.props.value : h.__p : i, t.__c ? k = (v = u.__c = t.__c).__p = v.__E : ("prototype" in N && N.prototype.render ? u.__c = v = new N(_, P) : (u.__c = v = new m(_, P), v.constructor = N, v.render = H), C && C.sub(v), v.props = _, v.state || (v.state = {}), v.context = P, v.__n = i, p = v.__d = !0, v.__h = []), null == v.__s && (v.__s = v.state), null != N.getDerivedStateFromProps && s(v.__s == v.state ? v.__s = s({}, v.__s) : v.__s, N.getDerivedStateFromProps(_, v.__s)), p) {
+        null == N.getDerivedStateFromProps && null != v.componentWillMount && v.componentWillMount(), null != v.componentDidMount && f.push(v);
+      } else {
+        if (null == N.getDerivedStateFromProps && null == e && null != v.componentWillReceiveProps && v.componentWillReceiveProps(_, P), !e && null != v.shouldComponentUpdate && !1 === v.shouldComponentUpdate(_, v.__s, P)) {
+          for (v.props = _, v.state = v.__s, v.__d = !1, v.__v = u, u.__e = null != c ? c !== t.__e ? c : t.__e : null, u.__k = t.__k, h = 0; h < u.__k.length; h++) {
+            u.__k[h] && (u.__k[h].__p = u);
+          }
+
+          break n;
+        }
+
+        null != v.componentWillUpdate && v.componentWillUpdate(_, v.__s, P);
+      }
+
+      for (y = v.props, w = v.state, v.context = P, v.props = _, v.state = v.__s, (h = n.__r) && h(u), v.__d = !1, v.__v = u, v.__P = l, h = v.render(v.props, v.state, v.context), u.__k = x(null != h && h.type == d && null == h.key ? h.props.children : h), null != v.getChildContext && (i = s(s({}, i), v.getChildContext())), p || null == v.getSnapshotBeforeUpdate || (g = v.getSnapshotBeforeUpdate(y, w)), b(l, u, t, i, r, o, f, c, a), v.base = u.__e; h = v.__h.pop();) {
+        v.__s && (v.state = v.__s), h.call(v);
+      }
+
+      p || null == y || null == v.componentDidUpdate || v.componentDidUpdate(y, w, g), k && (v.__E = v.__p = null);
+    } else {
+      u.__e = z(t.__e, u, t, i, r, o, f, a);
+    }
+
+    (h = n.diffed) && h(u);
+  } catch (l) {
+    n.__e(l, u, t);
+  }
+
+  return u.__e;
+}
+
+function j(l, u) {
+  for (var t; t = l.pop();) {
+    try {
+      t.componentDidMount();
+    } catch (l) {
+      n.__e(l, t.__v);
+    }
+  }
+
+  n.__c && n.__c(u);
+}
+
+function z(n, l, u, t, i, r, o, c) {
+  var s,
+      a,
+      h,
+      v,
+      p = u.props,
+      d = l.props;
+
+  if (i = "svg" === l.type || i, null == n && null != r) {
+    for (s = 0; s < r.length; s++) {
+      if (null != (a = r[s]) && (null === l.type ? 3 === a.nodeType : a.localName === l.type)) {
+        n = a, r[s] = null;
+        break;
+      }
+    }
+  }
+
+  if (null == n) {
+    if (null === l.type) {
+      return document.createTextNode(d);
+    }
+
+    n = i ? document.createElementNS("http://www.w3.org/2000/svg", l.type) : document.createElement(l.type), r = null;
+  }
+
+  return null === l.type ? p !== d && (null != r && (r[r.indexOf(n)] = null), n.data = d) : l !== u && (null != r && (r = e.slice.call(n.childNodes)), h = (p = u.props || f).dangerouslySetInnerHTML, v = d.dangerouslySetInnerHTML, c || (v || h) && (v && h && v.__html == h.__html || (n.innerHTML = v && v.__html || "")), C(n, d, p, i, c), l.__k = l.props.children, v || b(n, l, u, t, "foreignObject" !== l.type && i, r, o, f, c), c || ("value" in d && void 0 !== d.value && d.value !== n.value && (n.value = null == d.value ? "" : d.value), "checked" in d && void 0 !== d.checked && d.checked !== n.checked && (n.checked = d.checked))), n;
+}
+
+function A(l, u, t) {
+  try {
+    "function" == typeof l ? l(u) : l.current = u;
+  } catch (l) {
+    n.__e(l, t);
+  }
+}
+
+function D(l, u, t) {
+  var i, r, o;
+
+  if (n.unmount && n.unmount(l), (i = l.ref) && A(i, null, u), t || "function" == typeof l.type || (t = null != (r = l.__e)), l.__e = l.l = null, null != (i = l.__c)) {
+    if (i.componentWillUnmount) {
+      try {
+        i.componentWillUnmount();
+      } catch (l) {
+        n.__e(l, u);
+      }
+    }
+
+    i.base = i.__P = null;
+  }
+
+  if (i = l.__k) {
+    for (o = 0; o < i.length; o++) {
+      i[o] && D(i[o], u, t);
+    }
+  }
+
+  null != r && a(r);
+}
+
+function H(n, l, u) {
+  return this.constructor(n, u);
+}
+
+function I(l, u, t) {
+  var i, o, c;
+  n.__p && n.__p(l, u), o = (i = t === r) ? null : t && t.__k || u.__k, l = h(d, null, [l]), c = [], $(u, i ? u.__k = l : (t || u).__k = l, o || f, f, void 0 !== u.ownerSVGElement, t && !i ? [t] : o ? null : e.slice.call(u.childNodes), c, !1, t || f, i), j(c, l);
+}
+
+n = {}, m.prototype.setState = function (n, l) {
+  var u = this.__s !== this.state && this.__s || (this.__s = s({}, this.state));
+  ("function" != typeof n || (n = n(u, this.props))) && s(u, n), null != n && this.__v && (this.u = !1, l && this.__h.push(l), k(this));
+}, m.prototype.forceUpdate = function (n) {
+  this.__v && (n && this.__h.push(n), this.u = !0, k(this));
+}, m.prototype.render = d, u = [], t = "function" == typeof Promise ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, i = n.debounceRendering, n.__e = function (n, l, u) {
+  for (var t; l = l.__p;) {
+    if ((t = l.__c) && !t.__p) {
+      try {
+        if (t.constructor && null != t.constructor.getDerivedStateFromError) {
+          t.setState(t.constructor.getDerivedStateFromError(n));
+        } else {
+          if (null == t.componentDidCatch) {
+            continue;
+          }
+
+          t.componentDidCatch(n);
+        }
+
+        return k(t.__E = t);
+      } catch (l) {
+        n = l;
+      }
+    }
+  }
+
+  throw n;
+}, r = f, o = 0; // Some regular expressions for rgb() and hsl() Colors are borrowed from tinyColor
+// https://github.com/bgrins/TinyColor
+// Kelvin temperature math borrowed from Neil Barlett's implementation
+// from https://github.com/neilbartlett/color-temperature
+// https://www.w3.org/TR/css3-values/#integers
+
+var CSS_INTEGER = '[-\\+]?\\d+%?'; // http://www.w3.org/TR/css3-values/#number-value
+
+var CSS_NUMBER = '[-\\+]?\\d*\\.\\d+%?'; // Allow positive/negative integer/number. Don't capture the either/or, just the entire outcome
+
+var CSS_UNIT = '(?:' + CSS_NUMBER + ')|(?:' + CSS_INTEGER + ')'; // Parse function params
+// Parens and commas are optional, and this also allows for whitespace between numbers
+
+var PERMISSIVE_MATCH_3 = '[\\s|\\(]+(' + CSS_UNIT + ')[,|\\s]+(' + CSS_UNIT + ')[,|\\s]+(' + CSS_UNIT + ')\\s*\\)?';
+var PERMISSIVE_MATCH_4 = '[\\s|\\(]+(' + CSS_UNIT + ')[,|\\s]+(' + CSS_UNIT + ')[,|\\s]+(' + CSS_UNIT + ')[,|\\s]+(' + CSS_UNIT + ')\\s*\\)?'; // Regex patterns for functional color strings
+
+var REGEX_FUNCTIONAL_RGB = new RegExp('rgb' + PERMISSIVE_MATCH_3);
+var REGEX_FUNCTIONAL_RGBA = new RegExp('rgba' + PERMISSIVE_MATCH_4);
+var REGEX_FUNCTIONAL_HSL = new RegExp('hsl' + PERMISSIVE_MATCH_3);
+var REGEX_FUNCTIONAL_HSLA = new RegExp('hsla' + PERMISSIVE_MATCH_4); // Color string parsing regex
+
+var HEX_START = '^(?:#?|0x?)';
+var HEX_INT_SINGLE = '([0-9a-fA-F]{1})';
+var HEX_INT_DOUBLE = '([0-9a-fA-F]{2})';
+var REGEX_HEX_3 = new RegExp(HEX_START + HEX_INT_SINGLE + HEX_INT_SINGLE + HEX_INT_SINGLE + '$');
+var REGEX_HEX_4 = new RegExp(HEX_START + HEX_INT_SINGLE + HEX_INT_SINGLE + HEX_INT_SINGLE + HEX_INT_SINGLE + '$');
+var REGEX_HEX_6 = new RegExp(HEX_START + HEX_INT_DOUBLE + HEX_INT_DOUBLE + HEX_INT_DOUBLE + '$');
+var REGEX_HEX_8 = new RegExp(HEX_START + HEX_INT_DOUBLE + HEX_INT_DOUBLE + HEX_INT_DOUBLE + HEX_INT_DOUBLE + '$'); // Kelvin temperature bounds
+
+var KELVIN_MIN = 1000;
+var KELVIN_MAX = 40000; // Math shorthands
+
+var log = Math.log;
+var round = Math.round;
+var floor = Math.floor;
+/**
+ * @desc Parse a css unit string - either regular int or a percentage number
+ * @param str - css unit string
+ * @param max - max unit value, used for calculating percentages
+ */
+
+function parseUnit(str, max) {
+  var isPercentage = str.indexOf('%') > -1;
+  var num = parseFloat(str);
+  return isPercentage ? max / 100 * num : num;
+}
+/**
+ * @desc Parse hex str to an int
+ * @param str - hex string to parse
+ */
+
+
+function parseHexInt(str) {
+  return parseInt(str, 16);
+}
+/**
+ * @desc Convert nunber into to 2-digit hex
+ * @param int - number to convert
+ */
+
+
+function intToHex(int) {
+  return int.toString(16).padStart(2, '0');
+}
+
+var IroColor = function IroColor(value, onChange) {
+  // The default Color value
+  this.$ = {
+    h: 0,
+    s: 0,
+    v: 0,
+    a: 1
+  };
+
+  if (value) {
+    this.set(value);
+  } // The watch callback function for this Color will be stored here
+
+
+  this.onChange = onChange;
+  this.initialValue = Object.assign({}, this.$); // copy initial value
+};
+
+var prototypeAccessors = {
+  hsv: {
+    configurable: true
+  },
+  hsva: {
+    configurable: true
+  },
+  hue: {
+    configurable: true
+  },
+  saturation: {
+    configurable: true
+  },
+  value: {
+    configurable: true
+  },
+  alpha: {
+    configurable: true
+  },
+  kelvin: {
+    configurable: true
+  },
+  rgb: {
+    configurable: true
+  },
+  rgba: {
+    configurable: true
+  },
+  hsl: {
+    configurable: true
+  },
+  hsla: {
+    configurable: true
+  },
+  rgbString: {
+    configurable: true
+  },
+  rgbaString: {
+    configurable: true
+  },
+  hexString: {
+    configurable: true
+  },
+  hex8String: {
+    configurable: true
+  },
+  hslString: {
+    configurable: true
+  },
+  hslaString: {
+    configurable: true
+  }
+};
+/**
+  * @desc Set the Color from any valid value
+  * @param value - new color value
+*/
+
+IroColor.prototype.set = function set(value) {
+  if (typeof value === 'string') {
+    if (/^(?:#?|0x?)[0-9a-fA-F]{3,8}$/.test(value)) {
+      this.hexString = value;
+    } else if (/^rgba?/.test(value)) {
+      this.rgbString = value;
+    } else if (/^hsla?/.test(value)) {
+      this.hslString = value;
+    }
+  } else if (typeof value === 'object') {
+    if (value instanceof IroColor) {
+      this.hsv = value.hsv;
+    } else if (typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value) {
+      this.rgb = value;
+    } else if (typeof value === 'object' && 'h' in value && 's' in value && 'v' in value) {
+      this.hsv = value;
+    } else if (typeof value === 'object' && 'h' in value && 's' in value && 'l' in value) {
+      this.hsl = value;
+    }
+  } else {
+    throw new Error('Invalid color value');
+  }
+};
+/**
+  * @desc Shortcut to set a specific channel value
+  * @param format - hsv | hsl | rgb
+  * @param channel - individual channel to set, for example if model = hsl, chanel = h | s | l
+  * @param value - new value for the channel
+*/
+
+
+IroColor.prototype.setChannel = function setChannel(format, channel, value) {
+  var obj;
+  this[format] = Object.assign({}, this[format], (obj = {}, obj[channel] = value, obj));
+};
+/**
+ * @desc Reset color back to its initial value
+ */
+
+
+IroColor.prototype.reset = function reset() {
+  this.hsva = this.initialValue;
+};
+/**
+  * @desc make new Color instance with the same value as this one
+*/
+
+
+IroColor.prototype.clone = function clone() {
+  return new IroColor(this);
+};
+/**
+ * @desc remove color onChange
+ */
+
+
+IroColor.prototype.unbind = function unbind() {
+  this.onChange = undefined;
+};
+/**
+  * @desc Convert hsv object to rgb
+  * @param hsv - hsv color object
+*/
+
+
+IroColor.hsvToRgb = function hsvToRgb(hsv) {
+  var h = hsv.h / 60;
+  var s = hsv.s / 100;
+  var v = hsv.v / 100;
+  var i = floor(h);
+  var f = h - i;
+  var p = v * (1 - s);
+  var q = v * (1 - f * s);
+  var t = v * (1 - (1 - f) * s);
+  var mod = i % 6;
+  var r = [v, q, p, p, t, v][mod];
+  var g = [t, v, v, q, p, p][mod];
+  var b = [p, p, t, v, v, q][mod];
+  return {
+    r: r * 255,
+    g: g * 255,
+    b: b * 255
+  };
+};
+/**
+  * @desc Convert rgb object to hsv
+  * @param rgb - rgb object
+*/
+
+
+IroColor.rgbToHsv = function rgbToHsv(rgb) {
+  var r = rgb.r / 255;
+  var g = rgb.g / 255;
+  var b = rgb.b / 255;
+  var max = Math.max(r, g, b);
+  var min = Math.min(r, g, b);
+  var delta = max - min;
+  var hue = 0;
+  var value = max;
+  var saturation = max === 0 ? 0 : delta / max;
+
+  switch (max) {
+    case min:
+      hue = 0; // achromatic
+
+      break;
+
+    case r:
+      hue = (g - b) / delta + (g < b ? 6 : 0);
+      break;
+
+    case g:
+      hue = (b - r) / delta + 2;
+      break;
+
+    case b:
+      hue = (r - g) / delta + 4;
+      break;
+  }
+
+  return {
+    h: hue * 60,
+    s: saturation * 100,
+    v: value * 100
+  };
+};
+/**
+  * @desc Convert hsv object to hsl
+  * @param hsv - hsv object
+*/
+
+
+IroColor.hsvToHsl = function hsvToHsl(hsv) {
+  var s = hsv.s / 100;
+  var v = hsv.v / 100;
+  var l = (2 - s) * v;
+  var divisor = l <= 1 ? l : 2 - l; // Avoid division by zero when lightness is close to zero
+
+  var saturation = divisor < 1e-9 ? 0 : s * v / divisor;
+  return {
+    h: hsv.h,
+    s: saturation * 100,
+    l: l * 50
+  };
+};
+/**
+  * @desc Convert hsl object to hsv
+  * @param hsl - hsl object
+*/
+
+
+IroColor.hslToHsv = function hslToHsv(hsl) {
+  var l = hsl.l * 2;
+  var s = hsl.s * (l <= 100 ? l : 200 - l) / 100; // Avoid division by zero when l + s is near 0
+
+  var saturation = l + s < 1e-9 ? 0 : 2 * s / (l + s);
+  return {
+    h: hsl.h,
+    s: saturation * 100,
+    v: (l + s) / 2
+  };
+};
+/**
+  * @desc Convert a kelvin temperature to an approx, RGB value
+  * @param kelvin - kelvin temperature
+*/
+
+
+IroColor.kelvinToRgb = function kelvinToRgb(kelvin) {
+  var temp = kelvin / 100;
+  var r, g, b;
+
+  if (temp < 66) {
+    r = 255;
+    g = -155.25485562709179 - 0.44596950469579133 * (g = temp - 2) + 104.49216199393888 * log(g);
+    b = temp < 20 ? 0 : -254.76935184120902 + 0.8274096064007395 * (b = temp - 10) + 115.67994401066147 * log(b);
+  } else {
+    r = 351.97690566805693 + 0.114206453784165 * (r = temp - 55) - 40.25366309332127 * log(r);
+    g = 325.4494125711974 + 0.07943456536662342 * (g = temp - 50) - 28.0852963507957 * log(g);
+    b = 255;
+  }
+
+  return {
+    r: floor(r),
+    g: floor(g),
+    b: floor(b)
+  };
+};
+/**
+ * @desc Convert an RGB color to an approximate kelvin temperature
+ * @param kelvin - kelvin temperature
+*/
+
+
+IroColor.rgbToKelvin = function rgbToKelvin(rgb) {
+  var r = rgb.r;
+  var b = rgb.b;
+  var eps = 0.4;
+  var minTemp = KELVIN_MIN;
+  var maxTemp = KELVIN_MAX;
+  var temp;
+
+  while (maxTemp - minTemp > eps) {
+    temp = (maxTemp + minTemp) * 0.5;
+    var rgb$1 = IroColor.kelvinToRgb(temp);
+
+    if (rgb$1.b / rgb$1.r >= b / r) {
+      maxTemp = temp;
+    } else {
+      minTemp = temp;
+    }
+  }
+
+  return temp;
+};
+
+prototypeAccessors.hsv.get = function () {
+  // value is cloned to allow changes to be made to the values before passing them back
+  var value = this.$;
+  return {
+    h: value.h,
+    s: value.s,
+    v: value.v
+  };
+};
+
+prototypeAccessors.hsv.set = function (newValue) {
+  var oldValue = this.$;
+  newValue = Object.assign({}, oldValue, newValue); // If this Color is being watched for changes we need to compare the new and old values to check the difference
+  // Otherwise we can just be lazy
+
+  if (this.onChange) {
+    // Compute changed values
+    var changes = {
+      h: false,
+      v: false,
+      s: false,
+      a: false
+    };
+
+    for (var key in oldValue) {
+      changes[key] = newValue[key] != oldValue[key];
+    }
+
+    this.$ = newValue; // If the value has changed, call hook callback
+
+    if (changes.h || changes.s || changes.v || changes.a) {
+      this.onChange(this, changes);
+    }
+  } else {
+    this.$ = newValue;
+  }
+};
+
+prototypeAccessors.hsva.get = function () {
+  return Object.assign({}, this.$);
+};
+
+prototypeAccessors.hsva.set = function (value) {
+  this.hsv = value;
+};
+
+prototypeAccessors.hue.get = function () {
+  return this.$.h;
+};
+
+prototypeAccessors.hue.set = function (value) {
+  this.hsv = {
+    h: value
+  };
+};
+
+prototypeAccessors.saturation.get = function () {
+  return this.$.s;
+};
+
+prototypeAccessors.saturation.set = function (value) {
+  this.hsv = {
+    s: value
+  };
+};
+
+prototypeAccessors.value.get = function () {
+  return this.$.v;
+};
+
+prototypeAccessors.value.set = function (value) {
+  this.hsv = {
+    v: value
+  };
+};
+
+prototypeAccessors.alpha.get = function () {
+  return this.$.a;
+};
+
+prototypeAccessors.alpha.set = function (value) {
+  this.hsv = Object.assign({}, this.hsv, {
+    a: value
+  });
+};
+
+prototypeAccessors.kelvin.get = function () {
+  return IroColor.rgbToKelvin(this.rgb);
+};
+
+prototypeAccessors.kelvin.set = function (value) {
+  this.rgb = IroColor.kelvinToRgb(value);
+};
+
+prototypeAccessors.rgb.get = function () {
+  var ref = IroColor.hsvToRgb(this.$);
+  var r = ref.r;
+  var g = ref.g;
+  var b = ref.b;
+  return {
+    r: round(r),
+    g: round(g),
+    b: round(b)
+  };
+};
+
+prototypeAccessors.rgb.set = function (value) {
+  this.hsv = Object.assign({}, IroColor.rgbToHsv(value), {
+    a: value.a === undefined ? 1 : value.a
+  });
+};
+
+prototypeAccessors.rgba.get = function () {
+  return Object.assign({}, this.rgb, {
+    a: this.alpha
+  });
+};
+
+prototypeAccessors.rgba.set = function (value) {
+  this.rgb = value;
+};
+
+prototypeAccessors.hsl.get = function () {
+  var ref = IroColor.hsvToHsl(this.$);
+  var h = ref.h;
+  var s = ref.s;
+  var l = ref.l;
+  return {
+    h: round(h),
+    s: round(s),
+    l: round(l)
+  };
+};
+
+prototypeAccessors.hsl.set = function (value) {
+  this.hsv = Object.assign({}, IroColor.hslToHsv(value), {
+    a: value.a === undefined ? 1 : value.a
+  });
+};
+
+prototypeAccessors.hsla.get = function () {
+  return Object.assign({}, this.hsl, {
+    a: this.alpha
+  });
+};
+
+prototypeAccessors.hsla.set = function (value) {
+  this.hsl = value;
+};
+
+prototypeAccessors.rgbString.get = function () {
+  var rgb = this.rgb;
+  return "rgb(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ")";
+};
+
+prototypeAccessors.rgbString.set = function (value) {
+  var match;
+  var r,
+      g,
+      b,
+      a = 1;
+
+  if (match = REGEX_FUNCTIONAL_RGB.exec(value)) {
+    r = parseUnit(match[1], 255);
+    g = parseUnit(match[2], 255);
+    b = parseUnit(match[3], 255);
+  } else if (match = REGEX_FUNCTIONAL_RGBA.exec(value)) {
+    r = parseUnit(match[1], 255);
+    g = parseUnit(match[2], 255);
+    b = parseUnit(match[3], 255);
+    a = parseUnit(match[4], 1);
+  }
+
+  if (match) {
+    this.rgb = {
+      r: r,
+      g: g,
+      b: b,
+      a: a
+    };
+  } else {
+    throw new Error('Invalid rgb string');
+  }
+};
+
+prototypeAccessors.rgbaString.get = function () {
+  var rgba = this.rgba;
+  return "rgba(" + rgba.r + ", " + rgba.g + ", " + rgba.b + ", " + rgba.a + ")";
+};
+
+prototypeAccessors.rgbaString.set = function (value) {
+  this.rgbString = value;
+};
+
+prototypeAccessors.hexString.get = function () {
+  var rgb = this.rgb;
+  return "#" + intToHex(rgb.r) + intToHex(rgb.g) + intToHex(rgb.b);
+};
+
+prototypeAccessors.hexString.set = function (value) {
+  var match;
+  var r,
+      g,
+      b,
+      a = 255;
+
+  if (match = REGEX_HEX_3.exec(value)) {
+    r = parseHexInt(match[1]) * 17;
+    g = parseHexInt(match[2]) * 17;
+    b = parseHexInt(match[3]) * 17;
+  } else if (match = REGEX_HEX_4.exec(value)) {
+    r = parseHexInt(match[1]) * 17;
+    g = parseHexInt(match[2]) * 17;
+    b = parseHexInt(match[3]) * 17;
+    a = parseHexInt(match[4]) * 17;
+  } else if (match = REGEX_HEX_6.exec(value)) {
+    r = parseHexInt(match[1]);
+    g = parseHexInt(match[2]);
+    b = parseHexInt(match[3]);
+  } else if (match = REGEX_HEX_8.exec(value)) {
+    r = parseHexInt(match[1]);
+    g = parseHexInt(match[2]);
+    b = parseHexInt(match[3]);
+    a = parseHexInt(match[4]);
+  }
+
+  if (match) {
+    this.rgb = {
+      r: r,
+      g: g,
+      b: b,
+      a: a / 255
+    };
+  } else {
+    throw new Error('Invalid hex string');
+  }
+};
+
+prototypeAccessors.hex8String.get = function () {
+  var rgba = this.rgba;
+  return "#" + intToHex(rgba.r) + intToHex(rgba.g) + intToHex(rgba.b) + intToHex(floor(rgba.a * 255));
+};
+
+prototypeAccessors.hex8String.set = function (value) {
+  this.hexString = value;
+};
+
+prototypeAccessors.hslString.get = function () {
+  var hsl = this.hsl;
+  return "hsl(" + hsl.h + ", " + hsl.s + "%, " + hsl.l + "%)";
+};
+
+prototypeAccessors.hslString.set = function (value) {
+  var match;
+  var h,
+      s,
+      l,
+      a = 1;
+
+  if (match = REGEX_FUNCTIONAL_HSL.exec(value)) {
+    h = parseUnit(match[1], 360);
+    s = parseUnit(match[2], 100);
+    l = parseUnit(match[3], 100);
+  } else if (match = REGEX_FUNCTIONAL_HSLA.exec(value)) {
+    h = parseUnit(match[1], 360);
+    s = parseUnit(match[2], 100);
+    l = parseUnit(match[3], 100);
+    a = parseUnit(match[4], 1);
+  }
+
+  if (match) {
+    this.hsl = {
+      h: h,
+      s: s,
+      l: l,
+      a: a
+    };
+  } else {
+    throw new Error('Invalid hsl string');
+  }
+};
+
+prototypeAccessors.hslaString.get = function () {
+  var hsla = this.hsla;
+  return "hsl(" + hsla.h + ", " + hsla.s + "%, " + hsla.l + "%, " + hsla.a + ")";
+};
+
+prototypeAccessors.hslaString.set = function (value) {
+  this.hslString = value;
+};
+
+Object.defineProperties(IroColor.prototype, prototypeAccessors);
+var sliderDefaultOptions = {
+  sliderShape: 'bar',
+  sliderType: 'value',
+  minTemperature: 2200,
+  maxTemperature: 11000
+};
+/**
+ * @desc Get the bounding dimensions of the slider
+ * @param props - slider props
+ */
+
+function getSliderDimensions(props) {
+  var width = props.width;
+  var sliderSize = props.sliderSize;
+  var borderWidth = props.borderWidth;
+  var handleRadius = props.handleRadius;
+  var padding = props.padding;
+  var sliderShape = props.sliderShape;
+  var ishorizontal = props.layoutDirection === 'horizontal'; // automatically calculate sliderSize if its not defined
+
+  sliderSize = sliderSize ? sliderSize : padding * 2 + handleRadius * 2 + borderWidth * 2;
+
+  if (sliderShape === 'circle') {
+    return {
+      handleStart: props.padding + props.handleRadius,
+      handleRange: width - padding * 2 - handleRadius * 2 - borderWidth * 2,
+      width: width,
+      height: width,
+      cx: width / 2,
+      cy: width / 2,
+      radius: width / 2 - borderWidth / 2
+    };
+  } else {
+    return {
+      handleStart: sliderSize / 2,
+      handleRange: width - sliderSize,
+      radius: sliderSize / 2,
+      x: 0,
+      y: 0,
+      width: ishorizontal ? sliderSize : width,
+      height: ishorizontal ? width : sliderSize
+    };
+  }
+}
+/**
+ * @desc Get the current slider value for a given color, as a percentage
+ * @param props - slider props
+ * @param color
+ */
+
+
+function getCurrentSliderValue(props, color) {
+  var hsva = color.hsva;
+
+  switch (props.sliderType) {
+    case 'alpha':
+      return hsva.a * 100;
+
+    case 'kelvin':
+      var minTemperature = props.minTemperature;
+      var maxTemperature = props.maxTemperature;
+      var temperatureRange = maxTemperature - minTemperature;
+      var percent = (color.kelvin - minTemperature) / temperatureRange * 100; // clmap percentage
+
+      return Math.max(0, Math.min(percent, 100));
+
+    case 'hue':
+      return hsva.h /= 3.6;
+
+    case 'saturation':
+      return hsva.s;
+
+    case 'value':
+    default:
+      return hsva.v;
+  }
+}
+/**
+ * @desc Get the current slider value from user input
+ * @param props - slider props
+ * @param x - global input x position
+ * @param y - global input y position
+ */
+
+
+function getSliderValueFromInput(props, x, y) {
+  var ref = getSliderDimensions(props);
+  var handleRange = ref.handleRange;
+  var handleStart = ref.handleStart;
+  var handlePos;
+
+  if (props.layoutDirection === 'horizontal') {
+    handlePos = -1 * y + handleRange + handleStart;
+  } else {
+    handlePos = x - handleStart;
+  } // clamp handle position
+
+
+  handlePos = Math.max(Math.min(handlePos, handleRange), 0);
+  var percent = Math.round(100 / handleRange * handlePos);
+
+  switch (props.sliderType) {
+    case 'kelvin':
+      var minTemperature = props.minTemperature;
+      var maxTemperature = props.maxTemperature;
+      var temperatureRange = maxTemperature - minTemperature;
+      return minTemperature + temperatureRange * (percent / 100);
+
+    case 'alpha':
+      return percent / 100;
+
+    case 'hue':
+      return percent * 3.6;
+
+    default:
+      return percent;
+  }
+}
+/**
+ * @desc Get the current handle position for a given color
+ * @param props - slider props
+ * @param color
+ */
+
+
+function getSliderHandlePosition(props, color) {
+  var ref = getSliderDimensions(props);
+  var width = ref.width;
+  var height = ref.height;
+  var handleRange = ref.handleRange;
+  var handleStart = ref.handleStart;
+  var ishorizontal = props.layoutDirection === 'horizontal';
+  var sliderValue = getCurrentSliderValue(props, color);
+  var midPoint = ishorizontal ? width / 2 : height / 2;
+  var handlePos = handleStart + sliderValue / 100 * handleRange;
+
+  if (ishorizontal) {
+    handlePos = -1 * handlePos + handleRange + handleStart * 2;
+  }
+
+  return {
+    x: ishorizontal ? midPoint : handlePos,
+    y: ishorizontal ? handlePos : midPoint
+  };
+}
+/**
+ * @desc Get the gradient stops for a slider
+ * @param props - slider props
+ * @param color
+ */
+
+
+function getSliderGradient(props, color) {
+  var hsv = color.hsv;
+
+  switch (props.sliderType) {
+    case 'alpha':
+      var rgb = color.rgb;
+      return [[0, "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ",0)"], [100, "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")"]];
+
+    case 'kelvin':
+      var stops = [];
+      var min = props.minTemperature;
+      var max = props.maxTemperature;
+      var numStops = 8;
+      var range = max - min;
+
+      for (var kelvin = min, stop = 0; kelvin < max; kelvin += range / numStops, stop += 1) {
+        var ref = IroColor.kelvinToRgb(kelvin);
+        var r = ref.r;
+        var g = ref.g;
+        var b = ref.b;
+        stops.push([100 / numStops * stop, "rgb(" + r + "," + g + "," + b + ")"]);
+      }
+
+      return stops;
+
+    case 'hue':
+      return [[0, '#f00'], [16.666, '#ff0'], [33.333, '#0f0'], [50, '#0ff'], [66.666, '#00f'], [83.333, '#f0f'], [100, '#f00']];
+
+    case 'saturation':
+      var noSat = IroColor.hsvToHsl({
+        h: hsv.h,
+        s: 0,
+        v: hsv.v
+      });
+      var fullSat = IroColor.hsvToHsl({
+        h: hsv.h,
+        s: 100,
+        v: hsv.v
+      });
+      return [[0, "hsl(" + noSat.h + "," + noSat.s + "%," + noSat.l + "%)"], [100, "hsl(" + fullSat.h + "," + fullSat.s + "%," + fullSat.l + "%)"]];
+
+    case 'value':
+    default:
+      var hsl = IroColor.hsvToHsl({
+        h: hsv.h,
+        s: hsv.s,
+        v: 100
+      });
+      return [[0, '#000'], [100, "hsl(" + hsl.h + "," + hsl.s + "%," + hsl.l + "%)"]];
+  }
+}
+/**
+ * @desc Get the gradient coords for a slider
+ * @param props - slider props
+ */
+
+
+function getSliderGradientCoords(props) {
+  var ishorizontal = props.layoutDirection === 'horizontal';
+  return {
+    x1: '0%',
+    y1: ishorizontal ? '100%' : '0%',
+    x2: ishorizontal ? '0%' : '100%',
+    y2: '0%'
+  };
+}
+/**
+ * @desc Get the point as the center of the wheel
+ * @param props - wheel props
+ */
+
+
+function getWheelDimensions(props) {
+  var rad = props.width / 2;
+  return {
+    width: props.width,
+    radius: rad - props.borderWidth,
+    cx: rad,
+    cy: rad
+  };
+}
+/**
+ * @desc Translate an angle according to wheelAngle and wheelDirection
+ * @param props - wheel props
+ * @param angle - input angle
+ */
+
+
+function translateWheelAngle(props, angle, invert) {
+  var wheelAngle = props.wheelAngle;
+  var wheelDirection = props.wheelDirection;
+
+  if (!invert && wheelDirection === 'clockwise' || invert && wheelDirection === 'anticlockwise') {
+    angle = (invert ? 180 : 360) - (wheelAngle - angle);
+  } else {
+    angle = wheelAngle + angle;
+  } // javascript's modulo operator doesn't produce positive numbers with negative input
+  // https://dev.to/maurobringolf/a-neat-trick-to-compute-modulo-of-negative-numbers-111e
+
+
+  return (angle % 360 + 360) % 360;
+}
+/**
+ * @desc Get the current handle position for a given color
+ * @param props - wheel props
+ * @param color
+ */
+
+
+function getWheelHandlePosition(props, color) {
+  var hsv = color.hsv;
+  var ref = getWheelDimensions(props);
+  var cx = ref.cx;
+  var cy = ref.cy;
+  var handleRange = props.width / 2 - props.padding - props.handleRadius - props.borderWidth;
+  var handleAngle = (180 + translateWheelAngle(props, hsv.h, true)) * (Math.PI / 180);
+  var handleDist = hsv.s / 100 * handleRange;
+  var direction = props.wheelDirection === 'clockwise' ? -1 : 1;
+  return {
+    x: cx + handleDist * Math.cos(handleAngle) * direction,
+    y: cy + handleDist * Math.sin(handleAngle) * direction
+  };
+}
+/**
+ * @desc Get the current wheel value from user input
+ * @param props - wheel props
+ * @param x - global input x position
+ * @param y - global input y position
+ */
+
+
+function getWheelValueFromInput(props, x, y) {
+  var ref = getWheelDimensions(props);
+  var cx = ref.cx;
+  var cy = ref.cy;
+  var handleRange = props.width / 2 - props.padding - props.handleRadius - props.borderWidth;
+  x = cx - x;
+  y = cy - y; // Calculate the hue by converting the angle to radians
+
+  var hue = translateWheelAngle(props, Math.atan2(-y, -x) * (180 / Math.PI)); // Find the point's distance from the center of the wheel
+  // This is used to show the saturation level
+
+  var handleDist = Math.min(Math.sqrt(x * x + y * y), handleRange);
+  return {
+    h: Math.round(hue),
+    s: Math.round(100 / handleRange * handleDist)
+  };
+}
+/**
+ * @desc Get the bounding dimensions of the box
+ * @param props - box props
+ */
+
+
+function getBoxDimensions(props) {
+  var width = props.width;
+  var padding = props.padding;
+  var handleRadius = props.handleRadius;
+  return {
+    width: width,
+    height: width,
+    radius: padding + handleRadius
+  };
+}
+/**
+ * @desc Get the current box value from user input
+ * @param props - box props
+ * @param x - global input x position
+ * @param y - global input y position
+ */
+
+
+function getBoxValueFromInput(props, x, y) {
+  var ref = getBoxDimensions(props);
+  var width = ref.width;
+  var height = ref.height;
+  var radius = ref.radius;
+  var handleStart = radius;
+  var handleRangeX = width - radius * 2;
+  var handleRangeY = height - radius * 2;
+  var percentX = (x - handleStart) / handleRangeX * 100;
+  var percentY = (y - handleStart) / handleRangeY * 100;
+  return {
+    s: Math.max(0, Math.min(percentX, 100)),
+    v: Math.max(0, Math.min(100 - percentY, 100))
+  };
+}
+/**
+ * @desc Get the current box handle position for a given color
+ * @param props - box props
+ * @param color
+ */
+
+
+function getBoxHandlePosition(props, color) {
+  var ref = getBoxDimensions(props);
+  var width = ref.width;
+  var height = ref.height;
+  var radius = ref.radius;
+  var hsv = color.hsv;
+  var handleStart = radius;
+  var handleRangeX = width - radius * 2;
+  var handleRangeY = height - radius * 2;
+  return {
+    x: handleStart + hsv.s / 100 * handleRangeX,
+    y: handleStart + (handleRangeY - hsv.v / 100 * handleRangeY)
+  };
+}
+/**
+ * @desc Get the gradient stops for a box
+ * @param props - box props
+ * @param color
+ */
+
+
+function getBoxGradients(props, color) {
+  var hue = color.hue;
+  return [// saturation gradient
+  [[0, '#fff'], [100, "hsl(" + hue + ",100%,50%)"]], // lightness gradient
+  [[0, 'rgba(0,0,0,0)'], [100, '#000']]];
+} // Keep track of html <base> elements for resolveSvgUrl
+// getElementsByTagName returns a live HTMLCollection, which stays in sync with the DOM tree
+// So it only needs to be called once
+
+
+var BASE_ELEMENTS = document.getElementsByTagName('base');
+/**
+ * @desc Resolve an SVG reference URL
+ * This is required to work around how Safari and iOS webviews handle gradient URLS under certain conditions
+ * If a page is using a client-side routing library which makes use of the HTML <base> tag,
+ * Safari won't be able to render SVG gradients properly (as they are referenced by URLs)
+ * More info on the problem:
+ * https://stackoverflow.com/questions/19742805/angular-and-svg-filters/19753427#19753427
+ * https://github.com/jaames/iro.js/issues/18
+ * https://github.com/jaames/iro.js/issues/45
+ * https://github.com/jaames/iro.js/pull/89
+ * @props url - SVG reference URL
+ */
+
+function resolveSvgUrl(url) {
+  // Sniff useragent string to check if the user is running Safari
+  var ua = window.navigator.userAgent;
+  var isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+  var isIos = /iPhone|iPod|iPad/i.test(ua);
+  var location = window.location;
+  return (isSafari || isIos) && BASE_ELEMENTS.length > 0 ? location.protocol + "//" + location.host + location.pathname + location.search + url : url;
+}
+/**
+ * @desc Get the path commands to draw an svg arc
+ * @props cx - arc center point x
+ * @props cy - arc center point y
+ * @props radius - arc radius
+ * @props startAngle - arc start angle
+ * @props endAngle - arc end angle
+ */
+
+
+function getSvgArcPath(cx, cy, radius, startAngle, endAngle) {
+  var largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1;
+  startAngle *= Math.PI / 180;
+  endAngle *= Math.PI / 180;
+  var x1 = cx + radius * Math.cos(endAngle);
+  var y1 = cy + radius * Math.sin(endAngle);
+  var x2 = cx + radius * Math.cos(startAngle);
+  var y2 = cy + radius * Math.sin(startAngle);
+  return "M " + x1 + " " + y1 + " A " + radius + " " + radius + " 0 " + largeArcFlag + " 0 " + x2 + " " + y2;
+}
+/**
+ * @desc Given a specifc (x, y) position, test if there's a handle there and return its index, else return null.
+ *       This is used for components like the box and wheel which support multiple handles when multicolor is active
+ * @props x - point x position
+ * @props y - point y position
+ * @props handlePositions - array of {x, y} coords for each handle
+ */
+
+
+function getHandleAtPoint(props, x, y, handlePositions) {
+  for (var i = 0; i < handlePositions.length; i++) {
+    var dX = handlePositions[i].x - x;
+    var dY = handlePositions[i].y - y;
+    var dist = Math.sqrt(dX * dX + dY * dY);
+
+    if (dist < props.handleRadius) {
+      return i;
+    }
+  }
+
+  return null;
+}
+
+var iroColorPickerOptionDefaults = {
+  width: 300,
+  height: 300,
+  handleRadius: 8,
+  handleSvg: null,
+  handleProps: {
+    x: 0,
+    y: 0
+  },
+  color: '#fff',
+  colors: [],
+  borderColor: '#fff',
+  borderWidth: 0,
+  wheelLightness: true,
+  wheelAngle: 0,
+  wheelDirection: 'anticlockwise',
+  layoutDirection: 'vertical',
+  sliderSize: null,
+  sliderMargin: 12,
+  padding: 6
+};
+var SECONDARY_EVENTS = ["mousemove"
+/* MouseMove */
+, "touchmove"
+/* TouchMove */
+, "mouseup"
+/* MouseUp */
+, "touchend"
+/* TouchEnd */
+]; // Base component class for iro UI components
+// This extends the Preact component class to allow them to react to mouse/touch input events by themselves
+
+var IroComponentBase =
+/*@__PURE__*/
+function (Component) {
+  function IroComponentBase(props) {
+    Component.call(this, props); // Generate unique ID for the component
+    // This can be used to generate unique IDs for gradients, etc
+
+    this.uid = (Math.random() + 1).toString(36).substring(5);
+  }
+
+  if (Component) IroComponentBase.__proto__ = Component;
+  IroComponentBase.prototype = Object.create(Component && Component.prototype);
+  IroComponentBase.prototype.constructor = IroComponentBase;
+
+  IroComponentBase.prototype.render = function render(props) {
+    var eventHandler = this.handleEvent.bind(this);
+    var rootProps = {
+      onMouseDown: eventHandler,
+      onTouchStart: eventHandler
+    };
+    var isHorizontal = props.layoutDirection === 'horizontal';
+    var margin = props.margin === null ? props.sliderMargin : props.margin;
+    var rootStyles = {
+      overflow: 'visible',
+      display: isHorizontal ? 'inline-block' : 'block'
+    }; // first component shouldn't have any margin
+
+    if (props.index > 0) {
+      rootStyles[isHorizontal ? 'marginLeft' : 'marginTop'] = margin;
+    }
+
+    return h(d, null, props.children(this.uid, rootProps, rootStyles));
+  }; // More info on handleEvent:
+  // https://medium.com/@WebReflection/dom-handleevent-a-cross-platform-standard-since-year-2000-5bf17287fd38
+  // TL;DR this lets us have a single point of entry for multiple events, and we can avoid callback/binding hell
+
+
+  IroComponentBase.prototype.handleEvent = function handleEvent(e) {
+    var this$1 = this;
+    var inputHandler = this.props.onInput; // Get the screen position of the component
+
+    var bounds = this.base.getBoundingClientRect(); // Prefect default browser action
+
+    e.preventDefault(); // Detect if the event is a touch event by checking if it has the `touches` property
+    // If it is a touch event, use the first touch input
+
+    var point = e.touches ? e.changedTouches[0] : e;
+    var x = point.clientX - bounds.left;
+    var y = point.clientY - bounds.top;
+
+    switch (e.type) {
+      case "mousedown"
+      /* MouseDown */
+      :
+      case "touchstart"
+      /* TouchStart */
+      :
+        SECONDARY_EVENTS.forEach(function (event) {
+          document.addEventListener(event, this$1, {
+            passive: false
+          });
+        });
+        inputHandler(x, y, 0
+        /* Start */
+        );
+        break;
+
+      case "mousemove"
+      /* MouseMove */
+      :
+      case "touchmove"
+      /* TouchMove */
+      :
+        inputHandler(x, y, 1
+        /* Move */
+        );
+        break;
+
+      case "mouseup"
+      /* MouseUp */
+      :
+      case "touchend"
+      /* TouchEnd */
+      :
+        inputHandler(x, y, 2
+        /* End */
+        );
+        SECONDARY_EVENTS.forEach(function (event) {
+          document.removeEventListener(event, this$1);
+        });
+        break;
+    }
+  };
+
+  return IroComponentBase;
+}(m);
+
+function IroHandle(props) {
+  var radius = props.r;
+  var url = props.url;
+  return h("svg", {
+    className: "IroHandle IroHandle--" + props.index + " " + (props.isActive ? 'IroHandle--isActive' : ''),
+    x: props.x,
+    y: props.y,
+    style: {
+      overflow: 'visible'
+    }
+  }, url && h("use", Object.assign({
+    xlinkHref: resolveSvgUrl(url)
+  }, props.props)), !url && h("circle", {
+    r: radius,
+    fill: "none",
+    "stroke-width": 2,
+    stroke: "#000"
+  }), !url && h("circle", {
+    r: radius - 2,
+    fill: props.fill,
+    "stroke-width": 2,
+    stroke: "#fff"
+  }));
+}
+
+IroHandle.defaultProps = {
+  fill: 'none',
+  x: 0,
+  y: 0,
+  r: 8,
+  url: null,
+  props: {
+    x: 0,
+    y: 0
+  }
+};
+var HUE_STEPS = Array.apply(null, {
+  length: 360
+}).map(function (_, index) {
+  return index;
+});
+
+function IroWheel(props) {
+  var ref = getWheelDimensions(props);
+  var width = ref.width;
+  var radius = ref.radius;
+  var cx = ref.cx;
+  var cy = ref.cy;
+  var colors = props.colors;
+  var borderWidth = props.borderWidth;
+  var colorPicker = props.parent;
+  var activeColor = props.color;
+  var hsv = activeColor.hsv;
+  var handlePositions = colors.map(function (color) {
+    return getWheelHandlePosition(props, color);
+  });
+
+  function handleInput(x, y, inputType) {
+    if (inputType === 0
+    /* Start */
+    ) {
+        // getHandleAtPoint() returns the index for the handle if the point 'hits' it, or null otherwise
+        var activeHandle = getHandleAtPoint(props, x, y, handlePositions); // If the input hit a handle, set it as the active handle, but don't update the color
+
+        if (activeHandle !== null) {
+          colorPicker.setActiveColor(activeHandle);
+        } // If the input didn't hit a handle, set the currently active handle to that position
+        else {
+            colorPicker.inputActive = true;
+            activeColor.hsv = getWheelValueFromInput(props, x, y);
+            props.onInput(inputType);
+          }
+      } // move is fired when the user has started dragging
+    else if (inputType === 1
+      /* Move */
+      ) {
+          colorPicker.inputActive = true;
+          activeColor.hsv = getWheelValueFromInput(props, x, y);
+        } // let the color picker fire input:start, input:move or input:end events
+
+
+    props.onInput(inputType);
+  }
+
+  return h(IroComponentBase, Object.assign({}, props, {
+    onInput: handleInput
+  }), function (uid, rootProps, rootStyles) {
+    return h("svg", Object.assign({}, rootProps, {
+      className: "IroWheel",
+      width: width,
+      height: width,
+      style: rootStyles
+    }), h("defs", null, h("radialGradient", {
+      id: uid
+    }, h("stop", {
+      offset: "0%",
+      "stop-color": "#fff"
+    }), h("stop", {
+      offset: "100%",
+      "stop-color": "#fff",
+      "stop-opacity": "0"
+    }))), h("g", {
+      className: "IroWheelHue",
+      "stroke-width": radius,
+      fill: "none"
+    }, HUE_STEPS.map(function (angle) {
+      return h("path", {
+        key: angle,
+        d: getSvgArcPath(cx, cy, radius / 2, angle, angle + 1.5),
+        stroke: "hsl(" + translateWheelAngle(props, angle) + ", 100%, 50%)"
+      });
+    })), h("circle", {
+      className: "IroWheelSaturation",
+      cx: cx,
+      cy: cy,
+      r: radius,
+      fill: "url(" + resolveSvgUrl('#' + uid) + ")"
+    }), props.wheelLightness && h("circle", {
+      className: "IroWheelLightness",
+      cx: cx,
+      cy: cy,
+      r: radius,
+      fill: "#000",
+      opacity: 1 - hsv.v / 100
+    }), h("circle", {
+      className: "IroWheelBorder",
+      cx: cx,
+      cy: cy,
+      r: radius,
+      fill: "none",
+      stroke: props.borderColor,
+      "stroke-width": borderWidth
+    }), colors.filter(function (color) {
+      return color !== activeColor;
+    }).map(function (color) {
+      return h(IroHandle, {
+        isActive: false,
+        index: color.index,
+        fill: color.hslString,
+        r: props.handleRadius,
+        url: props.handleSvg,
+        props: props.handleProps,
+        x: handlePositions[color.index].x,
+        y: handlePositions[color.index].y
+      });
+    }), h(IroHandle, {
+      isActive: true,
+      index: activeColor.index,
+      fill: activeColor.hslString,
+      r: props.handleRadius,
+      url: props.handleSvg,
+      props: props.handleProps,
+      x: handlePositions[activeColor.index].x,
+      y: handlePositions[activeColor.index].y
+    }));
+  });
+}
+
+function IroSlider(props) {
+  var activeColor = props.color;
+  var ref = getSliderDimensions(props);
+  var width = ref.width;
+  var height = ref.height;
+  var radius = ref.radius;
+  var handlePos = getSliderHandlePosition(props, activeColor);
+  var gradient = getSliderGradient(props, activeColor);
+  var isAlpha = props.sliderType === 'alpha';
+
+  function handleInput(x, y, type) {
+    var value = getSliderValueFromInput(props, x, y);
+    props.parent.inputActive = true;
+    activeColor[props.sliderType] = value;
+    props.onInput(type);
+  }
+
+  return h(IroComponentBase, Object.assign({}, props, {
+    onInput: handleInput
+  }), function (uid, rootProps, rootStyles) {
+    return h("svg", Object.assign({}, rootProps, {
+      className: "IroSlider",
+      width: width,
+      height: height,
+      style: rootStyles
+    }), h("defs", null, h("linearGradient", Object.assign({
+      id: 'g' + uid
+    }, getSliderGradientCoords(props)), gradient.map(function (ref) {
+      var offset = ref[0];
+      var color = ref[1];
+      return h("stop", {
+        offset: offset + "%",
+        "stop-color": color
+      });
+    })), isAlpha && h("pattern", {
+      id: 'b' + uid,
+      width: "8",
+      height: "8",
+      patternUnits: "userSpaceOnUse"
+    }, h("rect", {
+      x: "0",
+      y: "0",
+      width: "8",
+      height: "8",
+      fill: "#fff"
+    }), h("rect", {
+      x: "0",
+      y: "0",
+      width: "4",
+      height: "4",
+      fill: "#ccc"
+    }), h("rect", {
+      x: "4",
+      y: "4",
+      width: "4",
+      height: "4",
+      fill: "#ccc"
+    })), isAlpha && h("pattern", {
+      id: 'f' + uid,
+      width: "100%",
+      height: "100%"
+    }, h("rect", {
+      x: "0",
+      y: "0",
+      width: "100%",
+      height: "100%",
+      fill: "url(" + resolveSvgUrl('#b' + uid) + ")"
+    }), " }", h("rect", {
+      x: "0",
+      y: "0",
+      width: "100%",
+      height: "100%",
+      fill: "url(" + resolveSvgUrl('#g' + uid) + ")"
+    }))), h("rect", {
+      className: "IroSliderBg",
+      rx: radius,
+      ry: radius,
+      x: props.borderWidth / 2,
+      y: props.borderWidth / 2,
+      width: width - props.borderWidth,
+      height: height - props.borderWidth,
+      "stroke-width": props.borderWidth,
+      stroke: props.borderColor,
+      fill: "url(" + resolveSvgUrl((isAlpha ? '#f' : '#g') + uid) + ")"
+    }), h(IroHandle, {
+      isActive: true,
+      index: activeColor.index,
+      r: props.handleRadius,
+      url: props.handleSvg,
+      props: props.handleProps,
+      x: handlePos.x,
+      y: handlePos.y
+    }));
+  });
+}
+
+IroSlider.defaultProps = Object.assign({}, sliderDefaultOptions); // Turn a component into a widget
+// This returns a factory function that can be used to create an instance of the widget component
+// The first function param is a DOM element or CSS selector for the element to mount to,
+// The second param is for config options which are passed to the component as props
+// This factory function can also delay mounting the element into the DOM until the page is ready
+
+function createWidget(WidgetComponent) {
+  var widgetFactory = function (parent, props) {
+    var widget; // will become an instance of the widget component class
+
+    var widgetRoot = document.createElement('div'); // Render widget into a temp DOM node
+
+    I(h(WidgetComponent, Object.assign({}, {
+      ref: function (ref) {
+        return widget = ref;
+      }
+    }, props)), widgetRoot);
+
+    function mountWidget() {
+      var container = parent instanceof Element ? parent : document.querySelector(parent);
+      container.appendChild(widget.base);
+      widget.onMount(container);
+    } // Mount it into the DOM when the page document is ready
+
+
+    if (document.readyState !== 'loading') {
+      mountWidget();
+    } else {
+      document.addEventListener('DOMContentLoaded', mountWidget);
+    }
+
+    return widget;
+  }; // Allow the widget factory to inherit component prototype + static class methods
+  // This makes it easier for plugin authors to extend the base widget component
+
+
+  widgetFactory.prototype = WidgetComponent.prototype;
+  Object.assign(widgetFactory, WidgetComponent); // Add reference to base component too
+
+  widgetFactory.__component = WidgetComponent;
+  return widgetFactory;
+}
+
+var IroColorPicker =
+/*@__PURE__*/
+function (Component) {
+  function IroColorPicker(props) {
+    var this$1 = this;
+    Component.call(this, props);
+    this.colors = [];
+    this.inputActive = false;
+    this.events = {};
+    this.activeEvents = {};
+    this.deferredEvents = {};
+    this.id = props.id;
+    var colors = props.colors.length > 0 ? props.colors : [props.color];
+    colors.forEach(function (colorValue) {
+      return this$1.addColor(colorValue);
+    });
+    this.setActiveColor(0); // Pass all the props into the component's state,
+    // Except we want to add the color object and make sure that refs aren't passed down to children
+
+    this.state = Object.assign({}, props, {
+      color: this.color,
+      colors: this.colors,
+      layout: props.layout
+    });
+  }
+
+  if (Component) IroColorPicker.__proto__ = Component;
+  IroColorPicker.prototype = Object.create(Component && Component.prototype);
+  IroColorPicker.prototype.constructor = IroColorPicker; // Plubic multicolor API
+
+  /**
+  * @desc Add a color to the color picker
+  * @param color new color to add
+  * @param index optional color index
+  */
+
+  IroColorPicker.prototype.addColor = function addColor(color, index) {
+    if (index === void 0) index = this.colors.length; // Create a new iro.Color
+    // Also bind it to onColorChange, so whenever the color changes it updates the color picker
+
+    var newColor = new IroColor(color, this.onColorChange.bind(this)); // Insert color @ the given index
+
+    this.colors.splice(index, 0, newColor); // Reindex colors
+
+    this.colors.forEach(function (color, index) {
+      return color.index = index;
+    }); // Update picker state if necessary
+
+    if (this.state) {
+      this.setState({
+        colors: this.colors
+      });
+    } // Fire color init event
+
+
+    this.deferredEmit('color:init', newColor);
+  };
+  /**
+   * @desc Remove a color from the color picker
+   * @param index color index
+   */
+
+
+  IroColorPicker.prototype.removeColor = function removeColor(index) {
+    var color = this.colors.splice(index, 1)[0]; // Destroy the color object -- this unbinds it from the color picker
+
+    color.unbind(); // Reindex colors
+
+    this.colors.forEach(function (color, index) {
+      return color.index = index;
+    }); // Update picker state if necessary
+
+    if (this.state) {
+      this.setState({
+        colors: this.colors
+      });
+    } // If the active color was removed, default active color to 0
+
+
+    if (color.index === this.color.index) {
+      this.setActiveColor(0);
+    } // Fire color remove event
+
+
+    this.emit('color:remove', color);
+  };
+  /**
+   * @desc Set the currently active color
+   * @param index color index
+   */
+
+
+  IroColorPicker.prototype.setActiveColor = function setActiveColor(index) {
+    this.color = this.colors[index];
+
+    if (this.state) {
+      this.setState({
+        color: this.color
+      });
+    } // Fire color switch event
+
+
+    this.emit('color:setActive', this.color);
+  };
+  /**
+   * @desc Replace all of the current colorPicker colors
+   * @param newColorValues list of new colors to add
+   */
+
+
+  IroColorPicker.prototype.setColors = function setColors(newColorValues) {
+    var this$1 = this; // Unbind color events
+
+    this.colors.forEach(function (color) {
+      return color.unbind();
+    }); // Destroy old colors
+
+    this.colors = []; // Add new colors
+
+    newColorValues.forEach(function (colorValue) {
+      return this$1.addColor(colorValue);
+    }); // Reset active color
+
+    this.setActiveColor(0);
+    this.emit('color:setAll', this.colors);
+  }; // Public ColorPicker events API
+
+  /**
+   * @desc Set a callback function for an event
+   * @param eventList event(s) to listen to
+   * @param callback - Function called when the event is fired
+   */
+
+
+  IroColorPicker.prototype.on = function on(eventList, callback) {
+    var this$1 = this;
+    var events = this.events; // eventList can be an eventType string or an array of eventType strings
+
+    (!Array.isArray(eventList) ? [eventList] : eventList).forEach(function (eventType) {
+      // Add event callback
+      (events[eventType] || (events[eventType] = [])).push(callback); // Call deferred events
+      // These are events that can be stored until a listener for them is added
+
+      if (this$1.deferredEvents[eventType]) {
+        // Deffered events store an array of arguments from when the event was called
+        this$1.deferredEvents[eventType].forEach(function (args) {
+          callback.apply(null, args);
+        }); // Clear deferred events
+
+        this$1.deferredEvents[eventType] = [];
+      }
+    });
+  };
+  /**
+   * @desc Remove a callback function for an event added with on()
+   * @param eventList - event(s) to listen to
+   * @param callback - original callback function to remove
+   */
+
+
+  IroColorPicker.prototype.off = function off(eventList, callback) {
+    var this$1 = this;
+    (!Array.isArray(eventList) ? [eventList] : eventList).forEach(function (eventType) {
+      var callbackList = this$1.events[eventType]; // this.emitHook('event:off', eventType, callback);
+
+      if (callbackList) {
+        callbackList.splice(callbackList.indexOf(callback), 1);
+      }
+    });
+  };
+  /**
+   * @desc Emit an event
+   * @param eventType event to emit
+   */
+
+
+  IroColorPicker.prototype.emit = function emit(eventType) {
+    var this$1 = this;
+    var args = [],
+        len = arguments.length - 1;
+
+    while (len-- > 0) args[len] = arguments[len + 1];
+
+    var activeEvents = this.activeEvents;
+    var isEventActive = activeEvents.hasOwnProperty(eventType) ? activeEvents[eventType] : false; // Prevent event callbacks from firing if the event is already active
+    // This stops infinite loops if something in an event callback causes the same event to be fired again
+    // (e.g. setting the color inside a color:change callback)
+
+    if (!isEventActive) {
+      activeEvents[eventType] = true;
+      var callbackList = this.events[eventType] || [];
+      callbackList.forEach(function (fn) {
+        return fn.apply(this$1, args);
+      });
+      activeEvents[eventType] = false;
+    }
+  };
+  /**
+   * @desc Emit an event now, or save it for when the relevent event listener is added
+   * @param eventType - The name of the event to emit
+   */
+
+
+  IroColorPicker.prototype.deferredEmit = function deferredEmit(eventType) {
+    var ref;
+    var args = [],
+        len = arguments.length - 1;
+
+    while (len-- > 0) args[len] = arguments[len + 1];
+
+    var deferredEvents = this.deferredEvents;
+    (ref = this).emit.apply(ref, [eventType].concat(args));
+    (deferredEvents[eventType] || (deferredEvents[eventType] = [])).push(args);
+  }; // Public utility methods
+
+
+  IroColorPicker.prototype.setOptions = function setOptions(newOptions) {
+    this.setState(Object.assign({}, this.state, newOptions));
+  };
+  /**
+   * @desc Resize the color picker
+   * @param width - new width
+   */
+
+
+  IroColorPicker.prototype.resize = function resize(width) {
+    this.setOptions({
+      width: width
+    });
+  };
+  /**
+   * @desc Reset the color picker to the initial color provided in the color picker options
+   */
+
+
+  IroColorPicker.prototype.reset = function reset() {
+    this.colors.forEach(function (color) {
+      return color.reset();
+    });
+    this.setState({
+      colors: this.colors
+    });
+  };
+  /**
+   * @desc Called by the createWidget wrapper when the element is mounted into the page
+   * @param container - the container element for this ColorPicker instance
+   */
+
+
+  IroColorPicker.prototype.onMount = function onMount(container) {
+    this.el = container;
+    this.deferredEmit('mount', this);
+  }; // Internal methods
+
+  /**
+   * @desc React to a color update
+   * @param color - current color
+   * @param changes - shows which h,s,v,a color channels changed
+   */
+
+
+  IroColorPicker.prototype.onColorChange = function onColorChange(color, changes) {
+    this.setState({
+      color: this.color
+    });
+
+    if (this.inputActive) {
+      this.inputActive = false;
+      this.emit('input:change', color, changes);
+    }
+
+    this.emit('color:change', color, changes);
+  };
+  /**
+   * @desc Handle input from a UI control element
+   * @param type - event type
+   */
+
+
+  IroColorPicker.prototype.emitInputEvent = function emitInputEvent(type) {
+    if (type === 0
+    /* Start */
+    ) {
+        this.emit('input:start', this.color);
+      } else if (type === 1
+    /* Move */
+    ) {
+        this.emit('input:move', this.color);
+      } else if (type === 2
+    /* End */
+    ) {
+        this.emit('input:end', this.color);
+      }
+  };
+
+  IroColorPicker.prototype.render = function render(props, state) {
+    var this$1 = this;
+    var layout = state.layout; // use layout shorthands
+
+    if (!Array.isArray(layout)) {
+      switch (layout) {
+        // TODO: implement some?
+        default:
+          layout = [{
+            component: IroWheel
+          }, {
+            component: IroSlider
+          }];
+      } // add transparency slider to the layout
+
+
+      if (state.transparency) {
+        layout.push({
+          component: IroSlider,
+          options: {
+            sliderType: 'alpha'
+          }
+        });
+      }
+    }
+
+    return h("div", {
+      class: "IroColorPicker",
+      id: state.id,
+      style: {
+        display: state.display
+      }
+    }, layout.map(function (ref, componentIndex) {
+      var UiComponent = ref.component;
+      var options = ref.options;
+      return h(UiComponent, Object.assign({}, state, options, {
+        ref: undefined,
+        onInput: this$1.emitInputEvent.bind(this$1),
+        parent: this$1,
+        index: componentIndex
+      }));
+    }));
+  };
+
+  return IroColorPicker;
+}(m);
+
+IroColorPicker.defaultProps = Object.assign({}, iroColorPickerOptionDefaults, {
+  colors: [],
+  display: 'block',
+  id: null,
+  layout: 'default',
+  margin: null
+});
+var IroColorPickerWidget = createWidget(IroColorPicker);
+
+function IroBox(props) {
+  var ref = getBoxDimensions(props);
+  var width = ref.width;
+  var height = ref.height;
+  var radius = ref.radius;
+  var colors = props.colors;
+  var colorPicker = props.parent;
+  var activeColor = props.color;
+  var gradients = getBoxGradients(props, activeColor);
+  var handlePositions = colors.map(function (color) {
+    return getBoxHandlePosition(props, color);
+  });
+
+  function handleInput(x, y, inputType) {
+    if (inputType === 0
+    /* Start */
+    ) {
+        // getHandleAtPoint() returns the index for the handle if the point 'hits' it, or null otherwise
+        var activeHandle = getHandleAtPoint(props, x, y, handlePositions); // If the input hit a handle, set it as the active handle, but don't update the color
+
+        if (activeHandle !== null) {
+          colorPicker.setActiveColor(activeHandle);
+        } // If the input didn't hit a handle, set the currently active handle to that position
+        else {
+            colorPicker.inputActive = true;
+            activeColor.hsv = getBoxValueFromInput(props, x, y);
+            props.onInput(inputType);
+          }
+      } // move is fired when the user has started dragging
+    else if (inputType === 1
+      /* Move */
+      ) {
+          colorPicker.inputActive = true;
+          activeColor.hsv = getBoxValueFromInput(props, x, y);
+        } // let the color picker fire input:start, input:move or input:end events
+
+
+    props.onInput(inputType);
+  }
+
+  return h(IroComponentBase, Object.assign({}, props, {
+    onInput: handleInput
+  }), function (uid, rootProps, rootStyles) {
+    return h("svg", Object.assign({}, rootProps, {
+      className: "IroBox",
+      width: width,
+      height: height,
+      style: rootStyles
+    }), h("defs", null, h("linearGradient", {
+      id: 's' + uid,
+      x1: "0%",
+      y1: "0%",
+      x2: "100%",
+      y2: "0%"
+    }, gradients[0].map(function (ref) {
+      var offset = ref[0];
+      var color = ref[1];
+      return h("stop", {
+        offset: offset + "%",
+        "stop-color": color
+      });
+    })), h("linearGradient", {
+      id: 'l' + uid,
+      x1: "0%",
+      y1: "0%",
+      x2: "0%",
+      y2: "100%"
+    }, gradients[1].map(function (ref) {
+      var offset = ref[0];
+      var color = ref[1];
+      return h("stop", {
+        offset: offset + "%",
+        "stop-color": color
+      });
+    })), h("pattern", {
+      id: 'f' + uid,
+      width: "100%",
+      height: "100%"
+    }, h("rect", {
+      x: "0",
+      y: "0",
+      width: "100%",
+      height: "100%",
+      fill: "url(" + resolveSvgUrl('#s' + uid) + ")"
+    }), " }", h("rect", {
+      x: "0",
+      y: "0",
+      width: "100%",
+      height: "100%",
+      fill: "url(" + resolveSvgUrl('#l' + uid) + ")"
+    }))), h("rect", {
+      rx: radius,
+      ry: radius,
+      x: props.borderWidth / 2,
+      y: props.borderWidth / 2,
+      width: width - props.borderWidth,
+      height: height - props.borderWidth,
+      "stroke-width": props.borderWidth,
+      stroke: props.borderColor,
+      fill: "url(" + resolveSvgUrl('#f' + uid) + ")"
+    }), colors.filter(function (color) {
+      return color !== activeColor;
+    }).map(function (color) {
+      return h(IroHandle, {
+        isActive: false,
+        index: color.index,
+        fill: color.hslString,
+        r: props.handleRadius,
+        url: props.handleSvg,
+        props: props.handleProps,
+        x: handlePositions[color.index].x,
+        y: handlePositions[color.index].y
+      });
+    }), h(IroHandle, {
+      isActive: true,
+      index: activeColor.index,
+      fill: activeColor.hslString,
+      r: props.handleRadius,
+      url: props.handleSvg,
+      props: props.handleProps,
+      x: handlePositions[activeColor.index].x,
+      y: handlePositions[activeColor.index].y
+    }));
+  });
+}
+
+var index = {
+  Color: IroColor,
+  ColorPicker: IroColorPickerWidget,
+  ui: {
+    h: h,
+    ComponentBase: IroComponentBase,
+    Handle: IroHandle,
+    Slider: IroSlider,
+    Wheel: IroWheel,
+    Box: IroBox
+  },
+  version: "5.1.6"
+};
+var _default = index;
+exports.default = _default;
+},{}],"node_modules/webgl-debug/index.js":[function(require,module,exports) {
+var global = arguments[3];
+/*
+** Copyright (c) 2012 The Khronos Group Inc.
+**
+** Permission is hereby granted, free of charge, to any person obtaining a
+** copy of this software and/or associated documentation files (the
+** "Materials"), to deal in the Materials without restriction, including
+** without limitation the rights to use, copy, modify, merge, publish,
+** distribute, sublicense, and/or sell copies of the Materials, and to
+** permit persons to whom the Materials are furnished to do so, subject to
+** the following conditions:
+**
+** The above copyright notice and this permission notice shall be included
+** in all copies or substantial portions of the Materials.
+**
+** THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+** MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+** IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+** CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+** TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+** MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
+*/
+
+//Ported to node by Marcin Ignac on 2016-05-20
+
+// Various functions for helping debug WebGL apps.
+
+WebGLDebugUtils = function() {
+var window
+
+//polyfill window in node
+if (typeof(window) == 'undefined') {
+    window = global;
+}
+
+/**
+ * Wrapped logging function.
+ * @param {string} msg Message to log.
+ */
+var log = function(msg) {
+  if (window.console && window.console.log) {
+    window.console.log(msg);
+  }
+};
+
+/**
+ * Wrapped error logging function.
+ * @param {string} msg Message to log.
+ */
+var error = function(msg) {
+  if (window.console && window.console.error) {
+    window.console.error(msg);
+  } else {
+    log(msg);
+  }
+};
+
+
+/**
+ * Which arguments are enums based on the number of arguments to the function.
+ * So
+ *    'texImage2D': {
+ *       9: { 0:true, 2:true, 6:true, 7:true },
+ *       6: { 0:true, 2:true, 3:true, 4:true },
+ *    },
+ *
+ * means if there are 9 arguments then 6 and 7 are enums, if there are 6
+ * arguments 3 and 4 are enums
+ *
+ * @type {!Object.<number, !Object.<number, string>}
+ */
+var glValidEnumContexts = {
+  // Generic setters and getters
+
+  'enable': {1: { 0:true }},
+  'disable': {1: { 0:true }},
+  'getParameter': {1: { 0:true }},
+
+  // Rendering
+
+  'drawArrays': {3:{ 0:true }},
+  'drawElements': {4:{ 0:true, 2:true }},
+
+  // Shaders
+
+  'createShader': {1: { 0:true }},
+  'getShaderParameter': {2: { 1:true }},
+  'getProgramParameter': {2: { 1:true }},
+  'getShaderPrecisionFormat': {2: { 0: true, 1:true }},
+
+  // Vertex attributes
+
+  'getVertexAttrib': {2: { 1:true }},
+  'vertexAttribPointer': {6: { 2:true }},
+
+  // Textures
+
+  'bindTexture': {2: { 0:true }},
+  'activeTexture': {1: { 0:true }},
+  'getTexParameter': {2: { 0:true, 1:true }},
+  'texParameterf': {3: { 0:true, 1:true }},
+  'texParameteri': {3: { 0:true, 1:true, 2:true }},
+  // texImage2D and texSubImage2D are defined below with WebGL 2 entrypoints
+  'copyTexImage2D': {8: { 0:true, 2:true }},
+  'copyTexSubImage2D': {8: { 0:true }},
+  'generateMipmap': {1: { 0:true }},
+  // compressedTexImage2D and compressedTexSubImage2D are defined below with WebGL 2 entrypoints
+
+  // Buffer objects
+
+  'bindBuffer': {2: { 0:true }},
+  // bufferData and bufferSubData are defined below with WebGL 2 entrypoints
+  'getBufferParameter': {2: { 0:true, 1:true }},
+
+  // Renderbuffers and framebuffers
+
+  'pixelStorei': {2: { 0:true, 1:true }},
+  // readPixels is defined below with WebGL 2 entrypoints
+  'bindRenderbuffer': {2: { 0:true }},
+  'bindFramebuffer': {2: { 0:true }},
+  'checkFramebufferStatus': {1: { 0:true }},
+  'framebufferRenderbuffer': {4: { 0:true, 1:true, 2:true }},
+  'framebufferTexture2D': {5: { 0:true, 1:true, 2:true }},
+  'getFramebufferAttachmentParameter': {3: { 0:true, 1:true, 2:true }},
+  'getRenderbufferParameter': {2: { 0:true, 1:true }},
+  'renderbufferStorage': {4: { 0:true, 1:true }},
+
+  // Frame buffer operations (clear, blend, depth test, stencil)
+
+  'clear': {1: { 0: { 'enumBitwiseOr': ['COLOR_BUFFER_BIT', 'DEPTH_BUFFER_BIT', 'STENCIL_BUFFER_BIT'] }}},
+  'depthFunc': {1: { 0:true }},
+  'blendFunc': {2: { 0:true, 1:true }},
+  'blendFuncSeparate': {4: { 0:true, 1:true, 2:true, 3:true }},
+  'blendEquation': {1: { 0:true }},
+  'blendEquationSeparate': {2: { 0:true, 1:true }},
+  'stencilFunc': {3: { 0:true }},
+  'stencilFuncSeparate': {4: { 0:true, 1:true }},
+  'stencilMaskSeparate': {2: { 0:true }},
+  'stencilOp': {3: { 0:true, 1:true, 2:true }},
+  'stencilOpSeparate': {4: { 0:true, 1:true, 2:true, 3:true }},
+
+  // Culling
+
+  'cullFace': {1: { 0:true }},
+  'frontFace': {1: { 0:true }},
+
+  // ANGLE_instanced_arrays extension
+
+  'drawArraysInstancedANGLE': {4: { 0:true }},
+  'drawElementsInstancedANGLE': {5: { 0:true, 2:true }},
+
+  // EXT_blend_minmax extension
+
+  'blendEquationEXT': {1: { 0:true }},
+
+  // WebGL 2 Buffer objects
+
+  'bufferData': {
+    3: { 0:true, 2:true }, // WebGL 1
+    4: { 0:true, 2:true }, // WebGL 2
+    5: { 0:true, 2:true }  // WebGL 2
+  },
+  'bufferSubData': {
+    3: { 0:true }, // WebGL 1
+    4: { 0:true }, // WebGL 2
+    5: { 0:true }  // WebGL 2
+  },
+  'copyBufferSubData': {5: { 0:true, 1:true }},
+  'getBufferSubData': {3: { 0:true }, 4: { 0:true }, 5: { 0:true }},
+
+  // WebGL 2 Framebuffer objects
+
+  'blitFramebuffer': {10: { 8: { 'enumBitwiseOr': ['COLOR_BUFFER_BIT', 'DEPTH_BUFFER_BIT', 'STENCIL_BUFFER_BIT'] }, 9:true }},
+  'framebufferTextureLayer': {5: { 0:true, 1:true }},
+  'invalidateFramebuffer': {2: { 0:true }},
+  'invalidateSubFramebuffer': {6: { 0:true }},
+  'readBuffer': {1: { 0:true }},
+
+  // WebGL 2 Renderbuffer objects
+
+  'getInternalformatParameter': {3: { 0:true, 1:true, 2:true }},
+  'renderbufferStorageMultisample': {5: { 0:true, 2:true }},
+
+  // WebGL 2 Texture objects
+
+  'texStorage2D': {5: { 0:true, 2:true }},
+  'texStorage3D': {6: { 0:true, 2:true }},
+  'texImage2D': {
+    9: { 0:true, 2:true, 6:true, 7:true }, // WebGL 1 & 2
+    6: { 0:true, 2:true, 3:true, 4:true }, // WebGL 1
+    10: { 0:true, 2:true, 6:true, 7:true } // WebGL 2
+  },
+  'texImage3D': {
+    10: { 0:true, 2:true, 7:true, 8:true },
+    11: { 0:true, 2:true, 7:true, 8:true }
+  },
+  'texSubImage2D': {
+    9: { 0:true, 6:true, 7:true }, // WebGL 1 & 2
+    7: { 0:true, 4:true, 5:true }, // WebGL 1
+    10: { 0:true, 6:true, 7:true } // WebGL 2
+  },
+  'texSubImage3D': {
+    11: { 0:true, 8:true, 9:true },
+    12: { 0:true, 8:true, 9:true }
+  },
+  'copyTexSubImage3D': {9: { 0:true }},
+  'compressedTexImage2D': {
+    7: { 0: true, 2:true }, // WebGL 1 & 2
+    8: { 0: true, 2:true }, // WebGL 2
+    9: { 0: true, 2:true }  // WebGL 2
+  },
+  'compressedTexImage3D': {
+    8: { 0: true, 2:true },
+    9: { 0: true, 2:true },
+    10: { 0: true, 2:true }
+  },
+  'compressedTexSubImage2D': {
+    8: { 0: true, 6:true }, // WebGL 1 & 2
+    9: { 0: true, 6:true }, // WebGL 2
+    10: { 0: true, 6:true } // WebGL 2
+  },
+  'compressedTexSubImage3D': {
+    10: { 0: true, 8:true },
+    11: { 0: true, 8:true },
+    12: { 0: true, 8:true }
+  },
+
+  // WebGL 2 Vertex attribs
+
+  'vertexAttribIPointer': {5: { 2:true }},
+
+  // WebGL 2 Writing to the drawing buffer
+
+  'drawArraysInstanced': {4: { 0:true }},
+  'drawElementsInstanced': {5: { 0:true, 2:true }},
+  'drawRangeElements': {6: { 0:true, 4:true }},
+
+  // WebGL 2 Reading back pixels
+
+  'readPixels': {
+    7: { 4:true, 5:true }, // WebGL 1 & 2
+    8: { 4:true, 5:true }  // WebGL 2
+  },
+
+  // WebGL 2 Multiple Render Targets
+
+  'clearBufferfv': {3: { 0:true }, 4: { 0:true }},
+  'clearBufferiv': {3: { 0:true }, 4: { 0:true }},
+  'clearBufferuiv': {3: { 0:true }, 4: { 0:true }},
+  'clearBufferfi': {4: { 0:true }},
+
+  // WebGL 2 Query objects
+
+  'beginQuery': {2: { 0:true }},
+  'endQuery': {1: { 0:true }},
+  'getQuery': {2: { 0:true, 1:true }},
+  'getQueryParameter': {2: { 1:true }},
+
+  // WebGL 2 Sampler objects
+
+  'samplerParameteri': {3: { 1:true, 2:true }},
+  'samplerParameterf': {3: { 1:true }},
+  'getSamplerParameter': {2: { 1:true }},
+
+  // WebGL 2 Sync objects
+
+  'fenceSync': {2: { 0:true, 1: { 'enumBitwiseOr': [] } }},
+  'clientWaitSync': {3: { 1: { 'enumBitwiseOr': ['SYNC_FLUSH_COMMANDS_BIT'] } }},
+  'waitSync': {3: { 1: { 'enumBitwiseOr': [] } }},
+  'getSyncParameter': {2: { 1:true }},
+
+  // WebGL 2 Transform Feedback
+
+  'bindTransformFeedback': {2: { 0:true }},
+  'beginTransformFeedback': {1: { 0:true }},
+  'transformFeedbackVaryings': {3: { 2:true }},
+
+  // WebGL2 Uniform Buffer Objects and Transform Feedback Buffers
+
+  'bindBufferBase': {3: { 0:true }},
+  'bindBufferRange': {5: { 0:true }},
+  'getIndexedParameter': {2: { 0:true }},
+  'getActiveUniforms': {3: { 2:true }},
+  'getActiveUniformBlockParameter': {3: { 2:true }}
+};
+
+/**
+ * Map of numbers to names.
+ * @type {Object}
+ */
+var glEnums = null;
+
+/**
+ * Map of names to numbers.
+ * @type {Object}
+ */
+var enumStringToValue = null;
+
+/**
+ * Initializes this module. Safe to call more than once.
+ * @param {!WebGLRenderingContext} ctx A WebGL context. If
+ *    you have more than one context it doesn't matter which one
+ *    you pass in, it is only used to pull out constants.
+ */
+function init(ctx) {
+  if (glEnums == null) {
+    glEnums = { };
+    enumStringToValue = { };
+    for (var propertyName in ctx) {
+      if (typeof ctx[propertyName] == 'number') {
+        glEnums[ctx[propertyName]] = propertyName;
+        enumStringToValue[propertyName] = ctx[propertyName];
+      }
+    }
+  }
+}
+
+/**
+ * Checks the utils have been initialized.
+ */
+function checkInit() {
+  if (glEnums == null) {
+    throw 'WebGLDebugUtils.init(ctx) not called';
+  }
+}
+
+/**
+ * Returns true or false if value matches any WebGL enum
+ * @param {*} value Value to check if it might be an enum.
+ * @return {boolean} True if value matches one of the WebGL defined enums
+ */
+function mightBeEnum(value) {
+  checkInit();
+  return (glEnums[value] !== undefined);
+}
+
+/**
+ * Gets an string version of an WebGL enum.
+ *
+ * Example:
+ *   var str = WebGLDebugUtil.glEnumToString(ctx.getError());
+ *
+ * @param {number} value Value to return an enum for
+ * @return {string} The string version of the enum.
+ */
+function glEnumToString(value) {
+  checkInit();
+  var name = glEnums[value];
+  return (name !== undefined) ? ("gl." + name) :
+      ("/*UNKNOWN WebGL ENUM*/ 0x" + value.toString(16) + "");
+}
+
+/**
+ * Returns the string version of a WebGL argument.
+ * Attempts to convert enum arguments to strings.
+ * @param {string} functionName the name of the WebGL function.
+ * @param {number} numArgs the number of arguments passed to the function.
+ * @param {number} argumentIndx the index of the argument.
+ * @param {*} value The value of the argument.
+ * @return {string} The value as a string.
+ */
+function glFunctionArgToString(functionName, numArgs, argumentIndex, value) {
+  var funcInfo = glValidEnumContexts[functionName];
+  if (funcInfo !== undefined) {
+    var funcInfo = funcInfo[numArgs];
+    if (funcInfo !== undefined) {
+      if (funcInfo[argumentIndex]) {
+        if (typeof funcInfo[argumentIndex] === 'object' &&
+            funcInfo[argumentIndex]['enumBitwiseOr'] !== undefined) {
+          var enums = funcInfo[argumentIndex]['enumBitwiseOr'];
+          var orResult = 0;
+          var orEnums = [];
+          for (var i = 0; i < enums.length; ++i) {
+            var enumValue = enumStringToValue[enums[i]];
+            if ((value & enumValue) !== 0) {
+              orResult |= enumValue;
+              orEnums.push(glEnumToString(enumValue));
+            }
+          }
+          if (orResult === value) {
+            return orEnums.join(' | ');
+          } else {
+            return glEnumToString(value);
+          }
+        } else {
+          return glEnumToString(value);
+        }
+      }
+    }
+  }
+  if (value === null) {
+    return "null";
+  } else if (value === undefined) {
+    return "undefined";
+  } else {
+    return value.toString();
+  }
+}
+
+/**
+ * Converts the arguments of a WebGL function to a string.
+ * Attempts to convert enum arguments to strings.
+ *
+ * @param {string} functionName the name of the WebGL function.
+ * @param {number} args The arguments.
+ * @return {string} The arguments as a string.
+ */
+function glFunctionArgsToString(functionName, args) {
+  // apparently we can't do args.join(",");
+  var argStr = "";
+  var numArgs = args.length;
+  for (var ii = 0; ii < numArgs; ++ii) {
+    argStr += ((ii == 0) ? '' : ', ') +
+        glFunctionArgToString(functionName, numArgs, ii, args[ii]);
+  }
+  return argStr;
+};
+
+
+function makePropertyWrapper(wrapper, original, propertyName) {
+  //log("wrap prop: " + propertyName);
+  wrapper.__defineGetter__(propertyName, function() {
+    return original[propertyName];
+  });
+  // TODO(gmane): this needs to handle properties that take more than
+  // one value?
+  wrapper.__defineSetter__(propertyName, function(value) {
+    //log("set: " + propertyName);
+    original[propertyName] = value;
+  });
+}
+
+// Makes a function that calls a function on another object.
+function makeFunctionWrapper(original, functionName) {
+  //log("wrap fn: " + functionName);
+  var f = original[functionName];
+  return function() {
+    //log("call: " + functionName);
+    var result = f.apply(original, arguments);
+    return result;
+  };
+}
+
+/**
+ * Given a WebGL context returns a wrapped context that calls
+ * gl.getError after every command and calls a function if the
+ * result is not gl.NO_ERROR.
+ *
+ * @param {!WebGLRenderingContext} ctx The webgl context to
+ *        wrap.
+ * @param {!function(err, funcName, args): void} opt_onErrorFunc
+ *        The function to call when gl.getError returns an
+ *        error. If not specified the default function calls
+ *        console.log with a message.
+ * @param {!function(funcName, args): void} opt_onFunc The
+ *        function to call when each webgl function is called.
+ *        You can use this to log all calls for example.
+ * @param {!WebGLRenderingContext} opt_err_ctx The webgl context
+ *        to call getError on if different than ctx.
+ */
+function makeDebugContext(ctx, opt_onErrorFunc, opt_onFunc, opt_err_ctx) {
+  opt_err_ctx = opt_err_ctx || ctx;
+  init(ctx);
+  opt_onErrorFunc = opt_onErrorFunc || function(err, functionName, args) {
+        // apparently we can't do args.join(",");
+        var argStr = "";
+        var numArgs = args.length;
+        for (var ii = 0; ii < numArgs; ++ii) {
+          argStr += ((ii == 0) ? '' : ', ') +
+              glFunctionArgToString(functionName, numArgs, ii, args[ii]);
+        }
+        error("WebGL error "+ glEnumToString(err) + " in "+ functionName +
+              "(" + argStr + ")");
+      };
+
+  // Holds booleans for each GL error so after we get the error ourselves
+  // we can still return it to the client app.
+  var glErrorShadow = { };
+
+  // Makes a function that calls a WebGL function and then calls getError.
+  function makeErrorWrapper(ctx, functionName) {
+    return function() {
+      if (opt_onFunc) {
+        opt_onFunc(functionName, arguments);
+      }
+      var result = ctx[functionName].apply(ctx, arguments);
+      var err = opt_err_ctx.getError();
+      if (err != 0) {
+        glErrorShadow[err] = true;
+        opt_onErrorFunc(err, functionName, arguments);
+      }
+      return result;
+    };
+  }
+
+  // Make a an object that has a copy of every property of the WebGL context
+  // but wraps all functions.
+  var wrapper = {};
+  for (var propertyName in ctx) {
+    if (typeof ctx[propertyName] == 'function') {
+      if (propertyName != 'getExtension') {
+        wrapper[propertyName] = makeErrorWrapper(ctx, propertyName);
+      } else {
+        var wrapped = makeErrorWrapper(ctx, propertyName);
+        wrapper[propertyName] = function () {
+          var result = wrapped.apply(ctx, arguments);
+          if (!result) {
+            return null;
+          }
+          return makeDebugContext(result, opt_onErrorFunc, opt_onFunc, opt_err_ctx);
+        };
+      }
+    } else {
+      makePropertyWrapper(wrapper, ctx, propertyName);
+    }
+  }
+
+  // Override the getError function with one that returns our saved results.
+  wrapper.getError = function() {
+    for (var err in glErrorShadow) {
+      if (glErrorShadow.hasOwnProperty(err)) {
+        if (glErrorShadow[err]) {
+          glErrorShadow[err] = false;
+          return err;
+        }
+      }
+    }
+    return ctx.NO_ERROR;
+  };
+
+  return wrapper;
+}
+
+function resetToInitialState(ctx) {
+  var isWebGL2RenderingContext = !!ctx.createTransformFeedback;
+
+  if (isWebGL2RenderingContext) {
+    ctx.bindVertexArray(null);
+  }
+
+  var numAttribs = ctx.getParameter(ctx.MAX_VERTEX_ATTRIBS);
+  var tmp = ctx.createBuffer();
+  ctx.bindBuffer(ctx.ARRAY_BUFFER, tmp);
+  for (var ii = 0; ii < numAttribs; ++ii) {
+    ctx.disableVertexAttribArray(ii);
+    ctx.vertexAttribPointer(ii, 4, ctx.FLOAT, false, 0, 0);
+    ctx.vertexAttrib1f(ii, 0);
+    if (isWebGL2RenderingContext) {
+      ctx.vertexAttribDivisor(ii, 0);
+    }
+  }
+  ctx.deleteBuffer(tmp);
+
+  var numTextureUnits = ctx.getParameter(ctx.MAX_TEXTURE_IMAGE_UNITS);
+  for (var ii = 0; ii < numTextureUnits; ++ii) {
+    ctx.activeTexture(ctx.TEXTURE0 + ii);
+    ctx.bindTexture(ctx.TEXTURE_CUBE_MAP, null);
+    ctx.bindTexture(ctx.TEXTURE_2D, null);
+    if (isWebGL2RenderingContext) {
+      ctx.bindTexture(ctx.TEXTURE_2D_ARRAY, null);
+      ctx.bindTexture(ctx.TEXTURE_3D, null);
+      ctx.bindSampler(ii, null);
+    }
+  }
+
+  ctx.activeTexture(ctx.TEXTURE0);
+  ctx.useProgram(null);
+  ctx.bindBuffer(ctx.ARRAY_BUFFER, null);
+  ctx.bindBuffer(ctx.ELEMENT_ARRAY_BUFFER, null);
+  ctx.bindFramebuffer(ctx.FRAMEBUFFER, null);
+  ctx.bindRenderbuffer(ctx.RENDERBUFFER, null);
+  ctx.disable(ctx.BLEND);
+  ctx.disable(ctx.CULL_FACE);
+  ctx.disable(ctx.DEPTH_TEST);
+  ctx.disable(ctx.DITHER);
+  ctx.disable(ctx.SCISSOR_TEST);
+  ctx.blendColor(0, 0, 0, 0);
+  ctx.blendEquation(ctx.FUNC_ADD);
+  ctx.blendFunc(ctx.ONE, ctx.ZERO);
+  ctx.clearColor(0, 0, 0, 0);
+  ctx.clearDepth(1);
+  ctx.clearStencil(-1);
+  ctx.colorMask(true, true, true, true);
+  ctx.cullFace(ctx.BACK);
+  ctx.depthFunc(ctx.LESS);
+  ctx.depthMask(true);
+  ctx.depthRange(0, 1);
+  ctx.frontFace(ctx.CCW);
+  ctx.hint(ctx.GENERATE_MIPMAP_HINT, ctx.DONT_CARE);
+  ctx.lineWidth(1);
+  ctx.pixelStorei(ctx.PACK_ALIGNMENT, 4);
+  ctx.pixelStorei(ctx.UNPACK_ALIGNMENT, 4);
+  ctx.pixelStorei(ctx.UNPACK_FLIP_Y_WEBGL, false);
+  ctx.pixelStorei(ctx.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
+  // TODO: Delete this IF.
+  if (ctx.UNPACK_COLORSPACE_CONVERSION_WEBGL) {
+    ctx.pixelStorei(ctx.UNPACK_COLORSPACE_CONVERSION_WEBGL, ctx.BROWSER_DEFAULT_WEBGL);
+  }
+  ctx.polygonOffset(0, 0);
+  ctx.sampleCoverage(1, false);
+  ctx.scissor(0, 0, ctx.canvas.width, ctx.canvas.height);
+  ctx.stencilFunc(ctx.ALWAYS, 0, 0xFFFFFFFF);
+  ctx.stencilMask(0xFFFFFFFF);
+  ctx.stencilOp(ctx.KEEP, ctx.KEEP, ctx.KEEP);
+  ctx.viewport(0, 0, ctx.canvas.width, ctx.canvas.height);
+  ctx.clear(ctx.COLOR_BUFFER_BIT | ctx.DEPTH_BUFFER_BIT | ctx.STENCIL_BUFFER_BIT);
+
+  if (isWebGL2RenderingContext) {
+    ctx.drawBuffers([ctx.BACK]);
+    ctx.readBuffer(ctx.BACK);
+    ctx.bindBuffer(ctx.COPY_READ_BUFFER, null);
+    ctx.bindBuffer(ctx.COPY_WRITE_BUFFER, null);
+    ctx.bindBuffer(ctx.PIXEL_PACK_BUFFER, null);
+    ctx.bindBuffer(ctx.PIXEL_UNPACK_BUFFER, null);
+    var numTransformFeedbacks = ctx.getParameter(ctx.MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS);
+    for (var ii = 0; ii < numTransformFeedbacks; ++ii) {
+      ctx.bindBufferBase(ctx.TRANSFORM_FEEDBACK_BUFFER, ii, null);
+    }
+    var numUBOs = ctx.getParameter(ctx.MAX_UNIFORM_BUFFER_BINDINGS);
+    for (var ii = 0; ii < numUBOs; ++ii) {
+      ctx.bindBufferBase(ctx.UNIFORM_BUFFER, ii, null);
+    }
+    ctx.disable(ctx.RASTERIZER_DISCARD);
+    ctx.pixelStorei(ctx.UNPACK_IMAGE_HEIGHT, 0);
+    ctx.pixelStorei(ctx.UNPACK_SKIP_IMAGES, 0);
+    ctx.pixelStorei(ctx.UNPACK_ROW_LENGTH, 0);
+    ctx.pixelStorei(ctx.UNPACK_SKIP_ROWS, 0);
+    ctx.pixelStorei(ctx.UNPACK_SKIP_PIXELS, 0);
+    ctx.pixelStorei(ctx.PACK_ROW_LENGTH, 0);
+    ctx.pixelStorei(ctx.PACK_SKIP_ROWS, 0);
+    ctx.pixelStorei(ctx.PACK_SKIP_PIXELS, 0);
+    ctx.hint(ctx.FRAGMENT_SHADER_DERIVATIVE_HINT, ctx.DONT_CARE);
+  }
+
+  // TODO: This should NOT be needed but Firefox fails with 'hint'
+  while(ctx.getError());
+}
+
+function makeLostContextSimulatingCanvas(canvas) {
+  var unwrappedContext_;
+  var wrappedContext_;
+  var onLost_ = [];
+  var onRestored_ = [];
+  var wrappedContext_ = {};
+  var contextId_ = 1;
+  var contextLost_ = false;
+  var resourceId_ = 0;
+  var resourceDb_ = [];
+  var numCallsToLoseContext_ = 0;
+  var numCalls_ = 0;
+  var canRestore_ = false;
+  var restoreTimeout_ = 0;
+  var isWebGL2RenderingContext;
+
+  // Holds booleans for each GL error so can simulate errors.
+  var glErrorShadow_ = { };
+
+  canvas.getContext = function(f) {
+    return function() {
+      var ctx = f.apply(canvas, arguments);
+      // Did we get a context and is it a WebGL context?
+      if ((ctx instanceof WebGLRenderingContext) || (window.WebGL2RenderingContext && (ctx instanceof WebGL2RenderingContext))) {
+        if (ctx != unwrappedContext_) {
+          if (unwrappedContext_) {
+            throw "got different context"
+          }
+          isWebGL2RenderingContext = window.WebGL2RenderingContext && (ctx instanceof WebGL2RenderingContext);
+          unwrappedContext_ = ctx;
+          wrappedContext_ = makeLostContextSimulatingContext(unwrappedContext_);
+        }
+        return wrappedContext_;
+      }
+      return ctx;
+    }
+  }(canvas.getContext);
+
+  function wrapEvent(listener) {
+    if (typeof(listener) == "function") {
+      return listener;
+    } else {
+      return function(info) {
+        listener.handleEvent(info);
+      }
+    }
+  }
+
+  var addOnContextLostListener = function(listener) {
+    onLost_.push(wrapEvent(listener));
+  };
+
+  var addOnContextRestoredListener = function(listener) {
+    onRestored_.push(wrapEvent(listener));
+  };
+
+
+  function wrapAddEventListener(canvas) {
+    var f = canvas.addEventListener;
+    canvas.addEventListener = function(type, listener, bubble) {
+      switch (type) {
+        case 'webglcontextlost':
+          addOnContextLostListener(listener);
+          break;
+        case 'webglcontextrestored':
+          addOnContextRestoredListener(listener);
+          break;
+        default:
+          f.apply(canvas, arguments);
+      }
+    };
+  }
+
+  wrapAddEventListener(canvas);
+
+  canvas.loseContext = function() {
+    if (!contextLost_) {
+      contextLost_ = true;
+      numCallsToLoseContext_ = 0;
+      ++contextId_;
+      while (unwrappedContext_.getError());
+      clearErrors();
+      glErrorShadow_[unwrappedContext_.CONTEXT_LOST_WEBGL] = true;
+      var event = makeWebGLContextEvent("context lost");
+      var callbacks = onLost_.slice();
+      setTimeout(function() {
+          //log("numCallbacks:" + callbacks.length);
+          for (var ii = 0; ii < callbacks.length; ++ii) {
+            //log("calling callback:" + ii);
+            callbacks[ii](event);
+          }
+          if (restoreTimeout_ >= 0) {
+            setTimeout(function() {
+                canvas.restoreContext();
+              }, restoreTimeout_);
+          }
+        }, 0);
+    }
+  };
+
+  canvas.restoreContext = function() {
+    if (contextLost_) {
+      if (onRestored_.length) {
+        setTimeout(function() {
+            if (!canRestore_) {
+              throw "can not restore. webglcontestlost listener did not call event.preventDefault";
+            }
+            freeResources();
+            resetToInitialState(unwrappedContext_);
+            contextLost_ = false;
+            numCalls_ = 0;
+            canRestore_ = false;
+            var callbacks = onRestored_.slice();
+            var event = makeWebGLContextEvent("context restored");
+            for (var ii = 0; ii < callbacks.length; ++ii) {
+              callbacks[ii](event);
+            }
+          }, 0);
+      }
+    }
+  };
+
+  canvas.loseContextInNCalls = function(numCalls) {
+    if (contextLost_) {
+      throw "You can not ask a lost contet to be lost";
+    }
+    numCallsToLoseContext_ = numCalls_ + numCalls;
+  };
+
+  canvas.getNumCalls = function() {
+    return numCalls_;
+  };
+
+  canvas.setRestoreTimeout = function(timeout) {
+    restoreTimeout_ = timeout;
+  };
+
+  function isWebGLObject(obj) {
+    //return false;
+    return (obj instanceof WebGLBuffer ||
+            obj instanceof WebGLFramebuffer ||
+            obj instanceof WebGLProgram ||
+            obj instanceof WebGLRenderbuffer ||
+            obj instanceof WebGLShader ||
+            obj instanceof WebGLTexture);
+  }
+
+  function checkResources(args) {
+    for (var ii = 0; ii < args.length; ++ii) {
+      var arg = args[ii];
+      if (isWebGLObject(arg)) {
+        return arg.__webglDebugContextLostId__ == contextId_;
+      }
+    }
+    return true;
+  }
+
+  function clearErrors() {
+    var k = Object.keys(glErrorShadow_);
+    for (var ii = 0; ii < k.length; ++ii) {
+      delete glErrorShadow_[k[ii]];
+    }
+  }
+
+  function loseContextIfTime() {
+    ++numCalls_;
+    if (!contextLost_) {
+      if (numCallsToLoseContext_ == numCalls_) {
+        canvas.loseContext();
+      }
+    }
+  }
+
+  // Makes a function that simulates WebGL when out of context.
+  function makeLostContextFunctionWrapper(ctx, functionName) {
+    var f = ctx[functionName];
+    return function() {
+      // log("calling:" + functionName);
+      // Only call the functions if the context is not lost.
+      loseContextIfTime();
+      if (!contextLost_) {
+        //if (!checkResources(arguments)) {
+        //  glErrorShadow_[wrappedContext_.INVALID_OPERATION] = true;
+        //  return;
+        //}
+        var result = f.apply(ctx, arguments);
+        return result;
+      }
+    };
+  }
+
+  function freeResources() {
+    for (var ii = 0; ii < resourceDb_.length; ++ii) {
+      var resource = resourceDb_[ii];
+      if (resource instanceof WebGLBuffer) {
+        unwrappedContext_.deleteBuffer(resource);
+      } else if (resource instanceof WebGLFramebuffer) {
+        unwrappedContext_.deleteFramebuffer(resource);
+      } else if (resource instanceof WebGLProgram) {
+        unwrappedContext_.deleteProgram(resource);
+      } else if (resource instanceof WebGLRenderbuffer) {
+        unwrappedContext_.deleteRenderbuffer(resource);
+      } else if (resource instanceof WebGLShader) {
+        unwrappedContext_.deleteShader(resource);
+      } else if (resource instanceof WebGLTexture) {
+        unwrappedContext_.deleteTexture(resource);
+      }
+      else if (isWebGL2RenderingContext) {
+        if (resource instanceof WebGLQuery) {
+          unwrappedContext_.deleteQuery(resource);
+        } else if (resource instanceof WebGLSampler) {
+          unwrappedContext_.deleteSampler(resource);
+        } else if (resource instanceof WebGLSync) {
+          unwrappedContext_.deleteSync(resource);
+        } else if (resource instanceof WebGLTransformFeedback) {
+          unwrappedContext_.deleteTransformFeedback(resource);
+        } else if (resource instanceof WebGLVertexArrayObject) {
+          unwrappedContext_.deleteVertexArray(resource);
+        }
+      }
+    }
+  }
+
+  function makeWebGLContextEvent(statusMessage) {
+    return {
+      statusMessage: statusMessage,
+      preventDefault: function() {
+          canRestore_ = true;
+        }
+    };
+  }
+
+  return canvas;
+
+  function makeLostContextSimulatingContext(ctx) {
+    // copy all functions and properties to wrapper
+    for (var propertyName in ctx) {
+      if (typeof ctx[propertyName] == 'function') {
+         wrappedContext_[propertyName] = makeLostContextFunctionWrapper(
+             ctx, propertyName);
+       } else {
+         makePropertyWrapper(wrappedContext_, ctx, propertyName);
+       }
+    }
+
+    // Wrap a few functions specially.
+    wrappedContext_.getError = function() {
+      loseContextIfTime();
+      if (!contextLost_) {
+        var err;
+        while (err = unwrappedContext_.getError()) {
+          glErrorShadow_[err] = true;
+        }
+      }
+      for (var err in glErrorShadow_) {
+        if (glErrorShadow_[err]) {
+          delete glErrorShadow_[err];
+          return err;
+        }
+      }
+      return wrappedContext_.NO_ERROR;
+    };
+
+    var creationFunctions = [
+      "createBuffer",
+      "createFramebuffer",
+      "createProgram",
+      "createRenderbuffer",
+      "createShader",
+      "createTexture"
+    ];
+    if (isWebGL2RenderingContext) {
+      creationFunctions.push(
+        "createQuery",
+        "createSampler",
+        "fenceSync",
+        "createTransformFeedback",
+        "createVertexArray"
+      );
+    }
+    for (var ii = 0; ii < creationFunctions.length; ++ii) {
+      var functionName = creationFunctions[ii];
+      wrappedContext_[functionName] = function(f) {
+        return function() {
+          loseContextIfTime();
+          if (contextLost_) {
+            return null;
+          }
+          var obj = f.apply(ctx, arguments);
+          obj.__webglDebugContextLostId__ = contextId_;
+          resourceDb_.push(obj);
+          return obj;
+        };
+      }(ctx[functionName]);
+    }
+
+    var functionsThatShouldReturnNull = [
+      "getActiveAttrib",
+      "getActiveUniform",
+      "getBufferParameter",
+      "getContextAttributes",
+      "getAttachedShaders",
+      "getFramebufferAttachmentParameter",
+      "getParameter",
+      "getProgramParameter",
+      "getProgramInfoLog",
+      "getRenderbufferParameter",
+      "getShaderParameter",
+      "getShaderInfoLog",
+      "getShaderSource",
+      "getTexParameter",
+      "getUniform",
+      "getUniformLocation",
+      "getVertexAttrib"
+    ];
+    if (isWebGL2RenderingContext) {
+      functionsThatShouldReturnNull.push(
+        "getInternalformatParameter",
+        "getQuery",
+        "getQueryParameter",
+        "getSamplerParameter",
+        "getSyncParameter",
+        "getTransformFeedbackVarying",
+        "getIndexedParameter",
+        "getUniformIndices",
+        "getActiveUniforms",
+        "getActiveUniformBlockParameter",
+        "getActiveUniformBlockName"
+      );
+    }
+    for (var ii = 0; ii < functionsThatShouldReturnNull.length; ++ii) {
+      var functionName = functionsThatShouldReturnNull[ii];
+      wrappedContext_[functionName] = function(f) {
+        return function() {
+          loseContextIfTime();
+          if (contextLost_) {
+            return null;
+          }
+          return f.apply(ctx, arguments);
+        }
+      }(wrappedContext_[functionName]);
+    }
+
+    var isFunctions = [
+      "isBuffer",
+      "isEnabled",
+      "isFramebuffer",
+      "isProgram",
+      "isRenderbuffer",
+      "isShader",
+      "isTexture"
+    ];
+    if (isWebGL2RenderingContext) {
+      isFunctions.push(
+        "isQuery",
+        "isSampler",
+        "isSync",
+        "isTransformFeedback",
+        "isVertexArray"
+      );
+    }
+    for (var ii = 0; ii < isFunctions.length; ++ii) {
+      var functionName = isFunctions[ii];
+      wrappedContext_[functionName] = function(f) {
+        return function() {
+          loseContextIfTime();
+          if (contextLost_) {
+            return false;
+          }
+          return f.apply(ctx, arguments);
+        }
+      }(wrappedContext_[functionName]);
+    }
+
+    wrappedContext_.checkFramebufferStatus = function(f) {
+      return function() {
+        loseContextIfTime();
+        if (contextLost_) {
+          return wrappedContext_.FRAMEBUFFER_UNSUPPORTED;
+        }
+        return f.apply(ctx, arguments);
+      };
+    }(wrappedContext_.checkFramebufferStatus);
+
+    wrappedContext_.getAttribLocation = function(f) {
+      return function() {
+        loseContextIfTime();
+        if (contextLost_) {
+          return -1;
+        }
+        return f.apply(ctx, arguments);
+      };
+    }(wrappedContext_.getAttribLocation);
+
+    wrappedContext_.getVertexAttribOffset = function(f) {
+      return function() {
+        loseContextIfTime();
+        if (contextLost_) {
+          return 0;
+        }
+        return f.apply(ctx, arguments);
+      };
+    }(wrappedContext_.getVertexAttribOffset);
+
+    wrappedContext_.isContextLost = function() {
+      return contextLost_;
+    };
+
+    if (isWebGL2RenderingContext) {
+      wrappedContext_.getFragDataLocation = function(f) {
+        return function() {
+          loseContextIfTime();
+          if (contextLost_) {
+            return -1;
+          }
+          return f.apply(ctx, arguments);
+        };
+      }(wrappedContext_.getFragDataLocation);
+
+      wrappedContext_.clientWaitSync = function(f) {
+        return function() {
+          loseContextIfTime();
+          if (contextLost_) {
+            return wrappedContext_.WAIT_FAILED;
+          }
+          return f.apply(ctx, arguments);
+        };
+      }(wrappedContext_.clientWaitSync);
+
+      wrappedContext_.getUniformBlockIndex = function(f) {
+        return function() {
+          loseContextIfTime();
+          if (contextLost_) {
+            return wrappedContext_.INVALID_INDEX;
+          }
+          return f.apply(ctx, arguments);
+        };
+      }(wrappedContext_.getUniformBlockIndex);
+    }
+
+    return wrappedContext_;
+  }
+}
+
+return {
+  /**
+   * Initializes this module. Safe to call more than once.
+   * @param {!WebGLRenderingContext} ctx A WebGL context. If
+   *    you have more than one context it doesn't matter which one
+   *    you pass in, it is only used to pull out constants.
+   */
+  'init': init,
+
+  /**
+   * Returns true or false if value matches any WebGL enum
+   * @param {*} value Value to check if it might be an enum.
+   * @return {boolean} True if value matches one of the WebGL defined enums
+   */
+  'mightBeEnum': mightBeEnum,
+
+  /**
+   * Gets an string version of an WebGL enum.
+   *
+   * Example:
+   *   WebGLDebugUtil.init(ctx);
+   *   var str = WebGLDebugUtil.glEnumToString(ctx.getError());
+   *
+   * @param {number} value Value to return an enum for
+   * @return {string} The string version of the enum.
+   */
+  'glEnumToString': glEnumToString,
+
+  /**
+   * Converts the argument of a WebGL function to a string.
+   * Attempts to convert enum arguments to strings.
+   *
+   * Example:
+   *   WebGLDebugUtil.init(ctx);
+   *   var str = WebGLDebugUtil.glFunctionArgToString('bindTexture', 2, 0, gl.TEXTURE_2D);
+   *
+   * would return 'TEXTURE_2D'
+   *
+   * @param {string} functionName the name of the WebGL function.
+   * @param {number} numArgs The number of arguments
+   * @param {number} argumentIndx the index of the argument.
+   * @param {*} value The value of the argument.
+   * @return {string} The value as a string.
+   */
+  'glFunctionArgToString': glFunctionArgToString,
+
+  /**
+   * Converts the arguments of a WebGL function to a string.
+   * Attempts to convert enum arguments to strings.
+   *
+   * @param {string} functionName the name of the WebGL function.
+   * @param {number} args The arguments.
+   * @return {string} The arguments as a string.
+   */
+  'glFunctionArgsToString': glFunctionArgsToString,
+
+  /**
+   * Given a WebGL context returns a wrapped context that calls
+   * gl.getError after every command and calls a function if the
+   * result is not NO_ERROR.
+   *
+   * You can supply your own function if you want. For example, if you'd like
+   * an exception thrown on any GL error you could do this
+   *
+   *    function throwOnGLError(err, funcName, args) {
+   *      throw WebGLDebugUtils.glEnumToString(err) +
+   *            " was caused by call to " + funcName;
+   *    };
+   *
+   *    ctx = WebGLDebugUtils.makeDebugContext(
+   *        canvas.getContext("webgl"), throwOnGLError);
+   *
+   * @param {!WebGLRenderingContext} ctx The webgl context to wrap.
+   * @param {!function(err, funcName, args): void} opt_onErrorFunc The function
+   *     to call when gl.getError returns an error. If not specified the default
+   *     function calls console.log with a message.
+   * @param {!function(funcName, args): void} opt_onFunc The
+   *     function to call when each webgl function is called. You
+   *     can use this to log all calls for example.
+   */
+  'makeDebugContext': makeDebugContext,
+
+  /**
+   * Given a canvas element returns a wrapped canvas element that will
+   * simulate lost context. The canvas returned adds the following functions.
+   *
+   * loseContext:
+   *   simulates a lost context event.
+   *
+   * restoreContext:
+   *   simulates the context being restored.
+   *
+   * lostContextInNCalls:
+   *   loses the context after N gl calls.
+   *
+   * getNumCalls:
+   *   tells you how many gl calls there have been so far.
+   *
+   * setRestoreTimeout:
+   *   sets the number of milliseconds until the context is restored
+   *   after it has been lost. Defaults to 0. Pass -1 to prevent
+   *   automatic restoring.
+   *
+   * @param {!Canvas} canvas The canvas element to wrap.
+   */
+  'makeLostContextSimulatingCanvas': makeLostContextSimulatingCanvas,
+
+  /**
+   * Resets a context to the initial state.
+   * @param {!WebGLRenderingContext} ctx The webgl context to
+   *     reset.
+   */
+  'resetToInitialState': resetToInitialState
+};
+
+}();
+
+module.exports = WebGLDebugUtils;
+
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("@fortawesome/fontawesome-free/css/all.min.css");
@@ -19114,6 +22754,10 @@ var _mixTexture = _interopRequireDefault(require("./mixTexture.frag"));
 
 var _prepr = _interopRequireDefault(require("prepr"));
 
+var _iro = _interopRequireDefault(require("@jaames/iro"));
+
+var _webglDebug = _interopRequireDefault(require("webgl-debug"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -19127,6 +22771,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var colorPicker = new _iro.default.ColorPicker('#picker', {
+  width: 150,
+  color: "#f00"
+});
 
 function gaussianBlurGLSL(dir, size) {
   if (dir.startsWith("h")) return (0, _prepr.default)(_gaussianBlur.default, {
@@ -19160,29 +22809,29 @@ function animate(_x, _x2, _x3) {
 function _animate() {
   _animate = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee(id, animType, beforeStart) {
+  regeneratorRuntime.mark(function _callee2(id, animType, beforeStart) {
     var selector, e;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
-        switch (_context.prev = _context.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
             selector = document.querySelector('#' + id);
             if (beforeStart) beforeStart(selector);
             selector.classList.add('magictime', animType);
-            _context.next = 5;
+            _context2.next = 5;
             return whenEventIsRaised(selector, "onanimationend");
 
           case 5:
-            e = _context.sent;
+            e = _context2.sent;
             selector.classList.remove('magictime', animType);
-            return _context.abrupt("return", e);
+            return _context2.abrupt("return", e);
 
           case 8:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
       }
-    }, _callee);
+    }, _callee2);
   }));
   return _animate.apply(this, arguments);
 }
@@ -19194,36 +22843,42 @@ function minWindow(_x4) {
 function _minWindow() {
   _minWindow = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee2(button) {
+  regeneratorRuntime.mark(function _callee3(button) {
     var t1, t2;
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+    return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context3.prev = _context3.next) {
           case 0:
             button.classList.remove("fa-play");
             button.classList.add("fa-pause");
             t1 = animate('text', 'puffOut');
-            _context2.next = 5;
+            _context3.next = 5;
             return sleep(200);
 
           case 5:
             t2 = animate('minimizedWindow', 'puffIn', function (x) {
               return x.style.display = "flex";
             });
-            _context2.next = 8;
+            _context3.next = 8;
             return t1;
 
           case 8:
-            _context2.sent.target.style.display = "none";
-            _context2.next = 11;
+            _context3.sent.target.style.display = "none";
+            _context3.next = 11;
             return t2;
 
           case 11:
+            _context3.next = 13;
+            return animate('demoMenu', 'tinLeftIn', function (x) {
+              return x.style.display = "block";
+            });
+
+          case 13:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
       }
-    }, _callee2);
+    }, _callee3);
   }));
   return _minWindow.apply(this, arguments);
 }
@@ -19235,44 +22890,92 @@ function maxWindow(_x5) {
 function _maxWindow() {
   _maxWindow = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee3(button) {
-    var t1, t2;
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+  regeneratorRuntime.mark(function _callee4(button) {
+    var t1, t2, t3;
+    return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {
-        switch (_context3.prev = _context3.next) {
+        switch (_context4.prev = _context4.next) {
           case 0:
             button.classList.remove("fa-pause");
             button.classList.add("fa-play");
-            t1 = animate('minimizedWindow', 'puffOut');
-            _context3.next = 5;
+            t1 = animate('demoMenu', 'tinLeftOut');
+            t2 = animate('minimizedWindow', 'puffOut');
+            _context4.next = 6;
             return sleep(200);
 
-          case 5:
-            t2 = animate('text', 'puffIn', function (x) {
+          case 6:
+            t3 = animate('text', 'puffIn', function (x) {
               return x.style.display = "block";
             });
-            _context3.next = 8;
+            _context4.next = 9;
             return t1;
 
-          case 8:
-            _context3.sent.target.style.display = "none";
-            _context3.next = 11;
+          case 9:
+            _context4.sent.target.style.display = "none";
+            _context4.next = 12;
             return t2;
 
-          case 11:
+          case 12:
+            _context4.sent.target.style.display = "none";
+            _context4.next = 15;
+            return t3;
+
+          case 15:
           case "end":
-            return _context3.stop();
+            return _context4.stop();
         }
       }
-    }, _callee3);
+    }, _callee4);
   }));
   return _maxWindow.apply(this, arguments);
 }
 
-document.getElementById("playButton").addEventListener("click", function (e) {
-  var button = e.target;
-  if (button.classList.contains("fa-play")) minWindow(e.target);else if (button.classList.contains("fa-pause")) maxWindow(e.target);
-});
+document.getElementById("playButton").addEventListener("click",
+/*#__PURE__*/
+function () {
+  var _ref = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee(e) {
+    var button;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            button = e.target;
+
+            if (!button.classList.contains("fa-play")) {
+              _context.next = 6;
+              break;
+            }
+
+            _context.next = 4;
+            return minWindow(e.target);
+
+          case 4:
+            _context.next = 9;
+            break;
+
+          case 6:
+            if (!button.classList.contains("fa-pause")) {
+              _context.next = 9;
+              break;
+            }
+
+            _context.next = 9;
+            return maxWindow(e.target);
+
+          case 9:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+
+  return function (_x6) {
+    return _ref.apply(this, arguments);
+  };
+}());
 document.getElementById("minimizedWindow").addEventListener("click", function (e) {
   maxWindow(document.querySelector("#playButton i"));
 });
@@ -19356,57 +23059,187 @@ var renderTargets = {
     return i;
   }
 };
-var gl = canvas.getContext("webgl");
+var gl = canvas.getContext("webgl2");
+gl = _webglDebug.default.makeDebugContext(gl, function (err, funcName, args) {
+  throw "".concat(_webglDebug.default.glEnumToString(err), " was caused by call to ").concat(funcName, "(").concat(WebGLDebugUtils.glFunctionArgsToString(funcName, args), ")");
+});
 var fdraw;
 
 function initRotatingCube() {
   var vertices = [-1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, -1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, 1, -1, -1, 1, 1, -1, 1, 1, 1, 1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, 1, 1, -1];
   var colors = [5, 3, 7, 5, 3, 7, 5, 3, 7, 5, 3, 7, 1, 1, 3, 1, 1, 3, 1, 1, 3, 1, 1, 3, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0];
-  var indices = [0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23]; // Create and store data into vertex buffer
+  var indices = [0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23]; // // Create and store data into vertex buffer
+  // var vertex_buffer = gl.createBuffer();
+  // gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
+  // gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+  // // Create and store data into color buffer
+  // var color_buffer = gl.createBuffer();
+  // gl.bindBuffer(gl.ARRAY_BUFFER, color_buffer);
+  // gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
+  // // Create and store data into index buffer
+  // var index_buffer = gl.createBuffer();
+  // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer);
+  // gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
 
-  var vertex_buffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW); // Create and store data into color buffer
-
-  var color_buffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, color_buffer);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW); // Create and store data into index buffer
-
-  var index_buffer = gl.createBuffer();
-  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer);
-  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
   /*=================== Shaders =========================*/
 
-  var vertCode = 'attribute vec3 position;' + 'uniform mat4 Pmatrix;' + 'uniform mat4 Vmatrix;' + 'uniform mat4 Mmatrix;' + 'attribute vec3 color;' + //the color of the point
-  'varying vec3 vColor;' + 'void main(void) { ' + //pre-built function
-  'gl_Position = Pmatrix*Vmatrix*Mmatrix*vec4(position, 1.);' + 'vColor = color;' + '}';
-  var fragCode = 'precision mediump float;' + 'varying vec3 vColor;' + 'void main(void) {' + 'gl_FragColor = vec4(vColor, 1.);' + '}';
-  var vertShader = gl.createShader(gl.VERTEX_SHADER);
-  gl.shaderSource(vertShader, vertCode);
-  gl.compileShader(vertShader);
-  var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
-  gl.shaderSource(fragShader, fragCode);
-  gl.compileShader(fragShader);
-  var shaderProgram = gl.createProgram();
-  gl.attachShader(shaderProgram, vertShader);
-  gl.attachShader(shaderProgram, fragShader);
-  gl.linkProgram(shaderProgram);
-  /* ====== Associating attributes to vertex shader =====*/
+  function buildShader(vertCode, fragCode) {
+    var vertShader = gl.createShader(gl.VERTEX_SHADER);
+    gl.shaderSource(vertShader, vertCode);
+    gl.compileShader(vertShader);
+    var compiled = gl.getShaderParameter(vertShader, gl.COMPILE_STATUS);
 
-  var Pmatrix = gl.getUniformLocation(shaderProgram, "Pmatrix");
-  var Vmatrix = gl.getUniformLocation(shaderProgram, "Vmatrix");
-  var Mmatrix = gl.getUniformLocation(shaderProgram, "Mmatrix");
-  gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
-  var position = gl.getAttribLocation(shaderProgram, "position");
-  gl.vertexAttribPointer(position, 3, gl.FLOAT, false, 0, 0); // Position
+    if (!compiled) {
+      var compilationLog = gl.getShaderInfoLog(vertShader);
+      console.error('Vertex shader compiler log: ' + compilationLog);
+    }
 
-  gl.enableVertexAttribArray(position);
-  gl.bindBuffer(gl.ARRAY_BUFFER, color_buffer);
-  var color = gl.getAttribLocation(shaderProgram, "color");
-  gl.vertexAttribPointer(color, 3, gl.FLOAT, false, 0, 0); // Color
+    var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
+    gl.shaderSource(fragShader, fragCode);
+    gl.compileShader(fragShader);
+    var compiled = gl.getShaderParameter(fragShader, gl.COMPILE_STATUS);
 
-  gl.enableVertexAttribArray(color);
-  gl.useProgram(shaderProgram);
+    if (!compiled) {
+      var compilationLog = gl.getShaderInfoLog(fragShader);
+      console.error('Frag shader compiler log: ' + compilationLog);
+    }
+
+    var program = gl.createProgram();
+    gl.attachShader(program, vertShader);
+    gl.attachShader(program, fragShader);
+    gl.linkProgram(program);
+    var attribs = [];
+
+    for (var i = gl.getProgramParameter(program, gl.ACTIVE_ATTRIBUTES) - 1; i >= 0; i--) {
+      attribs.push(gl.getActiveAttrib(program, i));
+    }
+
+    var uniforms = [];
+    var qtd = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
+
+    for (var _i = 0; _i < qtd; ++_i) {
+      var info = gl.getActiveUniform(program, _i);
+      uniforms.push({
+        i: gl.getUniformLocation(program, info.name),
+        info: info
+      });
+      console.log(_webglDebug.default.glEnumToString(info.type));
+    }
+
+    return {
+      program: program,
+      attribs: attribs,
+      uniforms: uniforms,
+      setUniforms: function setUniforms(arr) {
+        for (var _i2 = 0; _i2 < uniforms.length; ++_i2) {
+          var u = uniforms[_i2];
+          if (!arr[_i2]) console.warn("missing uniform", _i2, u);
+          if (u.info.type == gl.FLOAT_MAT4) gl.uniformMatrix4fv(u.i, false, arr[_i2]);
+          if (u.info.type == gl.FLOAT_VEC3) gl.uniform3fv(u.i, arr[_i2]);
+        }
+      },
+      setUniform: function setUniform(name, v) {
+        var i = gl.getUniformLocation(program, name);
+        var info = gl.getActiveUniform(program, i);
+        if (info.type == gl.FLOAT_MAT4) gl.uniformMatrix4fv(i, false, v);
+        if (info.type == gl.FLOAT_VEC3) gl.uniform3fv(i, v);
+      }
+    };
+  }
+
+  function createVertexArray(vbos, indices) {
+    var vao = gl.createVertexArray();
+    gl.bindVertexArray(vao);
+
+    for (var vbo in vbos) {
+      var current = vbos[vbo];
+      var buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, current.buffer, gl.STATIC_DRAW);
+      gl.bindBuffer(gl.ARRAY_BUFFER, null);
+      current.buffer = buffer;
+      current.type = gl.FLOAT;
+      current.normalized = false;
+      current.stride = 0;
+      current.offset = 0;
+    }
+
+    var elementArrayBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, elementArrayBuffer);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
+    gl.bindVertexArray(null);
+    var drawElementsInfo = {
+      mode: gl.TRIANGLES,
+      count: indices.length,
+      type: gl.UNSIGNED_SHORT,
+      offset: 0
+    };
+    return {
+      drawElementsInfo: drawElementsInfo,
+      vao: vao,
+      vbos: vbos,
+      elementArrayBuffer: elementArrayBuffer
+    };
+  }
+
+  function bindVertexArrayAndShader(_ref2, _ref3) {
+    var vao = _ref2.vao,
+        vbos = _ref2.vbos;
+    var program = _ref3.program,
+        attribs = _ref3.attribs;
+    gl.bindVertexArray(vao);
+    gl.useProgram(program);
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = attribs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var attrib = _step.value;
+        var attribi = gl.getAttribLocation(program, attrib.name);
+        var info = vbos[attrib.name];
+        gl.bindBuffer(gl.ARRAY_BUFFER, info.buffer);
+        gl.enableVertexAttribArray(attribi);
+        gl.vertexAttribPointer(attribi, info.size, info.type, info.normalized, info.stride, info.offset);
+        gl.bindBuffer(gl.ARRAY_BUFFER, null);
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+
+    gl.bindVertexArray(null);
+    gl.useProgram(null);
+  }
+
+  var vertCode = "#version 300 es\n\nuniform mat4 Pmatrix;\nuniform mat4 Vmatrix;\nuniform mat4 Mmatrix;\n\nin vec3 position;\nin vec3 color;\n\nout vec3 inColor;\n\nvoid main(void)\n{\n    gl_Position = Pmatrix*Vmatrix*Mmatrix*vec4(position, 1.);\n    inColor = color;\n}";
+  var fragCode = "#version 300 es\nprecision mediump float;\n\nin vec3 inColor;\nout vec4 outColor;\n\nvoid main(void)\n{    \n    outColor = vec4(inColor, 1.0);\n}";
+  var normalRender = buildShader(vertCode, fragCode);
+  vertCode = "#version 300 es\n\n    uniform mat4 Pmatrix;\n    uniform mat4 Vmatrix;\n    uniform mat4 Mmatrix;\n    \n    in vec3 position;\n    in vec3 color;\n    \n    out vec3 inColor;\n    \n    void main(void)\n    {\n        gl_Position = Pmatrix*Vmatrix*Mmatrix*vec4(position, 1.);\n        inColor = color;\n    }";
+  fragCode = "#version 300 es\n    precision mediump float;\n    \n    uniform vec3 glowColor;\n    float glowIntensity = 5.;\n    \n    in vec3 inColor;\n    out vec4 outColor;\n\n    //https://github.com/tobspr/GLSL-Color-Spaces/blob/master/ColorSpaces.inc.glsl\n    const float HCV_EPSILON = 1e-10;\n    vec3 rgb_to_hcv(vec3 rgb)\n    {\n        // Based on work by Sam Hocevar and Emil Persson\n        vec4 P = (rgb.g < rgb.b) ? vec4(rgb.bg, -1.0, 2.0/3.0) : vec4(rgb.gb, 0.0, -1.0/3.0);\n        vec4 Q = (rgb.r < P.x) ? vec4(P.xyw, rgb.r) : vec4(rgb.r, P.yzx);\n        float C = Q.x - min(Q.w, Q.y);\n        float H = abs((Q.w - Q.y) / (6. * C + HCV_EPSILON) + Q.z);\n        return vec3(H, C, Q.x);\n    }\n\n    vec3 rgb_to_hsv(vec3 rgb)\n    {\n        vec3 HCV = rgb_to_hcv(rgb);\n        float S = HCV.y / (HCV.z + HCV_EPSILON);\n        return vec3(HCV.x, S, HCV.z);\n    }\n    \n    void main(void)\n    {\n        vec3 a = rgb_to_hsv(inColor);\n        vec3 b = rgb_to_hsv(glowColor);\n        float hueDistance = min(abs(a.r-b.r), 1. - abs(b.r-a.r));\n        float d = (1.0 - (hueDistance / 0.5));\n        d = pow(d, 8.0);\n        outColor = mix(vec4(0.), vec4(inColor, 1.), step(0.3, d));\n    }";
+  var glowRender = buildShader(vertCode, fragCode);
+  var cubevao = createVertexArray({
+    position: {
+      size: 3,
+      buffer: new Float32Array(vertices)
+    },
+    color: {
+      size: 3,
+      buffer: new Float32Array(colors)
+    }
+  }, new Uint16Array(indices));
+  bindVertexArrayAndShader(cubevao, normalRender);
 
   var proj_matrix = _glMatrix.mat4.create();
 
@@ -19423,23 +23256,31 @@ function initRotatingCube() {
   var mixTexturesRender = (0, _renderQuad.setupMixTextures)(gl, 2, [], _mixTexture.default);
   var time_old = 0;
 
-  var fdrawCube = function fdrawCube(cr, cg, cb, ca) {
+  var fdrawCube = function fdrawCube(cr, cg, cb, ca, shaderProgram, options) {
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
     gl.clearColor(cr, cg, cb, ca);
     gl.clearDepth(1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    gl.useProgram(shaderProgram);
-    gl.uniformMatrix4fv(Pmatrix, false, proj_matrix);
-    gl.uniformMatrix4fv(Vmatrix, false, view_matrix);
-    gl.uniformMatrix4fv(Mmatrix, false, model_matrix);
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
-    gl.enableVertexAttribArray(position);
-    gl.vertexAttribPointer(position, 3, gl.FLOAT, false, 0, 0);
-    gl.bindBuffer(gl.ARRAY_BUFFER, color_buffer);
-    gl.enableVertexAttribArray(color);
-    gl.vertexAttribPointer(color, 3, gl.FLOAT, false, 0, 0);
+    var uniforms = [proj_matrix, view_matrix, model_matrix];
+
+    if (options && options.glowColor) {
+      uniforms.push(new Float32Array([options.glowColor.r / 255, options.glowColor.g / 255, options.glowColor.b / 255]));
+    }
+
+    gl.useProgram(shaderProgram.program);
+    shaderProgram.setUniforms(uniforms);
+    gl.bindVertexArray(cubevao.vao);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubevao.elementArrayBuffer);
     gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+    gl.bindVertexArray(null);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
+    gl.useProgram(null); // Thinking
+    // vbo store
+    // vao store
+    // eab store
+    // program store
+    // instance = vao-id, eab-id, program-id, uniforms-set
   };
 
   var screent = 0;
@@ -19456,34 +23297,39 @@ function initRotatingCube() {
 
     _glMatrix.mat4.perspective(proj_matrix, 45, canvas.clientWidth / canvas.clientHeight, 1, 100);
 
-    _glMatrix.mat4.lookAt(view_matrix, _glMatrix.vec3.fromValues(-3, 3, 3), _glMatrix.vec3.fromValues(0, 0, 0), _glMatrix.vec3.fromValues(0, 1, 0));
+    _glMatrix.mat4.lookAt(view_matrix, _glMatrix.vec3.fromValues(-3, 3, 3), _glMatrix.vec3.fromValues(0, 0, 0), _glMatrix.vec3.fromValues(0, 1, 0)); // render glow
+
 
     var smallScene = renderTargets.renderTo(function (x) {
-      return fdrawCube(0, 0, 0, 0);
+      return fdrawCube(0, 0, 0, 0, glowRender, {
+        glowColor: colorPicker.color.rgb
+      });
     }, sceneTarget);
     var hBlurTexture = renderTargets.renderTo(function (x) {
-      hBlurRender(smallScene, function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 2),
-            t = _ref2[0],
-            blurStepSize = _ref2[1];
+      hBlurRender(smallScene, function (_ref4) {
+        var _ref5 = _slicedToArray(_ref4, 2),
+            t = _ref5[0],
+            blurStepSize = _ref5[1];
 
         gl.uniform1f(t, (Math.cos(screent) + 1) / 2);
         gl.uniform1f(blurStepSize, 1.0 / 256.0);
       });
     }, hBlurTarget);
     var bluredTexture = renderTargets.renderTo(function (x) {
-      vBlurRender(hBlurTexture, function (_ref3) {
-        var _ref4 = _slicedToArray(_ref3, 2),
-            t = _ref4[0],
-            blurStepSize = _ref4[1];
+      vBlurRender(hBlurTexture, function (_ref6) {
+        var _ref7 = _slicedToArray(_ref6, 2),
+            t = _ref7[0],
+            blurStepSize = _ref7[1];
 
         gl.uniform1f(t, (Math.cos(screent) + 1) / 2);
         gl.uniform1f(blurStepSize, 1.0 / 256.0);
       });
-    }, vBlurTarget);
+    }, vBlurTarget); // render scene
+
     var fullSceneTexture = renderTargets.renderTo(function (x) {
-      return fdrawCube(0.5, 0.5, 0.5, 1);
-    }, fullSceneTarget);
+      return fdrawCube(0.5, 0.5, 0.5, 1, normalRender);
+    }, fullSceneTarget); // mix them 
+
     renderTargets.renderToScreen(function () {
       mixTexturesRender([fullSceneTexture, bluredTexture], function () {});
     });
@@ -19498,7 +23344,7 @@ function draw(time) {
 }
 
 requestAnimationFrame(draw);
-},{"@fortawesome/fontawesome-free/css/all.min.css":"node_modules/@fortawesome/fontawesome-free/css/all.min.css","./index.css":"index.css","./index.scss":"index.scss","gl-matrix":"node_modules/gl-matrix/esm/index.js","codyhouse-framework/main/assets/js/util":"node_modules/codyhouse-framework/main/assets/js/util.js","./menuBar":"menuBar.js","magic.css/dist/magic.css":"node_modules/magic.css/dist/magic.css","babel-polyfill":"node_modules/babel-polyfill/lib/index.js","./renderQuad.js":"renderQuad.js","./gaussianBlur.frag":"gaussianBlur.frag","./mixTexture.frag":"mixTexture.frag","prepr":"node_modules/prepr/index.js"}],"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@fortawesome/fontawesome-free/css/all.min.css":"node_modules/@fortawesome/fontawesome-free/css/all.min.css","./index.css":"index.css","./index.scss":"index.scss","gl-matrix":"node_modules/gl-matrix/esm/index.js","codyhouse-framework/main/assets/js/util":"node_modules/codyhouse-framework/main/assets/js/util.js","./menuBar":"menuBar.js","magic.css/dist/magic.css":"node_modules/magic.css/dist/magic.css","babel-polyfill":"node_modules/babel-polyfill/lib/index.js","./renderQuad.js":"renderQuad.js","./gaussianBlur.frag":"gaussianBlur.frag","./mixTexture.frag":"mixTexture.frag","prepr":"node_modules/prepr/index.js","@jaames/iro":"node_modules/@jaames/iro/dist/iro.es.js","webgl-debug":"node_modules/webgl-debug/index.js"}],"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -19526,7 +23372,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51880" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51948" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

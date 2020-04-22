@@ -11,11 +11,14 @@
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
+    "@jaames/iro": "^5.1.6",
     "babel-polyfill": "^6.26.0",
+    "bytebuffer": "^5.0.1",
     "codyhouse-framework": "^2.5.5",
     "gl-matrix": "^3.3.0",
     "magic.css": "^1.4.5",
-    "prepr": "^1.2.4"
+    "prepr": "^1.2.4",
+    "webgl-debug": "^2.0.1"
   },
   "devDependencies": {
     "glslify-bundle": "^5.1.1",
