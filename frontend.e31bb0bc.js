@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
+})({"../../../.nvm/versions/node/v12.16.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -149,7 +149,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"../../../.nvm/versions/node/v12.16.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -184,22 +184,22 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/bundle-url.js"}],"node_modules/@fortawesome/fontawesome-free/css/all.min.css":[function(require,module,exports) {
+},{"./bundle-url":"../../../.nvm/versions/node/v12.16.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"node_modules/@fortawesome/fontawesome-free/css/all.min.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\webfonts\\fa-brands-400.eot":[["fa-brands-400.1bb139e6.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"./..\\webfonts\\fa-brands-400.woff2":[["fa-brands-400.1d34615d.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"./..\\webfonts\\fa-brands-400.woff":[["fa-brands-400.eca31406.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"./..\\webfonts\\fa-brands-400.ttf":[["fa-brands-400.df86de32.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"./..\\webfonts\\fa-brands-400.svg":[["fa-brands-400.f1eb0e8c.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"./..\\webfonts\\fa-regular-400.eot":[["fa-regular-400.a2c1909d.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"./..\\webfonts\\fa-regular-400.woff2":[["fa-regular-400.5ca8c932.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"./..\\webfonts\\fa-regular-400.woff":[["fa-regular-400.3c3cc54e.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"./..\\webfonts\\fa-regular-400.ttf":[["fa-regular-400.cde05ce7.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"./..\\webfonts\\fa-regular-400.svg":[["fa-regular-400.6ef294e6.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"./..\\webfonts\\fa-solid-900.eot":[["fa-solid-900.90890cef.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"./..\\webfonts\\fa-solid-900.woff2":[["fa-solid-900.da0e0451.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"./..\\webfonts\\fa-solid-900.woff":[["fa-solid-900.935b31ea.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"./..\\webfonts\\fa-solid-900.ttf":[["fa-solid-900.f2409036.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"./..\\webfonts\\fa-solid-900.svg":[["fa-solid-900.c87ba59a.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"_css_loader":"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/css-loader.js"}],"index.css":[function(require,module,exports) {
+},{"./../webfonts/fa-brands-400.eot":[["fa-brands-400.1bb139e6.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.eot"],"./../webfonts/fa-brands-400.woff2":[["fa-brands-400.1d34615d.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"],"./../webfonts/fa-brands-400.woff":[["fa-brands-400.eca31406.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff"],"./../webfonts/fa-brands-400.ttf":[["fa-brands-400.df86de32.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"],"./../webfonts/fa-brands-400.svg":[["fa-brands-400.f1eb0e8c.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.svg"],"./../webfonts/fa-regular-400.eot":[["fa-regular-400.a2c1909d.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.eot"],"./../webfonts/fa-regular-400.woff2":[["fa-regular-400.5ca8c932.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"],"./../webfonts/fa-regular-400.woff":[["fa-regular-400.3c3cc54e.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff"],"./../webfonts/fa-regular-400.ttf":[["fa-regular-400.cde05ce7.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"],"./../webfonts/fa-regular-400.svg":[["fa-regular-400.6ef294e6.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.svg"],"./../webfonts/fa-solid-900.eot":[["fa-solid-900.90890cef.eot","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot"],"./../webfonts/fa-solid-900.woff2":[["fa-solid-900.da0e0451.woff2","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"],"./../webfonts/fa-solid-900.woff":[["fa-solid-900.935b31ea.woff","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff"],"./../webfonts/fa-solid-900.ttf":[["fa-solid-900.f2409036.ttf","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"],"./../webfonts/fa-solid-900.svg":[["fa-solid-900.c87ba59a.svg","node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg"],"_css_loader":"../../../.nvm/versions/node/v12.16.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/css-loader.js"}],"index.scss":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/css-loader.js"}],"node_modules/gl-matrix/esm/common.js":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/gl-matrix/esm/common.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -301,7 +301,9 @@ exports.sub = exports.mul = void 0;
 
 var glMatrix = _interopRequireWildcard(require("./common.js"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 /**
  * 2x2 Matrix
@@ -792,7 +794,9 @@ exports.sub = exports.mul = void 0;
 
 var glMatrix = _interopRequireWildcard(require("./common.js"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 /**
  * 2x3 Matrix
@@ -1343,7 +1347,9 @@ exports.sub = exports.mul = void 0;
 
 var glMatrix = _interopRequireWildcard(require("./common.js"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 /**
  * 3x3 Matrix
@@ -2208,7 +2214,9 @@ exports.sub = exports.mul = void 0;
 
 var glMatrix = _interopRequireWildcard(require("./common.js"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 /**
  * 4x4 Matrix<br>Format: column-major, when typed out it looks like row-major<br>The matrices are being post multiplied.
@@ -4119,7 +4127,9 @@ exports.forEach = exports.sqrLen = exports.len = exports.sqrDist = exports.dist 
 
 var glMatrix = _interopRequireWildcard(require("./common.js"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 /**
  * 3 Dimensional Vector
@@ -4999,7 +5009,9 @@ exports.forEach = exports.sqrLen = exports.len = exports.sqrDist = exports.dist 
 
 var glMatrix = _interopRequireWildcard(require("./common.js"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 /**
  * 4 Dimensional Vector
@@ -5741,7 +5753,9 @@ var vec3 = _interopRequireWildcard(require("./vec3.js"));
 
 var vec4 = _interopRequireWildcard(require("./vec4.js"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 /**
  * Quaternion
@@ -6538,7 +6552,9 @@ var quat = _interopRequireWildcard(require("./quat.js"));
 
 var mat4 = _interopRequireWildcard(require("./mat4.js"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 /**
  * Dual Quaternion<br>
@@ -7461,7 +7477,9 @@ exports.forEach = exports.sqrLen = exports.sqrDist = exports.dist = exports.div 
 
 var glMatrix = _interopRequireWildcard(require("./common.js"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 /**
  * 2 Dimensional Vector
@@ -8180,7 +8198,9 @@ var vec4 = _interopRequireWildcard(require("./vec4.js"));
 
 exports.vec4 = vec4;
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 },{"./common.js":"node_modules/gl-matrix/esm/common.js","./mat2.js":"node_modules/gl-matrix/esm/mat2.js","./mat2d.js":"node_modules/gl-matrix/esm/mat2d.js","./mat3.js":"node_modules/gl-matrix/esm/mat3.js","./mat4.js":"node_modules/gl-matrix/esm/mat4.js","./quat.js":"node_modules/gl-matrix/esm/quat.js","./quat2.js":"node_modules/gl-matrix/esm/quat2.js","./vec2.js":"node_modules/gl-matrix/esm/vec2.js","./vec3.js":"node_modules/gl-matrix/esm/vec3.js","./vec4.js":"node_modules/gl-matrix/esm/vec4.js"}],"node_modules/codyhouse-framework/main/assets/js/util.js":[function(require,module,exports) {
 // Utility function
 function Util() {}
@@ -8434,6 +8454,40 @@ Math.easeInOutQuad = function (t, b, c, d) {
   t--;
   return -c / 2 * (t * (t - 2) - 1) + b;
 };
+
+Math.easeInQuart = function (t, b, c, d) {
+  t /= d;
+  return c * t * t * t * t + b;
+};
+
+Math.easeOutQuart = function (t, b, c, d) {
+  t /= d;
+  t--;
+  return -c * (t * t * t * t - 1) + b;
+};
+
+Math.easeInOutQuart = function (t, b, c, d) {
+  t /= d / 2;
+  if (t < 1) return c / 2 * t * t * t * t + b;
+  t -= 2;
+  return -c / 2 * (t * t * t * t - 2) + b;
+};
+
+Math.easeOutElastic = function (t, b, c, d) {
+  var s = 1.70158;
+  var p = d * 0.7;
+  var a = c;
+  if (t == 0) return b;
+  if ((t /= d) == 1) return b + c;
+  if (!p) p = d * .3;
+
+  if (a < Math.abs(c)) {
+    a = c;
+    var s = p / 4;
+  } else var s = p / (2 * Math.PI) * Math.asin(c / a);
+
+  return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;
+};
 /* JS Utility Classes */
 
 
@@ -8636,16 +8690,6 @@ function applyMenuBar() {
     }
 
     if (j > 0) {
-      var doneResizing = function doneResizing() {
-        for (var i = 0; i < menuBars.length; i++) {
-          (function (i) {
-            menuBars[i].dispatchEvent(customEvent);
-          })(i);
-        }
-
-        ;
-      };
-
       var resizingId = false,
           customEvent = new CustomEvent('update-menu-bar'); // update Menu Bar layout on resize  
 
@@ -8659,6 +8703,17 @@ function applyMenuBar() {
           checkMenuClick(element, event.target);
         });
       });
+
+      function doneResizing() {
+        for (var i = 0; i < menuBars.length; i++) {
+          (function (i) {
+            menuBars[i].dispatchEvent(customEvent);
+          })(i);
+        }
+
+        ;
+      }
+
       ;
     }
   }
@@ -8669,7 +8724,7 @@ function applyMenuBar() {
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"_css_loader":"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/css-loader.js"}],"node_modules/core-js/modules/_global.js":[function(require,module,exports) {
+},{"_css_loader":"../../../.nvm/versions/node/v12.16.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/core-js/modules/_global.js":[function(require,module,exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
@@ -16676,13 +16731,17 @@ Object.defineProperty(exports, "__esModule", {
 exports.setupFullScreenQuad = setupFullScreenQuad;
 exports.setupMixTextures = setupMixTextures;
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 var screenQuadVBO;
 var screenVertShader;
@@ -18530,7 +18589,7 @@ module.exports = function (str, opts) {
 
   return ret + (insideComment ? strip(str.substr(offset)) : str.substr(offset));
 };
-},{}],"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/node_modules/process/browser.js":[function(require,module,exports) {
+},{}],"../../../.nvm/versions/node/v12.16.3/lib/node_modules/parcel-bundler/node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -19087,7 +19146,7 @@ function preprocess (what, how) {
 
 module.exports = preprocess;
 
-},{"parenthesis":"node_modules/parenthesis/index.js","balanced-match":"node_modules/prepr/node_modules/balanced-match/index.js","object-assign":"node_modules/object-assign/index.js","escaper":"node_modules/escaper/dist/escaper.js","expression-eval":"node_modules/expression-eval/index.js","strip-json-comments":"node_modules/strip-json-comments/index.js","process":"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/node_modules/process/browser.js"}],"node_modules/@jaames/iro/dist/iro.es.js":[function(require,module,exports) {
+},{"parenthesis":"node_modules/parenthesis/index.js","balanced-match":"node_modules/prepr/node_modules/balanced-match/index.js","object-assign":"node_modules/object-assign/index.js","escaper":"node_modules/escaper/dist/escaper.js","expression-eval":"node_modules/expression-eval/index.js","strip-json-comments":"node_modules/strip-json-comments/index.js","process":"../../../.nvm/versions/node/v12.16.3/lib/node_modules/parcel-bundler/node_modules/process/browser.js"}],"node_modules/@jaames/iro/dist/iro.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20638,9 +20697,7 @@ var SECONDARY_EVENTS = ["mousemove"
 ]; // Base component class for iro UI components
 // This extends the Preact component class to allow them to react to mouse/touch input events by themselves
 
-var IroComponentBase =
-/*@__PURE__*/
-function (Component) {
+var IroComponentBase = /*@__PURE__*/function (Component) {
   function IroComponentBase(props) {
     Component.call(this, props); // Generate unique ID for the component
     // This can be used to generate unique IDs for gradients, etc
@@ -21032,9 +21089,7 @@ function createWidget(WidgetComponent) {
   return widgetFactory;
 }
 
-var IroColorPicker =
-/*@__PURE__*/
-function (Component) {
+var IroColorPicker = /*@__PURE__*/function (Component) {
   function IroColorPicker(props) {
     var this$1 = this;
     Component.call(this, props);
@@ -22760,13 +22815,19 @@ var _webglDebug = _interopRequireDefault(require("webgl-debug"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -22807,9 +22868,7 @@ function animate(_x, _x2, _x3) {
 }
 
 function _animate() {
-  _animate = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee2(id, animType, beforeStart) {
+  _animate = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(id, animType, beforeStart) {
     var selector, e;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
@@ -22841,9 +22900,7 @@ function minWindow(_x4) {
 }
 
 function _minWindow() {
-  _minWindow = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee3(button) {
+  _minWindow = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(button) {
     var t1, t2;
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
@@ -22888,9 +22945,7 @@ function maxWindow(_x5) {
 }
 
 function _maxWindow() {
-  _maxWindow = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee4(button) {
+  _maxWindow = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(button) {
     var t1, t2, t3;
     return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {
@@ -22930,12 +22985,8 @@ function _maxWindow() {
   return _maxWindow.apply(this, arguments);
 }
 
-document.getElementById("playButton").addEventListener("click",
-/*#__PURE__*/
-function () {
-  var _ref = _asyncToGenerator(
-  /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee(e) {
+document.getElementById("playButton").addEventListener("click", /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
     var button;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -23108,6 +23159,12 @@ function initRotatingCube() {
     gl.attachShader(program, vertShader);
     gl.attachShader(program, fragShader);
     gl.linkProgram(program);
+
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      var info = gl.getProgramInfoLog(program);
+      console.error('Could not compile WebGL program. \n\n' + info);
+    }
+
     var attribs = [];
 
     for (var i = gl.getProgramParameter(program, gl.ACTIVE_ATTRIBUTES) - 1; i >= 0; i--) {
@@ -23118,25 +23175,85 @@ function initRotatingCube() {
     var qtd = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
 
     for (var _i = 0; _i < qtd; ++_i) {
-      var info = gl.getActiveUniform(program, _i);
-      uniforms.push({
-        i: gl.getUniformLocation(program, info.name),
-        info: info
+      var _info = gl.getActiveUniform(program, _i);
+
+      var index = gl.getUniformLocation(program, _info.name);
+      if (index) uniforms.push({
+        i: index,
+        info: _info
       });
-      console.log(_webglDebug.default.glEnumToString(info.type));
     }
+
+    var uniformBlocks = [];
+    qtd = gl.getProgramParameter(program, gl.ACTIVE_UNIFORM_BLOCKS);
+
+    for (var _i2 = 0; _i2 < qtd; ++_i2) {
+      var name = gl.getActiveUniformBlockName(program, _i2);
+
+      var _index = gl.getUniformBlockIndex(program, name);
+
+      var active = gl.getActiveUniformBlockParameter(program, 0, gl.UNIFORM_BLOCK_ACTIVE_UNIFORMS);
+      uniformBlocks.push({
+        i: _index,
+        name: name,
+        parameters: {
+          binding: gl.getActiveUniformBlockParameter(program, _i2, gl.UNIFORM_BLOCK_BINDING),
+          size: gl.getActiveUniformBlockParameter(program, _i2, gl.UNIFORM_BLOCK_DATA_SIZE),
+          active: gl.getActiveUniformBlockParameter(program, _i2, gl.UNIFORM_BLOCK_ACTIVE_UNIFORMS),
+          indices: gl.getActiveUniformBlockParameter(program, _i2, gl.UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES),
+          vs: gl.getActiveUniformBlockParameter(program, _i2, gl.UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER),
+          fs: gl.getActiveUniformBlockParameter(program, _i2, gl.UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER)
+        }
+      });
+    }
+
+    console.log("uniformBlocks", uniformBlocks); // var UBOGlobalVariablesIndex = gl.getUniformBlockIndex(program, 'UBOGlobalVariables');
+    // var UBOGlobalVariablesName = gl.getActiveUniformBlockName(program, UBOGlobalVariablesIndex);
+    // console.log(gl.getActiveUniformBlockName(program, 0));
+    // console.log(UBOGlobalVariablesIndex, UBOGlobalVariablesName);
+    // console.log("UNIFORM_BLOCK_BINDING", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_BINDING));
+    // console.log("UNIFORM_BLOCK_DATA_SIZE", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_DATA_SIZE));
+    // console.log("UNIFORM_BLOCK_ACTIVE_UNIFORMS", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_ACTIVE_UNIFORMS));
+    // console.log("UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES));
+    // console.log("UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER));
+    // console.log("UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER));
+    // console.log(uniforms);
+    // console.log(uniformBlocks);
 
     return {
       program: program,
       attribs: attribs,
       uniforms: uniforms,
+      uniformBlocks: uniformBlocks,
       setUniforms: function setUniforms(arr) {
-        for (var _i2 = 0; _i2 < uniforms.length; ++_i2) {
-          var u = uniforms[_i2];
-          if (!arr[_i2]) console.warn("missing uniform", _i2, u);
-          if (u.info.type == gl.FLOAT_MAT4) gl.uniformMatrix4fv(u.i, false, arr[_i2]);
-          if (u.info.type == gl.FLOAT_VEC3) gl.uniform3fv(u.i, arr[_i2]);
+        for (var _i3 = 0; _i3 < uniforms.length; ++_i3) {
+          var u = uniforms[_i3];
+          if (!arr[_i3]) console.warn("missing uniform", _i3, u);
+          if (u.info.type == gl.FLOAT_MAT4) gl.uniformMatrix4fv(u.i, false, arr[_i3]);
+          if (u.info.type == gl.FLOAT_VEC3) gl.uniform3fv(u.i, arr[_i3]);
         }
+      },
+      setUniformBlocks: function setUniformBlocks(blocks) {
+        gl.bindBuffer(gl.UNIFORM_BUFFER, buffer);
+
+        var _iterator = _createForOfIteratorHelper(uniformBlocks),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var b = _step.value;
+            var block = blocks[b.name];
+            if (!block) continue;
+            console.log(b, block);
+            gl.uniformBlockBinding(program, b.i, block.bindi);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+
+        gl.bindBuffer(gl.UNIFORM_BUFFER, null);
       },
       setUniform: function setUniform(name, v) {
         var i = gl.getUniformLocation(program, name);
@@ -23153,11 +23270,13 @@ function initRotatingCube() {
 
     for (var vbo in vbos) {
       var current = vbos[vbo];
-      var buffer = gl.createBuffer();
-      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+
+      var _buffer = gl.createBuffer();
+
+      gl.bindBuffer(gl.ARRAY_BUFFER, _buffer);
       gl.bufferData(gl.ARRAY_BUFFER, current.buffer, gl.STATIC_DRAW);
       gl.bindBuffer(gl.ARRAY_BUFFER, null);
-      current.buffer = buffer;
+      current.buffer = _buffer;
       current.type = gl.FLOAT;
       current.normalized = false;
       current.stride = 0;
@@ -23187,16 +23306,18 @@ function initRotatingCube() {
     var vao = _ref2.vao,
         vbos = _ref2.vbos;
     var program = _ref3.program,
-        attribs = _ref3.attribs;
+        attribs = _ref3.attribs,
+        uniformBlocks = _ref3.uniformBlocks;
+    var blocks = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
     gl.bindVertexArray(vao);
     gl.useProgram(program);
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+
+    var _iterator2 = _createForOfIteratorHelper(attribs),
+        _step2;
 
     try {
-      for (var _iterator = attribs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var attrib = _step.value;
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var attrib = _step2.value;
         var attribi = gl.getAttribLocation(program, attrib.name);
         var info = vbos[attrib.name];
         gl.bindBuffer(gl.ARRAY_BUFFER, info.buffer);
@@ -23205,26 +23326,64 @@ function initRotatingCube() {
         gl.bindBuffer(gl.ARRAY_BUFFER, null);
       }
     } catch (err) {
-      _didIteratorError = true;
-      _iteratorError = err;
+      _iterator2.e(err);
     } finally {
-      try {
-        if (!_iteratorNormalCompletion && _iterator.return != null) {
-          _iterator.return();
-        }
-      } finally {
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
+      _iterator2.f();
+    }
+
+    var _iterator3 = _createForOfIteratorHelper(uniformBlocks),
+        _step3;
+
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var b = _step3.value;
+        var block = blocks[b.name];
+        if (!block) continue; // console.log("bindVertexArrayAndShader", program, gl.getUniformBlockIndex(program, b.name), block.bindi);
+
+        gl.bindBuffer(gl.UNIFORM_BUFFER, block.buffer);
+        gl.uniformBlockBinding(program, b.i, block.bindi);
       }
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
     }
 
     gl.bindVertexArray(null);
     gl.useProgram(null);
   }
 
-  var vertCode = "#version 300 es\n\nuniform mat4 Pmatrix;\nuniform mat4 Vmatrix;\nuniform mat4 Mmatrix;\n\nin vec3 position;\nin vec3 color;\n\nout vec3 inColor;\n\nvoid main(void)\n{\n    gl_Position = Pmatrix*Vmatrix*Mmatrix*vec4(position, 1.);\n    inColor = color;\n}";
-  var fragCode = "#version 300 es\nprecision mediump float;\n\nin vec3 inColor;\nout vec4 outColor;\n\nvoid main(void)\n{    \n    outColor = vec4(inColor, 1.0);\n}";
+  var buildUBO_BIND_I = 1;
+
+  function buildUBO(data) {
+    var bindi = buildUBO_BIND_I++;
+    var buffer = gl.createBuffer();
+    gl.bindBuffer(gl.UNIFORM_BUFFER, buffer);
+    gl.bindBufferBase(gl.UNIFORM_BUFFER, bindi, buffer);
+    gl.bindBuffer(gl.UNIFORM_BUFFER, null);
+    return {
+      buffer: buffer,
+      bindi: bindi,
+      data: data,
+      update: function update() {
+        gl.bindBuffer(gl.UNIFORM_BUFFER, buffer);
+        var offset = 0;
+
+        for (var i = 0; i < data.length; ++i) {
+          var d = data[i];
+          var l = d.byteLength;
+          gl.bufferSubData(gl.ARRAY_BUFFER, offset, d, 0, d.length);
+          offset += l;
+        }
+
+        gl.bindBuffer(gl.UNIFORM_BUFFER, null);
+      }
+    };
+  }
+
+  var vertCode = "#version 300 es\nprecision mediump float;\n\nuniform UBOGlobalVariables {\n    mat4 foo;\n} globalVariables;\n\nuniform mat4 Pmatrix;\nuniform mat4 Vmatrix;\nuniform mat4 Mmatrix;\n\nin vec3 position;\nin vec3 color;\n\nout vec3 inColor;\n\nvoid main(void)\n{\n    gl_Position = Pmatrix*Vmatrix*Mmatrix*vec4(position, 1.);\n    inColor = color;\n}";
+  var fragCode = "#version 300 es\nprecision mediump float;\n\nuniform UBOGlobalVariables {\n    mat4 foo;\n} globalVariables;\n\nin vec3 inColor;\nout vec4 outColor;\n\nvoid main(void)\n{    \n    mat4 v = globalVariables.foo;\n    outColor = vec4(inColor, globalVariables.foo[0]);\n}";
+  var globalUB = buildUBO([_glMatrix.mat4.identity(_glMatrix.mat4.create())]);
   var normalRender = buildShader(vertCode, fragCode);
   vertCode = "#version 300 es\n\n    uniform mat4 Pmatrix;\n    uniform mat4 Vmatrix;\n    uniform mat4 Mmatrix;\n    \n    in vec3 position;\n    in vec3 color;\n    \n    out vec3 inColor;\n    \n    void main(void)\n    {\n        gl_Position = Pmatrix*Vmatrix*Mmatrix*vec4(position, 1.);\n        inColor = color;\n    }";
   fragCode = "#version 300 es\n    precision mediump float;\n    \n    uniform vec3 glowColor;\n    float glowIntensity = 5.;\n    \n    in vec3 inColor;\n    out vec4 outColor;\n\n    //https://github.com/tobspr/GLSL-Color-Spaces/blob/master/ColorSpaces.inc.glsl\n    const float HCV_EPSILON = 1e-10;\n    vec3 rgb_to_hcv(vec3 rgb)\n    {\n        // Based on work by Sam Hocevar and Emil Persson\n        vec4 P = (rgb.g < rgb.b) ? vec4(rgb.bg, -1.0, 2.0/3.0) : vec4(rgb.gb, 0.0, -1.0/3.0);\n        vec4 Q = (rgb.r < P.x) ? vec4(P.xyw, rgb.r) : vec4(rgb.r, P.yzx);\n        float C = Q.x - min(Q.w, Q.y);\n        float H = abs((Q.w - Q.y) / (6. * C + HCV_EPSILON) + Q.z);\n        return vec3(H, C, Q.x);\n    }\n\n    vec3 rgb_to_hsv(vec3 rgb)\n    {\n        vec3 HCV = rgb_to_hcv(rgb);\n        float S = HCV.y / (HCV.z + HCV_EPSILON);\n        return vec3(HCV.x, S, HCV.z);\n    }\n    \n    void main(void)\n    {\n        vec3 a = rgb_to_hsv(inColor);\n        vec3 b = rgb_to_hsv(glowColor);\n        float hueDistance = min(abs(a.r-b.r), 1. - abs(b.r-a.r));\n        float d = (1.0 - (hueDistance / 0.5));\n        d = pow(d, 8.0);\n        outColor = mix(vec4(0.), vec4(inColor, 1.), step(0.3, d));\n    }";
@@ -23239,7 +23398,9 @@ function initRotatingCube() {
       buffer: new Float32Array(colors)
     }
   }, new Uint16Array(indices));
-  bindVertexArrayAndShader(cubevao, normalRender);
+  bindVertexArrayAndShader(cubevao, normalRender, {
+    UBOGlobalVariables: globalUB
+  });
 
   var proj_matrix = _glMatrix.mat4.create();
 
@@ -23262,6 +23423,7 @@ function initRotatingCube() {
     gl.clearColor(cr, cg, cb, ca);
     gl.clearDepth(1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    globalUB.update();
     var uniforms = [proj_matrix, view_matrix, model_matrix];
 
     if (options && options.glowColor) {
@@ -23269,7 +23431,7 @@ function initRotatingCube() {
     }
 
     gl.useProgram(shaderProgram.program);
-    shaderProgram.setUniforms(uniforms);
+    gl.uniformBlockBinding(shaderProgram.program, 0, 0);
     gl.bindVertexArray(cubevao.vao);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubevao.elementArrayBuffer);
     gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
@@ -23344,7 +23506,7 @@ function draw(time) {
 }
 
 requestAnimationFrame(draw);
-},{"@fortawesome/fontawesome-free/css/all.min.css":"node_modules/@fortawesome/fontawesome-free/css/all.min.css","./index.css":"index.css","./index.scss":"index.scss","gl-matrix":"node_modules/gl-matrix/esm/index.js","codyhouse-framework/main/assets/js/util":"node_modules/codyhouse-framework/main/assets/js/util.js","./menuBar":"menuBar.js","magic.css/dist/magic.css":"node_modules/magic.css/dist/magic.css","babel-polyfill":"node_modules/babel-polyfill/lib/index.js","./renderQuad.js":"renderQuad.js","./gaussianBlur.frag":"gaussianBlur.frag","./mixTexture.frag":"mixTexture.frag","prepr":"node_modules/prepr/index.js","@jaames/iro":"node_modules/@jaames/iro/dist/iro.es.js","webgl-debug":"node_modules/webgl-debug/index.js"}],"C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"@fortawesome/fontawesome-free/css/all.min.css":"node_modules/@fortawesome/fontawesome-free/css/all.min.css","./index.css":"index.css","./index.scss":"index.scss","gl-matrix":"node_modules/gl-matrix/esm/index.js","codyhouse-framework/main/assets/js/util":"node_modules/codyhouse-framework/main/assets/js/util.js","./menuBar":"menuBar.js","magic.css/dist/magic.css":"node_modules/magic.css/dist/magic.css","babel-polyfill":"node_modules/babel-polyfill/lib/index.js","./renderQuad.js":"renderQuad.js","./gaussianBlur.frag":"gaussianBlur.frag","./mixTexture.frag":"mixTexture.frag","prepr":"node_modules/prepr/index.js","@jaames/iro":"node_modules/@jaames/iro/dist/iro.es.js","webgl-debug":"node_modules/webgl-debug/index.js"}],"../../../.nvm/versions/node/v12.16.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -23372,7 +23534,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51948" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43733" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -23403,8 +23565,9 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
         assetsToAccept.forEach(function (v) {
           hmrAcceptRun(v[0], v[1]);
         });
-      } else {
-        window.location.reload();
+      } else if (location.reload) {
+        // `location` global exists in a web worker context but lacks `.reload()` function.
+        location.reload();
       }
     }
 
@@ -23547,5 +23710,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/ProgramData/nvm/v12.2.0/node_modules/parcel/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../../../.nvm/versions/node/v12.16.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/frontend.e31bb0bc.js.map

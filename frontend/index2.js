@@ -245,6 +245,12 @@ function initRotatingCube() {
         gl.attachShader(program, vertShader);
         gl.attachShader(program, fragShader);
         gl.linkProgram(program);
+
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS))
+        {
+            var info = gl.getProgramInfoLog(program);
+            console.error('Could not compile WebGL program. \n\n' + info);
+        }
         
         var attribs = []
         for (let i = gl.getProgramParameter(program, gl.ACTIVE_ATTRIBUTES) - 1; i >= 0; i--)
@@ -257,17 +263,54 @@ function initRotatingCube() {
         for (let i = 0; i < qtd; ++i)
         {
             let info = gl.getActiveUniform(program, i);
-            uniforms.push({
-                i: gl.getUniformLocation(program, info.name),
-                info
-            });
-            console.log(webGLDebug.glEnumToString(info.type))
+            let index = gl.getUniformLocation(program, info.name);            
+            if(index)
+                uniforms.push({ i: index, info });
         }
+
+        var uniformBlocks = []
+        qtd = gl.getProgramParameter(program, gl.ACTIVE_UNIFORM_BLOCKS);
+        for (let i = 0; i < qtd; ++i)
+        {
+            let name = gl.getActiveUniformBlockName(program, i); 
+            let index = gl.getUniformBlockIndex(program, name);  
+            let active = gl.getActiveUniformBlockParameter(program, 0, gl.UNIFORM_BLOCK_ACTIVE_UNIFORMS);
+            
+            uniformBlocks.push({
+                i: index,
+                name,
+                parameters:{
+                    binding: gl.getActiveUniformBlockParameter(program, i, gl.UNIFORM_BLOCK_BINDING),
+                    size: gl.getActiveUniformBlockParameter(program, i, gl.UNIFORM_BLOCK_DATA_SIZE),
+                    active: gl.getActiveUniformBlockParameter(program, i, gl.UNIFORM_BLOCK_ACTIVE_UNIFORMS),
+                    indices: gl.getActiveUniformBlockParameter(program, i, gl.UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES),
+                    vs: gl.getActiveUniformBlockParameter(program, i, gl.UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER),
+                    fs: gl.getActiveUniformBlockParameter(program, i, gl.UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER),
+                }
+            });
+        }
+        console.log("uniformBlocks", uniformBlocks)
+
+        // var UBOGlobalVariablesIndex = gl.getUniformBlockIndex(program, 'UBOGlobalVariables');
+        // var UBOGlobalVariablesName = gl.getActiveUniformBlockName(program, UBOGlobalVariablesIndex);
+        
+        // console.log(gl.getActiveUniformBlockName(program, 0));
+        // console.log(UBOGlobalVariablesIndex, UBOGlobalVariablesName);
+        // console.log("UNIFORM_BLOCK_BINDING", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_BINDING));
+        // console.log("UNIFORM_BLOCK_DATA_SIZE", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_DATA_SIZE));
+        // console.log("UNIFORM_BLOCK_ACTIVE_UNIFORMS", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_ACTIVE_UNIFORMS));
+        // console.log("UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES));
+        // console.log("UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER));
+        // console.log("UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER));
+
+        // console.log(uniforms);
+        // console.log(uniformBlocks);
         
         return {
             program,
             attribs,
             uniforms,
+            uniformBlocks,
             setUniforms: (arr) =>
             {
                 for(let i = 0;i < uniforms.length; ++i)
@@ -282,6 +325,20 @@ function initRotatingCube() {
                     if(u.info.type == gl.FLOAT_VEC3)
                         gl.uniform3fv(u.i, arr[i]);
                 }
+            },
+            setUniformBlocks: (blocks) =>
+            {
+                gl.bindBuffer(gl.UNIFORM_BUFFER, buffer);
+                for(let b of uniformBlocks)
+                {
+                    let block = blocks[b.name];
+                    if(!block) continue;  
+                    
+                    console.log(b,block);
+
+                    gl.uniformBlockBinding(program, b.i, block.bindi);
+                }
+                gl.bindBuffer(gl.UNIFORM_BUFFER, null);
             },
             setUniform: (name, v) =>
             {
@@ -333,7 +390,7 @@ function initRotatingCube() {
         return {drawElementsInfo, vao, vbos, elementArrayBuffer};
     }
 
-    function bindVertexArrayAndShader({ vao, vbos }, { program, attribs })
+    function bindVertexArrayAndShader({ vao, vbos }, { program, attribs, uniformBlocks }, blocks = {})
     {
         gl.bindVertexArray(vao);
         gl.useProgram(program);
@@ -349,12 +406,62 @@ function initRotatingCube() {
                 info.stride, info.offset);            
             gl.bindBuffer(gl.ARRAY_BUFFER, null);
         }
+
+        for(let b of uniformBlocks)
+        {
+            let block = blocks[b.name];
+            if(!block) continue;  
+            
+            // console.log("bindVertexArrayAndShader", program, gl.getUniformBlockIndex(program, b.name), block.bindi);
+            
+            gl.bindBuffer(gl.UNIFORM_BUFFER, block.buffer);
+            gl.uniformBlockBinding(program, b.i, block.bindi);
+        }
         
         gl.bindVertexArray(null);
         gl.useProgram(null);
     }
 
+    let buildUBO_BIND_I = 1;
+    function buildUBO(data)
+    {
+        let bindi = buildUBO_BIND_I++;
+
+        let buffer = gl.createBuffer();
+        gl.bindBuffer(gl.UNIFORM_BUFFER, buffer);        
+        gl.bindBufferBase(gl.UNIFORM_BUFFER, bindi, buffer);
+        gl.bindBuffer(gl.UNIFORM_BUFFER, null);
+
+        return {
+            buffer,
+            bindi,
+            data,
+            update: () =>
+            {
+                gl.bindBuffer(gl.UNIFORM_BUFFER, buffer);
+
+                let offset = 0;
+                for(let i = 0; i < data.length; ++i)
+                {
+                    let d = data[i];
+                    let l = d.byteLength;
+
+                    gl.bufferSubData(gl.ARRAY_BUFFER, offset, d, 0, d.length);
+
+                    offset += l;
+                }
+
+                gl.bindBuffer(gl.UNIFORM_BUFFER, null);
+            }
+        };
+    }
+
     var vertCode = `#version 300 es
+precision mediump float;
+
+uniform UBOGlobalVariables {
+    mat4 foo;
+} globalVariables;
 
 uniform mat4 Pmatrix;
 uniform mat4 Vmatrix;
@@ -374,14 +481,20 @@ void main(void)
     var fragCode = `#version 300 es
 precision mediump float;
 
+uniform UBOGlobalVariables {
+    mat4 foo;
+} globalVariables;
+
 in vec3 inColor;
 out vec4 outColor;
 
 void main(void)
 {    
-    outColor = vec4(inColor, 1.0);
+    mat4 v = globalVariables.foo;
+    outColor = vec4(inColor, globalVariables.foo[0]);
 }`;
 
+    let globalUB = buildUBO([mat4.identity(mat4.create())]);
     let normalRender = buildShader(vertCode, fragCode);
 
     vertCode = `#version 300 es
@@ -443,7 +556,7 @@ void main(void)
         position: {size: 3, buffer: new Float32Array(vertices)},
         color: {size: 3, buffer: new Float32Array(colors)}
     },  new Uint16Array(indices));
-    bindVertexArrayAndShader(cubevao, normalRender);
+    bindVertexArrayAndShader(cubevao, normalRender, {UBOGlobalVariables: globalUB});
 
     var proj_matrix = mat4.create();
     var view_matrix = mat4.create();
@@ -472,6 +585,7 @@ void main(void)
 
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
+        globalUB.update();
         
         let uniforms = [proj_matrix, view_matrix, model_matrix];
         
@@ -485,7 +599,7 @@ void main(void)
         }
 
         gl.useProgram(shaderProgram.program);
-        shaderProgram.setUniforms(uniforms);
+        gl.uniformBlockBinding(shaderProgram.program, 0, 0);
 
         gl.bindVertexArray(cubevao.vao);
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, cubevao.elementArrayBuffer);
@@ -530,7 +644,7 @@ void main(void)
             sceneTarget);
 
         const hBlurTexture = renderTargets.renderTo(x => {
-            hBlurRender(smallScene, ([t,blurStepSize]) => {
+            hBlurRender(smallScene, ([t,blurStepSize]) => {                
                 gl.uniform1f(t, (Math.cos(screent) + 1)/2);        
                 gl.uniform1f(blurStepSize, 1.0/256.0);   
             });

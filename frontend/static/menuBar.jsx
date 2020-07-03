@@ -1,13 +1,16 @@
-// File#: _2_menu-bar
-// Usage: codyhouse.co/license
+import { h, hydrate, Fragment } from 'preact';
+import { useRef, useEffect } from 'preact/hooks';
 
-var MenuBar = function(element) {
+// Preact adaptation of
+// https://codyhouse.co/ds/components/app/menu-bar
+
+var MenuBarObject = function (element) {
     this.element = element;
     this.items = Util.getChildrenByClassName(this.element, 'menu-bar__item');
     this.mobHideItems = this.element.getElementsByClassName('menu-bar__item--hide');
     this.moreItemsTrigger = this.element.getElementsByClassName('js-menu-bar__trigger');
     initMenuBar(this);
-  };
+};
 
 function initMenuBar(menu) {
     setMenuTabIndex(menu); // set correct tabindexes for menu item
@@ -112,42 +115,68 @@ function checkMenuClick(menu, target) { // close dropdown when clicking outside 
     if (menu.menuInstance && !menu.moreItemsTrigger[0].contains(target) && !menu.subMenu.contains(target)) menu.menuInstance.toggleMenu(false, false);
 };
 
-export default function applyMenuBar()
-{
-    // init MenuBars objects
-    var menuBars = document.getElementsByClassName('js-menu-bar');
-    if (menuBars.length > 0) {
-        var j = 0,
-            menuBarArray = [];
-        for (var i = 0; i < menuBars.length; i++) {
-            var beforeContent = getComputedStyle(menuBars[i], ':before').getPropertyValue('content');
-            if (beforeContent && beforeContent != '' && beforeContent != 'none') {
-                (function (i) { menuBarArray.push(new MenuBar(menuBars[i])); })(i);
-                j = j + 1;
-            }
-        }
+export function MenuBarItem({ icon, text, onClick }) {
+    return <>
+        <li class="menu-bar__item menu-bar__item--hide" role="menuitem" onClick={onClick}>
+            <i className={"fas " + icon}></i>
+            <span class="menu-bar__label">{text}</span>
+        </li>
+    </>;
+}
 
-        if (j > 0) {
-            var resizingId = false,
-                customEvent = new CustomEvent('update-menu-bar');
-            // update Menu Bar layout on resize  
-            window.addEventListener('resize', function (event) {
-                clearTimeout(resizingId);
-                resizingId = setTimeout(doneResizing, 150);
-            });
+export function MenuBar({ children }) {
+    let ref = useRef(null);
+    useEffect(() => {
+        setupMenuBar(ref.current);
+    });
+    return <>
+        <menu ref={ref} class="menu-bar menu-bar--expanded@md js-menu-bar">
+            {children}
+        </menu>
+    </>;
+}
 
-            // close menu when clicking outside it
-            window.addEventListener('click', function (event) {
-                menuBarArray.forEach(function (element) {
-                    checkMenuClick(element, event.target);
-                });
-            });
-
-            function doneResizing() {
-                for (var i = 0; i < menuBars.length; i++) {
-                    (function (i) { menuBars[i].dispatchEvent(customEvent) })(i);
-                };
-            };
-        }
+function setupMenuBar(menuBar) {
+    var beforeContent = getComputedStyle(menuBar, ':before')
+        .getPropertyValue('content');
+    if (beforeContent && beforeContent != '' && beforeContent != 'none') {
+        return new MenuBarObject(menuBar);
     }
 }
+
+// export default function applyMenuBar() {
+//     var menuBars = document.getElementsByClassName('js-menu-bar');
+//     if (menuBars.length > 0) {
+//         var j = 0, menuBarArray = [];
+//         for (var i = 0; i < menuBars.length; i++) {
+//             let item = setupMenuBar(menuBars[i]);
+//             if (item) {
+//                 menuBarArray.push(item);
+//                 j = j + 1;
+//             }
+//         }
+
+//         if (j > 0) {
+//             var resizingId = false,
+//                 customEvent = new CustomEvent('update-menu-bar');
+//             // update Menu Bar layout on resize  
+//             window.addEventListener('resize', function (event) {
+//                 clearTimeout(resizingId);
+//                 resizingId = setTimeout(doneResizing, 150);
+//             });
+
+//             // close menu when clicking outside it
+//             window.addEventListener('click', function (event) {
+//                 menuBarArray.forEach(function (element) {
+//                     checkMenuClick(element, event.target);
+//                 });
+//             });
+
+//             function doneResizing() {
+//                 for (var i = 0; i < menuBars.length; i++) {
+//                     (function (i) { menuBars[i].dispatchEvent(customEvent) })(i);
+//                 };
+//             };
+//         }
+//     }
+// }

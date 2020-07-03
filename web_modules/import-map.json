@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "@jaames/iro": "./@jaames/iro.js",
+    "gl-matrix": "./gl-matrix.js",
+    "preact": "./preact.js",
+    "preact/hooks": "./preact/hooks.js",
+    "prepr": "./prepr.js",
+    "webgl-debug": "./webgl-debug.js"
+  }
+}
