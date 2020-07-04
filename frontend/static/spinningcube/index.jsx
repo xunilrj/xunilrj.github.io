@@ -606,6 +606,11 @@ function useColorPicker() {
     return el;
 }
 
+export function Main() {
+    return <canvas id="backgroundCanvas" style="width: 100vw; height: 100vh;position: absolute;z-index:-1">
+    </canvas>
+}
+
 let colorPicker;
 export function Options({ visible }) {
     let colorPicker = useColorPicker();
@@ -636,7 +641,8 @@ export function Options({ visible }) {
     </div >;
 }
 
-
+let stop = false;
+let stopok;
 export async function load() {
     const canvas = document.getElementById('backgroundCanvas');
     function resizeCanvas() {
@@ -656,9 +662,22 @@ export async function load() {
     let fdraw = await initRotatingCube(canvas, gl, targets);
 
     function draw(time) {
+        if (stop) {
+            gl.getExtension('WEBGL_lose_context').loseContext();
+            stopok();
+            return;
+        }
+
         if (fdraw)
             fdraw(time);
         requestAnimationFrame(draw);
     }
     requestAnimationFrame(draw);
+}
+
+export async function unload() {
+    stop = true;
+    await new Promise((ok, rej) => {
+        stopok = ok;
+    });
 }

@@ -1,5 +1,5 @@
 import { h, hydrate, Fragment } from 'preact';
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 import demos from './demos.js';
 import { MenuBar, MenuBarItem } from './menuBar.jsx';
 import useAsyncLoadUnloadState from './useAsyncLoadUnloadState.js';
@@ -18,52 +18,60 @@ function Menu() {
     </menu>;
 }
 
-function DemoMenu() {
-    const [state, currentDemo, progress, progressMessage, setDemo]
-        = useAsyncLoadUnloadState(0,
-            demos.load,
-            demos.unload);
+function DemoMenu({ demo, navigatePreviousDemo, navigateNextDemo }) {
+    if (!demo)
+        return <></>;
 
-    const hasPrevious = currentDemo && currentDemo.idx > 0;
-    const hasNext = currentDemo && currentDemo.idx < demos.available.length - 1;
+    const hasPrevious = demo && demo.idx > 0;
+    const hasNext = demo && demo.idx < demos.available.length - 1;
 
     const [optionsVisible, setOptionsVisibility] = useState(false);
     const toggleOptions = () => setOptionsVisibility(!optionsVisible);
     return <>
         <div style="float:right">
             <div style="text-align: center;">
-                <span>{currentDemo && currentDemo.name} &nbsp;</span>
-                <span>{!currentDemo && progressMessage} &nbsp;</span>
+                <span>{demo && demo.name} &nbsp;</span>
+                <span>{!demo && progressMessage} &nbsp;</span>
             </div >
             <MenuBar>
                 {hasPrevious && <MenuBarItem
                     icon="fa-arrow-left"
                     text="Previous"
-                    onClick={() => setDemo(currentDemo.idx - 1)} />
+                    onClick={navigatePreviousDemo} />
                 }
                 <MenuBarItem icon="fa-cog" text="Options" onClick={toggleOptions} />
                 {hasNext && <MenuBarItem
                     icon="fa-arrow-right"
                     text="Next"
-                    onClick={() => setDemo(currentDemo.idx + 1)} />
+                    onClick={navigateNextDemo} />
                 }
             </MenuBar>
         </div>
-        {currentDemo && currentDemo.Options && <currentDemo.Options visible={optionsVisible} />}
+        {demo && demo.Options && <demo.Options visible={optionsVisible} />}
     </>
 }
 
 
 
 function App() {
+    const [state, currentDemo, progress, progressMessage, setDemo]
+        = useAsyncLoadUnloadState(0,
+            demos.load,
+            demos.unload);
+    useEffect(() => {
+        if (currentDemo && currentDemo.load)
+            currentDemo.load();
+    }, [currentDemo]);
+
+    const navigatePreviousDemo = () => setDemo(currentDemo.idx - 1);
+    const navigateNextDemo = () => setDemo(currentDemo.idx + 1);
     return <>
-        <canvas id="backgroundCanvas" style="width: 100vw; height: 100vh;position: absolute;z-index:-1">
-        </canvas>
+        {currentDemo && currentDemo.Main && <currentDemo.Main />}
         <div style="height: 10vh;">
             <div style="padding: 10px">
                 <Header text="Daniel Frederico Lins Leite" />
                 <Menu />
-                <DemoMenu />
+                <DemoMenu demo={currentDemo} navigateNextDemo={navigateNextDemo} navigatePreviousDemo={navigatePreviousDemo} />
             </div>
         </div>
     </>;
