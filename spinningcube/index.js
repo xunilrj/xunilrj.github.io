@@ -2,7 +2,6 @@ import {mat4, vec3} from "/web_modules/gl-matrix.js";
 import prepr2 from "/web_modules/prepr.js";
 import iro2 from "/web_modules/@jaames/iro.js";
 import {setupFullScreenQuad, setupMixTextures} from "./renderQuad.js";
-import webGLDebug from "/web_modules/webgl-debug.js";
 import {h} from "/web_modules/preact.js";
 import {useRef, useEffect, useLayoutEffect} from "/web_modules/preact/hooks.js";
 async function gaussianBlurGLSL(dir, size) {

@@ -3,7 +3,7 @@ import { mat4, vec3 } from 'gl-matrix';
 import prepr from 'prepr';
 import iro from '@jaames/iro';
 import { setupFullScreenQuad, setupMixTextures } from './renderQuad.js';
-import webGLDebug from 'webgl-debug';
+// import webGLDebug from 'webgl-debug';
 import { h } from 'preact';
 import { useRef, useEffect, useLayoutEffect } from 'preact/hooks';
 
