@@ -1,4 +1,4 @@
-import { a as commonjsGlobal } from './common/_commonjsHelpers-38687f85.js';
+import { a as commonjsGlobal } from './common/common.js';
 
 /*
 ** Copyright (c) 2012 The Khronos Group Inc.
