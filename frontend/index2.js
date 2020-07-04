@@ -6,25 +6,24 @@ import 'codyhouse-framework/main/assets/js/util';
 import applyMenuBar from './menuBar';
 import 'magic.css/dist/magic.css';
 import 'babel-polyfill';
-import {setupFullScreenQuad, setupMixTextures} from './renderQuad.js';
+import { setupFullScreenQuad, setupMixTextures } from './renderQuad.js';
 import gaussianBlurCODE from './gaussianBlur.frag';
 import mixTextureCODE from './mixTexture.frag';
 import prepr from 'prepr';
 import iro from '@jaames/iro';
 import webGLDebug from 'webgl-debug';
 
-var colorPicker = new iro.ColorPicker('#picker',{
+var colorPicker = new iro.ColorPicker('#picker', {
     width: 150,
     color: "#f00"
 });
 
 
-function gaussianBlurGLSL(dir, size)
-{
-    if(dir.startsWith("h"))
-        return prepr(gaussianBlurCODE, {BLURSIZE: size.toFixed("2"), DIR_H: true});
-    else if(dir.startsWith("v"))
-        return prepr(gaussianBlurCODE, {BLURSIZE: size.toFixed("2"), DIR_V: true});
+function gaussianBlurGLSL(dir, size) {
+    if (dir.startsWith("h"))
+        return prepr(gaussianBlurCODE, { BLURSIZE: size.toFixed("2"), DIR_H: true });
+    else if (dir.startsWith("v"))
+        return prepr(gaussianBlurCODE, { BLURSIZE: size.toFixed("2"), DIR_V: true });
 }
 
 function whenEventIsRaised(obj, event) {
@@ -83,7 +82,7 @@ document.getElementById("playButton").addEventListener("click", async (e) => {
     else if (button.classList.contains("fa-pause"))
         await maxWindow(e.target);
 
-    
+
 });
 document.getElementById("minimizedWindow").addEventListener("click", e => {
     maxWindow(document.querySelector("#playButton i"));
@@ -109,7 +108,7 @@ const renderTargets = {
         f();
     },
     renderTo: (f, i) => {
-        const {frameBuffer, width, height, targetTexture} = targets[i];
+        const { frameBuffer, width, height, targetTexture } = targets[i];
         gl.bindFramebuffer(gl.FRAMEBUFFER, frameBuffer);
         gl.viewport(0.0, 0.0, width, height);
         f();
@@ -118,17 +117,16 @@ const renderTargets = {
         return targetTexture;
     },
     targetTexture: (i) => {
-        const {targetTexture} = targets[i];
+        const { targetTexture } = targets[i];
         return targetTexture;
     },
     gen: (gl, width, height, depth) => {
         let depthBuffer;
 
-        if(depth)
-        {
-            depthBuffer  = gl.createRenderbuffer();
-            gl.bindRenderbuffer(gl.RENDERBUFFER, depthBuffer); 
-            gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, 
+        if (depth) {
+            depthBuffer = gl.createRenderbuffer();
+            gl.bindRenderbuffer(gl.RENDERBUFFER, depthBuffer);
+            gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16,
                 width, height);
         }
 
@@ -153,8 +151,7 @@ const renderTargets = {
         gl.bindFramebuffer(gl.FRAMEBUFFER, frameBuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0,
             gl.TEXTURE_2D, targetTexture, 0);
-        if(depth)
-        {
+        if (depth) {
             gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT,
                 gl.RENDERBUFFER, depthBuffer);
         }
@@ -164,14 +161,14 @@ const renderTargets = {
         gl.bindRenderbuffer(gl.RENDERBUFFER, null);
 
         let i = targetsi; ++targetsi;
-        targets[i] = {depthBuffer, targetTexture, frameBuffer, width, height}
+        targets[i] = { depthBuffer, targetTexture, frameBuffer, width, height }
         return i;
     }
 };
 
 let gl = canvas.getContext("webgl2");
 gl = webGLDebug.makeDebugContext(gl, (err, funcName, args) => {
-    throw(`${webGLDebug.glEnumToString(err)} was caused by call to ${funcName}(${WebGLDebugUtils.glFunctionArgsToString(funcName, args)})` ) 
+    throw (`${webGLDebug.glEnumToString(err)} was caused by call to ${funcName}(${WebGLDebugUtils.glFunctionArgsToString(funcName, args)})`)
 });
 
 let fdraw;
@@ -217,69 +214,62 @@ function initRotatingCube() {
     // gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
 
     /*=================== Shaders =========================*/
-    function buildShader(vertCode, fragCode)
-    {
+    function buildShader(vertCode, fragCode) {
         var vertShader = gl.createShader(gl.VERTEX_SHADER);
         gl.shaderSource(vertShader, vertCode);
         gl.compileShader(vertShader);
 
         var compiled = gl.getShaderParameter(vertShader, gl.COMPILE_STATUS);
-        if(!compiled)
-        {
+        if (!compiled) {
             var compilationLog = gl.getShaderInfoLog(vertShader);
             console.error('Vertex shader compiler log: ' + compilationLog);
         }
-    
+
         var fragShader = gl.createShader(gl.FRAGMENT_SHADER);
         gl.shaderSource(fragShader, fragCode);
         gl.compileShader(fragShader);
 
         var compiled = gl.getShaderParameter(fragShader, gl.COMPILE_STATUS);
-        if(!compiled)
-        {
+        if (!compiled) {
             var compilationLog = gl.getShaderInfoLog(fragShader);
             console.error('Frag shader compiler log: ' + compilationLog);
         }
-    
+
         var program = gl.createProgram();
         gl.attachShader(program, vertShader);
         gl.attachShader(program, fragShader);
         gl.linkProgram(program);
 
-        if (!gl.getProgramParameter(program, gl.LINK_STATUS))
-        {
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
             var info = gl.getProgramInfoLog(program);
             console.error('Could not compile WebGL program. \n\n' + info);
         }
-        
+
         var attribs = []
-        for (let i = gl.getProgramParameter(program, gl.ACTIVE_ATTRIBUTES) - 1; i >= 0; i--)
-        {
+        for (let i = gl.getProgramParameter(program, gl.ACTIVE_ATTRIBUTES) - 1; i >= 0; i--) {
             attribs.push(gl.getActiveAttrib(program, i));
         }
 
         var uniforms = []
         let qtd = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
-        for (let i = 0; i < qtd; ++i)
-        {
+        for (let i = 0; i < qtd; ++i) {
             let info = gl.getActiveUniform(program, i);
-            let index = gl.getUniformLocation(program, info.name);            
-            if(index)
+            let index = gl.getUniformLocation(program, info.name);
+            if (index)
                 uniforms.push({ i: index, info });
         }
 
         var uniformBlocks = []
         qtd = gl.getProgramParameter(program, gl.ACTIVE_UNIFORM_BLOCKS);
-        for (let i = 0; i < qtd; ++i)
-        {
-            let name = gl.getActiveUniformBlockName(program, i); 
-            let index = gl.getUniformBlockIndex(program, name);  
+        for (let i = 0; i < qtd; ++i) {
+            let name = gl.getActiveUniformBlockName(program, i);
+            let index = gl.getUniformBlockIndex(program, name);
             let active = gl.getActiveUniformBlockParameter(program, 0, gl.UNIFORM_BLOCK_ACTIVE_UNIFORMS);
-            
+
             uniformBlocks.push({
                 i: index,
                 name,
-                parameters:{
+                parameters: {
                     binding: gl.getActiveUniformBlockParameter(program, i, gl.UNIFORM_BLOCK_BINDING),
                     size: gl.getActiveUniformBlockParameter(program, i, gl.UNIFORM_BLOCK_DATA_SIZE),
                     active: gl.getActiveUniformBlockParameter(program, i, gl.UNIFORM_BLOCK_ACTIVE_UNIFORMS),
@@ -293,7 +283,7 @@ function initRotatingCube() {
 
         // var UBOGlobalVariablesIndex = gl.getUniformBlockIndex(program, 'UBOGlobalVariables');
         // var UBOGlobalVariablesName = gl.getActiveUniformBlockName(program, UBOGlobalVariablesIndex);
-        
+
         // console.log(gl.getActiveUniformBlockName(program, 0));
         // console.log(UBOGlobalVariablesIndex, UBOGlobalVariablesName);
         // console.log("UNIFORM_BLOCK_BINDING", gl.getActiveUniformBlockParameter(program, UBOGlobalVariablesIndex, gl.UNIFORM_BLOCK_BINDING));
@@ -305,62 +295,55 @@ function initRotatingCube() {
 
         // console.log(uniforms);
         // console.log(uniformBlocks);
-        
+
         return {
             program,
             attribs,
             uniforms,
             uniformBlocks,
-            setUniforms: (arr) =>
-            {
-                for(let i = 0;i < uniforms.length; ++i)
-                {
+            setUniforms: (arr) => {
+                for (let i = 0; i < uniforms.length; ++i) {
                     let u = uniforms[i];
 
-                    if(!arr[i])
-                        console.warn("missing uniform",i, u);
-                    
-                    if(u.info.type == gl.FLOAT_MAT4)
+                    if (!arr[i])
+                        console.warn("missing uniform", i, u);
+
+                    if (u.info.type == gl.FLOAT_MAT4)
                         gl.uniformMatrix4fv(u.i, false, arr[i]);
-                    if(u.info.type == gl.FLOAT_VEC3)
+                    if (u.info.type == gl.FLOAT_VEC3)
                         gl.uniform3fv(u.i, arr[i]);
                 }
             },
-            setUniformBlocks: (blocks) =>
-            {
+            setUniformBlocks: (blocks) => {
                 gl.bindBuffer(gl.UNIFORM_BUFFER, buffer);
-                for(let b of uniformBlocks)
-                {
+                for (let b of uniformBlocks) {
                     let block = blocks[b.name];
-                    if(!block) continue;  
-                    
-                    console.log(b,block);
+                    if (!block) continue;
+
+                    console.log(b, block);
 
                     gl.uniformBlockBinding(program, b.i, block.bindi);
                 }
                 gl.bindBuffer(gl.UNIFORM_BUFFER, null);
             },
-            setUniform: (name, v) =>
-            {
+            setUniform: (name, v) => {
                 let i = gl.getUniformLocation(program, name);
-                let info = gl.getActiveUniform(program, i);                
-                if(info.type == gl.FLOAT_MAT4)
+                let info = gl.getActiveUniform(program, i);
+                if (info.type == gl.FLOAT_MAT4)
                     gl.uniformMatrix4fv(i, false, v);
-                if(info.type == gl.FLOAT_VEC3)
+                if (info.type == gl.FLOAT_VEC3)
                     gl.uniform3fv(i, v);
             }
         };
-    }    
+    }
 
-    function createVertexArray(vbos, indices)
-    {
+    function createVertexArray(vbos, indices) {
         const vao = gl.createVertexArray();
         gl.bindVertexArray(vao);
 
-        for(var vbo in vbos)
-        {
+        for (var vbo in vbos) {
             let current = vbos[vbo];
-            
+
             let buffer = gl.createBuffer();
             gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
             gl.bufferData(gl.ARRAY_BUFFER, current.buffer, gl.STATIC_DRAW);
@@ -371,7 +354,7 @@ function initRotatingCube() {
             current.normalized = false;
             current.stride = 0;
             current.offset = 0;
-        }        
+        }
 
         const elementArrayBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, elementArrayBuffer);
@@ -387,48 +370,44 @@ function initRotatingCube() {
             offset: 0
         };
 
-        return {drawElementsInfo, vao, vbos, elementArrayBuffer};
+        return { drawElementsInfo, vao, vbos, elementArrayBuffer };
     }
 
-    function bindVertexArrayAndShader({ vao, vbos }, { program, attribs, uniformBlocks }, blocks = {})
-    {
+    function bindVertexArrayAndShader({ vao, vbos }, { program, attribs, uniformBlocks }, blocks = {}) {
         gl.bindVertexArray(vao);
         gl.useProgram(program);
-        
-        for(let attrib of attribs)
-        {
+
+        for (let attrib of attribs) {
             let attribi = gl.getAttribLocation(program, attrib.name);
-            var info = vbos[attrib.name]; 
+            var info = vbos[attrib.name];
             gl.bindBuffer(gl.ARRAY_BUFFER, info.buffer);
-            gl.enableVertexAttribArray(attribi);      
+            gl.enableVertexAttribArray(attribi);
             gl.vertexAttribPointer(attribi,
                 info.size, info.type, info.normalized,
-                info.stride, info.offset);            
+                info.stride, info.offset);
             gl.bindBuffer(gl.ARRAY_BUFFER, null);
         }
 
-        for(let b of uniformBlocks)
-        {
+        for (let b of uniformBlocks) {
             let block = blocks[b.name];
-            if(!block) continue;  
-            
+            if (!block) continue;
+
             // console.log("bindVertexArrayAndShader", program, gl.getUniformBlockIndex(program, b.name), block.bindi);
-            
+
             gl.bindBuffer(gl.UNIFORM_BUFFER, block.buffer);
             gl.uniformBlockBinding(program, b.i, block.bindi);
         }
-        
+
         gl.bindVertexArray(null);
         gl.useProgram(null);
     }
 
     let buildUBO_BIND_I = 1;
-    function buildUBO(data)
-    {
+    function buildUBO(data) {
         let bindi = buildUBO_BIND_I++;
 
         let buffer = gl.createBuffer();
-        gl.bindBuffer(gl.UNIFORM_BUFFER, buffer);        
+        gl.bindBuffer(gl.UNIFORM_BUFFER, buffer);
         gl.bindBufferBase(gl.UNIFORM_BUFFER, bindi, buffer);
         gl.bindBuffer(gl.UNIFORM_BUFFER, null);
 
@@ -436,13 +415,11 @@ function initRotatingCube() {
             buffer,
             bindi,
             data,
-            update: () =>
-            {
+            update: () => {
                 gl.bindBuffer(gl.UNIFORM_BUFFER, buffer);
 
                 let offset = 0;
-                for(let i = 0; i < data.length; ++i)
-                {
+                for (let i = 0; i < data.length; ++i) {
                     let d = data[i];
                     let l = d.byteLength;
 
@@ -513,7 +490,7 @@ void main(void)
         gl_Position = Pmatrix*Vmatrix*Mmatrix*vec4(position, 1.);
         inColor = color;
     }`;
-    
+
     fragCode = `#version 300 es
     precision mediump float;
     
@@ -551,18 +528,18 @@ void main(void)
         d = pow(d, 8.0);
         outColor = mix(vec4(0.), vec4(inColor, 1.), step(0.3, d));
     }`;
-    let glowRender = buildShader(vertCode, fragCode);    
+    let glowRender = buildShader(vertCode, fragCode);
     let cubevao = createVertexArray({
-        position: {size: 3, buffer: new Float32Array(vertices)},
-        color: {size: 3, buffer: new Float32Array(colors)}
-    },  new Uint16Array(indices));
-    bindVertexArrayAndShader(cubevao, normalRender, {UBOGlobalVariables: globalUB});
+        position: { size: 3, buffer: new Float32Array(vertices) },
+        color: { size: 3, buffer: new Float32Array(colors) }
+    }, new Uint16Array(indices));
+    bindVertexArrayAndShader(cubevao, normalRender, { UBOGlobalVariables: globalUB });
 
     var proj_matrix = mat4.create();
     var view_matrix = mat4.create();
     var model_matrix = mat4.create();
 
-    const fullSceneTarget = renderTargets.gen(gl, 
+    const fullSceneTarget = renderTargets.gen(gl,
         canvas.clientWidth, canvas.clientHeight,
         true);
 
@@ -570,14 +547,13 @@ void main(void)
     const hBlurTarget = renderTargets.gen(gl, 256, 256, false);
     const vBlurTarget = renderTargets.gen(gl, 256, 256, false);
 
-    const hBlurRender = setupFullScreenQuad(gl, ["t","blurStepSize"], gaussianBlurGLSL("h", 16));
-    const vBlurRender = setupFullScreenQuad(gl, ["t","blurStepSize"], gaussianBlurGLSL("v", 16));
+    const hBlurRender = setupFullScreenQuad(gl, ["t", "blurStepSize"], gaussianBlurGLSL("h", 16));
+    const vBlurRender = setupFullScreenQuad(gl, ["t", "blurStepSize"], gaussianBlurGLSL("v", 16));
     const mixTexturesRender = setupMixTextures(gl, 2, [], mixTextureCODE);
 
     var time_old = 0;
-    const fdrawCube = function(cr,cg,cb, ca, shaderProgram, options)
-    {
-        gl.enable(gl.DEPTH_TEST);   
+    const fdrawCube = function (cr, cg, cb, ca, shaderProgram, options) {
+        gl.enable(gl.DEPTH_TEST);
         gl.depthFunc(gl.LEQUAL);
 
         gl.clearColor(cr, cg, cb, ca);
@@ -586,11 +562,10 @@ void main(void)
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
         globalUB.update();
-        
+
         let uniforms = [proj_matrix, view_matrix, model_matrix];
-        
-        if(options && options.glowColor)
-        {
+
+        if (options && options.glowColor) {
             uniforms.push(new Float32Array([
                 options.glowColor.r / 255,
                 options.glowColor.g / 255,
@@ -609,7 +584,7 @@ void main(void)
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
         gl.useProgram(null);
 
-        
+
         // Thinking
         // vbo store
         // vao store
@@ -628,7 +603,7 @@ void main(void)
         mat4.rotateZ(model_matrix, model_matrix, dt * 0.0005);
         mat4.rotateY(model_matrix, model_matrix, dt * 0.0002);
         mat4.rotateX(model_matrix, model_matrix, dt * 0.0003);
-        mat4.perspective(proj_matrix, 45, 
+        mat4.perspective(proj_matrix, 45,
             canvas.clientWidth / canvas.clientHeight, 1, 100);
         mat4.lookAt(view_matrix,
             vec3.fromValues(-3, 3, 3),
@@ -640,27 +615,27 @@ void main(void)
         // render glow
 
         const smallScene = renderTargets.renderTo(
-            x => fdrawCube(0,0,0,0, glowRender, {glowColor: colorPicker.color.rgb}),
+            x => fdrawCube(0, 0, 0, 0, glowRender, { glowColor: colorPicker.color.rgb }),
             sceneTarget);
 
         const hBlurTexture = renderTargets.renderTo(x => {
-            hBlurRender(smallScene, ([t,blurStepSize]) => {                
-                gl.uniform1f(t, (Math.cos(screent) + 1)/2);        
-                gl.uniform1f(blurStepSize, 1.0/256.0);   
+            hBlurRender(smallScene, ([t, blurStepSize]) => {
+                gl.uniform1f(t, (Math.cos(screent) + 1) / 2);
+                gl.uniform1f(blurStepSize, 1.0 / 256.0);
             });
         }, hBlurTarget);
-        
+
         const bluredTexture = renderTargets.renderTo(x => {
-            vBlurRender(hBlurTexture, ([t,blurStepSize]) => {
-                gl.uniform1f(t, (Math.cos(screent) + 1)/2);        
-                gl.uniform1f(blurStepSize, 1.0/256.0);   
+            vBlurRender(hBlurTexture, ([t, blurStepSize]) => {
+                gl.uniform1f(t, (Math.cos(screent) + 1) / 2);
+                gl.uniform1f(blurStepSize, 1.0 / 256.0);
             });
         }, vBlurTarget);
 
         // render scene
 
         const fullSceneTexture = renderTargets.renderTo(
-            x => fdrawCube(0.5,0.5,0.5,1, normalRender),
+            x => fdrawCube(0.5, 0.5, 0.5, 1, normalRender),
             fullSceneTarget);
 
         // mix them 

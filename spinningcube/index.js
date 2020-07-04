@@ -1,10 +1,10 @@
-import { mat4, vec3 } from "/web_modules/gl-matrix.js";
+import {mat4, vec3} from "/web_modules/gl-matrix.js";
 import prepr2 from "/web_modules/prepr.js";
 import iro2 from "/web_modules/@jaames/iro.js";
-import { setupFullScreenQuad, setupMixTextures } from "./renderQuad.js";
-// import webGLDebug from "/web_modules/webgl-debug.js";
-import { h } from "/web_modules/preact.js";
-import { useRef, useEffect, useLayoutEffect } from "/web_modules/preact/hooks.js";
+import {setupFullScreenQuad, setupMixTextures} from "./renderQuad.js";
+import webGLDebug from "/web_modules/webgl-debug.js";
+import {h} from "/web_modules/preact.js";
+import {useRef, useEffect, useLayoutEffect} from "/web_modules/preact/hooks.js";
 async function gaussianBlurGLSL(dir, size) {
   let r = await fetch("./spinningcube/gaussianBlur.frag");
   let code = await r.text();
@@ -33,7 +33,7 @@ function renderTargets(canvas, gl) {
       f();
     },
     renderTo: (f, i) => {
-      const { frameBuffer, width, height, targetTexture } = targets[i];
+      const {frameBuffer, width, height, targetTexture} = targets[i];
       gl.bindFramebuffer(gl.FRAMEBUFFER, frameBuffer);
       gl.viewport(0, 0, width, height);
       f();
@@ -41,7 +41,7 @@ function renderTargets(canvas, gl) {
       return targetTexture;
     },
     targetTexture: (i) => {
-      const { targetTexture } = targets[i];
+      const {targetTexture} = targets[i];
       return targetTexture;
     },
     gen: (gl2, width, height, depth) => {
@@ -229,7 +229,7 @@ function createVertexArray(gl, vbos, indices) {
     }
   };
 }
-function bindVertexArrayAndShader(gl, { vao, vbos }, { program, attribs, uniformBlocks }, blocks = {}) {
+function bindVertexArrayAndShader(gl, {vao, vbos}, {program, attribs, uniformBlocks}, blocks = {}) {
   gl.bindVertexArray(vao);
   gl.useProgram(program);
   for (let attrib of attribs) {
@@ -277,7 +277,7 @@ function buildUBO(gl, data) {
     }
   };
 }
-const fdrawCube = function (gl, cr, cg, cb, ca, shaderProgram, options, globalUB, proj_matrix, view_matrix, model_matrix, cubevao) {
+const fdrawCube = function(gl, cr, cg, cb, ca, shaderProgram, options, globalUB, proj_matrix, view_matrix, model_matrix, cubevao) {
   gl.enable(gl.DEPTH_TEST);
   gl.depthFunc(gl.LEQUAL);
   gl.clearColor(cr, cg, cb, ca);
@@ -422,7 +422,7 @@ async function initRotatingCube(canvas, gl, renderTargets2) {
   const mixTexturesRender = setupMixTextures(gl, 2, [], await mixTextureGLSL());
   var time_old = 0;
   let screent = 0;
-  let fdraw = function (time) {
+  let fdraw = function(time) {
     var dt = time - time_old;
     time_old = time;
     mat4.rotateZ(model_matrix, model_matrix, dt * 0.0005);
@@ -501,7 +501,7 @@ function useColorPicker() {
   return el;
 }
 let colorPicker;
-export function Options({ visible }) {
+export function Options({visible}) {
   let colorPicker2 = useColorPicker();
   let action;
   let prevVisible = usePrevious(visible);
@@ -560,9 +560,9 @@ export async function load() {
   window.onresize = resizeCanvas;
   resizeCanvas();
   let gl = canvas.getContext("webgl2");
-  // gl = webGLDebug.makeDebugContext(gl, (err, funcName, args) => {
-  //   throw `${webGLDebug.glEnumToString(err)} was caused by call to ${funcName}(${webGLDebug.glFunctionArgsToString(funcName, args)})`;
-  // });
+  gl = webGLDebug.makeDebugContext(gl, (err, funcName, args) => {
+    throw `${webGLDebug.glEnumToString(err)} was caused by call to ${funcName}(${webGLDebug.glFunctionArgsToString(funcName, args)})`;
+  });
   let targets = renderTargets(canvas, gl);
   let fdraw = await initRotatingCube(canvas, gl, targets);
   function draw(time) {
