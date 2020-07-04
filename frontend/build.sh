@@ -6,7 +6,7 @@ mkdir ./build/webfonts/
 cp node_modules/@fortawesome/fontawesome-free/webfonts/* ./build/webfonts/
 find . -type f -print0 | xargs -0 sed -i 's/common.js/common.js/g'
 pushd build
-mv ./web_modules/common/_commonjsHelpers-38687f85.js ./web_modules/common/common.js
+mv ./web_modules/common/common.js ./web_modules/common/common.js
 rm ../../__snowpack__ -rf
 rm ../../spinningcube -rf
 rm ../../web_modules -rf
