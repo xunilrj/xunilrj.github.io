@@ -1,9 +1,8 @@
 import { h, hydrate, Fragment } from 'preact';
-import { useState, useEffect, useCallback, useRef } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import demos from './demos.js';
 import { MenuBar, MenuBarItem } from './menuBar.jsx';
 import useAsyncLoadUnloadState from './useAsyncLoadUnloadState.js';
-import iro from '@jaames/iro';
 
 function Header({ text }) {
     return <h1 style="display: inline;font-family: Indie Flower;">{text}</h1>;

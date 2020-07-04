@@ -648,9 +648,9 @@ export async function load() {
     resizeCanvas();
 
     let gl = canvas.getContext("webgl2");
-    gl = webGLDebug.makeDebugContext(gl, (err, funcName, args) => {
-        throw (`${webGLDebug.glEnumToString(err)} was caused by call to ${funcName}(${webGLDebug.glFunctionArgsToString(funcName, args)})`)
-    });
+    // gl = webGLDebug.makeDebugContext(gl, (err, funcName, args) => {
+    //     throw (`${webGLDebug.glEnumToString(err)} was caused by call to ${funcName}(${webGLDebug.glFunctionArgsToString(funcName, args)})`)
+    // });
 
     let targets = renderTargets(canvas, gl);
     let fdraw = await initRotatingCube(canvas, gl, targets);
