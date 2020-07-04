@@ -1,4 +1,4 @@
-import { c as createCommonjsModule, a as commonjsGlobal } from './common/_commonjsHelpers-738d5c9d.js';
+import { c as createCommonjsModule, a as commonjsGlobal } from './common/common.js';
 
 /**
  * @module parenthesis
