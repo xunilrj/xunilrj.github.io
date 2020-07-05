@@ -1,6 +1,7 @@
 import * as tf from "/web_modules/@tensorflow/tfjs.js";
 import {h} from "/web_modules/preact.js";
 import {useRef, useEffect, useLayoutEffect} from "/web_modules/preact/hooks.js";
+import sudokuSolver from "/web_modules/@bbunderson/sudoku-solver.js";
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -27,7 +28,8 @@ const printSudoku = (prediction, TOTAL_CELLS) => {
       toPrint += "\n";
     }
   }
-  el.innerText = toPrint;
+  el.innerText = "";
+  el.innerText = toPrint + "\n";
   return result;
 };
 const applyPerspective = (src, srcCoords, dstCoords, w, h2) => {
@@ -39,8 +41,10 @@ const applyPerspective = (src, srcCoords, dstCoords, w, h2) => {
   return dst;
 };
 const solve = (puzzle) => {
+  const r = sudokuSolver.solve_string(puzzle);
   let el = document.getElementById("sudoko-textarea");
-  return puzzle.replace(/\./g, "0");
+  el.innerText += JSON.stringify(r);
+  return r;
 };
 const square = (a, b) => [a, b, a, a, b, a, b, b];
 function importScript(id, src) {
@@ -62,6 +66,7 @@ function importScript(id, src) {
 }
 let cv;
 let tfModel;
+let savedDigits = false;
 const solveSudoku = (from, to) => {
   if (!cv)
     return;
@@ -159,11 +164,14 @@ const solveSudoku = (from, to) => {
   for (let i = 0; i < TOTAL_CELLS; i++) {
     const x = i % 9 * cellWidth, y = Math.floor(i / 9) * cellWidth;
     let buffer2 = getImageData(src, x, y, cellWidth);
+    if (!savedDigits) {
+    }
     testDataArray.set(buffer2, i * cellSize);
   }
   const testTensor = tf.tensor2d(testDataArray, [TOTAL_CELLS, cellSize]);
   const reshaped = testTensor.reshape([TOTAL_CELLS, cellWidth, cellWidth, 1]);
   const prediction = tfModel.predict(reshaped).dataSync();
+  savedDigits = true;
   const puzzle = printSudoku(prediction, TOTAL_CELLS);
   const solution = solve(puzzle);
   cv.imshow("step6", src);
