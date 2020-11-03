@@ -54,8 +54,14 @@ function DemoMenu({ demo, navigatePreviousDemo, navigateNextDemo }) {
 
 
 function App() {
+    let initialDemo = 0;
+    var patt = new RegExp(/demo-(?<DEMOID>\d+)/i).exec(window.location.href);
+    if (patt.groups && patt.groups.DEMOID) {
+        initialDemo = parseInt(patt.groups.DEMOID);
+    }
+
     const [state, currentDemo, progress, progressMessage, setDemo]
-        = useAsyncLoadUnloadState(0,
+        = useAsyncLoadUnloadState(initialDemo,
             demos.load,
             demos.unload);
     useEffect(() => {

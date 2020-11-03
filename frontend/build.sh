@@ -11,5 +11,5 @@ rm ../../__snowpack__ -rf
 rm ../../spinningcube -rf
 rm ../../web_modules -rf
 rm ../../webfonts -rf
-mv ./* ../.. -f
+rsync -a . ../..
 popd

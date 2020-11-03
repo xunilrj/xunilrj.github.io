@@ -50,7 +50,12 @@ function DemoMenu({demo, navigatePreviousDemo, navigateNextDemo}) {
   }));
 }
 function App() {
-  const [state, currentDemo, progress, progressMessage2, setDemo] = useAsyncLoadUnloadState2(0, demos2.load, demos2.unload);
+  let initialDemo = 0;
+  var patt = new RegExp(/demo-(?<DEMOID>\d+)/i).exec(window.location.href);
+  if (patt.groups && patt.groups.DEMOID) {
+    initialDemo = parseInt(patt.groups.DEMOID);
+  }
+  const [state, currentDemo, progress, progressMessage2, setDemo] = useAsyncLoadUnloadState2(initialDemo, demos2.load, demos2.unload);
   useEffect(() => {
     if (currentDemo && currentDemo.load)
       currentDemo.load();
