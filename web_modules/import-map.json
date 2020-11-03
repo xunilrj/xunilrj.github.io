@@ -1,0 +1,11 @@
+{
+  "imports": {
+    "@bbunderson/sudoku-solver": "./@bbunderson/sudoku-solver.js",
+    "@jaames/iro": "./@jaames/iro.js",
+    "@tensorflow/tfjs": "./@tensorflow/tfjs.js",
+    "gl-matrix": "./gl-matrix.js",
+    "preact": "./preact.js",
+    "preact/hooks": "./preact/hooks.js",
+    "prepr": "./prepr.js"
+  }
+}
