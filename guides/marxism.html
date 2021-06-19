@@ -1,33 +1,42 @@
 <html>
+
 <head>
-<style>
-    :root {
-        --color-highlight-strong: red;
-        --color-highlight-weak: lightred;
-        --max-width: 500px;
-    }
-    .blocks {
-        margin-left: calc((100% - var(--max-width)) / 3);        
-        max-width: var(--max-width);
-    }
-    .blocks .header {
-        background: var(--color-highlight-strong);
-        padding: 5px;
-    }
-    .blocks .paragraph {
-        text-align: justify;
-    }
-    .monacoDebugging { background-color: lightgray; }
-</style>
+    <style>
+        :root {
+            --color-highlight-strong: red;
+            --color-highlight-weak: lightred;
+            --max-width: 500px;
+        }
+
+        .blocks {
+            margin-left: calc((100% - var(--max-width)) / 3);
+            max-width: var(--max-width);
+        }
+
+        .blocks .header {
+            background: var(--color-highlight-strong);
+            padding: 5px;
+        }
+
+        .blocks .paragraph {
+            text-align: justify;
+        }
+
+        .monacoDebugging {
+            background-color: lightgray;
+        }
+    </style>
 </head>
+
 <body>
-<div class="blocks">
-<script type="text/javascript" src="https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs/loader.js""></script>
+    <div class="blocks">
+        <script type="text/javascript"
+            src="https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs/loader.js""></script>
 <script>
     var monacoElements = [];
 </script>
-<img src='F:\github\xunilrj.github.io\guides\MarxInfluence.svg' />
-<div class="quoteLink" style="margin-left:100px">
+<img src='MarxInfluence.svg' />
+<div class=" quoteLink" style="margin-left:100px">
 <p class="paragraph">Now as for myself, I do not claim to have discovered either the existence of classes in modern society or the struggle between them. Long before me, bourgeois historians had described the historical development of this struggle between the classes, as had bourgeois economists their economic anatomy. My own contribution was 1. to show that the existence of classes is merely bound up with certain historical phases in the development of production; 2. that the class struggle necessarily leads to the dictatorship of the proletariat; 3. that this dictatorship itself constitutes no more than a transition to the abolition of all classes and to a classless society.</p>
 <a href="http://web.archive.org/web/20020818204707/http://www.marxists.org/archive/marx/works/1852/letters/52_03_05.htm">http://web.archive.org/web/20020818204707/http://www.marxists.org/archive/marx/works/1852/letters/52_03_05.htm</a>
 </div>
@@ -141,79 +150,80 @@
 <p class="paragraph">From this it can only be concluded that the social history of man is never anything else than the history of his individual development, whether he is conscious of this or not. His material relations form the basis of all his relations. These material relations are but the necessary forms in which his material and individual activity is realised.</p>
 <p class="paragraph"><a href="http://web.archive.org/web/20010512001344/https">http://web.archive.org/web/20010512001344/https</a>://www.marxists.org/archive/marx/works/1846/letters/46_12_28.htm</p>
 <script>
-  require.config({ paths: { 'vs': 'https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs' }});
-  window.MonacoEnvironment = {
-    getWorkerUrl: function(workerId, label) {
-      return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+    require.config({ paths: { 'vs': 'https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs' } });
+    window.MonacoEnvironment = {
+        getWorkerUrl: function (workerId, label) {
+            return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
         self.MonacoEnvironment = {
           baseUrl: 'https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min'
         };
         importScripts('https://microsoft.github.io/monaco-editor/node_modules/monaco-editor/min/vs/base/worker/workerMain.js');`
-      )}`;
-    }
-  };
-
-  require(["vs/editor/editor.main"], function () {    
-    monacoElements.forEach(x => {
-        function getLanguage(name) {
-            if(name) {
-                if(name.indexOf('.html') >= 0) return 'html';
-                if(name.indexOf('.js')  >= 0) return 'javascript';
-            }
-            return '';
+            )}`;
         }
-        
-        x.el.innerText = "";
-        var language = getLanguage(x.name);
-        if(x.el.dataset.language) {
-            language = x.el.dataset.language;
-        }        
-        if(x.language) {
-            language = x.language;
-        }
+    };
 
-        var value = x.value;
-        var h = {editor: null};
-        function createEditor() {
-            if(h.editor){
-                var model = h.editor.getModel()
-                if(model)
-                    model.dispose();
-                    h.editor.dispose();
-            }
-            h.editor = null;
-            h.editor = monaco.editor.create(x.el, {
-                automaticLayout: true,
-                value: window.atob(value),
-                language: language,
-                scrollBeyondLastLine: false,
-                minimap: {
-                    enabled: false
+    require(["vs/editor/editor.main"], function () {
+        monacoElements.forEach(x => {
+            function getLanguage(name) {
+                if (name) {
+                    if (name.indexOf('.html') >= 0) return 'html';
+                    if (name.indexOf('.js') >= 0) return 'javascript';
                 }
-            });
-        }
-        createEditor();
-        function resizeEditor() {
-            if(x.adjustHeight) {
-                x.el.style.height = 0;
-                h.editor.layout();
-                let height = h.editor.getScrollHeight();        
-                x.el.style.height = height + 20;
-                h.editor.layout();
+                return '';
             }
-        }        
-        resizeEditor();
-        if(x.onchange) {
-            x.onchange.add(function(xx){
-                value = xx.value;
-                language = getLanguage(xx.name);
-                createEditor();
-                resizeEditor();
-            });
-        }
+
+            x.el.innerText = "";
+            var language = getLanguage(x.name);
+            if (x.el.dataset.language) {
+                language = x.el.dataset.language;
+            }
+            if (x.language) {
+                language = x.language;
+            }
+
+            var value = x.value;
+            var h = { editor: null };
+            function createEditor() {
+                if (h.editor) {
+                    var model = h.editor.getModel()
+                    if (model)
+                        model.dispose();
+                    h.editor.dispose();
+                }
+                h.editor = null;
+                h.editor = monaco.editor.create(x.el, {
+                    automaticLayout: true,
+                    value: window.atob(value),
+                    language: language,
+                    scrollBeyondLastLine: false,
+                    minimap: {
+                        enabled: false
+                    }
+                });
+            }
+            createEditor();
+            function resizeEditor() {
+                if (x.adjustHeight) {
+                    x.el.style.height = 0;
+                    h.editor.layout();
+                    let height = h.editor.getScrollHeight();
+                    x.el.style.height = height + 20;
+                    h.editor.layout();
+                }
+            }
+            resizeEditor();
+            if (x.onchange) {
+                x.onchange.add(function (xx) {
+                    value = xx.value;
+                    language = getLanguage(xx.name);
+                    createEditor();
+                    resizeEditor();
+                });
+            }
+        });
     });
-  });
 </script>
-</div>
+    </div>
 </body>
+
 </html>
