@@ -56,7 +56,7 @@ function DemoMenu({ demo, navigatePreviousDemo, navigateNextDemo }) {
 function App() {
     let initialDemo = 0;
     var patt = new RegExp(/demo-(?<DEMOID>\d+)/i).exec(window.location.href);
-    if (patt.groups && patt.groups.DEMOID) {
+    if (patt && patt.groups && patt.groups.DEMOID) {
         initialDemo = parseInt(patt.groups.DEMOID);
     }
 

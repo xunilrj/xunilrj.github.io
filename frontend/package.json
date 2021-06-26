@@ -21,6 +21,7 @@
     "babel-polyfill": "^6.26.0",
     "bytebuffer": "^5.0.1",
     "codyhouse-framework": "^2.6.2",
+    "console.image": "^1.0.2",
     "gl-matrix": "^3.3.0",
     "magic.css": "^1.4.5",
     "prepr": "^1.2.4",

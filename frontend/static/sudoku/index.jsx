@@ -2,13 +2,14 @@ import * as tf from '@tensorflow/tfjs';
 import { h } from 'preact';
 import { useRef, useEffect, useLayoutEffect } from 'preact/hooks';
 import sudokuSolver from '@bbunderson/sudoku-solver';
+import 'console.image';
 
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function loadTfModel() {
-    return await tf.loadLayersModel("sudoku/digits.json");
+    return await tf.loadLayersModel("sudoku/my-model-1.json");
 }
 
 const indexOfMaxValue = (a, t = i => i) =>
@@ -132,8 +133,6 @@ const solveSudoku = (from, to) => {
         cv.CHAIN_APPROX_SIMPLE
     );
 
-
-
     //findContours
     const color = index =>
         new cv.Scalar(
@@ -163,6 +162,7 @@ const solveSudoku = (from, to) => {
             return coords;
         }
     };
+
     const countourImageBuffer = cv.Mat.zeros(src.rows, src.cols, cv.CV_8UC3);
     const EPSILON = 10;
     const rectangles = [];
@@ -200,16 +200,21 @@ const solveSudoku = (from, to) => {
     };
     cv.imshow("step3", countourImageBuffer);
 
+    let cellWidth = 40;
+    let IMAGE_WIDTH = cellWidth * 9;
+    let cellSize = cellWidth * cellWidth;
+    let TOTAL_CELLS = 81;
+    let GRID_STROKE = 12;
+
     //remove perspective
     let dst = applyPerspective(src,
         sudokuGrid.coord,
-        square(180, 0),
-        180,
-        180);
+        square(IMAGE_WIDTH, 0),
+        IMAGE_WIDTH,
+        IMAGE_WIDTH);
     cv.imshow("step4", dst);
 
     //remove gridlines
-    const GRID_STROKE = 4;
     let buffer = dst;
     const width = buffer.cols;
     const white = new cv.Scalar(255, 255, 255, 255);
@@ -224,9 +229,8 @@ const solveSudoku = (from, to) => {
     }
     cv.imshow("step5", buffer);
 
-    //digit recognition
+    // digit recognition
     src = buffer;
-    const IMAGE_WIDTH = 180;
     const getImageData = (src, x, y, width) => {
         const buffer = new Float32Array(width * width);
         let j = 0;
@@ -237,31 +241,44 @@ const solveSudoku = (from, to) => {
         }
         return buffer;
     };
-    let cellWidth = src.cols / 9;
-    const cellSize = cellWidth * cellWidth;
-    const TOTAL_CELLS = 81;
-    let testDataArray = new Float32Array(src.cols * src.rows);
-    for (let i = 0; i < TOTAL_CELLS; i++) {
+
+    TOTAL_CELLS = 1;
+    let startAt = 2;
+    let testDataArray = new Float32Array(TOTAL_CELLS * cellWidth * cellWidth);
+    for (let i = startAt; i < (TOTAL_CELLS + startAt); i++) {
         const x = (i % 9) * cellWidth,
             y = Math.floor(i / 9) * cellWidth;
         let buffer = getImageData(src, x, y, cellWidth);
-        if (!savedDigits) {
+        const el = document.getElementById("step5");
+        const ctx = el.getContext("2d");
+        src.data[ix + iy * IMAGE_WIDTH] =
 
-        }
-        testDataArray.set(buffer, i * cellSize);
+            testDataArray.set(buffer, (i - startAt) * cellSize);
     }
+
     const testTensor = tf.tensor2d(testDataArray, [TOTAL_CELLS, cellSize]);
     const reshaped = testTensor.reshape([TOTAL_CELLS, cellWidth, cellWidth, 1]);
     const prediction = tfModel.predict(reshaped).dataSync();
 
-    savedDigits = true;
+    //draw red grid
+    for (let i = startAt; i < (TOTAL_CELLS + startAt); i++) {
+        const x = (i % 9) * cellWidth,
+            y = Math.floor(i / 9) * cellWidth;
+
+        const el = document.getElementById("step5");
+        const ctx = el.getContext("2d");
+        ctx.strokeStyle = "red";
+        ctx.beginPath();
+        ctx.rect(x, y, cellWidth, cellWidth);
+        ctx.stroke();
+    }
+
     // SOLUTION
     const puzzle = printSudoku(prediction, TOTAL_CELLS);
     const solution = solve(puzzle);
 
-    // RENDER SOLUTION
-    // const digitsBuffer = renderDigits(projectedBuffer, solution);
-    cv.imshow("step6", src);
+    // RENDER SOLUTION    
+
     let canvas = document.getElementById("step6");
     ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -269,21 +286,17 @@ const solveSudoku = (from, to) => {
     ctx.fillStyle = "red";
     ctx.font = "16px sans-serif";
 
-    cellWidth = canvas.width / 9;
-
-    for (let i = 0; i < TOTAL_CELLS; i++) {
-        const digit = solution[i];
-        if (digit === "0") {
-            const x = (i % 9) * cellWidth,
-                y = Math.floor(i / 9) * cellWidth;
-            ctx.fillText(digit, x + 5, y + 15);
-        }
+    for (let i = startAt; i < (TOTAL_CELLS + startAt); i++) {
+        const digit = solution.solution[i - startAt];
+        const x = (i % 9) * cellWidth,
+            y = Math.floor(i / 9) * cellWidth;
+        ctx.fillText(digit, x + 5, y + 15);
     }
-    src = cv.imread("step6");
 
     // apply perspective
+    src = cv.imread("step6");
     dst = applyPerspective(src,
-        square(180, -2),
+        square(IMAGE_WIDTH, -2),
         sudokuGrid.coord,
 
         originalWidth,
@@ -334,7 +347,6 @@ const solveSudoku = (from, to) => {
     ctx.rect(minx, miny, maxx - minx, maxy - miny);
     ctx.stroke();
 
-
     src.delete();
 };
 
@@ -358,59 +370,61 @@ export function Main() {
             };
         })();
     });
+    const webcamW = 600;
+    const webcamH = 400;
     return <div style="width: 100vw; height: 100vh;position: absolute;">
         <div style="height:100px">
 
         </div>
         <div style="display: inline-block;">
             <div style="text-align: center">Your Webcam</div>
-            <video ref={cam} width="300" height="200">
+            <video ref={cam} width={webcamW} height={webcamH}>
             </video>
         </div>
         <div style="display: inline-block;">
             <div style="text-align: center">Final Result</div>
-            <canvas ref={final} width="300" height="200"></canvas>
+            <canvas ref={final} width={webcamW} height={webcamH}></canvas>
         </div>
         <div>steps</div>
         <div style="display: flex; flex-direction: row; overflow: auto">
             <div style="display: inline-block; min-width: 310px; border: 1px dashed">
                 <div style="text-align: center">Grayscale</div>
-                <canvas width="300" height="200" id="step1"></canvas>
+                <canvas width={webcamW} height={webcamH} id="step1"></canvas>
             </div>
             <i class="fa fa-arrow-right" aria-hidden="true" style="height: 200px;line-height: 250px;font-size: 45px;"></i>
             <div style="display: inline-block; min-width: 310px; border: 1px dashed">
                 <div style="text-align: center">Adaptive Threshold + Countours</div>
-                <canvas width="300" height="200" id="step2"></canvas>
+                <canvas width={webcamW} height={webcamH} id="step2"></canvas>
             </div>
             <i class="fa fa-arrow-right" aria-hidden="true" style="height: 200px;line-height: 250px;font-size: 45px;"></i>
             <div style="display: inline-block; min-width: 310px; border: 1px dashed">
                 <div style="text-align: center">Countours Calculation</div>
-                <canvas width="300" height="200" id="step3"></canvas>
+                <canvas width={webcamW} height={webcamH} id="step3"></canvas>
             </div>
             <i class="fa fa-arrow-right" aria-hidden="true" style="height: 200px;line-height: 250px;font-size: 45px;"></i>
             <div style="display: inline-block; min-width: 310px; border: 1px dashed">
                 <div style="text-align: center">Removing Perspective</div>
-                <canvas width="300" height="200" id="step4"></canvas>
+                <canvas width={webcamW} height={webcamH} id="step4"></canvas>
             </div>
             <i class="fa fa-arrow-right" aria-hidden="true" style="height: 200px;line-height: 250px;font-size: 45px;"></i>
             <div style="display: inline-block; min-width: 310px; border: 1px dashed">
                 <div style="text-align: center">Removing Grid lines</div>
-                <canvas width="300" height="200" id="step5"></canvas>
+                <canvas width={webcamW} height={webcamH} id="step5"></canvas>
             </div>
             <i class="fa fa-arrow-right" aria-hidden="true" style="height: 200px;line-height: 250px;font-size: 45px;"></i>
             <div style="display: inline-block; min-width: 310px; border: 1px dashed">
                 <div style="text-align: center">Render Solution</div>
-                <canvas width="300" height="200" id="step6"></canvas>
+                <canvas width={webcamW} height={webcamH} id="step6"></canvas>
             </div>
             <i class="fa fa-arrow-right" aria-hidden="true" style="height: 200px;line-height: 250px;font-size: 45px;"></i>
             <div style="display: inline-block; min-width: 310px; border: 1px dashed">
                 <div style="text-align: center">Apply Perspective</div>
-                <canvas width="300" height="200" id="step7"></canvas>
+                <canvas width={webcamW} height={webcamH} id="step7"></canvas>
             </div>
         </div>
         <pre id="sudoko-textarea">
         </pre>
-    </div>;
+    </div >;
 }
 
 export async function load() {
