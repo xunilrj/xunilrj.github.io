@@ -1,0 +1,28 @@
+---
+const {img} = Astro.props;
+---
+<style>
+	#bg {
+        --image-size: 2250px;
+		animation: bg 60s linear infinite;
+		backface-visibility: hidden;
+		transform: translate3d(0,0,0);
+		background: #348cb2 url() bottom left;
+		background-repeat: repeat-x;
+        background-size: var(--image-size) auto;
+		width: 6750px;
+		height: 100%;
+		left: 0;
+		opacity: 1;
+		position: fixed;
+		top: 0;
+	}
+
+	@keyframes bg {
+		0% { transform: translate3d(0,0,0); }
+		100% { transform: translate3d(calc(var(--image-size) * -1), 0, 0); }
+	}
+</style>
+<div id="bg" style={`background-image: url('/css/images/${img}.jpg');`}>
+    {img}
+</div>
