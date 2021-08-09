@@ -1,7 +1,0 @@
-{
-  "imports": {
-    "preact": "./preact.js",
-    "preact/hooks": "./preact/hooks.js",
-    "webgl-debug": "./webgl-debug.js"
-  }
-}
