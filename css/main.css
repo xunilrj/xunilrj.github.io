@@ -291,127 +291,13 @@ input, select, textarea {
 
 /* Header */
 
-	@-moz-keyframes header {
-		0% {
-			-moz-transform: translate3d(0,1em,0);
-			-webkit-transform: translate3d(0,1em,0);
-			-ms-transform: translate3d(0,1em,0);
-			transform: translate3d(0,1em,0);
-			opacity: 0;
-		}
-
-		100% {
-			-moz-transform: translate3d(0,0,0);
-			-webkit-transform: translate3d(0,0,0);
-			-ms-transform: translate3d(0,0,0);
-			transform: translate3d(0,0,0);
-			opacity: 1;
-		}
-	}
-
-	@-webkit-keyframes header {
-		0% {
-			-moz-transform: translate3d(0,1em,0);
-			-webkit-transform: translate3d(0,1em,0);
-			-ms-transform: translate3d(0,1em,0);
-			transform: translate3d(0,1em,0);
-			opacity: 0;
-		}
-
-		100% {
-			-moz-transform: translate3d(0,0,0);
-			-webkit-transform: translate3d(0,0,0);
-			-ms-transform: translate3d(0,0,0);
-			transform: translate3d(0,0,0);
-			opacity: 1;
-		}
-	}
-
-	@-ms-keyframes header {
-		0% {
-			-moz-transform: translate3d(0,1em,0);
-			-webkit-transform: translate3d(0,1em,0);
-			-ms-transform: translate3d(0,1em,0);
-			transform: translate3d(0,1em,0);
-			opacity: 0;
-		}
-
-		100% {
-			-moz-transform: translate3d(0,0,0);
-			-webkit-transform: translate3d(0,0,0);
-			-ms-transform: translate3d(0,0,0);
-			transform: translate3d(0,0,0);
-			opacity: 1;
-		}
-	}
-
 	@keyframes header {
 		0% {
-			-moz-transform: translate3d(0,1em,0);
-			-webkit-transform: translate3d(0,1em,0);
-			-ms-transform: translate3d(0,1em,0);
 			transform: translate3d(0,1em,0);
 			opacity: 0;
 		}
 
 		100% {
-			-moz-transform: translate3d(0,0,0);
-			-webkit-transform: translate3d(0,0,0);
-			-ms-transform: translate3d(0,0,0);
-			transform: translate3d(0,0,0);
-			opacity: 1;
-		}
-	}
-
-	@-moz-keyframes nav-icons {
-		0% {
-			-moz-transform: translate3d(0,1em,0);
-			-webkit-transform: translate3d(0,1em,0);
-			-ms-transform: translate3d(0,1em,0);
-			transform: translate3d(0,1em,0);
-			opacity: 0;
-		}
-
-		100% {
-			-moz-transform: translate3d(0,0,0);
-			-webkit-transform: translate3d(0,0,0);
-			-ms-transform: translate3d(0,0,0);
-			transform: translate3d(0,0,0);
-			opacity: 1;
-		}
-	}
-
-	@-webkit-keyframes nav-icons {
-		0% {
-			-moz-transform: translate3d(0,1em,0);
-			-webkit-transform: translate3d(0,1em,0);
-			-ms-transform: translate3d(0,1em,0);
-			transform: translate3d(0,1em,0);
-			opacity: 0;
-		}
-
-		100% {
-			-moz-transform: translate3d(0,0,0);
-			-webkit-transform: translate3d(0,0,0);
-			-ms-transform: translate3d(0,0,0);
-			transform: translate3d(0,0,0);
-			opacity: 1;
-		}
-	}
-
-	@-ms-keyframes nav-icons {
-		0% {
-			-moz-transform: translate3d(0,1em,0);
-			-webkit-transform: translate3d(0,1em,0);
-			-ms-transform: translate3d(0,1em,0);
-			transform: translate3d(0,1em,0);
-			opacity: 0;
-		}
-
-		100% {
-			-moz-transform: translate3d(0,0,0);
-			-webkit-transform: translate3d(0,0,0);
-			-ms-transform: translate3d(0,0,0);
 			transform: translate3d(0,0,0);
 			opacity: 1;
 		}
@@ -419,34 +305,19 @@ input, select, textarea {
 
 	@keyframes nav-icons {
 		0% {
-			-moz-transform: translate3d(0,1em,0);
-			-webkit-transform: translate3d(0,1em,0);
-			-ms-transform: translate3d(0,1em,0);
 			transform: translate3d(0,1em,0);
 			opacity: 0;
 		}
 
 		100% {
-			-moz-transform: translate3d(0,0,0);
-			-webkit-transform: translate3d(0,0,0);
-			-ms-transform: translate3d(0,0,0);
 			transform: translate3d(0,0,0);
 			opacity: 1;
 		}
 	}
 
 	#header {
-		-moz-animation: header 1s 2.25s forwards;
-		-webkit-animation: header 1s 2.25s forwards;
-		-ms-animation: header 1s 2.25s forwards;
 		animation: header 1s 2.25s forwards;
-		-moz-backface-visibility: hidden;
-		-webkit-backface-visibility: hidden;
-		-ms-backface-visibility: hidden;
 		backface-visibility: hidden;
-		-moz-transform: translate3d(0,0,0);
-		-webkit-transform: translate3d(0,0,0);
-		-ms-transform: translate3d(0,0,0);
 		transform: translate3d(0,0,0);
 		cursor: default;
 		display: inline-block;
@@ -471,22 +342,13 @@ input, select, textarea {
 			opacity: 0.75;
 		}
 
-		#header nav {
+		#header nav#social-media {
 			margin: 1.5em 0 0 0;
 		}
 
-			#header nav li {
-				-moz-animation: nav-icons 0.5s ease-in-out forwards;
-				-webkit-animation: nav-icons 0.5s ease-in-out forwards;
-				-ms-animation: nav-icons 0.5s ease-in-out forwards;
+			#header nav#social-media li {
 				animation: nav-icons 0.5s ease-in-out forwards;
-				-moz-backface-visibility: hidden;
-				-webkit-backface-visibility: hidden;
-				-ms-backface-visibility: hidden;
 				backface-visibility: hidden;
-				-moz-transform: translate3d(0,0,0);
-				-webkit-transform: translate3d(0,0,0);
-				-ms-transform: translate3d(0,0,0);
 				transform: translate3d(0,0,0);
 				display: inline-block;
 				height: 5.35em;
@@ -497,87 +359,52 @@ input, select, textarea {
 				width: 5.35em;
 			}
 
-				#header nav li:nth-child(1) {
-					-moz-animation-delay: 2.5s;
-					-webkit-animation-delay: 2.5s;
-					-ms-animation-delay: 2.5s;
+				#header nav#social-media li:nth-child(1) {
 					animation-delay: 2.5s;
 				}
 
-				#header nav li:nth-child(2) {
-					-moz-animation-delay: 2.75s;
-					-webkit-animation-delay: 2.75s;
-					-ms-animation-delay: 2.75s;
+				#header nav#social-media li:nth-child(2) {
 					animation-delay: 2.75s;
 				}
 
-				#header nav li:nth-child(3) {
-					-moz-animation-delay: 3s;
-					-webkit-animation-delay: 3s;
-					-ms-animation-delay: 3s;
+				#header nav#social-media li:nth-child(3) {
 					animation-delay: 3s;
 				}
 
-				#header nav li:nth-child(4) {
-					-moz-animation-delay: 3.25s;
-					-webkit-animation-delay: 3.25s;
-					-ms-animation-delay: 3.25s;
+				#header nav#social-media li:nth-child(4) {
 					animation-delay: 3.25s;
 				}
 
-				#header nav li:nth-child(5) {
-					-moz-animation-delay: 3.5s;
-					-webkit-animation-delay: 3.5s;
-					-ms-animation-delay: 3.5s;
+				#header nav#social-media li:nth-child(5) {
 					animation-delay: 3.5s;
 				}
 
-				#header nav li:nth-child(6) {
-					-moz-animation-delay: 3.75s;
-					-webkit-animation-delay: 3.75s;
-					-ms-animation-delay: 3.75s;
+				#header nav#social-media li:nth-child(6) {
 					animation-delay: 3.75s;
 				}
 
-				#header nav li:nth-child(7) {
-					-moz-animation-delay: 4s;
-					-webkit-animation-delay: 4s;
-					-ms-animation-delay: 4s;
+				#header nav#social-media li:nth-child(7) {
 					animation-delay: 4s;
 				}
 
-				#header nav li:nth-child(8) {
-					-moz-animation-delay: 4.25s;
-					-webkit-animation-delay: 4.25s;
-					-ms-animation-delay: 4.25s;
+				#header nav#social-media li:nth-child(8) {
 					animation-delay: 4.25s;
 				}
 
-				#header nav li:nth-child(9) {
-					-moz-animation-delay: 4.5s;
-					-webkit-animation-delay: 4.5s;
-					-ms-animation-delay: 4.5s;
+				#header nav#social-media li:nth-child(9) {
 					animation-delay: 4.5s;
 				}
 
-				#header nav li:nth-child(10) {
-					-moz-animation-delay: 4.75s;
-					-webkit-animation-delay: 4.75s;
-					-ms-animation-delay: 4.75s;
+				#header nav#social-media li:nth-child(10) {
 					animation-delay: 4.75s;
 				}
 
-			#header nav a {
-				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-				-webkit-touch-callout: none;
+			#header nav#social-media a {
 				border: 0;
 				display: inline-block;
 			}
 
-				#header nav a:before {
-					-moz-transition: all 0.2s ease-in-out;
-					-webkit-transition: all 0.2s ease-in-out;
-					-ms-transition: all 0.2s ease-in-out;
+				#header nav#social-media a:before {
 					transition: all 0.2s ease-in-out;
 					border-radius: 100%;
 					border: solid 1px #fff;
@@ -591,26 +418,26 @@ input, select, textarea {
 					width: 2.5em;
 				}
 
-				#header nav a:hover {
+				#header nav#social-media a:hover {
 					font-size: 1.1em;
 				}
 
-					#header nav a:hover:before {
+					#header nav#social-media a:hover:before {
 						background-color: rgba(255, 255, 255, 0.175);
 						color: #fff;
 					}
 
-				#header nav a:active {
+				#header nav#social-media a:active {
 					font-size: 0.95em;
 					background: none;
 				}
 
-					#header nav a:active:before {
+					#header nav#social-media a:active:before {
 						background-color: rgba(255, 255, 255, 0.35);
 						color: #fff;
 					}
 
-				#header nav a span {
+				#header nav#social-media a span {
 					display: none;
 				}
 
@@ -891,15 +718,15 @@ input, select, textarea {
 			font-size: 1em;
 		}
 
-		#header nav {
+		#header nav#social-media {
 			font-size: 1em;
 		}
 
-			#header nav a:hover {
+			#header nav#social-media a:hover {
 				font-size: 1em;
 			}
 
-			#header nav a:active {
+			#header nav#social-media a:active {
 				font-size: 1em;
 			} }
 
@@ -981,6 +808,6 @@ input, select, textarea {
 
 	/* Header */
 
-		#header nav {
+		#header nav#social-media {
 			padding: 0 1em;
 		} }
